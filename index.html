@@ -382,7 +382,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
   </div>
   <div class="island-area">
     <div class="island" id="isl">
-      <div class="st s0"><span class="app"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg></span><div><small>Ваш бот · щойно</small><b>Новий запис: діагностика</b><span>Олександр, завтра о&nbsp;10:00</span></div></div>
+      <div class="st s0"><span class="app"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg></span><div><small>Ваш бот · щойно</small><b id="isl-t">Новий запис: діагностика</b><span id="isl-s">Олександр, завтра о&nbsp;10:00</span></div></div>
       <div class="st s1"><b>24/7</b><span>бот приймає заявки,<br>навіть коли ви зайняті</span></div>
       <a class="st s2" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83." target="_blank" rel="noopener" tabindex="-1">Написати в Telegram <span aria-hidden="true">→</span></a>
     </div>
@@ -421,9 +421,9 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <article class="card c-day rv" id="c-day">
         <h3>Навіть уночі</h3>
         <ol class="day">
-          <li><b>23:40</b><span>Клієнт записався через бота</span></li>
-          <li><b>08:00</b><span>Заявка вже у вас у Telegram</span></li>
-          <li><b>10:00</b><span>Авто на підйомнику</span></li>
+          <li><b>23:40</b><span id="day1">Клієнт записався через бота</span></li>
+          <li><b>08:00</b><span id="day2">Заявка вже у вас у Telegram</span></li>
+          <li><b id="day3t">10:00</b><span id="day3">Авто на підйомнику</span></li>
         </ol>
       </article>
     </div>
@@ -552,6 +552,17 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const io=(els,cb,opt)=>{const o=new IntersectionObserver(es=>es.forEach(e=>cb(e,o)),opt);els.forEach(el=>el&&o.observe(el));return o};
+
+/* текст під нішу з холодного повідомлення: ?n=beauty|clinic|food|shop|fitness (за замовчуванням автосервіси) */
+const NICHE={
+  beauty:{h1:'Сайти й&nbsp;Telegram&#8209;боти для салонів краси та&nbsp;барбершопів',t:'Новий запис: манікюр',s:'Олена, завтра о&nbsp;14:00',d1:'Клієнтка записалась через бота',d3t:'14:00',d3:'Клієнтка вже в кріслі майстра'},
+  clinic:{h1:'Сайти й&nbsp;Telegram&#8209;боти для клінік і&nbsp;кабінетів',t:'Новий запис: консультація',s:'Ірина, завтра о&nbsp;10:00',d1:'Пацієнт записався через бота',d3t:'10:00',d3:'Пацієнт уже на прийомі'},
+  food:{h1:'Сайти й&nbsp;Telegram&#8209;боти для кавʼярень і&nbsp;пекарень',t:'Нове замовлення: торт на суботу',s:'Марина, самовивіз о&nbsp;12:00',d1:'Клієнт замовив торт через бота',d3t:'12:00',d3:'Замовлення вже забрали'},
+  shop:{h1:'Сайти й&nbsp;Telegram&#8209;боти для магазинів',t:'Нове замовлення: 3 позиції',s:'Андрій, самовивіз сьогодні',d1:'Клієнт залишив заявку через бота',d3t:'11:00',d3:'Товар уже забрали'},
+  fitness:{h1:'Сайти й&nbsp;Telegram&#8209;боти для фітнес&#8209;студій',t:'Новий запис: групове тренування',s:'Юлія, завтра о&nbsp;19:00',d1:'Клієнтка записалась через бота',d3t:'19:00',d3:'Клієнтка вже на тренуванні'},
+};
+const nm=(location.search.match(/[?&]n=([a-z]+)/)||[])[1],NV=NICHE[nm];
+if(NV){$('#h1').innerHTML=NV.h1;$('#isl-t').innerHTML=NV.t;$('#isl-s').innerHTML=NV.s;$('#day1').textContent=NV.d1;$('#day3t').textContent=NV.d3t;$('#day3').textContent=NV.d3}
 
 /* скляний нік: поява, блік за курсором або нахилом телефона */
 const gs=$('#gs'),glight=$('#glight');
