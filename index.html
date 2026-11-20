@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Сайти й Telegram-боти для СТО та малого бізнесу | drakx</title>
+<meta name="description" content="Роблю сайти й Telegram-боти для СТО, майстерень і місцевого бізнесу. Без передоплати: спочатку показую результат. Приклади: Gold Auto, Volt Master.">
+<meta name="theme-color" content="#f5f5f7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Сайти й Telegram-боти для СТО та малого бізнесу | drakx">
+<meta property="og:description" content="Роблю все сам, від дизайну до запуску. Без передоплати: спочатку показую результат.">
+<meta property="og:image" content="media/og.jpg">
+<meta property="og:locale" content="uk_UA">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/nick.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-cyr.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-lat.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('js')</script>
+<style>
+@font-face{font-family:Nick;font-weight:800;font-display:block;src:url(fonts/nick.woff2) format('woff2')}
+@font-face{font-family:Inter;font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-cyr.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Inter;font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-lat.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --bg:#f5f5f7;--card:#fff;--ink:#1d1d1f;--ink2:#3d3d40;--muted:#5c5c61;--line:rgba(0,0,0,.08);
+  --link:#0066cc;--blue:#0a84ff;--green:#30d158;
+  --r:28px;--r-in:18px;
+  --spring:linear(0,.009,.035 2.1%,.141,.281 6.7%,.723 12.9%,.938 16.7%,1.017,1.077,1.121,1.149 24.3%,1.159,1.163,1.161,1.154 29.9%,1.129 32.8%,1.051 39.6%,1.017 43.1%,.991,.977 51%,.974 53.8%,.975 57.1%,.997 69.8%,1.003 76.9%,1.004 83.8%,1);
+  --soft:cubic-bezier(.2,.8,.2,1);
+  --pad:clamp(16px,4vw,40px);
+  color-scheme:light;
+}
+@supports not (transition-timing-function:linear(0,1)){:root{--spring:cubic-bezier(.3,1.4,.5,1)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font:17px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:12px}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 26px;border-radius:25px;font-size:17px;font-weight:500;white-space:nowrap;transition:transform .3s var(--soft),background .3s}
+.pill:hover{transform:translateY(-1px)}
+.pill:active{transform:scale(.97)}
+.pill.dark{background:var(--ink);color:#fff}
+.pill.dark:hover{background:#000}
+.pill.light{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.tg{width:18px;height:18px;flex:none}
+.wrap{width:min(1080px,100%);margin:0 auto;padding:0 var(--pad)}
+.eyebrow{font-size:15px;font-weight:600;color:var(--muted)}
+h1,h2{font-weight:600;text-wrap:balance}
+h2{font-size:clamp(32px,4.4vw,56px);line-height:1.08;letter-spacing:-.028em}
+.lead{color:var(--muted);font-size:clamp(17px,1.5vw,21px);line-height:1.45;max-width:620px;text-wrap:pretty}
+.head{text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:clamp(32px,5vw,52px)}
+.card{background:var(--card);border-radius:var(--r)}
+section.block{padding:clamp(80px,10vw,128px) 0 0}
+
+/* ---------- навігація (скло) ---------- */
+.nav{position:fixed;z-index:50;top:12px;left:50%;translate:-50% 0;width:min(760px,calc(100% - 24px));height:56px;border-radius:28px;display:flex;align-items:center;justify-content:space-between;padding:0 6px 0 22px;
+  background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(20px) saturate(1.8);backdrop-filter:blur(20px) saturate(1.8);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),inset 0 1px 0 #fff,0 8px 30px -12px rgba(20,20,40,.22)}
+.logo{font-family:Nick,Inter,sans-serif;font-weight:800;font-size:21px;letter-spacing:-.03em;padding:10px 0}
+.nav nav{display:flex;gap:28px;font-size:14px;color:var(--ink2)}
+.nav nav a{padding:12px 0;transition:color .2s}.nav nav a:hover{color:var(--ink)}
+.nav .pill{height:44px;padding:0 20px;font-size:15px}
+
+/* ---------- перший екран ---------- */
+.hero{position:relative;overflow:hidden;overflow:clip;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(92px,13vh,128px) 16px 0;--sw:min(640px,86vw)}
+@media (min-width:900px){.hero{min-height:min(100svh,940px);justify-content:center;padding-bottom:40px}}
+@media (min-width:700px) and (max-height:820px){.hero{--sw:min(520px,86vw);padding-top:92px}}
+/* скляний нік: букви заломлюють кольорове світло позаду */
+.gs{position:relative;width:var(--sw);aspect-ratio:1000/300}
+.aura{position:absolute;inset:-58% -8% -30%;pointer-events:none}
+.aura i{position:absolute;top:8%;width:44%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--c) 0%,color-mix(in srgb,var(--c) 42%,transparent) 36%,transparent 70%)}
+.aura i:nth-child(1){--c:#ff9f0a;left:0;top:4%}
+.aura i:nth-child(2){--c:#ff375f;left:28%;top:12%}
+.aura i:nth-child(3){--c:#0a84ff;left:56%;top:5%}
+.gs>.aura{opacity:.42}
+.js .gs>.aura i{opacity:0;scale:.6;transition:opacity 1s,scale 1.4s var(--soft)}
+.js .gs.on>.aura i{opacity:1;scale:1}
+.gs>.aura i:nth-child(2){transition-delay:.1s}.gs>.aura i:nth-child(3){transition-delay:.2s}
+@media (min-width:900px) and (prefers-reduced-motion:no-preference){
+  .gs.on .aura i{animation:float 10s ease-in-out infinite alternate}
+  .gs.on .aura i:nth-child(2){animation-duration:12s;animation-direction:alternate-reverse}
+  .gs.paused .aura i{animation-play-state:paused}
+}
+@keyframes float{to{transform:translate(7%,-7%) scale(1.07)}}
+.word{position:absolute;inset:0}
+.js .word{opacity:0}
+.js .gs.on .word{opacity:1;animation:nick 1s cubic-bezier(.2,1.3,.3,1) .12s both}
+@keyframes nick{from{opacity:0;transform:translateY(14px) scale(.965)}to{opacity:1;transform:none}}
+.gs svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.gs text{font-family:Nick,Inter,sans-serif;font-weight:800;font-size:330px;letter-spacing:-14px}
+.glass-in{position:absolute;inset:0;overflow:hidden;clip-path:url(#gclip)}
+.glass-in .aura{transform-origin:50% 53%;transform:scale(1.3) translateY(-5%);filter:saturate(1.6) contrast(1.08)}
+.glass-in::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.1) 36%,rgba(255,255,255,0) 55%,rgba(40,0,80,.06) 80%,rgba(255,255,255,.22) 100%)}
+.glass-in .base{position:absolute;inset:0;background:rgba(255,255,255,.14)}
+/* острів */
+.island-area{position:relative;height:92px;width:100%;margin-top:6px}
+.island{position:absolute;left:50%;top:50%;translate:-50% -50%;width:var(--w,min(360px,calc(100vw - 40px)));height:var(--h,76px);border-radius:var(--rad,38px);overflow:hidden;cursor:pointer;contain:layout paint;
+  background:#000;color:#fff;box-shadow:0 12px 30px -12px rgba(0,0,0,.45);
+  transition:width .6s var(--spring),height .6s var(--spring),border-radius .45s ease,opacity .15s,scale .7s var(--spring)}
+.js .island:not(.in){opacity:0;scale:.5}
+.st{position:absolute;inset:0;display:flex;align-items:center;padding:0 16px;white-space:nowrap;text-align:left;opacity:0;filter:blur(6px);transform:scale(.95);transition:opacity .18s,filter .18s,transform .18s;pointer-events:none}
+.st.on{opacity:1;filter:none;transform:none;transition:opacity .3s .14s,filter .3s .14s,transform .4s .14s cubic-bezier(.2,.9,.3,1.2);pointer-events:auto}
+.s0{gap:12px;padding:0 14px}
+.app{flex:none;width:46px;height:46px;border-radius:13px;background:linear-gradient(160deg,#5ac8fa,#0a84ff);display:grid;place-items:center}
+.s0 small{display:block;font-size:12px;color:#a1a1a6;line-height:1.2}.s0 b{display:block;font-size:15px;font-weight:600;line-height:1.3}.s0 span{font-size:14px;color:#d1d1d6;line-height:1.3}
+.s1{gap:14px;padding:0 22px;justify-content:center}
+.s1 b{font-size:30px;font-weight:600;letter-spacing:-.03em}
+.s1 span{font-size:13px;color:#d1d1d6;line-height:1.3}
+.s2{justify-content:center;gap:10px;font-weight:600;font-size:17px}
+.s2:focus-visible{outline:2px solid #fff;outline-offset:-4px;border-radius:inherit}
+.copy{display:flex;flex-direction:column;align-items:center;max-width:900px;margin-top:6px}
+.copy h1{font-size:clamp(34px,4.6vw,60px);line-height:1.07;letter-spacing:-.03em;margin:0 0 14px}
+.ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+
+/* ---------- поява при прокрутці ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--soft),transform .9s var(--soft);transition-delay:var(--d,0s)}
+  .js .rv.in{opacity:1;transform:none}
+}
+
+/* ---------- послуги ---------- */
+.svc{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.svc .card{padding:clamp(26px,3.4vw,40px);overflow:hidden;display:flex;flex-direction:column}
+.svc h3{font-size:clamp(26px,2.6vw,32px);letter-spacing:-.025em;font-weight:600;line-height:1.15}
+.svc p{color:var(--ink2);margin-top:10px;max-width:40ch}
+.c-site,.c-bot{min-height:520px}
+.phone{margin:32px auto calc(-1 * clamp(26px,3.4vw,40px));width:236px;height:330px;border-radius:38px 38px 0 0;border:9px solid var(--ink);border-bottom:0;overflow:hidden;background:#111}
+.phone img{width:100%;height:auto}
+.chatbox{margin-top:auto;padding:18px;border-radius:var(--r-in);background:var(--bg);display:flex;flex-direction:column;gap:8px;font-size:14px}
+.m{padding:9px 13px;border-radius:18px;background:#fff;width:max-content;max-width:88%;line-height:1.35}
+.m.me{margin-left:auto;background:var(--blue);color:#fff}
+.kb{display:flex;gap:6px}.kb .m{flex:1;text-align:center;max-width:none;background:rgba(255,255,255,.7);box-shadow:inset 0 0 0 1px var(--line)}
+.js .c-bot .m{opacity:0;transform:translateY(8px) scale(.96);transition:opacity .4s,transform .45s cubic-bezier(.2,.9,.3,1.3)}
+.js .c-bot .m.on{opacity:1;transform:none}
+.c-day{grid-column:1/-1;padding:clamp(26px,3.4vw,40px)}
+.c-day h3{margin-bottom:24px}
+.day{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;list-style:none}
+.day li{border-radius:var(--r-in);background:var(--bg);padding:20px 22px}
+.day b{display:block;font-size:30px;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.day span{color:var(--ink2)}
+.js .c-day li{opacity:0;transform:translateY(10px);transition:opacity .5s,transform .6s var(--soft)}
+.js .c-day.go li{opacity:1;transform:none}
+.c-day li:nth-child(2){transition-delay:.25s}.c-day li:nth-child(3){transition-delay:.5s}
+
+/* ---------- роботи ---------- */
+.hint{text-align:center;font-size:14px;color:var(--muted);margin:-24px 0 40px}
+.case{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.case+.case{margin-top:clamp(64px,8vw,104px)}
+.case.flip .shot{order:2}
+.shot{border-radius:var(--r);padding:10px;background:#fff}
+.shot .bar{display:flex;align-items:center;gap:6px;padding:2px 6px 10px}
+.bar i{width:9px;height:9px;border-radius:50%;background:rgba(0,0,0,.12)}
+.bar u{text-decoration:none;flex:1;margin-left:10px;height:22px;border-radius:11px;background:var(--bg);font-size:12px;color:var(--muted);display:grid;place-items:center}
+.view{position:relative;border-radius:var(--r-in);overflow:hidden;aspect-ratio:16/10;background:#e9e9ee;touch-action:pan-y;--lr:88px}
+.view>img{width:100%;height:100%;object-fit:cover;object-position:top}
+.xclip{position:absolute;inset:0;clip-path:circle(var(--lr) at var(--lx,-200px) var(--ly,-200px));pointer-events:none}
+.xclip img{width:100%;height:100%;object-fit:cover;object-position:top;transform-origin:var(--lx) var(--ly);transform:scale(1.3)}
+.lens{position:absolute;left:0;top:0;width:calc(var(--lr)*2);height:calc(var(--lr)*2);border-radius:50%;touch-action:pan-y;cursor:grab;
+  transform:translate(calc(var(--lx,-200px) - 50%),calc(var(--ly,-200px) - 50%)) var(--def,);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.95),inset 0 10px 18px -6px rgba(255,255,255,.95),inset 0 -14px 24px -10px rgba(10,132,255,.35),inset 10px 0 20px -14px rgba(255,90,140,.35),0 22px 50px -12px rgba(0,30,90,.4),0 2px 6px rgba(0,30,90,.14)}
+.lens::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(120% 80% at 30% 18%,rgba(255,255,255,.7) 0 11%,transparent 32%),radial-gradient(60% 40% at 72% 88%,rgba(255,255,255,.3),transparent 70%)}
+.lens::after{content:"";position:absolute;inset:0;border-radius:50%;-webkit-backdrop-filter:blur(3px) brightness(1.06);backdrop-filter:blur(3px) brightness(1.06);
+  -webkit-mask:radial-gradient(circle,transparent calc(100% - 12px),#000 calc(100% - 10px));mask:radial-gradient(circle,transparent calc(100% - 12px),#000 calc(100% - 10px))}
+.tag{font-size:15px;font-weight:600;color:var(--muted)}
+.case h3{font-size:clamp(32px,3.6vw,44px);letter-spacing:-.03em;line-height:1.08;font-weight:600;margin:8px 0 12px}
+.case p{color:var(--ink2)}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 14px}
+.num{border-radius:var(--r-in);padding:16px 18px;background:#fff}
+.num b{display:block;font-size:clamp(26px,2.6vw,32px);font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.num span{font-size:14px;color:var(--ink2);line-height:1.35;display:block;margin-top:6px}
+.link{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:500;color:var(--link)}
+.link:hover{text-decoration:underline}
+
+/* ---------- ціни ---------- */
+.prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.pcol{display:flex;flex-direction:column;gap:16px}
+.pcol>h3{font-size:21px;font-weight:600;letter-spacing:-.02em;padding:0 6px}
+.plan{padding:28px;display:flex;flex-direction:column}
+.plan h4{font-size:19px;font-weight:600;letter-spacing:-.02em}
+.plan .cost{font-size:clamp(28px,2.8vw,34px);font-weight:600;letter-spacing:-.03em;margin-top:4px}
+.plan ul{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--ink2)}
+.plan li{position:relative;padding-left:24px;line-height:1.4}
+.plan li::before{content:"";position:absolute;left:2px;top:.42em;width:12px;height:7px;border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(-45deg)}
+.plan .ex{margin-top:14px;font-size:14px;color:var(--muted)}
+
+/* ---------- як працюю ---------- */
+.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.term{padding:30px}
+.term b{display:block;font-size:22px;font-weight:600;letter-spacing:-.025em;line-height:1.2;margin-bottom:10px}
+.term p{color:var(--ink2);font-size:16px}
+.term svg{width:30px;height:30px;margin-bottom:22px;color:var(--ink)}
+
+/* ---------- контакт ---------- */
+.contact{border-radius:36px;padding:clamp(44px,7vw,88px) var(--pad);text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;width:520px;height:520px;left:50%;top:-340px;translate:-50% 0;border-radius:50%;background:radial-gradient(circle,rgba(10,132,255,.35),transparent 65%);pointer-events:none}
+.contact .eyebrow{color:#a1a1a6}
+.contact .lead{color:#d1d1d6}
+.contact .ctas{margin-top:14px}
+.contact .pill.dark{background:#fff;color:var(--ink)}
+.contact .pill.ghost{color:#d1d1d6;font-weight:400;box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+.contact .pill.ghost:hover{background:rgba(255,255,255,.08)}
+.from{font-size:15px;color:#a1a1a6;margin-top:10px}
+footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44px}
+
+@media (max-width:900px){
+  .svc{grid-template-columns:1fr}
+  .c-site,.c-bot{min-height:0}
+  .case,.case.flip{grid-template-columns:1fr}
+  .case.flip .shot{order:0}
+  .prices{grid-template-columns:1fr}
+  .terms{grid-template-columns:1fr}
+  .term svg{margin-bottom:14px}
+}
+@media (max-width:700px){
+  .nav nav{display:none}
+  .nav{padding-left:20px}
+  .day{grid-template-columns:1fr;gap:10px}
+  .view{--lr:62px}
+  .contact{border-radius:30px}
+}
+@media (max-width:430px){
+  .copy h1{font-size:clamp(28px,7.9vw,34px)}
+  .hero{padding-top:84px}
+  .island-area{height:80px}
+  .s0 b{font-size:14px}
+  .app{width:40px;height:40px;border-radius:11px}
+}
+@media (max-width:400px){
+  .ctas .pill{width:100%}
+  .phone{width:210px;height:290px}
+  .s1{padding:0 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .island,.st,.m,.rv,.c-day li,.word,.aura i{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#top" aria-label="drakx, на початок">drakx</a>
+  <nav aria-label="Розділи"><a href="#services">Послуги</a><a href="#work">Роботи</a><a href="#prices">Ціни</a><a href="#contact">Контакт</a></nav>
+  <a class="pill dark" href="https://t.me/ddrakx" target="_blank" rel="noopener">Написати</a>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="h1">
+  <div class="gs" id="gs">
+    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="word">
+      <svg viewBox="0 0 1000 300" aria-hidden="true"><defs><filter id="gsh" x="-15%" y="-30%" width="130%" height="180%"><feGaussianBlur stdDeviation="22"/><feOffset dy="20"/><feComponentTransfer><feFuncA type="linear" slope=".09"/></feComponentTransfer></filter></defs>
+        <text x="500" y="246" text-anchor="middle" fill="#1d1040" filter="url(#gsh)">drakx</text></svg>
+      <div class="glass-in" aria-hidden="true"><span class="base"></span><div class="aura"><i></i><i></i><i></i></div></div>
+      <svg viewBox="0 0 1000 300" role="img" aria-label="drakx">
+        <defs>
+          <clipPath id="gclip" clipPathUnits="objectBoundingBox"><text transform="scale(.001,.0033333)" x="500" y="246" text-anchor="middle">drakx</text></clipPath>
+          <filter id="gedge" x="-5%" y="-10%" width="110%" height="120%" color-interpolation-filters="sRGB">
+            <feOffset in="SourceAlpha" dy="6" result="dn"/><feComposite in="SourceAlpha" in2="dn" operator="out" result="top"/>
+            <feGaussianBlur in="top" stdDeviation="2" result="topb"/>
+            <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="bl"/>
+            <feComposite in="SourceAlpha" in2="bl" operator="arithmetic" k2="1" k3="-1" result="edge"/>
+            <feComponentTransfer in="edge" result="edgea"><feFuncA type="linear" slope=".3"/></feComponentTransfer>
+            <feMerge result="m"><feMergeNode in="edgea"/><feMergeNode in="topb"/></feMerge>
+            <feFlood flood-color="#fff"/><feComposite in2="m" operator="in"/>
+          </filter>
+          <filter id="gspec" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="b"/>
+            <feSpecularLighting in="b" surfaceScale="6" specularConstant=".9" specularExponent="30" lighting-color="#fff" result="s"><fePointLight id="glight" x="760" y="-60" z="280"/></feSpecularLighting>
+            <feComposite in="s" in2="SourceAlpha" operator="in"/>
+          </filter>
+        </defs>
+        <text x="500" y="246" text-anchor="middle" fill="#fff" filter="url(#gedge)">drakx</text>
+        <text x="500" y="246" text-anchor="middle" fill="#fff" filter="url(#gspec)" opacity=".6">drakx</text>
+      </svg>
+    </div>
+  </div>
+  <div class="island-area">
+    <div class="island" id="isl">
+      <div class="st s0"><span class="app"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg></span><div><small>Ваш бот · щойно</small><b>Новий запис: діагностика</b><span>Олександр, завтра о&nbsp;10:00</span></div></div>
+      <div class="st s1"><b>24/7</b><span>бот приймає заявки,<br>навіть коли ви зайняті</span></div>
+      <a class="st s2" href="https://t.me/ddrakx" target="_blank" rel="noopener" tabindex="-1">Написати в Telegram <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+  <div class="copy">
+    <h1 id="h1">Сайти й&nbsp;Telegram&#8209;боти для&nbsp;СТО&nbsp;та малого бізнесу</h1>
+    <p class="lead">Роблю все сам, від дизайну до запуску. Без передоплати: спочатку показую результат, оплата потім.</p>
+    <div class="ctas">
+      <a class="pill dark" href="https://t.me/ddrakx" target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
+      <a class="pill light" href="#work">Мої роботи</a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="services" aria-labelledby="services-h">
+  <div class="wrap">
+    <div class="head rv"><p class="eyebrow">Послуги</p><h2 id="services-h">Що я роблю</h2></div>
+    <div class="svc">
+      <article class="card c-site rv">
+        <h3>Сайти</h3>
+        <p>Сторінка, де клієнт бачить ваші послуги й ціни та одразу записується. Швидко відкривається навіть на мобільному інтернеті.</p>
+        <div class="phone"><img src="media/gold-m-360.webp" srcset="media/gold-m-360.webp 360w, media/gold-m-720.webp 720w" sizes="236px" width="360" height="600" alt="Сайт Gold Auto на телефоні" loading="lazy" decoding="async"></div>
+      </article>
+      <article class="card c-bot rv" id="c-bot" style="--d:.08s">
+        <h3>Telegram&#8209;боти</h3>
+        <p>Бот приймає записи й заявки, коли ви зайняті, і одразу передає їх вам або майстрам.</p>
+        <div class="chatbox" aria-hidden="true">
+          <div class="m">Вітаю! Що потрібно?</div>
+          <div class="kb"><div class="m">Запис</div><div class="m">Ціни</div></div>
+          <div class="m me">Запис</div>
+          <div class="m">Вільно завтра о&nbsp;10:00 або&nbsp;14:30</div>
+          <div class="m me">10:00</div>
+          <div class="m">Готово, чекаємо вас</div>
+        </div>
+      </article>
+      <article class="card c-day rv" id="c-day">
+        <h3>Навіть уночі</h3>
+        <ol class="day">
+          <li><b>23:40</b><span>Клієнт записався через бота</span></li>
+          <li><b>08:00</b><span>Заявка вже у вас у Telegram</span></li>
+          <li><b>10:00</b><span>Авто на підйомнику</span></li>
+        </ol>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="head rv"><p class="eyebrow">Роботи</p><h2 id="work-h">Живі проєкти</h2><p class="lead">Сайти й боти, які я зробив для реальних клієнтів.</p></div>
+    <p class="hint rv" id="lens-hint">Наведіть курсор на скриншот: лінза покаже, як зібрана сторінка</p>
+
+    <article class="case">
+      <figure class="shot rv">
+        <div class="bar"><i></i><i></i><i></i><u>goldauto.online</u></div>
+        <div class="view">
+          <img src="media/gold-720.webp" srcset="media/gold-720.webp 720w, media/gold-1440.webp 1440w" sizes="(max-width:900px) 92vw, 580px" width="1440" height="900" alt="Головна сторінка сайту автосервісу Gold Auto" loading="lazy" decoding="async">
+          <div class="xclip" aria-hidden="true"><img data-src="media/gold-x-720.webp" data-srcset="media/gold-x-720.webp 720w, media/gold-x-1440.webp 1440w" sizes="(max-width:900px) 120vw, 760px" width="1440" height="900" alt=""></div>
+          <div class="lens" aria-hidden="true"></div>
+        </div>
+      </figure>
+      <div class="rv" style="--d:.1s">
+        <p class="tag">СТО · Кременчук</p>
+        <h3>Gold Auto</h3>
+        <p>Сайт для СТО й Telegram&#8209;бот для його клієнтів.</p>
+        <div class="nums">
+          <div class="num"><b>~140</b><span>клієнтів уже користуються ботом</span></div>
+          <div class="num"><b>+31%</b><span>закритих нарядів за перший повний місяць із ботом</span></div>
+        </div>
+        <a class="link" href="https://goldauto.online/" target="_blank" rel="noopener">goldauto.online <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+
+    <article class="case flip">
+      <figure class="shot rv">
+        <div class="bar"><i></i><i></i><i></i><u>Volt Master</u></div>
+        <div class="view">
+          <img src="media/volt-720.webp" srcset="media/volt-720.webp 720w, media/volt-1440.webp 1440w" sizes="(max-width:900px) 92vw, 580px" width="1440" height="900" alt="Головна сторінка сайту Volt Master з живими ліхтарями BMW" loading="lazy" decoding="async">
+          <div class="xclip" aria-hidden="true"><img data-src="media/volt-x-720.webp" data-srcset="media/volt-x-720.webp 720w, media/volt-x-1440.webp 1440w" sizes="(max-width:900px) 120vw, 760px" width="1440" height="900" alt=""></div>
+          <div class="lens" aria-hidden="true"></div>
+        </div>
+      </figure>
+      <div class="rv" style="--d:.1s">
+        <p class="tag">Фари й ліхтарі · Корнин, біля Рівного</p>
+        <h3>Volt Master</h3>
+        <p>Telegram&#8209;бот заявок для майстерні й сайт із «живими» ліхтарями BMW.</p>
+        <div class="nums">
+          <div class="num"><b>За темами</b><span>бот розкладає заявки майстрам у робочій групі</span></div>
+          <div class="num"><b>3 режими</b><span>стоп, поворот і аварійка вмикаються просто на сайті</span></div>
+        </div>
+        <a class="link" href="https://ddrakkx.github.io/voltmaster-site/" target="_blank" rel="noopener">Відкрити сайт <span aria-hidden="true">↗</span></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="prices" aria-labelledby="prices-h">
+  <div class="wrap">
+    <div class="head rv"><p class="eyebrow">Ціни</p><h2 id="prices-h">Скільки це коштує</h2><p class="lead">Точну суму називаю після короткої розмови й фіксую до початку роботи.</p></div>
+    <div class="prices">
+      <div class="pcol">
+        <h3 class="rv">Сайти</h3>
+        <article class="card plan rv"><h4>Сайт на одну сторінку</h4><p class="cost">від 4&nbsp;500&nbsp;грн</p>
+          <ul><li>Послуги, ціни й контакти на одній сторінці</li><li>Кнопки дзвінка й Telegram</li><li>Зручно на телефоні</li></ul></article>
+        <article class="card plan rv"><h4>Сайт під ваш бізнес</h4><p class="cost">від 8&nbsp;000&nbsp;грн</p>
+          <ul><li>Кілька розділів або сторінок</li><li>Власний дизайн і анімації</li><li>Налаштування для пошуку в Google</li></ul><p class="ex">Як у Gold Auto чи Volt Master</p></article>
+      </div>
+      <div class="pcol">
+        <h3 class="rv">Telegram&#8209;боти</h3>
+        <article class="card plan rv" style="--d:.06s"><h4>Бот для запису</h4><p class="cost">від 2&nbsp;500&nbsp;грн</p>
+          <ul><li>Запис на послугу з вибором часу</li><li>Заявки одразу вам у Telegram</li><li>Відповіді на часті питання</li></ul></article>
+        <article class="card plan rv" style="--d:.06s"><h4>Бот під ваші процеси</h4><p class="cost">від 5&nbsp;000&nbsp;грн</p>
+          <ul><li>Особистий кабінет клієнта в боті</li><li>Заявки майстрам за темами</li><li>Звʼязок із таблицями й іншими сервісами</li></ul><p class="ex">Як у Volt Master</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="head rv"><p class="eyebrow">Як я працюю</p><h2 id="how-h">Спочатку результат, потім оплата</h2></div>
+    <div class="terms">
+      <div class="card term rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><b>Без передоплати</b><p>Спочатку показую готовий результат і вношу правки. Платите, коли все влаштовує, і я запускаю.</p></div>
+      <div class="card term rv" style="--d:.08s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>Перший варіант часто того ж дня</b><p>Прототип нерідко готовий уже того дня, коли ви написали. Загальний строк залежить від кількості правок.</p></div>
+      <div class="card term rv" style="--d:.16s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg><b>Підтримка після запуску</b><p>Якщо щось зламалось чи незрозуміло, пишіть будь-коли. Дрібні правки перший місяць безкоштовно, далі за невелику доплату.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact" aria-labelledby="contact-h">
+  <div class="wrap">
+    <div class="contact rv">
+      <p class="eyebrow">Контакт</p>
+      <h2 id="contact-h">Напишіть, що потрібно</h2>
+      <p class="lead">Назва вашого бізнесу й що хочете: сайт, бот чи все разом. Відповім з орієнтовною ціною.</p>
+      <div class="ctas">
+        <a class="pill dark" href="https://t.me/ddrakx" target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
+        <a class="pill ghost" href="https://instagram.com/drakxwork" target="_blank" rel="noopener">Instagram @drakxwork</a>
+      </div>
+      <p class="from">Я з Кременчука, зараз у Києві. Працюю віддалено з усією Україною.</p>
+    </div>
+  </div>
+</section>
+</main>
+<footer>© 2026 drakx · сайт зроблено без конструкторів</footer>
+
+<script>
+(()=>{
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const io=(els,cb,opt)=>{const o=new IntersectionObserver(es=>es.forEach(e=>cb(e,o)),opt);els.forEach(el=>el&&o.observe(el));return o};
+
+/* скляний нік: поява, блік за курсором або нахилом телефона */
+const gs=$('#gs'),glight=$('#glight');
+let lx=760,ly=-60,lraf=0;
+const lset=()=>{lraf=0;glight.setAttribute('x',lx.toFixed(0));glight.setAttribute('y',ly.toFixed(0))};
+const lq=()=>{if(!lraf)lraf=requestAnimationFrame(lset)};
+const reveal=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  gs.classList.add('on');if(reduce)return;
+  setTimeout(()=>{const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1300),e=1-Math.pow(1-k,3);lx=-150+e*910;lset();k<1&&requestAnimationFrame(f)})(t0)},500);
+}));
+if(document.fonts&&document.fonts.load)Promise.race([document.fonts.load('800 330px Nick'),new Promise(r=>setTimeout(r,1500))]).then(reveal,reveal);else reveal();
+if(fine&&!reduce)addEventListener('pointermove',e=>{const r=gs.getBoundingClientRect();if(r.bottom<0)return;lx=(e.clientX-r.left)/r.width*1000;ly=(e.clientY-r.top)/r.height*300-160;lq()},{passive:true});
+else if(!reduce&&'DeviceOrientationEvent' in window&&typeof DeviceOrientationEvent.requestPermission!=='function')
+  addEventListener('deviceorientation',e=>{if(e.gamma==null)return;lx=500+Math.max(-1,Math.min(1,e.gamma/30))*520;ly=-60+Math.max(-1,Math.min(1,(e.beta-45)/30))*120;lq()},{passive:true});
+
+/* острів */
+const isl=$('#isl'),sts=$$('.st',isl);
+const SZ=[[360,76,38],[312,64,32],[264,56,28]],T=[2600,2300,3400];
+let cur=-1,timer=0,heroOn=true;
+const fit=w=>Math.min(w,innerWidth-40,innerWidth<=430&&w===360?330:9999);
+function show(i){
+  cur=(i+SZ.length)%SZ.length;const [w,h,r]=SZ[cur];
+  isl.style.setProperty('--w',fit(w)+'px');isl.style.setProperty('--h',h+'px');isl.style.setProperty('--rad',r+'px');
+  sts.forEach((s,k)=>{s.classList.toggle('on',k===cur);s.toggleAttribute('inert',k!==cur)});
+  sts[2].tabIndex=cur===2?0:-1;
+  plan();
+}
+function plan(){clearTimeout(timer);if(reduce||cur<0||!heroOn||document.hidden||((fine&&isl.matches(':hover'))||isl.matches(':focus-within')))return;timer=setTimeout(()=>show(cur+1),T[cur])}
+['pointerleave','focusout'].forEach(ev=>isl.addEventListener(ev,()=>setTimeout(plan,0)));
+['pointerenter','focusin'].forEach(ev=>isl.addEventListener(ev,()=>clearTimeout(timer)));
+isl.addEventListener('click',e=>{if(cur!==2){e.preventDefault();show(cur+1)}});
+addEventListener('resize',()=>{if(cur>=0)isl.style.setProperty('--w',fit(SZ[cur][0])+'px')});
+document.addEventListener('visibilitychange',plan);
+io([$('.hero')],e=>{heroOn=e.isIntersecting;gs.classList.toggle('paused',!heroOn);plan()});
+if(reduce){isl.classList.add('in');show(0)}
+else setTimeout(()=>{isl.classList.add('in');show(0)},1300);
+
+/* поява блоків */
+if(!reduce)io($$('.rv'),(e,o)=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}},{rootMargin:'0px 0px -8% 0px'});
+
+/* живі картки */
+io([$('#c-bot'),$('#c-day')],(e,o)=>{
+  if(!e.isIntersecting)return;o.unobserve(e.target);const t=e.target;
+  if(t.id==='c-day'){t.classList.add('go');return}
+  const ms=$$('.m',t);if(reduce){ms.forEach(m=>m.classList.add('on'));return}
+  let d=300;ms.forEach(m=>{setTimeout(()=>m.classList.add('on'),d);d+=m.classList.contains('me')?520:760});
+},{threshold:.35});
+if(reduce){$$('#c-bot .m').forEach(m=>m.classList.add('on'));$('#c-day').classList.add('go')}
+if(!fine)$('#lens-hint').textContent='Потягніть лінзу: вона покаже, як зібрана сторінка';
+
+/* лінза-рентген на кейсах */
+$$('.view').forEach((view,n)=>{
+  const lens=$('.lens',view),xi=$('.xclip img',view);
+  let W=0,H=0,p={x:0,y:0},v={x:0,y:0},t={x:0,y:0},mode='auto',drag=false,on=false,raf=0,idle=0;const t0=performance.now()+n*1700;
+  const set=()=>{view.style.setProperty('--lx',p.x.toFixed(1)+'px');view.style.setProperty('--ly',p.y.toFixed(1)+'px')};
+  const clamp=q=>({x:Math.max(0,Math.min(W,q.x)),y:Math.max(0,Math.min(H,q.y))});
+  const measure=()=>{W=view.clientWidth;H=view.clientHeight;p=clamp(p);t=clamp(t);if(on)set()};
+  const local=e=>{const r=view.getBoundingClientRect();return clamp({x:e.clientX-r.left,y:e.clientY-r.top})};
+  function step(now){
+    raf=0;if(!on)return;
+    if(mode==='auto'){const k=(now-t0)/1000;t.x=W*(.5+.33*Math.sin(k*.55));t.y=H*(.48+.26*Math.sin(k*1.1+1))}
+    const ks=drag?.32:.07,dm=drag?.55:.8;
+    v.x=(v.x+(t.x-p.x)*ks)*dm;v.y=(v.y+(t.y-p.y)*ks)*dm;p.x+=v.x;p.y+=v.y;set();
+    const sp=Math.hypot(v.x,v.y),s=Math.min(.04,sp*.002),a=Math.atan2(v.y,v.x);
+    lens.style.setProperty('--def',`rotate(${a.toFixed(3)}rad) scale(${(1+s).toFixed(3)},${(1-s*.8).toFixed(3)}) rotate(${(-a).toFixed(3)}rad)`);
+    raf=requestAnimationFrame(step);
+  }
+  const go=()=>{if(!raf&&on&&!reduce)raf=requestAnimationFrame(step)};
+  io([view],e=>{
+    on=e.isIntersecting;
+    if(on&&xi.dataset.src){xi.srcset=xi.dataset.srcset;xi.src=xi.dataset.src;delete xi.dataset.src;measure();p={x:W*.5,y:H*.48};t={...p};set()}
+    go();
+  },{rootMargin:'120px 0px'});
+  addEventListener('resize',measure);
+  view.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'||drag){mode='follow';t=local(e);clearTimeout(idle);if(reduce){p={...t};set()}}});
+  view.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')mode='auto'});
+  lens.addEventListener('pointerdown',e=>{drag=true;mode='follow';lens.setPointerCapture(e.pointerId);clearTimeout(idle)});
+  const up=()=>{if(!drag)return;drag=false;idle=setTimeout(()=>mode='auto',2500)};
+  lens.addEventListener('pointerup',up);lens.addEventListener('pointercancel',up);
+});
+})();
+</script>
+</body>
+</html>
