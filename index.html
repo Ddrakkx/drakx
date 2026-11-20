@@ -264,8 +264,9 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .dock{display:none}
 @media (max-width:700px){
   .dock{display:flex;position:fixed;z-index:49;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));height:54px;border-radius:27px;font-size:17px;
-    opacity:0;translate:0 24px;pointer-events:none;transition:opacity .35s,translate .45s var(--soft)}
-  .dock.show{opacity:1;translate:0 0;pointer-events:auto}
+    opacity:0;translate:0 24px;pointer-events:none;visibility:hidden;transition:opacity .35s,translate .45s var(--soft),visibility 0s .45s}
+  .dock:not(.show){-webkit-backdrop-filter:none;backdrop-filter:none}
+  .dock.show{opacity:1;translate:0 0;pointer-events:auto;visibility:visible;transition:opacity .35s,translate .45s var(--soft),visibility 0s}
   footer{padding-bottom:96px}
 }
 
