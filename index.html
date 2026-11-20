@@ -19,7 +19,7 @@
 <link rel="preload" href="fonts/inter-lat.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js')</script>
 <style>
-@font-face{font-family:Nick;font-weight:800;font-display:block;src:url(fonts/nick.woff2) format('woff2')}
+@font-face{font-family:Nick;font-weight:800;font-display:swap;src:url(fonts/nick.woff2) format('woff2')}
 @font-face{font-family:Inter;font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-cyr.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:Inter;font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-lat.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{
@@ -89,8 +89,7 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .js .gs.on .word{opacity:1;animation:nick 1s cubic-bezier(.2,1.3,.3,1) .12s both}
 @keyframes nick{from{opacity:0;transform:translateY(14px) scale(.965)}to{opacity:1;transform:none}}
 .gs svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.gs text{font-family:Nick,Inter,sans-serif;font-weight:800;font-size:330px;letter-spacing:-14px}
-.glass-in{position:absolute;inset:0;overflow:hidden;clip-path:url(#gclip)}
+.glass-in{position:absolute;inset:0;overflow:hidden;-webkit-clip-path:url(#gclip);clip-path:url(#gclip)}
 .glass-in .aura{transform-origin:50% 53%;transform:scale(1.3) translateY(-5%);filter:saturate(1.6) contrast(1.08)}
 .glass-in::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.1) 36%,rgba(255,255,255,0) 55%,rgba(40,0,80,.06) 80%,rgba(255,255,255,.22) 100%)}
 .glass-in .base{position:absolute;inset:0;background:rgba(255,255,255,.14)}
@@ -166,6 +165,9 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .tag{font-size:15px;font-weight:600;color:var(--muted)}
 .case h3{font-size:clamp(32px,3.6vw,44px);letter-spacing:-.03em;line-height:1.08;font-weight:600;margin:8px 0 12px}
 .case p{color:var(--ink2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+.chips span{height:36px;display:inline-flex;align-items:center;padding:0 15px;border-radius:18px;background:#fff;font-size:14px;font-weight:500}
+.aside{font-size:15px;color:var(--muted)!important;margin:18px 0 6px;line-height:1.45}
 .nums{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 14px}
 .num{border-radius:var(--r-in);padding:16px 18px;background:#fff}
 .num b{display:block;font-size:clamp(26px,2.6vw,32px);font-weight:600;letter-spacing:-.03em;line-height:1.1}
@@ -251,11 +253,12 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
     <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="word">
       <svg viewBox="0 0 1000 300" aria-hidden="true"><defs><filter id="gsh" x="-15%" y="-30%" width="130%" height="180%"><feGaussianBlur stdDeviation="22"/><feOffset dy="20"/><feComponentTransfer><feFuncA type="linear" slope=".09"/></feComponentTransfer></filter></defs>
-        <text x="500" y="246" text-anchor="middle" fill="#1d1040" filter="url(#gsh)">drakx</text></svg>
+        <use href="#gpath" fill="#1d1040" filter="url(#gsh)"/></svg>
       <div class="glass-in" aria-hidden="true"><span class="base"></span><div class="aura"><i></i><i></i><i></i></div></div>
       <svg viewBox="0 0 1000 300" role="img" aria-label="drakx">
         <defs>
-          <clipPath id="gclip" clipPathUnits="objectBoundingBox"><text transform="scale(.001,.0033333)" x="500" y="246" text-anchor="middle">drakx</text></clipPath>
+          <path id="gpath" d="M161.0 110.7L161.0 110.7Q128.0 110.7 128.0 160.2L128.0 160.2Q128.0 185.3 136.9 197.5Q145.9 209.7 161.0 209.7L161.0 209.7Q174.2 209.7 184.1 200.8Q194.0 191.9 194.0 180.7L194.0 180.7L194.0 139.7Q194.0 128.5 184.1 119.6Q174.2 110.7 161.0 110.7ZM142.9 249.3L142.9 249.3Q113.5 249.3 94.7 225.7Q75.9 202.1 75.9 160.2L75.9 160.2Q75.9 117.3 94.0 94.2Q112.2 71.1 142.9 71.1L142.9 71.1Q169.9 71.1 192.1 91.2L192.1 91.2Q192.4 91.6 192.7 91.6Q193.0 91.6 193.0 91.2L193.0 91.2L193.0 17.3Q193.0 9.7 198.5 4.1Q203.9-1.5 211.5-1.5L211.5-1.5L227.7-1.5Q235.3-1.5 240.7 4.1Q246.2 9.7 246.2 17.3L246.2 17.3L246.2 227.2Q246.2 234.8 240.7 240.4Q235.3 246 227.7 246L227.7 246L215.2 246Q207.2 246 201.8 240.6Q196.3 235.1 196.0 227.2L196.0 227.2L196.0 224.6Q196.0 224.2 195.7 224.2L195.7 224.2L195.0 224.9Q174.2 249.3 142.9 249.3ZM313.7 246L295.9 246Q288.3 246 282.8 240.4Q277.4 234.8 277.4 227.2L277.4 227.2L277.4 93.2Q277.4 85.6 282.8 80.0Q288.3 74.4 295.9 74.4L295.9 74.4L312.0 74.4Q319.6 74.4 325.1 80.0Q330.5 85.6 330.5 93.2L330.5 93.2L330.5 107.1Q330.5 107.4 330.9 107.4L330.9 107.4Q331.5 107.4 331.5 107.1L331.5 107.1Q352.0 79.7 388.6 75.1L388.6 75.1Q396.2 74.1 401.6 79.7Q407.1 85.3 407.1 93.2L407.1 93.2L407.1 95.8Q407.1 103.4 401.6 109.0Q396.2 114.7 388.3 115.3L388.3 115.3Q361.5 118.3 346.9 133.6Q332.2 149.0 332.2 173.4L332.2 173.4L332.2 227.2Q332.2 234.8 326.7 240.4Q321.3 246 313.7 246L313.7 246ZM512.9 167.5L501.0 167.5Q460.7 167.5 460.7 192.2L460.7 192.2Q460.7 201.1 466.0 206.2Q471.3 211.3 480.2 211.3L480.2 211.3Q496.0 211.3 505.9 201.3Q515.8 191.2 515.8 174.4L515.8 174.4L515.8 170.4Q515.8 167.5 512.9 167.5L512.9 167.5ZM464.0 249.3L464.0 249.3Q441.3 249.3 426.6 234.6Q411.9 219.9 411.9 196.5L411.9 196.5Q411.9 136.4 501.0 136.4L501.0 136.4L512.9 136.4Q515.8 136.4 515.8 133.8L515.8 133.8L515.8 132.1Q515.8 119.6 509.4 114Q503.0 108.4 487.8 108.4L487.8 108.4Q467.7 108.4 439.6 114.7L439.6 114.7Q432.7 116.0 427.2 111.7Q421.8 107.4 421.8 100.5L421.8 100.5L421.8 99.8Q421.8 91.6 426.9 84.8Q432.0 78.0 439.9 76.7L439.9 76.7Q469.0 71.1 490.1 71.1L490.1 71.1Q533.3 71.1 551.3 86.6Q569.3 102.1 569.3 138.1L569.3 138.1L569.3 227.2Q569.3 234.8 563.7 240.4Q558.1 246 550.5 246L550.5 246L538.3 246Q530.4 246 524.8 240.6Q519.1 235.1 518.8 227.2L518.8 227.2L518.8 223.6Q518.8 223.2 518.5 223.2L518.5 223.2Q517.8 223.2 517.8 223.6L517.8 223.6Q497.0 249.3 464.0 249.3ZM633.5 246L617.3 246Q609.8 246 604.3 240.4Q598.9 234.8 598.9 227.2L598.9 227.2L598.9 17.3Q598.9 9.7 604.3 4.1Q609.8-1.5 617.3-1.5L617.3-1.5L633.5-1.5Q641.1-1.5 646.5 4.1Q652.0 9.7 652.0 17.3L652.0 17.3L652.0 139.1Q652.0 139.4 652.3 139.4L652.3 139.4L653.0 139.1L694.2 88.9Q706.1 74.4 724.6 74.4L724.6 74.4L748.4 74.4Q753.6 74.4 756.1 79.3Q758.6 84.3 755.0 88.6L755.0 88.6L698.5 154.9Q696.9 156.9 698.5 159.2L698.5 159.2L755.6 231.5Q758.9 236.1 756.4 241.1Q754.0 246 748.4 246L748.4 246L724.6 246Q706.1 246 694.6 231.2L694.6 231.2L653.0 177.0Q652.7 176.7 652.3 176.7Q652.0 176.7 652.0 177.0L652.0 177.0L652.0 227.2Q652.0 234.8 646.5 240.4Q641.1 246 633.5 246L633.5 246ZM798.4 246L779.9 246Q773.6 246 770.5 240.7Q767.4 235.4 770.6 229.8L770.6 229.8L810.3 160.9Q811.6 158.6 810.3 156.2L810.3 156.2L772.3 90.6Q769 85.0 772.1 79.7Q775.3 74.4 781.5 74.4L781.5 74.4L801.3 74.4Q809.6 74.4 816.9 79.2Q824.1 84.0 827.7 91.6L827.7 91.6L846.2 131.5Q846.2 131.8 846.6 131.8Q846.9 131.8 846.9 131.5L846.9 131.5L865.4 91.6Q868.7 84.0 875.9 79.2Q883.2 74.4 891.8 74.4L891.8 74.4L910.2 74.4Q916.2 74.4 919.3 79.7Q922.5 85.0 919.5 90.6L919.5 90.6L881.5 156.2Q879.9 158.6 881.5 160.9L881.5 160.9L921.1 229.8Q924.1 235.4 921.0 240.7Q917.8 246 911.9 246L911.9 246L892.1 246Q883.5 246 876.1 241.4Q868.7 236.8 865.4 229.2L865.4 229.2L845.6 186.3Q845.6 185.9 845.2 185.9Q844.9 185.9 844.9 186.3L844.9 186.3L825.1 229.2Q821.5 236.8 814.0 241.4Q806.6 246 798.4 246L798.4 246Z"/>
+          <clipPath id="gclip" clipPathUnits="objectBoundingBox"><use href="#gpath" transform="scale(.001,.0033333)"/></clipPath>
           <filter id="gedge" x="-5%" y="-10%" width="110%" height="120%" color-interpolation-filters="sRGB">
             <feOffset in="SourceAlpha" dy="6" result="dn"/><feComposite in="SourceAlpha" in2="dn" operator="out" result="top"/>
             <feGaussianBlur in="top" stdDeviation="2" result="topb"/>
@@ -271,8 +274,8 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
             <feComposite in="s" in2="SourceAlpha" operator="in"/>
           </filter>
         </defs>
-        <text x="500" y="246" text-anchor="middle" fill="#fff" filter="url(#gedge)">drakx</text>
-        <text x="500" y="246" text-anchor="middle" fill="#fff" filter="url(#gspec)" opacity=".6">drakx</text>
+        <use href="#gpath" fill="#fff" filter="url(#gedge)"/>
+        <use href="#gpath" fill="#fff" filter="url(#gspec)" opacity=".6"/>
       </svg>
     </div>
   </div>
@@ -343,11 +346,9 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <div class="rv" style="--d:.1s">
         <p class="tag">СТО · Кременчук</p>
         <h3>Gold Auto</h3>
-        <p>Сайт для СТО й Telegram&#8209;бот для його клієнтів.</p>
-        <div class="nums">
-          <div class="num"><b>~140</b><span>клієнтів уже користуються ботом</span></div>
-          <div class="num"><b>+31%</b><span>закритих нарядів за перший повний місяць із ботом</span></div>
-        </div>
+        <p>Сайт автосервісу: послуги, сертифікати, клубна програма Gold Club і кнопка запису на кожному екрані.</p>
+        <div class="chips"><span>Запис онлайн</span><span>Світла й темна тема</span><span>Зручно на телефоні</span></div>
+        <p class="aside">Також зробив для СТО клієнтський Telegram&#8209;бот: ним користуються ~140 клієнтів, а за перший повний місяць із ботом закритих нарядів стало на 31% більше.</p>
         <a class="link" href="https://goldauto.online/" target="_blank" rel="noopener">goldauto.online <span aria-hidden="true">↗</span></a>
       </div>
     </article>
@@ -364,11 +365,9 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <div class="rv" style="--d:.1s">
         <p class="tag">Фари й ліхтарі · Корнин, біля Рівного</p>
         <h3>Volt Master</h3>
-        <p>Telegram&#8209;бот заявок для майстерні й сайт із «живими» ліхтарями BMW.</p>
-        <div class="nums">
-          <div class="num"><b>За темами</b><span>бот розкладає заявки майстрам у робочій групі</span></div>
-          <div class="num"><b>3 режими</b><span>стоп, поворот і аварійка вмикаються просто на сайті</span></div>
-        </div>
+        <p>Сайт майстерні фар і ліхтарів із «живими» ліхтарями BMW: стоп, поворот і аварійку можна ввімкнути просто на сторінці.</p>
+        <div class="chips"><span>Живі ліхтарі</span><span>Роботи з відео</span><span>Запис у Telegram</span></div>
+        <p class="aside">Також зробив Telegram&#8209;бот, який розкладає заявки майстрам за темами.</p>
         <a class="link" href="https://ddrakkx.github.io/voltmaster-site/" target="_blank" rel="noopener">Відкрити сайт <span aria-hidden="true">↗</span></a>
       </div>
     </article>
@@ -418,7 +417,6 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
         <a class="pill dark" href="https://t.me/ddrakx" target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
         <a class="pill ghost" href="https://instagram.com/drakxwork" target="_blank" rel="noopener">Instagram @drakxwork</a>
       </div>
-      <p class="from">Я з Кременчука, зараз у Києві. Працюю віддалено з усією Україною.</p>
     </div>
   </div>
 </section>
@@ -441,7 +439,7 @@ const reveal=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{
   gs.classList.add('on');if(reduce)return;
   setTimeout(()=>{const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1300),e=1-Math.pow(1-k,3);lx=-150+e*910;lset();k<1&&requestAnimationFrame(f)})(t0)},500);
 }));
-if(document.fonts&&document.fonts.load)Promise.race([document.fonts.load('800 330px Nick'),new Promise(r=>setTimeout(r,1500))]).then(reveal,reveal);else reveal();
+let revealed=false;const rev=()=>{if(!revealed){revealed=true;reveal()}};rev();setTimeout(()=>{if(!gs.classList.contains('on'))gs.classList.add('on')},400);
 if(fine&&!reduce)addEventListener('pointermove',e=>{const r=gs.getBoundingClientRect();if(r.bottom<0)return;lx=(e.clientX-r.left)/r.width*1000;ly=(e.clientY-r.top)/r.height*300-160;lq()},{passive:true});
 else if(!reduce&&'DeviceOrientationEvent' in window&&typeof DeviceOrientationEvent.requestPermission!=='function')
   addEventListener('deviceorientation',e=>{if(e.gamma==null)return;lx=500+Math.max(-1,Math.min(1,e.gamma/30))*520;ly=-60+Math.max(-1,Math.min(1,(e.beta-45)/30))*120;lq()},{passive:true});
