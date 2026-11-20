@@ -242,6 +242,23 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .plan li::before{content:"";position:absolute;left:2px;top:.42em;width:12px;height:7px;border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(-45deg)}
 .plan .ex{margin-top:14px;font-size:14px;color:var(--muted)}
 
+/* перемикач як в iOS */
+.seg{position:relative;display:grid;grid-template-columns:1fr 1fr;width:min(460px,100%);margin:0 auto 28px;padding:4px;border-radius:999px;
+  background:rgba(0,0,0,.06);box-shadow:inset 0 1px 2px rgba(0,0,0,.06)}
+.seg button{position:relative;z-index:1;font:inherit;font-size:15px;font-weight:500;color:var(--ink2);background:none;border:0;min-height:44px;padding:0 14px;border-radius:999px;cursor:pointer;transition:color .3s}
+.seg button[aria-selected="true"]{color:var(--ink)}
+.seg-thumb{position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:#fff;
+  box-shadow:0 1px 2px rgba(0,0,0,.08),0 6px 16px -8px rgba(0,0,0,.25);transition:translate .45s var(--spring)}
+.seg[data-mode="net"] .seg-thumb{translate:100% 0}
+.prices[data-mode="one"] [data-only="net"],.prices[data-mode="net"] [data-only="one"]{display:none}
+.net-plan{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.3fr;gap:8px 28px;align-items:start}
+.net-plan ul{margin-top:4px}
+.net-plan .ex{grid-column:1/-1;margin-top:4px}
+.prices[data-mode="net"] .plan{animation:planin .5s var(--soft)}
+@keyframes planin{from{opacity:0;translate:0 10px}}
+@media (max-width:700px){.net-plan{grid-template-columns:1fr}.seg button{font-size:14px;padding:0 8px}}
+@media (prefers-reduced-motion:reduce){.seg-thumb{transition:none}.prices[data-mode="net"] .plan{animation:none}}
+
 /* ---------- як працюю ---------- */
 .terms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .term{padding:30px}
@@ -456,22 +473,25 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 
 <section class="block" id="prices" aria-labelledby="prices-h">
   <div class="wrap">
-    <div class="head rv"><p class="eyebrow">Ціни</p><h2 id="prices-h">Скільки це коштує</h2><p class="lead">Точну суму називаю після короткої розмови й фіксую до початку роботи.</p></div>
-    <div class="prices">
+    <div class="head rv"><p class="eyebrow">Ціни</p><h2 id="prices-h">Скільки це коштує</h2><p class="lead">Точну суму називаю після короткої розмови й фіксую письмово до початку роботи.</p></div>
+    <div class="seg rv" role="tablist" aria-label="Розмір бізнесу"><span class="seg-thumb" aria-hidden="true"></span><button type="button" role="tab" aria-selected="true" data-mode="one">Одна точка</button><button type="button" role="tab" aria-selected="false" data-mode="net">Кілька точок</button></div>
+    <div class="prices" id="prices-grid" data-mode="one">
       <div class="pcol">
         <h3 class="rv">Сайти</h3>
-        <article class="card plan rv"><h4>Сайт на одну сторінку</h4><p class="cost">від 4&nbsp;500&nbsp;грн</p>
+        <article class="card plan rv" data-only="one"><h4>Сайт на одну сторінку</h4><p class="cost">від 4&nbsp;500&nbsp;грн</p>
           <ul><li>Послуги, ціни й контакти на одній сторінці</li><li>Кнопки дзвінка й Telegram</li><li>Зручно на телефоні</li></ul></article>
         <article class="card plan rv"><h4>Сайт під ваш бізнес</h4><p class="cost">від 8&nbsp;000&nbsp;грн</p>
           <ul><li>Кілька розділів або сторінок</li><li>Власний дизайн і анімації</li><li>Налаштування для пошуку в Google</li></ul><p class="ex">Як у Gold Auto чи Volt Master</p></article>
       </div>
       <div class="pcol">
         <h3 class="rv">Telegram&#8209;боти</h3>
-        <article class="card plan rv" style="--d:.06s"><h4>Бот для запису</h4><p class="cost">від 2&nbsp;500&nbsp;грн</p>
+        <article class="card plan rv" data-only="one" style="--d:.06s"><h4>Бот для запису</h4><p class="cost">від 2&nbsp;500&nbsp;грн</p>
           <ul><li>Запис на послугу з вибором часу</li><li>Заявки одразу вам у Telegram</li><li>Відповіді на часті питання</li></ul></article>
         <article class="card plan rv" style="--d:.06s"><h4>Бот під ваші процеси</h4><p class="cost">від 5&nbsp;000&nbsp;грн</p>
           <ul><li>Особистий кабінет клієнта в боті</li><li>Заявки майстрам за темами</li><li>Звʼязок із таблицями й іншими сервісами</li></ul><p class="ex">Як у Volt Master</p></article>
       </div>
+      <article class="card plan net-plan" data-only="net"><div><h4>Сайт і бот для мережі</h4><p class="cost">від 15&nbsp;000&nbsp;грн</p></div>
+        <ul><li>Один сайт для всіх ваших точок</li><li>Бот розподіляє записи й заявки по філіях</li><li>Кожна філія бачить свої заявки</li></ul><p class="ex">Ціна залежить від кількості точок і того, що потрібно автоматизувати</p></article>
     </div>
   </div>
 </section>
@@ -483,6 +503,9 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <div class="card term rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="i-eye"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></g></svg><b>Без передоплати</b><p>Спочатку показую готовий результат і вношу правки. Платите, коли все влаштовує, і я запускаю.</p></div>
       <div class="card term rv" style="--d:.08s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path class="i-hand" d="M12 7v5l3 2"/></svg><b>Перший варіант часто того ж дня</b><p>Прототип нерідко готовий уже того дня, коли ви написали. Загальний строк залежить від кількості правок.</p></div>
       <div class="card term rv" style="--d:.16s"><svg class="i-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg><b>Підтримка після запуску</b><p>Якщо щось зламалось чи незрозуміло, пишіть будь-коли. Дрібні правки перший місяць безкоштовно, далі за невелику доплату.</p></div>
+      <div class="card term rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><b>Усе письмово</b><p>Ціну, строки й що саме входить фіксую письмово ще до початку роботи. Без сюрпризів у кінці.</p></div>
+      <div class="card term rv" style="--d:.08s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z"/></svg><b>На звʼязку щодня</b><p>Відповідаю протягом дня, у вихідні теж. Ви пишете напряму розробнику, без менеджерів.</p></div>
+      <div class="card term rv" style="--d:.16s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg><b>Хостинг беру на себе</b><p>Розміщую сайт і бота та стежу, щоб усе працювало. Якщо хочете тримати все у себе, після оплати передам файли й доступи.</p></div>
     </div>
   </div>
 </section>
@@ -495,6 +518,8 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <details><summary>Скільки часу це займає?</summary><p>Перший варіант часто показую того ж дня, коли ви написали. Далі все залежить від кількості правок.</p></details>
       <details><summary>Що потрібно від мене?</summary><p>Розповісти про бізнес і надіслати те, що вже є: фото, послуги, ціни, контакти. Решту роблю я.</p></details>
       <details><summary>Можна сайт і бота разом?</summary><p>Так. Тоді кнопка запису на сайті веде одразу в бота, а заявки приходять вам у Telegram.</p></details>
+      <details><summary>Де буде сайт і бот?</summary><p>На моєму хостингу: я стежу, щоб усе працювало. Якщо хочете тримати все у себе, після оплати передам файли й доступи.</p></details>
+      <details><summary>У мене кілька точок. Це дорожче?</summary><p>Так, бо сайт і бот налаштовуються під кожну філію, а заявки розходяться по точках. Такі проєкти від 15&nbsp;000&nbsp;грн, точну суму назву після розмови.</p></details>
       <details><summary>Що буде після запуску?</summary><p>Якщо щось зламалось чи незрозуміло, пишіть будь-коли. Дрібні правки перший місяць безкоштовно, далі за невелику доплату. Для більших проєктів умови мʼякші.</p></details>
     </div>
   </div>
@@ -603,6 +628,13 @@ const dock=$('#dock');let heroCta=true,contactOn=false;
 const dockSet=()=>{const on=!heroCta&&!contactOn;dock.classList.toggle('show',on);dock.tabIndex=on?0:-1};
 io([$('.hero .ctas')],e=>{heroCta=e.isIntersecting||e.boundingClientRect.top>0;dockSet()});
 io([$('#contact')],e=>{contactOn=e.isIntersecting;dockSet()});
+
+/* ціни: одна точка чи мережа; ?v=pro з холодного повідомлення одразу вмикає «мережу» */
+const seg=$('.seg'),pgrid=$('#prices-grid');
+const setMode=m=>{pgrid.dataset.mode=m;seg.dataset.mode=m;$$('button',seg).forEach(b=>b.setAttribute('aria-selected',b.dataset.mode===m))};
+$$('button',seg).forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
+seg.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const m=pgrid.dataset.mode==='one'?'net':'one';setMode(m);$(`button[data-mode="${m}"]`,seg).focus()}});
+if(/[?&](v=pro|seg=net)\b/.test(location.search))setMode('net');
 
 /* компактне меню після прокрутки */
 const nav=$('.nav');let nraf=0;
