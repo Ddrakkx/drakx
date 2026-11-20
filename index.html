@@ -39,9 +39,9 @@ a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:12px}
 .pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 26px;border-radius:25px;font-size:17px;font-weight:500;white-space:nowrap;transition:translate .35s var(--soft),scale .45s var(--spring),background .3s}
-.pill{position:relative;overflow:hidden;translate:var(--tx,0px) var(--ty,0px)}
+.pill{position:relative;isolation:isolate;overflow:hidden;translate:var(--tx,0px) var(--ty,0px)}
 .pill:active{scale:.95}
-.pill::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
+.pill::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
   background:radial-gradient(90px circle at var(--mx,50%) var(--my,-30%),rgba(255,255,255,.38),transparent 70%)}
 .pill.light::after{background:radial-gradient(90px circle at var(--mx,50%) var(--my,-30%),#fff,transparent 70%)}
 @media (hover:hover){.pill:hover::after{opacity:1}}
@@ -101,7 +101,7 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .gs{transform:perspective(1000px) rotateX(var(--nrx,0deg)) rotateY(var(--nry,0deg));transition:transform .6s var(--soft)}
 .word{position:absolute;inset:0}
 .word>*{transform-origin:50% 84%}
-.gs.jelly .word>*{animation:jelly .85s cubic-bezier(.3,.7,.4,1)}
+.gs.jelly .word>*{animation:jelly .9s ease-in-out}
 @keyframes jelly{0%{transform:none}22%{transform:scale(1.07,.9)}48%{transform:scale(.96,1.06)}72%{transform:scale(1.02,.98)}100%{transform:none}}
 .js .word{opacity:0}
 .js .gs.on .word{opacity:1;animation:nick 1s cubic-bezier(.2,1.3,.3,1) .12s both}
@@ -124,8 +124,9 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
   -webkit-backdrop-filter:blur(22px) saturate(2);backdrop-filter:blur(22px) saturate(2);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),inset 0 1.5px 0 #fff,inset 0 -1px 2px rgba(255,255,255,.45),0 20px 44px -18px rgba(40,20,80,.35);
   transition:width .6s var(--spring),height .6s var(--spring),border-radius .45s ease,opacity .15s,scale .7s var(--spring)}
+.island{isolation:isolate}
 .js .island:not(.in){opacity:0;scale:.5;-webkit-backdrop-filter:none;backdrop-filter:none}
-.island::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(120px circle at var(--ix,50%) var(--iy,0%),rgba(255,255,255,.7),transparent 70%)}
+.island::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(120px circle at var(--ix,50%) var(--iy,0%),rgba(255,255,255,.7),transparent 70%)}
 @media (hover:hover){.island.in:hover{scale:1.04}.island:hover::after{opacity:1}}
 .st{position:absolute;inset:0;display:flex;align-items:center;padding:0 16px;white-space:nowrap;text-align:left;opacity:0;filter:blur(6px);transform:scale(.95);transition:opacity .18s,filter .18s,transform .18s;pointer-events:none}
 .st.on{opacity:1;filter:none;transform:none;transition:opacity .3s .14s,filter .3s .14s,transform .4s .14s cubic-bezier(.2,.9,.3,1.2);pointer-events:auto}
@@ -156,7 +157,7 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .phone{--ph:330px;margin:32px auto calc(-1 * clamp(26px,3.4vw,40px));width:236px;height:var(--ph);border-radius:38px 38px 0 0;border:9px solid var(--ink);border-bottom:0;overflow:hidden;background:#111}
 .phone img{width:100%;height:auto;transition:transform 1.4s var(--soft)}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){.c-site:hover .phone img{transform:translateY(calc(-100% + var(--ph) - 9px));transition:transform 9s cubic-bezier(.45,0,.55,1)}}
-@media (hover:none) and (prefers-reduced-motion:no-preference){.phone.play img{animation:pscroll 18s ease-in-out infinite alternate}}
+@media (hover:none) and (prefers-reduced-motion:no-preference){.phone img{animation:pscroll 18s ease-in-out infinite alternate paused}.phone.play img{animation-play-state:running}}
 @keyframes pscroll{0%,12%{transform:none}88%,100%{transform:translateY(calc(-100% + var(--ph) - 9px))}}
 .chatbox{margin-top:auto;padding:18px;border-radius:var(--r-in);background:var(--bg);display:flex;flex-direction:column;gap:8px;font-size:14px}
 .m{padding:9px 13px;border-radius:18px;background:#fff;width:max-content;max-width:88%;line-height:1.35}
@@ -180,10 +181,13 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .case+.case{margin-top:clamp(64px,8vw,104px)}
 .case.flip .shot{order:2}
 .shot,.js .case .shot{border-radius:var(--r);padding:10px;background:#fff;transition:opacity .8s var(--soft),transform .9s var(--soft),translate .45s var(--soft),scale .45s var(--soft),rotate .45s var(--soft),box-shadow .45s;transition-delay:var(--d,0s),var(--d,0s),0s,0s,0s,0s}
+.shot{position:relative}
+.shot.hov::before{content:"";position:absolute;inset:-12px;border-radius:inherit}
 .shot.hov{translate:0 -6px;scale:1.025;rotate:var(--ax,0) var(--ay,1) 0 var(--ang,0deg);box-shadow:0 34px 70px -34px rgba(20,20,40,.42)}
 @property --lr{syntax:'<length>';inherits:true;initial-value:88px}
 .view{transition:--lr .45s var(--soft)}
 .shot.hov .view{--lr:112px}
+@media (max-width:700px){.shot.hov .view{--lr:76px}}
 .shot .bar{display:flex;align-items:center;gap:6px;padding:2px 6px 10px}
 .bar i{width:9px;height:9px;border-radius:50%;background:rgba(0,0,0,.12)}
 .bar u{text-decoration:none;flex:1;margin-left:10px;height:22px;border-radius:11px;background:var(--bg);font-size:12px;color:var(--muted);display:grid;place-items:center}
@@ -245,6 +249,7 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .contact{border-radius:36px;padding:clamp(44px,7vw,88px) var(--pad);text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;background:var(--ink);color:#fff;position:relative;overflow:hidden}
 .contact::before{content:"";position:absolute;width:560px;height:560px;left:50%;top:-360px;translate:-50% 0;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 65%);pointer-events:none}
 .contact .eyebrow{color:#a1a1a6}
+.contact :focus-visible{outline-color:#fff}
 .contact .lead{color:#d1d1d6}
 .contact .ctas{margin-top:14px}
 .contact .pill.dark{color:var(--ink);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.8));box-shadow:inset 0 1px 0 #fff,0 12px 28px -14px rgba(0,0,0,.6)}
@@ -285,6 +290,8 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .island,.st,.m,.rv,.c-day li,.word,.aura i{transition:none!important;animation:none!important}
+  .pill:active,.island.in:hover{scale:none}
+  .nav{transition:none}
 }
 </style>
 </head>
@@ -493,6 +500,7 @@ if(fine&&!reduce)addEventListener('pointermove',e=>{const r=gs.getBoundingClient
 else if(!reduce&&'DeviceOrientationEvent' in window&&typeof DeviceOrientationEvent.requestPermission!=='function')
   addEventListener('deviceorientation',e=>{if(e.gamma==null)return;lx=500+Math.max(-1,Math.min(1,e.gamma/30))*520;ly=-60+Math.max(-1,Math.min(1,(e.beta-45)/30))*120;lq()},{passive:true});
 
+if(fine)document.documentElement.addEventListener('mouseleave',()=>{gs.style.setProperty('--nrx','0deg');gs.style.setProperty('--nry','0deg')});
 /* нік пружинить від дотику чи наведення */
 if(!reduce){const jelly=()=>{if(!gs.classList.contains('on')||gs.classList.contains('jelly'))return;gs.classList.add('jelly')};
   gs.addEventListener(fine?'pointerenter':'pointerdown',jelly);
@@ -514,7 +522,7 @@ function plan(){clearTimeout(timer);if(reduce||cur<0||!heroOn||document.hidden||
 ['pointerleave','focusout'].forEach(ev=>isl.addEventListener(ev,()=>setTimeout(plan,0)));
 ['pointerenter','focusin'].forEach(ev=>isl.addEventListener(ev,()=>clearTimeout(timer)));
 isl.addEventListener('click',e=>{if(cur!==2){e.preventDefault();show(cur+1)}});
-if(fine)isl.addEventListener('pointermove',e=>{const r=isl.getBoundingClientRect();isl.style.setProperty('--ix',e.clientX-r.left+'px');isl.style.setProperty('--iy',e.clientY-r.top+'px')});
+if(fine&&!reduce)isl.addEventListener('pointermove',e=>{const r=isl.getBoundingClientRect();isl.style.setProperty('--ix',e.clientX-r.left+'px');isl.style.setProperty('--iy',e.clientY-r.top+'px')});
 addEventListener('resize',()=>{if(cur>=0)isl.style.setProperty('--w',fit(SZ[cur][0])+'px')});
 document.addEventListener('visibilitychange',plan);
 io([$('.hero')],e=>{heroOn=e.isIntersecting;gs.classList.toggle('paused',!heroOn);plan()});
@@ -562,9 +570,10 @@ $$('.view').forEach((view,n)=>{
   const set=()=>{view.style.setProperty('--lx',p.x.toFixed(1)+'px');view.style.setProperty('--ly',p.y.toFixed(1)+'px')};
   const clamp=q=>({x:Math.max(0,Math.min(W,q.x)),y:Math.max(0,Math.min(H,q.y))});
   const measure=()=>{W=view.clientWidth;H=view.clientHeight;p=clamp(p);t=clamp(t);if(on)set()};
-  const local=e=>{const r=view.getBoundingClientRect();return clamp({x:e.clientX-r.left,y:e.clientY-r.top})};
+  let last=null;const local=e=>{const r=view.getBoundingClientRect();return clamp({x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height})};
   function step(now){
     raf=0;if(!on)return;
+    if(mode==='follow'&&last&&!drag)t=local(last);
     if(mode==='auto'){const k=(now-t0)/1000;t.x=W*(.5+.33*Math.sin(k*.55));t.y=H*(.48+.26*Math.sin(k*1.1+1))}
     const ks=drag?.32:.07,dm=drag?.55:.8;
     v.x=(v.x+(t.x-p.x)*ks)*dm;v.y=(v.y+(t.y-p.y)*ks)*dm;p.x+=v.x;p.y+=v.y;set();
@@ -579,8 +588,8 @@ $$('.view').forEach((view,n)=>{
     go();
   },{rootMargin:'120px 0px'});
   addEventListener('resize',measure);
-  view.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'||drag){mode='follow';t=local(e);clearTimeout(idle);if(reduce){p={...t};set()}}});
-  view.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')mode='auto'});
+  view.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'||drag){mode='follow';last=e;t=local(e);clearTimeout(idle);if(reduce){p={...t};set()}}});
+  view.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){mode='auto';last=null}});
   lens.addEventListener('pointerdown',e=>{drag=true;mode='follow';lens.setPointerCapture(e.pointerId);clearTimeout(idle)});
   const up=()=>{if(!drag)return;drag=false;idle=setTimeout(()=>mode='auto',2500)};
   lens.addEventListener('pointerup',up);lens.addEventListener('pointercancel',up);
