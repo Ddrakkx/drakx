@@ -126,6 +126,8 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
   .hero.paused .grid i{animation-play-state:paused}
 }
 @keyframes drift{to{transform:translateY(-22px)}}
+/* полотно для значків, що виростають у клітинках сітки, коли курсор на головній кнопці */
+.bloom{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
 /* нік менший, ніж був: головне на першому екрані — що клієнт отримає, а не логотип */
 .hero{position:relative;isolation:isolate;overflow:hidden;overflow:clip;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(92px,13vh,128px) 16px 48px;--sw:min(460px,64vw)}
 @media (min-width:900px){.hero{min-height:min(100svh,940px);justify-content:center;padding-bottom:40px}}
@@ -278,12 +280,18 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .pcol{display:flex;flex-direction:column;gap:16px}
 .pcol>h3{font-size:21px;font-weight:600;letter-spacing:-.02em}
 .plan{padding:28px;display:flex;flex-direction:column}
-.plan h4{font-size:19px;font-weight:600;letter-spacing:-.02em}
+.plan h4,.bundle h3{font-size:19px;font-weight:600;letter-spacing:-.02em}
 .plan .cost{font-size:clamp(24px,2.5vw,30px);font-weight:600;letter-spacing:-.03em;margin-top:4px}
 .plan ul{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--ink2)}
 .plan li{position:relative;padding-left:24px;line-height:1.4}
 .plan li::before{content:"";position:absolute;left:2px;top:.34em;width:12px;height:7px;border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(-45deg)}
 .plan .ex{margin-top:14px;font-size:14px;color:var(--muted)}
+.plan h4,.bundle h3,.faq summary{line-height:1.25}
+/* картки «Сайти» й «Боти» в рядах однакової висоти, примітки внизу картки */
+@media (min-width:901px){
+  @supports (grid-template-rows:subgrid){.pcol{display:grid;grid-row:span 3;grid-template-rows:subgrid}}
+  .pcol .plan .ex{margin-top:auto;padding-top:14px}
+}
 .plan h4,.term b,.faq summary,.case h3,.svc h3,.pcol>h3{text-wrap:balance}
 /* після цін — одразу кнопка, щоб не гортати до контакту */
 .pcta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:32px;text-align:center}
@@ -291,11 +299,21 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 
 /* кілька точок: одна картка на всю ширину, для ?v=pro стає першою й підсвічується */
 .multi{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.25fr;gap:10px 32px;align-items:start}
-.multi h4{margin-top:6px}
+.multi h4,.bundle h3{margin-top:6px}
 .multi .why{color:var(--ink2);font-size:15px;margin-top:10px;max-width:46ch}
 .multi ul{margin-top:2px}
 .multi li b{font-weight:600;color:var(--ink)}
-.prices.pro .multi{order:-1;box-shadow:0 0 0 2px var(--ink),0 24px 50px -30px rgba(var(--sh),.32)}
+.nw{white-space:nowrap}
+/* пакет «сайт і бот разом» завжди першим; закреслені лише числа, економія окремо й жирним */
+.bundle .save{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:14px;background:var(--ink);color:#fff;font:600 13px Inter,sans-serif;letter-spacing:0;text-transform:none}
+.bundle .sets{display:flex;flex-direction:column;gap:18px}
+.bundle .set>b{display:block;font-size:15px;font-weight:600;text-wrap:balance}
+.bundle .set .cost{margin-top:2px}
+.bundle .was{margin-top:2px;font-size:14px;color:var(--muted)}
+.bundle .was s{text-decoration-thickness:1px}
+.bundle .was b{display:block;font-weight:600;color:var(--ink);white-space:nowrap}
+.bundle .ex{margin-top:12px}
+.prices.pro #multi{order:-1;box-shadow:0 0 0 2px var(--ink),0 24px 50px -30px rgba(var(--sh),.32)}
 @media (max-width:700px){.multi{grid-template-columns:1fr}}
 
 /* ---------- як працюю: переписка з клієнтом ---------- */
@@ -382,7 +400,7 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .ntf{align-self:center;display:flex;align-items:center;gap:11px;width:min(320px,100%);margin-top:8px;padding:10px 12px;border-radius:22px;background:rgba(255,255,255,.92);box-shadow:0 0 0 1px rgba(0,0,0,.06),0 18px 34px -20px rgba(0,0,0,.45);text-align:left}
 .ntf .app{width:38px;height:38px;border-radius:11px}
 .ntf small{display:block;font-size:12px;color:var(--muted);line-height:1.2}.ntf b{display:block;font-size:14px;font-weight:600;line-height:1.3}.ntf div>span:last-child{font-size:13px;color:var(--ink2)}
-.replay{align-self:center;display:inline-flex;align-items:center;gap:7px;margin-top:6px;padding:8px 14px;border:0;border-radius:16px;background:transparent;color:var(--muted);font:500 14px Inter,sans-serif;cursor:pointer;transition:color .2s,background .2s}
+.replay{align-self:center;display:inline-flex;align-items:center;gap:7px;margin-top:6px;min-height:44px;padding:8px 14px;border:0;border-radius:16px;background:transparent;color:var(--muted);font:500 14px Inter,sans-serif;cursor:pointer;transition:color .2s,background .2s}
 .replay svg{width:15px;height:15px}
 .replay:hover{color:var(--ink);background:rgba(0,0,0,.05)}
 /* поява кроків */
@@ -391,6 +409,8 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .js .flow .row.on .m{opacity:1;translate:0 0;scale:1}
 .js .flow .fsep,.js .flow .replay{opacity:0;scale:.85;transition:opacity .3s,scale .45s var(--spring)}
 .js .flow .fsep.on,.js .flow .replay.on{opacity:1;scale:1}
+.js .flow .replay{visibility:hidden;transition:opacity .3s,scale .45s var(--spring),visibility 0s .45s}
+.js .flow .replay.on{visibility:visible;transition-delay:0s}
 .js .flow .ntf{opacity:0;translate:0 -16px;scale:.95;transition:opacity .35s,translate .7s var(--spring),scale .7s var(--spring)}
 .js .flow .ntf.on{opacity:1;translate:0 0;scale:1}
 .js .flow .wf-page>*{opacity:0;translate:0 5px;transition:opacity .35s,translate .45s var(--soft);transition-delay:calc(var(--i,0) * 90ms + .1s)}
@@ -463,7 +483,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 @media (max-width:430px){
   .copy h1{font-size:clamp(28px,7.9vw,34px)}
   .hero{padding-top:84px}
-  .flow{padding:10px}.flow-top{padding:8px 8px 2px}.fsteps{top:66px;margin:0;padding:10px 8px}.flow-log{padding:12px}
+  .flow{padding:10px}.flow-top{padding:8px 8px 2px}.fsteps{top:60px;margin:0;padding:10px 8px}.flow-log{padding:12px}
   .s0 b{font-size:14px}
   .app{width:40px;height:40px;border-radius:11px}
 }
@@ -471,6 +491,11 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
   .ctas .pill{width:100%}
   .phone{width:210px;--ph:290px}
 }
+@media (max-width:360px){.fsteps li{font-size:9.5px;letter-spacing:.02em}.ctas .pill{padding:0 16px;font-size:16px}}
+/* короткі екрани: кнопка й «+31%» мають уміститися на першому екрані (iPhone SE/8, ноутбук 1366×768) */
+@media (min-width:700px) and (max-height:700px){.hero{--sw:min(300px,40vw);padding-top:80px}.island-area{margin-top:12px}.copy{margin-top:14px}.ctas{margin-top:20px}}
+@media (max-width:700px) and (max-height:720px){.hero{--sw:min(260px,62vw);padding-top:74px;padding-bottom:32px}.island-area{margin-top:10px}.copy{margin-top:14px}.copy .eyebrow{margin-bottom:8px}.copy h1{margin-bottom:10px}.ctas{margin-top:18px}.copy .lead{font-size:16px}}
+@media (max-width:700px) and (max-height:620px){.copy .eyebrow{display:none}}
 @media (prefers-reduced-transparency:reduce){
   .nav,.island,.pill.light,.lg .nav,.lg .island,.lg .pill.light{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
   .pill.dark,.pill.dark:hover{background:var(--ink);-webkit-backdrop-filter:none;backdrop-filter:none}
@@ -483,6 +508,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .island,.st,.m,.rv,.c-day li,.word,.aura i{transition:none!important;animation:none!important}
+  .live .dot{animation:none!important}.dock{transition:none!important}
   .pill:active,.island.in:hover{scale:none}
   .nav{transition:none}
 }
@@ -538,7 +564,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
     <h1 id="h1">Пацієнти записуються самі&nbsp;— навіть коли ви на&nbsp;прийомі</h1>
     <p class="lead">Роблю сайт і&nbsp;Telegram&#8209;бот, через які клієнти записуються без дзвінків. Без передоплати: спочатку показую результат, оплата потім.</p>
     <div class="ctas">
-      <a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0." target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
+      <a class="pill dark" id="cta" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D0%B7%D0%BA%D0%BE%D1%88%D1%82%D0%BE%D0%B2%D0%BD%D0%B8%D0%B9%20%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D1%82%D0%B8%D0%BF.%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6" target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Хочу прототип безкоштовно</a>
       <a class="pill light" href="#work">Мої роботи</a>
     </div>
     <p class="proof"><a href="#work" id="proof"><b>+31%</b> закритих нарядів у&nbsp;Gold&nbsp;Auto за перший місяць із&nbsp;ботом</a></p>
@@ -580,7 +606,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 
 <section class="block" id="work" aria-labelledby="work-h">
   <div class="wrap">
-    <div class="head rv"><p class="eyebrow">Роботи</p><h2 id="work-h">Живі проєкти</h2><p class="lead">Сайти й боти, які я зробив для клієнтів.</p></div>
+    <div class="head rv"><p class="eyebrow">Роботи</p><h2 id="work-h">Живі проєкти</h2><p class="lead" id="work-lead">Сайти й боти, які я зробив для клієнтів.</p></div>
     <p class="hint rv">Наведіть курсор на знімок: лінза покаже каркас сторінки</p>
 
     <article class="case">
@@ -628,6 +654,11 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
   <div class="wrap">
     <div class="head rv"><p class="eyebrow">Ціни</p><h2 id="prices-h">Скільки це коштує</h2><p class="lead">Більшість проєктів вкладається в ці межі. Точну суму назву, щойно опишете завдання, і зафіксую письмово. Без доплат, якщо не додасте нових завдань.</p></div>
     <div class="prices" id="prices-grid">
+      <article class="card plan multi bundle" id="bundle"><div><p class="kind"><span class="save">Найчастіше беруть</span></p><h3>Сайт і бот разом</h3>
+        <p class="why">Кнопка запису на сайті веде одразу в бота, а заявки приходять вам у Telegram. Робимо все за один раз, тому разом дешевше, ніж окремо.</p>
+        <p class="ex">Бот: перший місяць у ціні, далі 500&nbsp;грн/міс. За сайт щомісячної плати немає.</p></div>
+        <div class="sets"><div class="set"><b>Сайт на одну сторінку + бот для запису</b><p class="cost">від 6&nbsp;000 до 9&nbsp;000&nbsp;грн</p><p class="was">окремо <s>7&nbsp;000</s>–<s>10&nbsp;500</s>&nbsp;грн <b>економія 1&nbsp;000–1&nbsp;500&nbsp;грн</b></p></div>
+        <div class="set"><b>Сайт для вашого бізнесу + бот із кабінетом</b><p class="cost">від 11&nbsp;000 до 17&nbsp;000&nbsp;грн</p><p class="was">окремо <s>13&nbsp;000</s>–<s>21&nbsp;000</s>&nbsp;грн <b>економія 2&nbsp;000–4&nbsp;000&nbsp;грн</b></p></div></div></article>
       <div class="pcol">
         <h3 class="rv">Сайти</h3>
         <article class="card plan rv"><h4>Сайт на одну сторінку</h4><p class="cost">від 4&nbsp;500 до 6&nbsp;500&nbsp;грн</p>
@@ -642,9 +673,9 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
         <article class="card plan rv" style="--d:.06s"><h4>Бот із кабінетом клієнта</h4><p class="cost">від 5&nbsp;000 до 9&nbsp;000&nbsp;грн</p>
           <ul><li>Особистий кабінет клієнта в боті</li><li>Заявки майстрам за темами</li><li>Підключення до таблиць та інших сервісів</li></ul><p class="ex">Як у Volt Master. Обслуговування бота: перший місяць у ціні, далі 500&nbsp;грн/міс</p></article>
       </div>
-      <article class="card plan multi" id="multi"><div><p class="kind">Кілька точок</p><h4>Сайт і бот для 2–3 точок або&nbsp;мережі</h4>
+      <article class="card plan multi" id="multi"><div><p class="kind">Кілька точок</p><h4>Сайт і бот для <span class="nw">2–3</span> точок або&nbsp;мережі</h4>
         <p class="why">Ті самі сайт і бот, тільки з вибором філії: клієнт обирає адресу, а заявка йде майстрам саме цієї точки.</p></div>
-        <ul><li><b>2–3 точки:</b> зазвичай на 20–30% дорожче, ніж для&nbsp;однієї</li><li><b>Мережа від 4 точок:</b> окремий проєкт, від 15&nbsp;000&nbsp;грн</li><li>Наприклад, бот для запису на 2 точки&nbsp;— від 3&nbsp;000 до 5&nbsp;000&nbsp;грн</li></ul></article>
+        <ul><li><b><span class="nw">2–3</span> точки:</b> зазвичай на <span class="nw">20–30%</span> дорожче, ніж для&nbsp;однієї</li><li><b>Мережа від 4 точок:</b> окремий проєкт, від 20&nbsp;000&nbsp;грн</li><li>Наприклад, бот для запису на 2 точки&nbsp;— від 3&nbsp;000 до 5&nbsp;000&nbsp;грн</li></ul></article>
     </div>
     <div class="pcta rv"><a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B4%D1%96%D0%B7%D0%BD%D0%B0%D1%82%D0%B8%D1%81%D1%8F%20%D1%82%D0%BE%D1%87%D0%BD%D1%83%20%D1%86%D1%96%D0%BD%D1%83.%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%2C%20%D0%BF%D0%BE%D1%82%D1%80%D1%96%D0%B1%D0%BD%D0%BE%3A%20%E2%80%A6" target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Дізнатися точну ціну</a><p>Відповідаю протягом дня, у&nbsp;вихідні теж.</p></div>
   </div>
@@ -662,16 +693,16 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
         <div class="flow-log">
           <p class="fsep" data-b="sep" data-s="1">1 · Прототип</p>
           <div class="row me" data-b="me"><div class="m me">Привіт! Хочу сайт із записом для свого бізнесу<time>11:05<i class="tk" aria-hidden="true"></i></time></div></div>
-          <div class="row" data-b="bot" data-t="1300"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Ось перший варіант:<div class="lp"><div class="wf" role="img" aria-label="Макет сайту, перша версія"><div class="wf-bar"><i></i><i></i><i></i><u></u></div><div class="wf-page"><div class="wf-nav"><i class="logo"></i><i></i><i></i><i></i></div><div class="wf-hero"><div class="wf-txt"><i class="h"></i><i class="h s"></i><i class="t"></i><div class="wf-row"><i class="btn"></i></div></div><i class="img"></i></div><div class="wf-cards"><i></i><i></i><i></i></div></div></div><div class="lp-meta"><b>Прототип вашого сайту</b><small>ваш-сайт.com.ua</small></div></div>Подивіться й напишіть, що змінити<time>18:40</time></div></div>
+          <div class="row" data-b="bot" data-t="700"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Ось перший варіант:<div class="lp"><div class="wf" role="img" aria-label="Макет сайту, перша версія"><div class="wf-bar"><i></i><i></i><i></i><u></u></div><div class="wf-page"><div class="wf-nav"><i class="logo"></i><i></i><i></i><i></i></div><div class="wf-hero"><div class="wf-txt"><i class="h"></i><i class="h s"></i><i class="t"></i><div class="wf-row"><i class="btn"></i></div></div><i class="img"></i></div><div class="wf-cards"><i></i><i></i><i></i></div></div></div><div class="lp-meta"><b>Прототип вашого сайту</b><small>ваш-сайт.com.ua</small></div></div>Подивіться й напишіть, що змінити<time>18:40</time></div></div>
           <p class="fsep" data-b="sep" data-s="2">2 · Правки <span>наступного дня</span></p>
           <div class="row me" data-b="me"><div class="m me">Класно! А можна кнопку запису зробити помітнішою і&nbsp;додати ціни?<time>09:12<i class="tk" aria-hidden="true"></i></time></div></div>
-          <div class="row" data-b="bot" data-t="1100"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Так, оновив:<div class="wf v2" role="img" aria-label="Макет сайту, оновлена версія: кнопка запису більша, додано блок цін"><div class="wf-bar"><i></i><i></i><i></i><u></u></div><div class="wf-page"><div class="wf-nav"><i class="logo"></i><i></i><i></i><i></i></div><div class="wf-hero"><div class="wf-txt"><i class="h"></i><i class="h s"></i><i class="t"></i><div class="wf-row"><i class="btn"></i><span class="wf-tag">кнопка</span></div></div><i class="img"></i></div><div class="wf-pr"><div><div class="in"><span class="wf-tag">ціни</span><i></i><i></i><i></i></div></div></div><div class="wf-cards"><i></i><i></i><i></i></div></div></div><ul class="fdone"><li>Кнопка запису помітніша</li><li>Додав блок із цінами</li></ul><time>10:30</time></div></div>
+          <div class="row" data-b="bot" data-t="600"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Так, оновив:<div class="wf v2" role="img" aria-label="Макет сайту, оновлена версія: кнопка запису більша, додано блок цін"><div class="wf-bar"><i></i><i></i><i></i><u></u></div><div class="wf-page"><div class="wf-nav"><i class="logo"></i><i></i><i></i><i></i></div><div class="wf-hero"><div class="wf-txt"><i class="h"></i><i class="h s"></i><i class="t"></i><div class="wf-row"><i class="btn"></i><span class="wf-tag">кнопка</span></div></div><i class="img"></i></div><div class="wf-pr"><div><div class="in"><span class="wf-tag">ціни</span><i></i><i></i><i></i></div></div></div><div class="wf-cards"><i></i><i></i><i></i></div></div></div><ul class="fdone"><li>Кнопка запису помітніша</li><li>Додав блок із цінами</li></ul><time>10:30</time></div></div>
           <p class="fsep" data-b="sep" data-s="3">3 · Погодження</p>
           <div class="row me" data-b="me"><div class="m me">Тепер усе подобається, беремо!<time>10:41<i class="tk" aria-hidden="true"></i></time></div></div>
           <p class="fsep" data-b="sep" data-s="4">4 · Оплата й запуск</p>
-          <div class="row" data-b="bot" data-t="700"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Чудово! Тоді оплата&nbsp;— і запускаю<time>10:43</time></div></div>
+          <div class="row" data-b="bot" data-t="500"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Чудово! Тоді оплата&nbsp;— і запускаю<time>10:43</time></div></div>
           <div class="row me" data-b="pay"><div class="m me pay"><small>Рахунок від drakx</small><b>Сайт із записом</b><span class="paybtn"><span class="pb1">Оплатити</span><span class="pb2">Оплачено</span></span><time>10:44<i class="tk" aria-hidden="true"></i></time></div></div>
-          <div class="row" data-b="bot" data-t="1000"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Запустив! Сайт уже працює:<span class="live"><span class="dot"></span>ваш-сайт.com.ua<em>онлайн</em></span><time>11:20</time></div></div>
+          <div class="row" data-b="bot" data-t="600"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Запустив! Сайт уже працює:<span class="live"><span class="dot"></span>ваш-сайт.com.ua<em>онлайн</em></span><time>11:20</time></div></div>
           <div class="ntf" data-b="note"><span class="app"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg></span><div><span class="sr">Після запуску приходить перша заявка: </span><small>Ваш бот · щойно</small><b id="ntf-t">Новий запис: діагностика</b><span id="ntf-s">Олександр, завтра о&nbsp;10:00</span></div></div>
           <button class="replay" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Переглянути ще раз</button>
         </div>
@@ -689,12 +720,14 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
     <div class="head rv"><p class="eyebrow">Питання</p><h2 id="faq-h">Що зазвичай питають</h2></div>
     <div class="faq rv">
       <details><summary>Що я побачу до оплати?</summary><p>Готовий сайт чи бота з вашими послугами, цінами й контактами. Вносите правки й платите, коли все влаштовує. Якщо не влаштує&nbsp;— нічого не платите.</p></details>
+      <details><summary>Клієнти й так дзвонять. Навіщо мені бот?</summary><p>Дзвінки нікуди не зникають. Бот приймає тих, хто пише ввечері чи вночі, не може додзвонитися або просто не любить дзвонити. Без бота частина таких клієнтів іде туди, де можна записатися чи замовити одразу.</p></details>
       <details><summary>Скільки часу це займає?</summary><p>Перший варіант часто показую того&nbsp;ж&nbsp;дня, коли ви написали. Далі все залежить від кількості правок.</p></details>
       <details><summary>Що потрібно від мене?</summary><p>Розповісти про бізнес і надіслати те, що вже є: фото, послуги, ціни, контакти. Решту роблю я.</p></details>
       <details><summary>Можна сайт і бота разом?</summary><p>Так. Тоді кнопка запису на сайті веде одразу в бота, а заявки приходять вам у Telegram.</p></details>
       <details><summary>Де будуть сайт і бот і чиї вони?</summary><p>На моєму хостингу: я стежу, щоб усе працювало. Захочете тримати все у себе&nbsp;— після оплати передам файли й доступи.</p></details>
+      <details><summary>А якщо ви зникнете?</summary><p>Файли й доступи можна забрати будь-коли після оплати: тоді сайт і бота зможе підтримувати інший розробник. Поки все на моєму хостингу, я на звʼязку й відповідаю протягом дня.</p></details>
       <details><summary>Чи є щомісячна плата?</summary><p>Перший місяць входить у ціну. Далі бот коштує 500&nbsp;грн на місяць: сервер, щоб він працював цілодобово, і виправлення, якщо щось зламалось. За сайт щомісячної плати немає: лише продовження домену раз на рік, перший рік теж входить у ціну. Вартість домену залежить від зони, назву її заздалегідь.</p></details>
-      <details><summary>У мене кілька точок. Це&nbsp;дорожче?</summary><p>Трохи дорожче, бо додається вибір філії, а заявки розходяться майстрам потрібної точки. Для 2–3 точок зазвичай на 20–30% більше, ніж для однієї. Для мережі від 4 точок окремий проєкт від 15&nbsp;000&nbsp;грн.</p></details>
+      <details><summary>У мене кілька точок. Це&nbsp;дорожче?</summary><p>Трохи дорожче, бо додається вибір філії, а заявки розходяться майстрам потрібної точки. Для <span class="nw">2–3</span> точок зазвичай на <span class="nw">20–30%</span> більше, ніж для однієї. Для мережі від 4 точок окремий проєкт від 20&nbsp;000&nbsp;грн.</p></details>
     </div>
   </div>
 </section>
@@ -703,8 +736,8 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
   <div class="wrap">
     <div class="contact rv">
       <p class="eyebrow">Контакт</p>
-      <h2 id="contact-h">Напишіть, що потрібно</h2>
-      <p class="lead">Напишіть назву бізнесу й що потрібно: сайт, бот чи все разом. У відповідь назву орієнтовну ціну.</p>
+      <h2 id="contact-h">Почнемо з прототипу</h2>
+      <p class="lead">Напишіть назву бізнесу й що потрібно: сайт, бот чи все разом. Покажу перший варіант безкоштовно й назву орієнтовну ціну.</p>
       <div class="ctas">
         <a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0." target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
         <a class="pill ghost" href="https://instagram.com/drakxwork" target="_blank" rel="noopener">Instagram @drakxwork<span class="sr"> (відкриється в новій вкладці)</span></a>
@@ -727,19 +760,19 @@ const io=(els,cb,opt)=>{const o=new IntersectionObserver(es=>es.forEach(e=>cb(e,
 /* текст під нішу. Ніша береться з <html data-n="…"> (окремі сторінки /beauty/ тощо, зі своїм превʼю в месенджерах)
    або з ?n=beauty|clinic|food|shop|fitness; за замовчуванням — автосервіси */
 const NICHE={
-  beauty:{k:'Сайти й&nbsp;Telegram&#8209;боти для салонів краси та&nbsp;барбершопів',h1:'Клієнтки записуються самі&nbsp;— навіть коли ви з&nbsp;клієнткою',biz:'салон краси',
+  beauty:{k:'Сайти й&nbsp;Telegram&#8209;боти для салонів краси та&nbsp;барбершопів',h1:'Клієнтки записуються самі&nbsp;— навіть коли ви з&nbsp;клієнткою',biz:'салон краси',w:'вашого салону',
     t:'Новий запис: манікюр',s:'Олена, завтра о&nbsp;14:00',d1:'Клієнтка записалась через&nbsp;бота',d3t:'14:00',d3:'Клієнтка вже в кріслі майстра',
     ch:['Манікюр','Брови','Манікюр','Олена&nbsp;— завтра об&nbsp;11:00, Ірина&nbsp;— о&nbsp;15:30','Олена, 11:00']},
-  clinic:{k:'Сайти й&nbsp;Telegram&#8209;боти для клінік і&nbsp;кабінетів',h1:'Пацієнти записуються самі&nbsp;— навіть коли ви на&nbsp;прийомі',biz:'клініка',
+  clinic:{k:'Сайти й&nbsp;Telegram&#8209;боти для клінік і&nbsp;кабінетів',h1:'Пацієнти записуються самі&nbsp;— навіть коли ви на&nbsp;прийомі',biz:'клініка',w:'вашої клініки',
     t:'Новий запис: консультація',s:'Ірина, завтра о&nbsp;10:00',d1:'Пацієнт записався через&nbsp;бота',d3t:'10:00',d3:'Пацієнт вже на прийомі',
     ch:['Запис','Ціни','Запис','Лікар вільний завтра о&nbsp;9:30 або&nbsp;16:00','9:30']},
-  food:{k:'Сайти й&nbsp;Telegram&#8209;боти для кавʼярень і&nbsp;пекарень',h1:'Замовлення приходять самі&nbsp;— навіть у&nbsp;розпал зміни',biz:'кавʼярня',
+  food:{k:'Сайти й&nbsp;Telegram&#8209;боти для кавʼярень і&nbsp;пекарень',h1:'Замовлення приходять самі&nbsp;— навіть у&nbsp;розпал зміни',biz:'кавʼярня',w:'вашої кавʼярні',
     t:'Нове замовлення: торт на суботу',s:'Марина, самовивіз о&nbsp;12:00',d1:'Клієнт замовив торт через&nbsp;бота',d3t:'12:00',d3:'Замовлення вже забрали',
     ch:['Замовити','Меню','Замовити','Торт на суботу: самовивіз о&nbsp;12:00 чи доставка?','Самовивіз']},
-  shop:{k:'Сайти й&nbsp;Telegram&#8209;боти для магазинів',h1:'Замовлення приходять самі&nbsp;— навіть коли ви з&nbsp;покупцем',biz:'магазин',
+  shop:{k:'Сайти й&nbsp;Telegram&#8209;боти для магазинів',h1:'Замовлення приходять самі&nbsp;— навіть коли ви з&nbsp;покупцем',biz:'магазин',w:'вашого магазину',
     t:'Нове замовлення: 3 позиції',s:'Андрій, самовивіз сьогодні',d1:'Клієнт залишив заявку через&nbsp;бота',d3t:'11:00',d3:'Товар вже забрали',
     ch:['Замовити','Наявність','Замовити','Зберемо до&nbsp;17:00. Самовивіз чи доставка?','Самовивіз']},
-  fitness:{k:'Сайти й&nbsp;Telegram&#8209;боти для фітнес&#8209;студій',h1:'Клієнти записуються самі&nbsp;— навіть коли ви на&nbsp;тренуванні',biz:'фітнес-студія',
+  fitness:{k:'Сайти й&nbsp;Telegram&#8209;боти для фітнес&#8209;студій',h1:'Клієнти записуються самі&nbsp;— навіть коли ви на&nbsp;тренуванні',biz:'фітнес-студія',w:'вашої студії',
     t:'Новий запис: групове тренування',s:'Юлія, завтра о&nbsp;19:00',d1:'Клієнтка записалась через&nbsp;бота',d3t:'19:00',d3:'Клієнтка вже на тренуванні',
     ch:['Запис','Розклад','Запис','Групове завтра о&nbsp;8:00 або&nbsp;19:00','19:00']},
 };
@@ -752,7 +785,10 @@ if(NV){
   /* готовий текст у Telegram одразу з нішею: людині лишається вписати назву */
   $$('a[href^="https://t.me/ddrakx"]').forEach(a=>{a.href='https://t.me/ddrakx?text='+encodeURIComponent(a.closest('.pcta')
     ?`Привіт! Хочу дізнатися точну ціну. Мій бізнес: ${NV.biz} «…», потрібно: …`
+    :a.id==='cta'?`Привіт! Хочу безкоштовний прототип. Мій бізнес: ${NV.biz} «…»`
     :`Привіт! Мій бізнес: ${NV.biz} «…». Хочу обговорити сайт або бота.`)});
+  /* чесно: кейси поки з автосервісів, тож для інших ніш пропонуємо прототип */
+  $('#work-lead').innerHTML=`Поки що я робив проєкти для автосервісів. Для ${NV.w} покажу прототип безкоштовно, ще до оплати.`;
 }
 
 /* скляний нік: поява, блік пробігає один раз; на комп'ютері блік і нахил за курсором */
@@ -801,26 +837,103 @@ if(reduce){$$('#c-bot .m').forEach(m=>m.classList.add('on'));$('#c-day').classLi
   const seen=el=>new Promise(r=>{el._r=r;sio.observe(el)});
   const step=n=>steps.forEach((li,i)=>{li.classList.toggle('on',i<n);li.classList.toggle('cur',i===n-1)});
   const ALL=['on','built','changed','paid','read','typing','press'];
-  const finish=()=>{beats.forEach(el=>el.classList.add('on','built','changed','paid','read'));step(4);rep.classList.add('on')};
+  const idle=()=>{sub.textContent=subTxt;sub.classList.remove('ty')};
+  const finish=()=>{run++;beats.forEach(el=>{el.classList.remove('typing','press');el.classList.add('on','built','changed','paid','read')});idle();step(4);rep.classList.add('on')};
+  /* переписка йде за часом (≈8 с), щойно верх чату з'явився на екрані. Якщо людина гортає швидше,
+     паузи обриваються, щойно наступний крок уже у верхніх 80% екрана: чат ніколи не стоїть порожнім */
+  const past=el=>el.getBoundingClientRect().top<innerHeight*.8;
   let run=0;
   async function play(){
     const id=++run;
-    for(const el of beats){
-      await seen(el);if(id!==run)return;
-      const t=el.dataset.b;
-      if(t==='bot'){$$('.row.me.on',flow).forEach(r=>r.classList.add('read'));el.classList.add('typing');sub.textContent='друкує…';sub.classList.add('ty');
-        await wait(+el.dataset.t||900);if(id!==run)return;el.classList.remove('typing');sub.textContent=subTxt;sub.classList.remove('ty')}
+    const w=async(ms,f)=>{const end=performance.now()+ms;while(performance.now()<end&&!f()){await wait(Math.min(50,end-performance.now()));if(id!==run)throw 0}if(id!==run)throw 0};
+    await seen(flow);if(id!==run)return;
+    for(const [i,el] of beats.entries()){
+      const t=el.dataset.b,nx=beats[i+1]||rep,f=()=>past(nx);
+      if(t==='bot'){$$('.row.me.on',flow).forEach(r=>r.classList.add('read'));
+        if(!f()){el.classList.add('typing');sub.textContent='друкує…';sub.classList.add('ty');
+          await w(+el.dataset.t||600,f);el.classList.remove('typing');idle()}}
       el.classList.add('on');if(el.dataset.s)step(+el.dataset.s);
-      if(el.querySelector('.wf')){await wait(80);el.classList.add('built');
-        if(el.querySelector('.v2')){await wait(700);el.classList.add('changed');await wait(1300)}else await wait(900)}
-      if(t==='pay'){await wait(900);el.classList.add('press');await wait(230);el.classList.remove('press');el.classList.add('paid');await wait(800)}
-      await wait(t==='sep'?240:t==='me'?700:500);
+      if(el.querySelector('.wf')){await w(80,f);el.classList.add('built');
+        if(el.querySelector('.v2')){await w(600,f);el.classList.add('changed');await w(800,f)}else await w(500,f)}
+      if(t==='pay'){await w(600,f);if(!f()){el.classList.add('press');await w(230,f);el.classList.remove('press')}el.classList.add('paid');await w(500,f)}
+      await w(t==='sep'?150:t==='me'?350:300,f);
     }
-    if(id===run)rep.classList.add('on');
+    rep.classList.add('on');
   }
-  if(reduce)finish();else play();
-  rep.addEventListener('click',()=>{run++;beats.forEach(el=>el.classList.remove(...ALL));step(0);rep.classList.remove('on');sub.textContent=subTxt;sub.classList.remove('ty');
-    flow.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(play,600)});
+  const go=()=>play().catch(()=>{});
+  if(reduce)finish();else{go();
+    /* догорнули до кінця чату раніше, ніж він дограв: показуємо все одразу */
+    io([rep],e=>{if(e.isIntersecting&&!rep.classList.contains('on'))finish()},{rootMargin:'0px 0px -15% 0px'})}
+  rep.addEventListener('click',()=>{run++;beats.forEach(el=>el.classList.remove(...ALL));step(0);rep.classList.remove('on');idle();
+    flow.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(go,600)});
+}
+/* курсор на головній кнопці: клітинки сітки довкола хвилею від кнопки заповнюються значками
+   (повідомлення, запис, сповіщення, значок вашої ніші). Лише комп'ютер; полотно створюється при першому наведенні,
+   малює тільки під час появи й зникнення, а далі стоїть */
+if(fine&&!reduce){
+  const cta=$('#cta'),gi=$('.hero .grid i');
+  const NG={auto:['M15.5 3.5a5 5 0 0 0-4.8 6.6l-7 7a1.9 1.9 0 0 0 2.7 2.7l7-7a5 5 0 0 0 6.6-4.8l-3 1.3-2.5-2.5z','M2.5 15.5V12l2.6-.9L8 7h7.5l3.8 4.1 2.2.9v3.5h-2M9.4 15.5h5.2M5 15.5H2.5M5 15.5a2.2 2.2 0 1 0 4.4 0 2.2 2.2 0 1 0-4.4 0M14.6 15.5a2.2 2.2 0 1 0 4.4 0 2.2 2.2 0 1 0-4.4 0M6 11.1h13'],
+    beauty:['M8.2 8.6 20 18M8.2 15.4 20 6M3.5 7a2.5 2.5 0 1 0 5 0 2.5 2.5 0 1 0-5 0M3.5 17a2.5 2.5 0 1 0 5 0 2.5 2.5 0 1 0-5 0','M9 3h6v5H9zM8 8h8l1 13H7z'],
+    clinic:['M5 5h14v14H5zM12 8.5v7M8.5 12h7','M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.4a4.2 4.2 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z'],
+    food:['M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5zM16 10h2a2 2 0 0 1 0 4h-2M8.5 3.5v3M12 3.5v3','M4 20h16M6 20v-6h12v6M6 14c2 1.5 4-1.5 6 0s4-1.5 6 0M12 10V7'],
+    shop:['M5 8h14l-1.2 12H6.2zM9 8V6.5a3 3 0 0 1 6 0V8','M4 8l8-4 8 4v9l-8 4-8-4zM4 8l8 4 8-4M12 12v9'],
+    fitness:['M3 10v4M6 7.5v9M18 7.5v9M21 10v4M6 12h12','M12 3a2 2 0 1 0 0 4 2 2 0 1 0 0-4M7 21l3-7 2 2v5M17 21l-3-9-4-2-3 3']};
+  const IC=['M4 5h16v11H9.5L5 20v-4H4zM7.5 9h9M7.5 12.5h6','M2.5 13l4 4L15 8M11.5 16l1 1L21 8','M4 6h16v14H4zM4 10.5h16M8 3.5v4M16 3.5v4M9 15.5l2 2 4-4',
+    'M6 16.5V11a6 6 0 0 1 12 0v5.5l1.8 1.8H4.2zM10 21h4','M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 1 0 0-17M12 7.5V12l3 2','M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.9l-5.2 2.8 1-5.9-4.3-4.1 5.9-.8z',
+    'M12 21s-6.5-5.7-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 15.3 12 21 12 21zM12 7.5a2.3 2.3 0 1 0 0 4.6 2.3 2.3 0 1 0 0-4.6',...(NG[nm]||NG.auto),...(NG[nm]||NG.auto)].map(d=>new Path2D(d));
+  const PLANE=new Path2D('M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z');
+  const INK='rgba(11,11,11,.72)',C=66;
+  let cv,cx,G=[],W=0,H=0,dpr=1,dir=0,t0=0,raf=0;
+  const rnd=(a,b)=>a+Math.random()*(b-a);
+  const back=k=>{const c=1.9;return 1+(c+1)*Math.pow(k-1,3)+c*Math.pow(k-1,2)};
+  /* одна фігура в одиничній клітинці 24×24 */
+  function shape(g){
+    const t=g.t;cx.lineWidth=g.lw;cx.lineCap=cx.lineJoin='round';cx.strokeStyle=cx.fillStyle=INK;
+    if(t==='ic')cx.stroke(IC[g.i]);
+    else if(t==='dots'){for(let y=0;y<4;y++)for(let x=0;x<4;x++){cx.beginPath();cx.arc(4.5+x*5,4.5+y*5,g.dr,0,7);cx.fill()}}
+    else if(t==='ball'){const gr=cx.createRadialGradient(9,8,1,12,12,11);gr.addColorStop(0,'#fff');gr.addColorStop(.45,'#b9b9b9');gr.addColorStop(1,'#2b2b2b');cx.fillStyle=gr;cx.beginPath();cx.arc(12,12,10,0,7);cx.fill()}
+    else if(t==='stripe'){cx.save();cx.beginPath();cx.arc(12,12,10,0,7);cx.clip();cx.rotate(g.a);cx.beginPath();for(let k=-24;k<34;k+=3.2){cx.moveTo(-20,k);cx.lineTo(40,k)}cx.stroke();cx.restore();cx.beginPath();cx.arc(12,12,10,0,7);cx.stroke()}
+    else if(t==='ring'){cx.save();cx.translate(12,12);cx.rotate(g.a);cx.beginPath();cx.ellipse(0,0,11,4.2,0,0,7);cx.stroke();cx.beginPath();cx.arc(8.6,2.6,1.6,0,7);cx.fill();cx.restore()}
+    else if(t==='app'){cx.fillStyle='#141414';cx.beginPath();cx.roundRect(1,1,22,22,6);cx.fill();cx.save();cx.translate(5.5,5.6);cx.scale(.54,.54);cx.fillStyle='#fff';cx.fill(PLANE);cx.restore()}
+    else if(t==='note'){cx.fillStyle='#fff';cx.beginPath();cx.roundRect(0,6,24,12,6);cx.fill();cx.stroke();cx.fillStyle=INK;cx.beginPath();cx.arc(6,12,2.6,0,7);cx.fill();cx.fillRect(10.5,9.8,9,1.4);cx.fillRect(10.5,13,6,1.4)}
+  }
+  function layout(){
+    W=gi.clientWidth;H=gi.clientHeight;dpr=Math.min(2,devicePixelRatio||1);cv.width=W*dpr;cv.height=H*dpr;
+    const o=gi.getBoundingClientRect(),c=cta.getBoundingClientRect(),ox=c.left+c.width/2-o.left,oy=c.top+c.height/2-o.top;
+    /* клітинки, де текст і кнопки, лишаємо порожніми */
+    const busy=['.gs','.island','.copy>*'].flatMap(q=>$$(q)).map(e=>e.getBoundingClientRect()).filter(r=>r.width).map(r=>[r.left-o.left-8,r.top-o.top-8,r.right-o.left+8,r.bottom-o.top+8]);
+    const x0=((W-22)/2)%C-C,types=['ic','ic','ic','ic','ic','ic','dots','ball','stripe','ring','app','note'];G=[];
+    for(let y=0;y<H;y+=C)for(let x=x0;x<W;x+=C){
+      if(busy.some(b=>x+C>b[0]&&x<b[2]&&y+C>b[1]&&y<b[3]))continue;
+      if(Math.random()>.5)continue;
+      const t=types[Math.floor(Math.random()*types.length)],d=Math.hypot(x+C/2-ox,y+C/2-oy);
+      G.push({x,y,t,i:Math.floor(Math.random()*IC.length),sz:rnd(27,34)*(t==='ball'||t==='stripe'?1.1:1),r:rnd(-.9,.9),a:rnd(-.8,.8),dr:rnd(1.2,1.8),
+        d:d*.75+rnd(0,140),o:rnd(0,160),v:0,f:0,lw:0});
+    }
+    G.forEach(g=>g.lw=1.6*24/g.sz);
+  }
+  function frame(now){
+    raf=0;cx.setTransform(dpr,0,0,dpr,0,0);cx.clearRect(0,0,W,H);let more=false;
+    for(const g of G){
+      const k=Math.max(0,Math.min(1,(now-t0-(dir>0?g.d:g.o))/(dir>0?560:280)));if(k<1)more=true;
+      const s=dir>0?g.f+(1-g.f)*back(k):g.f*(1-k)*(1-k);g.v=dir>0?g.f+(1-g.f)*k:g.f*(1-k);
+      if(g.v<.002)continue;
+      const a=Math.min(1,g.v*1.8);
+      cx.globalAlpha=a*.6;cx.fillStyle='rgba(255,255,255,.7)';cx.fillRect(g.x+1,g.y+1,C-1,C-1);
+      cx.globalAlpha=a;cx.strokeStyle='rgba(0,0,0,.07)';cx.lineWidth=1;cx.strokeRect(g.x+.5,g.y+.5,C,C);
+      cx.save();cx.translate(g.x+C/2,g.y+C/2);cx.rotate(g.r*(1-Math.min(1,s)));const sc=g.sz/24*Math.max(0,s);cx.scale(sc,sc);cx.translate(-12,-12);shape(g);cx.restore();
+    }
+    cx.globalAlpha=1;
+    if(more)raf=requestAnimationFrame(frame);
+  }
+  const go=d=>{
+    if(!cv){cv=document.createElement('canvas');cv.className='bloom';cv.setAttribute('aria-hidden','true');gi.append(cv);cx=cv.getContext('2d');
+      addEventListener('resize',()=>{if(dir<=0)G=[]},{passive:true})}
+    if(d>0&&!G.length)layout();
+    if(dir===d)return;dir=d;t0=performance.now();G.forEach(g=>g.f=g.v);if(!raf)raf=requestAnimationFrame(frame);
+  };
+  cta.addEventListener('pointerenter',()=>go(1));cta.addEventListener('pointerleave',()=>go(-1));
+  cta.addEventListener('focus',()=>{if(cta.matches(':focus-visible'))go(1)});cta.addEventListener('blur',()=>go(-1));
 }
 /* мікровзаємодії для миші: магнітні кнопки з бліком, нахил скриншотів */
 if(fine&&!reduce){
@@ -909,7 +1022,7 @@ if(!fine&&!reduce)io([$('#phone')],e=>e.target.classList.toggle('play',e.isInter
 /* кнопка внизу на телефоні: після першого екрана, ховається біля контакту */
 const dock=$('#dock');let heroCta=true,contactOn=false;
 const dockSet=()=>{const on=!heroCta&&!contactOn;dock.classList.toggle('show',on);dock.tabIndex=on?0:-1};
-io([$('.hero .ctas')],e=>{heroCta=e.isIntersecting||e.boundingClientRect.top>0;dockSet()});
+io([$('.hero .ctas')],e=>{heroCta=e.isIntersecting;dockSet()});
 io([$('#contact')],e=>{contactOn=e.isIntersecting;dockSet()});
 
 /* ?v=pro з холодного повідомлення: картка «Кілька точок» стає першою й підсвічується */
