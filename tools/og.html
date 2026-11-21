@@ -1,0 +1,73 @@
+<!doctype html>
+<!-- Шаблон превʼю посилання 1200×630. Рендерить tools/make_og.py: og.html?n=sto|beauty|clinic|food|shop|fitness -->
+<html lang="uk">
+<meta charset="utf-8">
+<style>
+@font-face{font-family:Inter;font-weight:400 700;src:url(../fonts/inter-cyr.woff2) format('woff2');unicode-range:U+0301,U+0404,U+0406-0407,U+0410-044F,U+0454,U+0456-0457,U+0490-0491,U+2116}
+@font-face{font-family:Inter;font-weight:400 700;src:url(../fonts/inter-lat.woff2) format('woff2');unicode-range:U+0020-007E,U+00A0,U+00A9,U+00AB,U+00B7,U+00BB,U+00D7,U+02BC,U+2011,U+2013-2014,U+2019,U+201C-201E,U+2026,U+2212}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{position:relative;background:#f3f3f3;color:#0b0b0b;font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}
+.grid{position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px) 0 0/24px 24px;
+  -webkit-mask:radial-gradient(70% 90% at 30% 45%,#000 20%,transparent 75%)}
+.left{position:absolute;left:72px;top:64px;width:640px}
+.logo{width:92px;height:28px;display:block}
+.kicker{margin-top:44px;font:500 17px/1.3 "DejaVu Sans Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#555}
+h1{margin-top:14px;font-size:60px;line-height:1.04;letter-spacing:-.035em;font-weight:700;text-wrap:balance}
+.sub{margin-top:26px;display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 24px;border-radius:26px;background:#0b0b0b;color:#fff;font-size:22px;font-weight:600}
+.proof{margin-top:20px;font-size:21px;color:#383838}
+.proof b{color:#0b0b0b}
+/* телефон праворуч, обрізаний нижнім краєм */
+.phone{position:absolute;right:86px;top:58px;width:316px;height:620px;border-radius:48px 48px 0 0;border:11px solid #0b0b0b;border-bottom:0;overflow:hidden;background:#111;
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.45)}
+.phone img{width:100%;display:block}
+.chat{position:absolute;inset:0;background:#f3f3f3;padding:22px 16px;display:flex;flex-direction:column;gap:10px;font-size:17px}
+.chat .top{display:flex;align-items:center;gap:10px;padding:4px 4px 14px;border-bottom:1px solid rgba(0,0,0,.08);margin-bottom:6px}
+.chat .ava{width:40px;height:40px;border-radius:12px;background:linear-gradient(160deg,#3a3a3a,#0b0b0b 60%);display:grid;place-items:center}
+.chat .top b{display:block;font-size:17px}.chat .top small{display:block;font-size:13px;color:#555}
+.m{padding:10px 14px;border-radius:18px;background:#fff;width:max-content;max-width:86%;line-height:1.3}
+.m.me{margin-left:auto;background:#0b0b0b;color:#fff}
+.kb{display:flex;gap:8px}.kb .m{flex:1;text-align:center;max-width:none;background:rgba(255,255,255,.7);box-shadow:inset 0 0 0 1px rgba(0,0,0,.09)}
+</style>
+<body>
+<div class="grid"></div>
+<div class="left">
+  <svg class="logo" viewBox="75 -2 850 252"><path id="logo" fill="#0b0b0b"/></svg>
+  <p class="kicker" id="k"></p>
+  <h1 id="h"></h1>
+  <div class="sub">Без передоплати · спочатку результат</div>
+  <p class="proof" id="p"></p>
+</div>
+<div class="phone" id="phone"></div>
+<script>
+const OG={
+  sto:{k:'Сайт і Telegram‑бот для СТО',h:'Клієнти записуються самі — навіть коли ви під машиною',
+    p:'<b>+31%</b> закритих нарядів у Gold Auto за перший місяць із ботом',shot:'../media/gold-m-720.webp'},
+  beauty:{k:'Сайт і Telegram‑бот для салону краси',h:'Клієнтки записуються самі — навіть коли ви з клієнткою',
+    chat:['Манікюр','Брови','Манікюр','Олена — завтра об 11:00, Ірина — о 15:30','Олена, 11:00']},
+  clinic:{k:'Сайт і Telegram‑бот для клініки',h:'Пацієнти записуються самі — навіть коли ви на прийомі',
+    chat:['Запис','Ціни','Запис','Лікар вільний завтра о 9:30 або 16:00','9:30']},
+  food:{k:'Сайт і Telegram‑бот для кавʼярні',h:'Замовлення приходять самі — навіть у розпал зміни',
+    chat:['Замовити','Меню','Замовити','Торт на суботу: самовивіз о 12:00 чи доставка?','Самовивіз']},
+  shop:{k:'Сайт і Telegram‑бот для магазину',h:'Замовлення приходять самі — навіть коли ви з покупцем',
+    chat:['Замовити','Наявність','Замовити','Зберемо до 17:00. Самовивіз чи доставка?','Самовивіз']},
+  fitness:{k:'Сайт і Telegram‑бот для фітнес‑студії',h:'Клієнти записуються самі — навіть коли ви на тренуванні',
+    chat:['Запис','Розклад','Запис','Групове завтра о 8:00 або 19:00','19:00']},
+};
+const d=OG[new URLSearchParams(location.search).get('n')]||OG.sto;
+document.getElementById('k').textContent=d.k;
+document.getElementById('h').textContent=d.h;
+const p=document.getElementById('p');d.p?p.innerHTML=d.p:p.remove();
+const ph=document.getElementById('phone');
+if(d.shot){const im=new Image();im.src=d.shot;ph.append(im)}
+else{const c=d.chat;ph.innerHTML=`<div class="chat"><div class="top"><span class="ava"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg></span><div><b>Ваш бот</b><small>онлайн</small></div></div>
+  <div class="m">Вітаю! Що потрібно?</div><div class="kb"><div class="m">${c[0]}</div><div class="m">${c[1]}</div></div>
+  <div class="m me">${c[2]}</div><div class="m">${c[3]}</div><div class="m me">${c[4]}</div><div class="m">Готово, чекаємо вас</div></div>`}
+/* контур логотипа беремо з самого сайту, щоб не тримати дві копії */
+fetch('../index.html').then(r=>r.text()).then(t=>{
+  const m=t.match(/id="gpath" d="([^"]+)"/);document.getElementById('logo').setAttribute('d',m[1]);
+  return Promise.all([document.fonts.ready,...[...document.images].map(i=>i.decode().catch(()=>{}))]);
+}).then(()=>{document.body.dataset.ready='1'});
+</script>
+</body>
+</html>

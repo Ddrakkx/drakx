@@ -3,32 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Сайти й Telegram-боти для СТО та малого бізнесу | drakx</title>
-<meta name="description" content="Роблю сайти й Telegram-боти для СТО, майстерень і місцевого бізнесу. Без передоплати: спочатку показую результат. Приклади: Gold Auto, Volt Master.">
-<meta name="theme-color" content="#f5f5f7">
+<title>Сайт і Telegram-бот для запису клієнтів на СТО | drakx</title>
+<meta name="description" content="Клієнти записуються самі, навіть коли ви зайняті: сайт і Telegram-бот для СТО та малого бізнесу. Без передоплати — спочатку показую результат. Приклад: goldauto.online.">
+<meta name="theme-color" content="#f3f3f3">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Сайти й Telegram-боти для СТО та малого бізнесу | drakx">
-<meta property="og:description" content="Роблю все сам, від дизайну до запуску. Без передоплати: спочатку показую результат.">
+<meta property="og:site_name" content="drakx">
+<meta property="og:title" content="Клієнти записуються самі — сайт і Telegram-бот для СТО">
+<meta property="og:description" content="Без передоплати: спочатку показую готовий результат. Gold Auto: +31% закритих нарядів за перший місяць із ботом.">
 <meta property="og:image" content="https://ddrakkx.github.io/drakx/media/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Клієнти записуються самі — сайт і Telegram-бот для СТО, без передоплати">
 <meta property="og:url" content="https://ddrakkx.github.io/drakx/">
 <link rel="canonical" href="https://ddrakkx.github.io/drakx/">
 <meta property="og:locale" content="uk_UA">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Клієнти записуються самі — сайт і Telegram-бот для СТО">
+<meta name="twitter:description" content="Без передоплати: спочатку показую готовий результат. Gold Auto: +31% закритих нарядів за перший місяць із ботом.">
+<meta name="twitter:image" content="https://ddrakkx.github.io/drakx/media/og.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"drakx","url":"https://ddrakkx.github.io/drakx/","image":"https://ddrakkx.github.io/drakx/media/og.jpg","description":"Сайти й Telegram-боти для запису клієнтів: СТО, салони краси, клініки, кавʼярні, магазини. Без передоплати.","areaServed":{"@type":"Country","name":"Україна"},"availableLanguage":"uk","sameAs":["https://t.me/ddrakx","https://instagram.com/drakxwork"]}</script>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preload" href="fonts/nick.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-cyr.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter-lat.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js')</script>
 <style>
-@font-face{font-family:Nick;font-weight:800;font-display:swap;src:url(fonts/nick.woff2) format('woff2')}
-@font-face{font-family:Inter;font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-cyr.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:Inter;font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-lat.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+/* Inter обрізаний до символів сайту й ваг 400–700 (було 67 КБ, стало 29 КБ); unicode-range = рівно те, що є у файлах */
+@font-face{font-family:Inter;font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-cyr.woff2) format('woff2');unicode-range:U+0301,U+0404,U+0406-0407,U+0410-044F,U+0454,U+0456-0457,U+0490-0491,U+2116}
+@font-face{font-family:Inter;font-style:normal;font-weight:400 700;font-display:swap;src:url(fonts/inter-lat.woff2) format('woff2');unicode-range:U+0020-007E,U+00A0,U+00A9,U+00AB,U+00B7,U+00BB,U+00D7,U+02BC,U+2011,U+2013-2014,U+2019,U+201C-201E,U+2026,U+2212}
 :root{
-  --bg:#f5f5f7;--card:#fff;--ink:#1d1d1f;--ink2:#3d3d40;--muted:#5c5c61;--line:rgba(0,0,0,.08);
-  --link:#0066cc;--blue:#0a84ff;--green:#30d158;
+  /* монохром: лише чорний, білий і нейтральні сірі, без синього відтінку */
+  --bg:#f3f3f3;--card:#fff;--ink:#0b0b0b;--ink2:#383838;--muted:#555;--line:rgba(0,0,0,.09);
+  --sh:0,0,0;
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"DejaVu Sans Mono","Liberation Mono",monospace;
   --r:28px;--r-in:18px;
   --spring:linear(0,.009,.035 2.1%,.141,.281 6.7%,.723 12.9%,.938 16.7%,1.017,1.077,1.121,1.149 24.3%,1.159,1.163,1.161,1.154 29.9%,1.129 32.8%,1.051 39.6%,1.017 43.1%,.991,.977 51%,.974 53.8%,.975 57.1%,.997 69.8%,1.003 76.9%,1.004 83.8%,1);
   --soft:cubic-bezier(.2,.8,.2,1);
@@ -36,33 +44,54 @@
   color-scheme:light;
 }
 @supports not (transition-timing-function:linear(0,1)){:root{--spring:cubic-bezier(.3,1.4,.5,1)}}
+/* рідке скло: --lg = SVG-фільтр заломлення (ставить JS, лише Chromium), --la = кут світла на обідку */
+@property --lg{syntax:'*';inherits:false}
+@property --la{syntax:'<angle>';inherits:true;initial-value:-35deg}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px;overflow-x:hidden}
-body{background:var(--bg);color:var(--ink);font:17px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* clip, а не hidden: hidden робить body контейнером прокрутки й ламає position:sticky */
+html{scroll-behavior:smooth;scroll-padding-top:80px;overflow-x:hidden;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font:17px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:12px}
+p,li{text-wrap:pretty}
+/* для скринрідерів: видно лише їм */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:fixed;z-index:60;left:12px;top:-60px;padding:12px 18px;border-radius:14px;background:var(--ink);color:#fff;font-size:15px}
+.skip:focus{top:12px}
 .pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 26px;border-radius:25px;font-size:17px;font-weight:500;white-space:nowrap;transition:translate .35s var(--soft),scale .45s var(--spring),background .3s}
 .pill{position:relative;isolation:isolate;overflow:hidden;translate:var(--tx,0px) var(--ty,0px)}
 .pill:active{scale:.95}
 .pill::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
-  background:radial-gradient(90px circle at var(--mx,50%) var(--my,-30%),rgba(255,255,255,.38),transparent 70%)}
-.pill.light::after{background:radial-gradient(90px circle at var(--mx,50%) var(--my,-30%),#fff,transparent 70%)}
+  background:radial-gradient(90px circle at var(--mx,50%) var(--my,-30%),rgba(255,255,255,.26),transparent 70%)}
+.pill.light::after{background:radial-gradient(90px circle at var(--mx,50%) var(--my,-30%),rgba(0,0,0,.06),transparent 70%)}
 @media (hover:hover){.pill:hover::after{opacity:1}}
-/* кнопки з рідкого скла: напівпрозорі, з бліком і світлим краєм */
-.pill.dark{color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.04) 48%,rgba(255,255,255,0) 52%,rgba(255,255,255,.08)),rgba(28,28,32,.56);
-  -webkit-backdrop-filter:blur(18px) saturate(1.9);backdrop-filter:blur(18px) saturate(1.9);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),inset 0 1.5px 0 rgba(255,255,255,.55),inset 0 -1px 2px rgba(255,255,255,.18),0 14px 30px -16px rgba(20,10,40,.45)}
-.pill.dark:hover{background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.04) 48%,rgba(255,255,255,0) 52%,rgba(255,255,255,.1)),rgba(20,20,24,.66)}
-.pill.light{color:var(--ink);background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.28));
-  -webkit-backdrop-filter:blur(18px) saturate(1.9);backdrop-filter:blur(18px) saturate(1.9);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.75),inset 0 1.5px 0 #fff,inset 0 -1px 2px rgba(255,255,255,.5),0 0 0 1px rgba(0,0,0,.04),0 14px 30px -16px rgba(20,10,40,.3)}
+/* кнопки з рідкого скла: димчасте чорне й прозоре біле; краї заломлюють те, що позаду */
+.pill.dark{color:#fff;background:linear-gradient(180deg,rgba(255,255,255,.17),rgba(255,255,255,.03) 46%,rgba(255,255,255,0) 54%,rgba(255,255,255,.07)),rgba(12,12,12,.84);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:var(--lg,blur(14px));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.09),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -1px 1px rgba(255,255,255,.1),0 14px 30px -16px rgba(var(--sh),.6)}
+.pill.dark:hover{background:linear-gradient(180deg,rgba(255,255,255,.21),rgba(255,255,255,.04) 46%,rgba(255,255,255,0) 54%,rgba(255,255,255,.08)),rgba(34,34,34,.84)}
+.pill.light{color:var(--ink);background:rgba(255,255,255,.62);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:var(--lg,blur(12px));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.5),inset 0 1px 1px #fff,inset 0 -10px 18px -12px rgba(255,255,255,.9),inset 0 -1px 1px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.07),0 12px 28px -14px rgba(var(--sh),.3)}
+.lg .pill.light{background:rgba(255,255,255,.16);-webkit-backdrop-filter:none;backdrop-filter:var(--lg,none)}
+.pill.light:hover{background:rgba(255,255,255,.72)}.lg .pill.light:hover{background:rgba(255,255,255,.3)}
+/* обідок скла: світлий з боку курсора (на телефоні світло повільно гуляє), слабший відблиск навпроти */
+.pill::before,.nav::before,.island::before{content:"";position:absolute;inset:0;z-index:2;border-radius:inherit;padding:1.25px;pointer-events:none;
+  background:conic-gradient(from var(--la),rgba(255,255,255,.95),rgba(255,255,255,.2) 12%,rgba(0,0,0,.12) 25%,rgba(255,255,255,.1) 38%,rgba(255,255,255,.6) 50%,rgba(255,255,255,.1) 62%,rgba(0,0,0,.12) 75%,rgba(255,255,255,.2) 88%,rgba(255,255,255,.95));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+/* на телефоні світло на обідку гуляє разом із прокруткою: коли сторінка стоїть, анімація теж стоїть і нічого не перераховує */
+@supports (animation-timeline:scroll()){
+  @media (hover:none) and (prefers-reduced-motion:no-preference){
+    .pill::before,.nav::before,.island::before{animation:sway linear both;animation-timeline:scroll(root)}
+  }
+}
+@keyframes sway{0%,16%,33%,50%,66%,83%,100%{--la:-70deg}8%,25%,41%,58%,75%,91%{--la:40deg}}
 .ctas{position:relative}
-.hero .ctas::before{content:"";position:absolute;inset:-34px -70px;z-index:-1;pointer-events:none;
-  background:radial-gradient(closest-side at 28% 55%,rgba(255,159,10,.26),transparent),radial-gradient(closest-side at 52% 50%,rgba(255,55,95,.2),transparent),radial-gradient(closest-side at 76% 50%,rgba(10,132,255,.24),transparent)}
 .tg{width:18px;height:18px;flex:none}
 .wrap{width:min(1080px,100%);margin:0 auto;padding:0 var(--pad)}
-.eyebrow{font-size:15px;font-weight:600;color:var(--muted)}
+.eyebrow,.tag,.multi .kind{font:500 13px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 h1,h2{font-weight:600;text-wrap:balance}
 h2{font-size:clamp(32px,4.4vw,56px);line-height:1.08;letter-spacing:-.028em}
 .lead{color:var(--muted);font-size:clamp(17px,1.5vw,21px);line-height:1.45;max-width:620px;text-wrap:pretty}
@@ -72,9 +101,13 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 
 /* ---------- навігація (скло) ---------- */
 .nav{position:fixed;z-index:50;top:12px;left:50%;translate:-50% 0;width:min(760px,calc(100% - 24px));height:56px;border-radius:28px;display:flex;align-items:center;justify-content:space-between;padding:0 6px 0 22px;
-  background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(20px) saturate(1.8);backdrop-filter:blur(20px) saturate(1.8);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),inset 0 1px 0 #fff,0 8px 30px -12px rgba(20,20,40,.22)}
-.logo{font-family:Nick,Inter,sans-serif;font-weight:800;font-size:21px;letter-spacing:-.03em;padding:10px 0}
+  background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(20px) grayscale(1);backdrop-filter:var(--lg,blur(20px) grayscale(1));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),inset 0 1px 1px #fff,inset 0 -1px 1px rgba(0,0,0,.04),0 0 0 1px rgba(0,0,0,.06),0 8px 30px -12px rgba(var(--sh),.22)}
+/* .74 білого: текст меню читається навіть над чорним блоком «Контакт» (контраст ≈7:1), а заломлення по краю лишається */
+.lg .nav{background:rgba(255,255,255,.74);backdrop-filter:var(--lg,blur(5px) grayscale(1) brightness(1.06))}
+/* логотип — той самий контур, що й великий нік (#gpath), тож окремий шрифт не вантажимо */
+.logo{display:flex;align-items:center;padding:12px 0}
+.logo svg{display:block;width:54px;height:16px;fill:currentColor}
 .nav nav{display:flex;gap:28px;font-size:14px;color:var(--ink2)}
 .nav nav a{padding:12px 0;transition:color .2s}.nav nav a:hover{color:var(--ink)}
 .nav .pill{height:44px;padding:0 20px;font-size:15px}
@@ -82,20 +115,28 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .nav.small{width:min(640px,calc(100% - 24px));height:52px;top:8px}
 
 /* ---------- перший екран ---------- */
-.hero{position:relative;overflow:hidden;overflow:clip;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(92px,13vh,128px) 16px 0;--sw:min(640px,86vw)}
+/* тонка сітка, що повільно пливе вгору: лінії видно, як вони гнуться в краях скла острова й кнопок */
+.grid{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;
+  -webkit-mask:radial-gradient(85% 62% at 50% 50%,#000 30%,transparent 78%);mask:radial-gradient(85% 62% at 50% 50%,#000 30%,transparent 78%)}
+.grid i{position:absolute;inset:0 0 -22px;
+  background:linear-gradient(rgba(0,0,0,.075) 1px,transparent 1px) 50% 0/22px 22px,linear-gradient(90deg,rgba(0,0,0,.075) 1px,transparent 1px) 50% 0/22px 22px}
+/* сітка пливе лише на комп'ютері: на телефоні постійний рух змушував би скло перераховуватись щокадру й садив батарею */
+@media (prefers-reduced-motion:no-preference) and (hover:hover) and (pointer:fine){
+  .grid i{animation:drift 9s linear infinite}
+  .hero.paused .grid i{animation-play-state:paused}
+}
+@keyframes drift{to{transform:translateY(-22px)}}
+/* нік менший, ніж був: головне на першому екрані — що клієнт отримає, а не логотип */
+.hero{position:relative;isolation:isolate;overflow:hidden;overflow:clip;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(92px,13vh,128px) 16px 48px;--sw:min(460px,64vw)}
 @media (min-width:900px){.hero{min-height:min(100svh,940px);justify-content:center;padding-bottom:40px}}
-@media (min-width:700px) and (max-height:820px){.hero{--sw:min(520px,86vw);padding-top:92px}}
-/* скляний нік: букви заломлюють кольорове світло позаду */
+@media (min-width:700px) and (max-height:820px){.hero{--sw:min(400px,64vw);padding-top:92px}}
+/* нік із чорного скла: всередині повільно пливе сірий дим, зверху глянець і блік за курсором */
 .gs{position:relative;width:var(--sw);aspect-ratio:1000/300}
 .aura{position:absolute;inset:-58% -8% -30%;pointer-events:none}
 .aura i{position:absolute;top:8%;width:44%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--c) 0%,color-mix(in srgb,var(--c) 42%,transparent) 36%,transparent 70%)}
-.aura i:nth-child(1){--c:#ff9f0a;left:0;top:4%}
-.aura i:nth-child(2){--c:#ff375f;left:28%;top:12%}
-.aura i:nth-child(3){--c:#0a84ff;left:56%;top:5%}
-.gs>.aura{opacity:.42}
-.js .gs>.aura i{opacity:0;scale:.6;transition:opacity 1s,scale 1.4s var(--soft)}
-.js .gs.on>.aura i{opacity:1;scale:1}
-.gs>.aura i:nth-child(2){transition-delay:.1s}.gs>.aura i:nth-child(3){transition-delay:.2s}
+.aura i:nth-child(1){--c:#4a4a4a;left:0;top:4%}
+.aura i:nth-child(2){--c:#2a2a2a;left:28%;top:12%}
+.aura i:nth-child(3){--c:#5a5a5a;left:56%;top:5%}
 @media (min-width:900px) and (prefers-reduced-motion:no-preference){
   .gs.on .aura i{animation:float 10s ease-in-out infinite alternate}
   .gs.on .aura i:nth-child(2){animation-duration:12s;animation-direction:alternate-reverse}
@@ -103,52 +144,44 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 }
 @keyframes float{to{transform:translate(7%,-7%) scale(1.07)}}
 .gs{transform:perspective(1000px) rotateX(var(--nrx,0deg)) rotateY(var(--nry,0deg));transition:transform .6s var(--soft)}
+/* на комп'ютері нік нахиляється за курсором: тримаємо його на окремому шарі, щоб нахил не перемальовував SVG-фільтри */
+@media (hover:hover) and (pointer:fine){.gs{will-change:transform}}
 .word{position:absolute;inset:0}
-.word>*{transform-origin:50% 84%}
-.gs.jelly .word>*{animation:jelly .9s ease-in-out}
-@keyframes jelly{0%{transform:none}22%{transform:scale(1.07,.9)}48%{transform:scale(.96,1.06)}72%{transform:scale(1.02,.98)}100%{transform:none}}
 .js .word{opacity:0}
 .js .gs.on .word{opacity:1;animation:nick 1s cubic-bezier(.2,1.3,.3,1) .12s both}
 @keyframes nick{from{opacity:0;transform:translateY(14px) scale(.965)}to{opacity:1;transform:none}}
 .gs svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
 .glass-in{position:absolute;inset:0;overflow:hidden;-webkit-clip-path:url(#gclip);clip-path:url(#gclip)}
-.glass-in .aura{transform-origin:50% 53%;transform:scale(1.3) translateY(-5%);filter:saturate(1.6) contrast(1.08)}
-.glass-in::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.1) 36%,rgba(255,255,255,0) 55%,rgba(40,0,80,.06) 80%,rgba(255,255,255,.22) 100%)}
-.glass-in .base{position:absolute;inset:0;background:rgba(255,255,255,.14)}
-/* острів */
-.island-area{position:relative;height:92px;width:100%;margin-top:calc(var(--sw) * -.05)}
-/* кольорове світло під островом, щоб скло було видно */
-.island-area::before{content:"";position:absolute;left:50%;top:50%;width:min(600px,100vw);height:170px;translate:-50% -50%;pointer-events:none;
-  background:radial-gradient(closest-side at 26% 50%,rgba(255,159,10,.55),transparent),radial-gradient(closest-side at 50% 56%,rgba(255,55,95,.5),transparent),radial-gradient(closest-side at 74% 48%,rgba(10,132,255,.5),transparent)}
-.js .island-area::before{opacity:0;transition:opacity 1.2s .1s}
-.js .island-area.lit::before{opacity:1}
-/* острів як сповіщення iOS: світле рідке скло */
-.island{position:absolute;left:50%;top:50%;translate:-50% -50%;width:var(--w,min(360px,calc(100vw - 40px)));height:var(--h,76px);border-radius:var(--rad,38px);overflow:hidden;cursor:pointer;contain:layout paint;
-  color:var(--ink);background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(255,255,255,.32));
-  -webkit-backdrop-filter:blur(22px) saturate(2);backdrop-filter:blur(22px) saturate(2);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),inset 0 1.5px 0 #fff,inset 0 -1px 2px rgba(255,255,255,.45),0 20px 44px -18px rgba(40,20,80,.35);
-  transition:width .6s var(--spring),height .6s var(--spring),border-radius .45s ease,opacity .15s,scale .7s var(--spring)}
+.glass-in .aura{transform-origin:50% 53%;transform:scale(1.3) translateY(-5%)}
+.glass-in::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,.07) 34%,rgba(255,255,255,0) 52%,rgba(255,255,255,0) 82%,rgba(255,255,255,.14) 100%)}
+.glass-in .base{position:absolute;inset:0;background:var(--ink)}
+/* острів: приклад сповіщення від бота. Один стан, без автоперемикання — не відволікає від заголовка */
+.island-area{display:flex;justify-content:center;width:100%;margin-top:18px}
+.island{position:relative;width:min(360px,calc(100vw - 40px));min-height:76px;border-radius:38px;overflow:hidden;contain:paint;
+  color:var(--ink);background:rgba(255,255,255,.72);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:var(--lg,blur(16px));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.5),inset 0 1.5px 1px #fff,inset 0 -14px 24px -16px rgba(255,255,255,.6),inset 0 -1px 1px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.06),0 20px 44px -20px rgba(var(--sh),.34);
+  transition:opacity .4s,scale .7s var(--spring)}
+/* поки карта заломлення не готова, скло в Chromium без розмиття; підклад .55 тримає дрібний текст читабельним */
+.lg .island{background:rgba(255,255,255,.55);-webkit-backdrop-filter:none;backdrop-filter:var(--lg,none)}
 .island{isolation:isolate}
-.js .island:not(.in){opacity:0;scale:.5;-webkit-backdrop-filter:none;backdrop-filter:none}
-.island::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(120px circle at var(--ix,50%) var(--iy,0%),rgba(255,255,255,.7),transparent 70%)}
-@media (hover:hover){.island.in:hover{scale:1.04}.island:hover::after{opacity:1}}
-.st{position:absolute;inset:0;display:flex;align-items:center;padding:0 16px;white-space:nowrap;text-align:left;opacity:0;filter:blur(6px);transform:scale(.95);transition:opacity .18s,filter .18s,transform .18s;pointer-events:none}
-.st.on{opacity:1;filter:none;transform:none;transition:opacity .3s .14s,filter .3s .14s,transform .4s .14s cubic-bezier(.2,.9,.3,1.2);pointer-events:auto}
-.s0{gap:12px;padding:0 14px}
-.app{flex:none;width:46px;height:46px;border-radius:13px;background:linear-gradient(160deg,#5ac8fa,#0a84ff);display:grid;place-items:center}
+.js .island:not(.in){opacity:0;scale:.85;-webkit-backdrop-filter:none;backdrop-filter:none}
+.st{display:flex;align-items:center;gap:12px;min-height:76px;padding:12px 14px;text-align:left}
+.st>div{min-width:0}
+.app{flex:none;width:46px;height:46px;border-radius:13px;background:linear-gradient(160deg,#3a3a3a,var(--ink) 60%);display:grid;place-items:center}
 .s0 small{display:block;font-size:12px;color:var(--muted);line-height:1.2}.s0 b{display:block;font-size:15px;font-weight:600;line-height:1.3}.s0 span{font-size:14px;color:var(--ink2);line-height:1.3}
-.s1{gap:14px;padding:0 22px;justify-content:center}
-.s1 b{font-size:30px;font-weight:600;letter-spacing:-.03em}
-.s1 span{font-size:13px;color:var(--ink2);line-height:1.3}
-.s2{justify-content:center;gap:10px;font-weight:600;font-size:17px}
-.s2:focus-visible{outline:2px solid var(--ink);outline-offset:-4px;border-radius:inherit}
-.copy{display:flex;flex-direction:column;align-items:center;max-width:900px;margin-top:6px}
+.copy{display:flex;flex-direction:column;align-items:center;max-width:900px;margin-top:22px}
+.copy .eyebrow{margin-bottom:12px}
 .copy h1{font-size:clamp(34px,4.6vw,60px);line-height:1.07;letter-spacing:-.03em;margin:0 0 14px}
 .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+/* доказ одразу під кнопками: найсильніша цифра сайту */
+.proof{margin-top:18px;font-size:15px;color:var(--ink2)}
+.proof a{text-decoration:underline;text-decoration-color:rgba(0,0,0,.2);text-underline-offset:4px}
+.proof b{font-weight:700;color:var(--ink)}
 
 /* ---------- поява при прокрутці ---------- */
 @media (prefers-reduced-motion:no-preference){
-  .js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--soft),transform .9s var(--soft);transition-delay:var(--d,0s)}
+  .js .rv{opacity:0;transform:translateY(14px);transition:opacity .5s var(--soft),transform .6s var(--soft);transition-delay:var(--d,0s)}
   .js .rv.in{opacity:1;transform:none}
 }
 
@@ -181,17 +214,21 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .day span{color:var(--ink2)}
 .js .c-day li{opacity:0;transform:translateY(10px);transition:opacity .5s,transform .6s var(--soft)}
 .js .c-day.go li{opacity:1;transform:none}
-.c-day li:nth-child(2){transition-delay:.25s}.c-day li:nth-child(3){transition-delay:.5s}
+.c-day li:nth-child(2){transition-delay:.12s}.c-day li:nth-child(3){transition-delay:.24s}
 
 /* ---------- роботи ---------- */
 .hint{text-align:center;font-size:14px;color:var(--muted);margin:-24px 0 40px}
+/* лінза — лише на комп'ютері й лише під курсором; на телефоні скриншоти просто видно цілком */
+.lens,.xclip{opacity:0;transition:opacity .3s}
+.shot:hover .lens,.shot:hover .xclip{opacity:1}
+@media (hover:none),(pointer:coarse){.lens,.xclip,.hint{display:none}}
 .case{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;perspective:1400px}
 .case+.case{margin-top:clamp(64px,8vw,104px)}
 .case.flip .shot{order:2}
 .shot,.js .case .shot{border-radius:var(--r);padding:10px;background:#fff;transition:opacity .8s var(--soft),transform .9s var(--soft),translate .45s var(--soft),scale .45s var(--soft),rotate .45s var(--soft),box-shadow .45s;transition-delay:var(--d,0s),var(--d,0s),0s,0s,0s,0s}
 .shot{position:relative}
 .shot.hov::before{content:"";position:absolute;inset:-12px;border-radius:inherit}
-.shot.hov{translate:0 -6px;scale:1.025;rotate:var(--ax,0) var(--ay,1) 0 var(--ang,0deg);box-shadow:0 34px 70px -34px rgba(20,20,40,.42)}
+.shot.hov{translate:0 -6px;scale:1.025;rotate:var(--ax,0) var(--ay,1) 0 var(--ang,0deg);box-shadow:0 34px 70px -34px rgba(var(--sh),.4)}
 @property --lr{syntax:'<length>';inherits:true;initial-value:88px}
 .view{transition:--lr .45s var(--soft)}
 .shot.hov .view{--lr:112px}
@@ -199,17 +236,19 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .shot .bar{display:flex;align-items:center;gap:6px;padding:2px 6px 10px}
 .bar i{width:9px;height:9px;border-radius:50%;background:rgba(0,0,0,.12)}
 .bar u{text-decoration:none;flex:1;margin-left:10px;height:22px;border-radius:11px;background:var(--bg);font-size:12px;color:var(--muted);display:grid;place-items:center}
-.view{position:relative;border-radius:var(--r-in);overflow:hidden;aspect-ratio:16/10;background:#e9e9ee;touch-action:pan-y;--lr:88px}
+.view{position:relative;border-radius:var(--r-in);overflow:hidden;aspect-ratio:16/10;background:#e8e8e8;touch-action:pan-y;--lr:88px}
 .view>img{width:100%;height:100%;object-fit:cover;object-position:top}
 .xclip{position:absolute;inset:0;clip-path:circle(var(--lr) at var(--lx,-200px) var(--ly,-200px));pointer-events:none}
 .xclip img{width:100%;height:100%;object-fit:cover;object-position:top;transform-origin:var(--lx) var(--ly);transform:scale(1.3)}
-.lens{position:absolute;left:0;top:0;width:calc(var(--lr)*2);height:calc(var(--lr)*2);border-radius:50%;touch-action:pan-y;cursor:grab;
+.lens{position:absolute;left:0;top:0;width:calc(var(--lr)*2);height:calc(var(--lr)*2);border-radius:50%;pointer-events:none;
   transform:translate(calc(var(--lx,-200px) - 50%),calc(var(--ly,-200px) - 50%)) var(--def,);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.95),inset 0 10px 18px -6px rgba(255,255,255,.95),inset 0 -14px 24px -10px rgba(10,132,255,.35),inset 10px 0 20px -14px rgba(255,90,140,.35),0 22px 50px -12px rgba(0,30,90,.4),0 2px 6px rgba(0,30,90,.14)}
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.95),inset 0 10px 18px -6px rgba(255,255,255,.95),inset 0 -14px 24px -10px rgba(0,0,0,.22),inset 10px 0 20px -14px rgba(0,0,0,.14),0 22px 50px -12px rgba(var(--sh),.38),0 2px 6px rgba(var(--sh),.14)}
 .lens::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(120% 80% at 30% 18%,rgba(255,255,255,.7) 0 11%,transparent 32%),radial-gradient(60% 40% at 72% 88%,rgba(255,255,255,.3),transparent 70%)}
+/* у Chromium лінза теж із рідкого скла: край гне каркас під нею; інакше лишається розмитий обідок */
+.lg .lens{-webkit-backdrop-filter:var(--lg);backdrop-filter:var(--lg)}
+.lg .lens::after{display:none}
 .lens::after{content:"";position:absolute;inset:0;border-radius:50%;-webkit-backdrop-filter:blur(3px) brightness(1.06);backdrop-filter:blur(3px) brightness(1.06);
   -webkit-mask:radial-gradient(circle,transparent calc(100% - 12px),#000 calc(100% - 10px));mask:radial-gradient(circle,transparent calc(100% - 12px),#000 calc(100% - 10px))}
-.tag{font-size:15px;font-weight:600;color:var(--muted)}
 .case h3{font-size:clamp(32px,3.6vw,44px);letter-spacing:-.03em;line-height:1.08;font-weight:600;margin:8px 0 12px}
 .case p{color:var(--ink2)}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
@@ -223,8 +262,8 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .link:hover{text-decoration-color:var(--ink)}
 
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
-  .svc .card,.prices .plan,.terms .term{transition:opacity .8s var(--soft),transform .9s var(--soft),translate .45s var(--soft),box-shadow .45s;transition-delay:var(--d,0s),var(--d,0s),0s,0s}
-  .svc .card:hover,.plan:hover,.term:hover{translate:0 -5px;box-shadow:0 28px 56px -34px rgba(20,20,40,.35)}
+  .svc .card,.prices .plan,.term{transition:opacity .8s var(--soft),transform .9s var(--soft),translate .45s var(--soft),box-shadow .45s;transition-delay:var(--d,0s),var(--d,0s),0s,0s}
+  .svc .card:hover,.plan:hover,.term:hover{translate:0 -5px;box-shadow:0 28px 56px -34px rgba(var(--sh),.32)}
   .term:hover .i-eye{animation:blink .5s}
   .term:hover .i-hand{rotate:360deg;transition:rotate 1.1s var(--soft)}
   .term:hover .i-spin{rotate:360deg;transition:rotate .9s var(--soft)}
@@ -237,27 +276,129 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 /* ---------- ціни ---------- */
 .prices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .pcol{display:flex;flex-direction:column;gap:16px}
-.pcol>h3{font-size:21px;font-weight:600;letter-spacing:-.02em;padding:0 6px}
+.pcol>h3{font-size:21px;font-weight:600;letter-spacing:-.02em}
 .plan{padding:28px;display:flex;flex-direction:column}
 .plan h4{font-size:19px;font-weight:600;letter-spacing:-.02em}
 .plan .cost{font-size:clamp(24px,2.5vw,30px);font-weight:600;letter-spacing:-.03em;margin-top:4px}
 .plan ul{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--ink2)}
 .plan li{position:relative;padding-left:24px;line-height:1.4}
-.plan li::before{content:"";position:absolute;left:2px;top:.42em;width:12px;height:7px;border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(-45deg)}
+.plan li::before{content:"";position:absolute;left:2px;top:.34em;width:12px;height:7px;border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(-45deg)}
 .plan .ex{margin-top:14px;font-size:14px;color:var(--muted)}
+.plan h4,.term b,.faq summary,.case h3,.svc h3,.pcol>h3{text-wrap:balance}
+/* після цін — одразу кнопка, щоб не гортати до контакту */
+.pcta{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:32px;text-align:center}
+.pcta p{font-size:15px;color:var(--muted)}
 
 /* кілька точок: одна картка на всю ширину, для ?v=pro стає першою й підсвічується */
 .multi{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.25fr;gap:10px 32px;align-items:start}
-.multi .kind{font-size:14px;font-weight:600;color:var(--muted)}
-.multi h4{margin-top:4px}
+.multi h4{margin-top:6px}
 .multi .why{color:var(--ink2);font-size:15px;margin-top:10px;max-width:46ch}
 .multi ul{margin-top:2px}
 .multi li b{font-weight:600;color:var(--ink)}
-.prices.pro .multi{order:-1;box-shadow:0 0 0 2px var(--ink),0 24px 50px -30px rgba(20,20,40,.35)}
+.prices.pro .multi{order:-1;box-shadow:0 0 0 2px var(--ink),0 24px 50px -30px rgba(var(--sh),.32)}
 @media (max-width:700px){.multi{grid-template-columns:1fr}}
 
-/* ---------- як працюю ---------- */
-.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+/* ---------- як працюю: переписка з клієнтом ---------- */
+.how{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:16px;align-items:start}
+.how-side{display:grid;gap:16px;position:sticky;top:96px}
+.flow{padding:clamp(16px,2.4vw,26px)}
+.flow-top{padding:2px 4px 4px}
+.flow-who{display:flex;align-items:center;gap:12px}
+.flow-ava{flex:none;width:42px;height:42px;border-radius:13px;background:linear-gradient(160deg,#3a3a3a,var(--ink) 60%);display:grid;place-items:center}
+.flow-ava svg{width:28px;height:9px;fill:#fff}
+.flow-who b{display:block;font-size:17px;font-weight:600;line-height:1.2}.flow-who small{display:block;font-size:13px;color:var(--muted)}
+.flow-who small.ty{color:var(--ink)}
+/* етапи липнуть під меню тонким рядком: видно, на якому кроці переписка, і не закривають її */
+.fsteps{position:sticky;top:78px;z-index:3;display:flex;gap:6px;list-style:none;margin:0 -8px;padding:10px 8px 12px;border-radius:14px;background:#fff}
+.fsteps li{flex:1;min-width:0;display:grid;gap:6px;font:500 10.5px/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase;color:#9a9a9a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .3s}
+.fsteps li::before{content:"";height:3px;border-radius:2px;background:linear-gradient(var(--ink),var(--ink)) 0 0/0 100% no-repeat,#e3e3e3;transition:background-size .7s var(--soft)}
+.fsteps li.on{color:var(--ink2)}.fsteps li.on::before{background-size:100% 100%}.fsteps li.cur{color:var(--ink)}
+.flow-log{display:flex;flex-direction:column;gap:8px;padding:16px;border-radius:var(--r-in);background:var(--bg);font-size:15px}
+.row{position:relative;display:flex}
+.row.me{justify-content:flex-end}
+.flow .m{max-width:84%}
+.flow .m time{display:block;margin-top:3px;font-size:11px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.flow .m.me time{color:#a3a3a3}
+/* галочки: одна — надіслано, дві — прочитано (коли drakx починає друкувати) */
+.tk{display:inline-block;position:relative;width:15px;height:9px;margin-left:4px;vertical-align:-1px}
+.tk::before,.tk::after{content:"";position:absolute;top:0;width:7px;height:4px;border-left:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg)}
+.tk::before{left:0}.tk::after{left:5px;opacity:0;transition:opacity .25s}
+.read .tk::after{opacity:1}.read .m.me time{color:#d4d4d4}
+/* «друкує…» */
+.dots{position:absolute;left:0;top:0;display:flex;gap:4px;padding:13px 14px;border-radius:18px;background:#fff;opacity:0;scale:.7;transform-origin:0 100%;transition:opacity .2s,scale .35s var(--spring);pointer-events:none}
+.dots i{width:6px;height:6px;border-radius:50%;background:#9a9a9a}
+.typing .dots{opacity:1;scale:1}
+.typing .dots i{animation:dot 1s ease-in-out infinite}.typing .dots i:nth-child(2){animation-delay:.15s}.typing .dots i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,60%,100%{transform:none;opacity:.45}30%{transform:translateY(-4px);opacity:1}}
+/* розділювач кроку, як дата в Telegram */
+.fsep{align-self:center;margin:10px 0 2px;padding:5px 12px;border-radius:12px;background:rgba(0,0,0,.06);font:500 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.fsep span{color:var(--muted);text-transform:none;letter-spacing:0}
+.fsep:first-child{margin-top:0}
+.fdone{list-style:none;display:grid;gap:3px;margin:4px 0 0}
+.fdone li{display:flex;align-items:center;gap:8px}
+.fdone li::before,.pb2::before{content:"";flex:none;width:10px;height:5px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-2px) rotate(-45deg)}
+/* превʼю посилання на прототип */
+.lp{margin:8px 0 6px;border-radius:14px;background:var(--bg);overflow:hidden;width:min(264px,100%)}
+.lp .wf{margin:0;border-radius:0;box-shadow:none}
+.lp-meta{padding:8px 11px 10px}.lp-meta b{display:block;font-size:14px;font-weight:600}.lp-meta small{display:block;font:12px var(--mono);color:var(--muted)}
+/* мінімакет сайту */
+.wf{width:min(264px,100%);margin:8px 0 6px;border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.wf-bar{display:flex;align-items:center;gap:4px;height:18px;padding:0 8px;background:#ececec}
+.wf-bar i{width:5px;height:5px;border-radius:50%;background:#c2c2c2}
+.wf-bar u{flex:1;height:8px;margin-left:6px;border-radius:4px;background:#fff}
+.wf-page{display:grid;gap:8px;padding:9px 10px 10px;background:#fff}
+.wf-page i{display:block;border-radius:3px;background:#dcdcdc}
+.wf-nav{display:flex;gap:6px;align-items:center}.wf-nav i{height:4px;width:12%}.wf-nav .logo{width:20%;height:7px;background:#9d9d9d;margin-right:auto}
+.wf-hero{display:grid;grid-template-columns:1.25fr 1fr;gap:9px;align-items:center}
+.wf-txt{display:grid;gap:5px}.wf-txt .h{height:8px;background:#b0b0b0}.wf-txt .h.s{width:68%}.wf-txt .t{height:4px;width:88%}
+.wf-row{display:flex;align-items:center;gap:6px;margin-top:2px}
+.wf .btn{flex:none;width:46%;height:10px;border-radius:5px;background:#a8a8a8;transition:width .7s var(--spring),height .7s var(--spring),background .4s,box-shadow .4s}
+.wf .img{height:52px;border-radius:6px;background:linear-gradient(135deg,#ececec,#dedede)}
+.wf-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}.wf-cards i{height:20px;border-radius:5px;background:#efefef}
+.wf-pr{display:grid;grid-template-rows:0fr;transition:grid-template-rows .7s var(--soft)}
+.wf-pr>div{min-height:0;overflow:hidden}
+.wf-pr .in{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin:8px 2px 2px;padding:6px;border-radius:7px;outline:1.5px dashed var(--ink);outline-offset:-1px}
+.wf-pr .in i{height:24px;border-radius:4px;background:#f3f3f3;box-shadow:inset 0 0 0 1px var(--line)}
+.wf-tag{font:600 8.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:3px 5px;border-radius:4px;background:var(--ink);color:#fff;opacity:0;scale:.5;transition:opacity .3s .45s,scale .5s .45s var(--spring)}
+.wf-pr .wf-tag{position:absolute;top:-7px;left:8px}
+.changed .wf .btn{width:58%;height:14px;background:var(--ink);box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--ink)}
+.changed .wf-pr{grid-template-rows:1fr}
+.changed .wf-tag{opacity:1;scale:1}
+/* оплата: кнопка «натискається» й стає «Оплачено» */
+.pay{display:grid;gap:3px;min-width:min(220px,100%)}
+.pay small{font-size:12px;color:#a3a3a3}.pay b{font-size:15px;font-weight:600}
+.paybtn{display:grid;place-items:center;height:36px;margin-top:8px;border-radius:18px;background:#fff;color:var(--ink);font-size:14px;font-weight:600;transition:background .35s,color .35s,box-shadow .35s,scale .2s var(--soft)}
+.paybtn>span{grid-area:1/1;transition:opacity .25s,scale .45s var(--spring)}
+.pb2{display:flex;align-items:center;gap:8px;opacity:0;scale:.6}
+.press .paybtn{scale:.93}
+.paid .paybtn{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.paid .pb1{opacity:0;scale:.6}.paid .pb2{opacity:1;scale:1}
+/* запуск: сайт онлайн, і одразу приходить перша заявка */
+.live{display:flex;align-items:center;gap:8px;margin:8px 0 2px;padding:9px 12px;border-radius:12px;background:var(--bg);font:500 13px var(--mono)}
+.live em{margin-left:auto;font:12px Inter,sans-serif;font-style:normal;color:var(--muted)}
+.live .dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.on .live .dot{animation:pulse 1.4s ease-out 4}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(0,0,0,.35)}100%{box-shadow:0 0 0 10px rgba(0,0,0,0)}}
+.ntf{align-self:center;display:flex;align-items:center;gap:11px;width:min(320px,100%);margin-top:8px;padding:10px 12px;border-radius:22px;background:rgba(255,255,255,.92);box-shadow:0 0 0 1px rgba(0,0,0,.06),0 18px 34px -20px rgba(0,0,0,.45);text-align:left}
+.ntf .app{width:38px;height:38px;border-radius:11px}
+.ntf small{display:block;font-size:12px;color:var(--muted);line-height:1.2}.ntf b{display:block;font-size:14px;font-weight:600;line-height:1.3}.ntf div>span:last-child{font-size:13px;color:var(--ink2)}
+.replay{align-self:center;display:inline-flex;align-items:center;gap:7px;margin-top:6px;padding:8px 14px;border:0;border-radius:16px;background:transparent;color:var(--muted);font:500 14px Inter,sans-serif;cursor:pointer;transition:color .2s,background .2s}
+.replay svg{width:15px;height:15px}
+.replay:hover{color:var(--ink);background:rgba(0,0,0,.05)}
+/* поява кроків */
+.js .flow .row .m{opacity:0;translate:0 10px;scale:.94;transform-origin:0 100%;transition:opacity .3s,translate .5s var(--spring),scale .5s var(--spring)}
+.js .flow .row.me .m{transform-origin:100% 100%}
+.js .flow .row.on .m{opacity:1;translate:0 0;scale:1}
+.js .flow .fsep,.js .flow .replay{opacity:0;scale:.85;transition:opacity .3s,scale .45s var(--spring)}
+.js .flow .fsep.on,.js .flow .replay.on{opacity:1;scale:1}
+.js .flow .ntf{opacity:0;translate:0 -16px;scale:.95;transition:opacity .35s,translate .7s var(--spring),scale .7s var(--spring)}
+.js .flow .ntf.on{opacity:1;translate:0 0;scale:1}
+.js .flow .wf-page>*{opacity:0;translate:0 5px;transition:opacity .35s,translate .45s var(--soft);transition-delay:calc(var(--i,0) * 90ms + .1s)}
+.js .flow .built .wf-page>*{opacity:1;translate:0 0}
+.js .flow .v2 .wf-page>*{transition-delay:0s}
+.js .flow .fdone li{opacity:0;translate:-6px 0;transition:opacity .3s,translate .4s var(--soft)}
+.js .flow .changed .fdone li{opacity:1;translate:0 0}
+.js .flow .changed .fdone li:nth-child(1){transition-delay:.8s}.js .flow .changed .fdone li:nth-child(2){transition-delay:1.1s}
 .term{padding:30px}
 .term b{display:block;font-size:22px;font-weight:600;letter-spacing:-.025em;line-height:1.2;margin-bottom:10px}
 .term p{color:var(--ink2);font-size:16px}
@@ -281,21 +422,23 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
     opacity:0;translate:0 24px;pointer-events:none;visibility:hidden;transition:opacity .35s,translate .45s var(--soft),visibility 0s .45s}
   .dock:not(.show){-webkit-backdrop-filter:none;backdrop-filter:none}
   .dock.show{opacity:1;translate:0 0;pointer-events:auto;visibility:visible;transition:opacity .35s,translate .45s var(--soft),visibility 0s}
+  .dock:focus-visible{outline:2px solid #fff;outline-offset:-5px}
   footer{padding-bottom:96px}
+  /* елемент у фокусі не ховається під нижньою кнопкою */
+  html{scroll-padding-bottom:90px}
 }
 
 /* ---------- контакт ---------- */
 .contact{border-radius:36px;padding:clamp(44px,7vw,88px) var(--pad);text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;background:var(--ink);color:#fff;position:relative;overflow:hidden}
 .contact::before{content:"";position:absolute;width:560px;height:560px;left:50%;top:-360px;translate:-50% 0;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 65%);pointer-events:none}
-.contact .eyebrow{color:#a1a1a6}
+.contact .eyebrow{color:#a3a3a3}
 .contact :focus-visible{outline-color:#fff}
-.contact .lead{color:#d1d1d6}
+.contact .lead{color:#d4d4d4}
 .contact .ctas{margin-top:14px}
-.contact .pill.dark{color:var(--ink);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.8));box-shadow:inset 0 1px 0 #fff,0 12px 28px -14px rgba(0,0,0,.6)}
+.contact .pill.dark{color:var(--ink);background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.8));-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:inset 0 1px 0 #fff,0 12px 28px -14px rgba(0,0,0,.6)}
 .contact .pill.dark:hover{background:#fff}
-.contact .pill.ghost{color:#e5e5ea;font-weight:400;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.28)}
+.contact .pill.ghost{color:#e5e5e5;font-weight:400;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),inset 0 1px 0 rgba(255,255,255,.28)}
 .contact .pill.ghost:hover{background:rgba(255,255,255,.08)}
-.from{font-size:15px;color:#a1a1a6;margin-top:10px}
 footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44px}
 
 @media (max-width:900px){
@@ -304,12 +447,15 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
   .case,.case.flip{grid-template-columns:1fr}
   .case.flip .shot{order:0}
   .prices{grid-template-columns:1fr}
-  .terms{grid-template-columns:1fr}
+  .how{grid-template-columns:minmax(0,1fr)}
+  .how-side{position:static}
   .term svg{margin-bottom:14px}
 }
 @media (max-width:700px){
-  .nav nav{display:none}
-  .nav{padding-left:20px}
+  /* на телефоні в меню — розділи замість кнопки: кнопку дублює нижня «Написати в Telegram» */
+  .nav{padding:0 20px}
+  .nav nav{gap:18px}
+  .nav nav a:first-child,.nav .pill{display:none}
   .day{grid-template-columns:1fr;gap:10px}
   .view{--lr:62px}
   .contact{border-radius:30px}
@@ -317,14 +463,22 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 @media (max-width:430px){
   .copy h1{font-size:clamp(28px,7.9vw,34px)}
   .hero{padding-top:84px}
-  .island-area{height:80px}
+  .flow{padding:10px}.flow-top{padding:8px 8px 2px}.fsteps{top:66px;margin:0;padding:10px 8px}.flow-log{padding:12px}
   .s0 b{font-size:14px}
   .app{width:40px;height:40px;border-radius:11px}
 }
 @media (max-width:400px){
   .ctas .pill{width:100%}
   .phone{width:210px;--ph:290px}
-  .s1{padding:0 16px}
+}
+@media (prefers-reduced-transparency:reduce){
+  .nav,.island,.pill.light,.lg .nav,.lg .island,.lg .pill.light{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .pill.dark,.pill.dark:hover{background:var(--ink);-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+/* режим високого контрасту Windows: скло без меж зникло б, тож даємо явну рамку */
+@media (forced-colors:active){
+  .pill,.nav,.island,.card,.faq details{border:1px solid CanvasText}
+  .pill::before,.nav::before,.island::before{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -335,21 +489,22 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 </style>
 </head>
 <body>
+<a class="skip" href="#h1">До змісту</a>
 <header class="nav">
-  <a class="logo" href="#top" aria-label="drakx, на початок">drakx</a>
+  <a class="logo" href="#top" aria-label="drakx, на початок"><svg viewBox="75 -2 850 252" aria-hidden="true"><use href="#gpath"/></svg></a>
   <nav aria-label="Розділи"><a href="#services">Послуги</a><a href="#work">Роботи</a><a href="#prices">Ціни</a><a href="#contact">Контакт</a></nav>
-  <a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83." target="_blank" rel="noopener">Написати</a>
+  <a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0." target="_blank" rel="noopener">Написати</a>
 </header>
 
 <main id="top">
 <section class="hero" aria-labelledby="h1">
+  <div class="grid" aria-hidden="true"><i></i></div>
   <div class="gs" id="gs">
-    <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="word">
-      <svg viewBox="0 0 1000 300" aria-hidden="true"><defs><filter id="gsh" x="-15%" y="-30%" width="130%" height="180%"><feGaussianBlur stdDeviation="22"/><feOffset dy="20"/><feComponentTransfer><feFuncA type="linear" slope=".09"/></feComponentTransfer></filter></defs>
-        <use href="#gpath" fill="#1d1040" filter="url(#gsh)"/></svg>
+      <svg viewBox="0 0 1000 300" aria-hidden="true"><defs><filter id="gsh" x="-15%" y="-30%" width="130%" height="180%"><feGaussianBlur stdDeviation="22"/><feOffset dy="20"/><feComponentTransfer><feFuncA type="linear" slope=".16"/></feComponentTransfer></filter></defs>
+        <use href="#gpath" fill="#000" filter="url(#gsh)"/></svg>
       <div class="glass-in" aria-hidden="true"><span class="base"></span><div class="aura"><i></i><i></i><i></i></div></div>
-      <svg viewBox="0 0 1000 300" role="img" aria-label="drakx">
+      <svg viewBox="0 0 1000 300" aria-hidden="true">
         <defs>
           <path id="gpath" d="M161.0 110.7L161.0 110.7Q128.0 110.7 128.0 160.2L128.0 160.2Q128.0 185.3 136.9 197.5Q145.9 209.7 161.0 209.7L161.0 209.7Q174.2 209.7 184.1 200.8Q194.0 191.9 194.0 180.7L194.0 180.7L194.0 139.7Q194.0 128.5 184.1 119.6Q174.2 110.7 161.0 110.7ZM142.9 249.3L142.9 249.3Q113.5 249.3 94.7 225.7Q75.9 202.1 75.9 160.2L75.9 160.2Q75.9 117.3 94.0 94.2Q112.2 71.1 142.9 71.1L142.9 71.1Q169.9 71.1 192.1 91.2L192.1 91.2Q192.4 91.6 192.7 91.6Q193.0 91.6 193.0 91.2L193.0 91.2L193.0 17.3Q193.0 9.7 198.5 4.1Q203.9-1.5 211.5-1.5L211.5-1.5L227.7-1.5Q235.3-1.5 240.7 4.1Q246.2 9.7 246.2 17.3L246.2 17.3L246.2 227.2Q246.2 234.8 240.7 240.4Q235.3 246 227.7 246L227.7 246L215.2 246Q207.2 246 201.8 240.6Q196.3 235.1 196.0 227.2L196.0 227.2L196.0 224.6Q196.0 224.2 195.7 224.2L195.7 224.2L195.0 224.9Q174.2 249.3 142.9 249.3ZM313.7 246L295.9 246Q288.3 246 282.8 240.4Q277.4 234.8 277.4 227.2L277.4 227.2L277.4 93.2Q277.4 85.6 282.8 80.0Q288.3 74.4 295.9 74.4L295.9 74.4L312.0 74.4Q319.6 74.4 325.1 80.0Q330.5 85.6 330.5 93.2L330.5 93.2L330.5 107.1Q330.5 107.4 330.9 107.4L330.9 107.4Q331.5 107.4 331.5 107.1L331.5 107.1Q352.0 79.7 388.6 75.1L388.6 75.1Q396.2 74.1 401.6 79.7Q407.1 85.3 407.1 93.2L407.1 93.2L407.1 95.8Q407.1 103.4 401.6 109.0Q396.2 114.7 388.3 115.3L388.3 115.3Q361.5 118.3 346.9 133.6Q332.2 149.0 332.2 173.4L332.2 173.4L332.2 227.2Q332.2 234.8 326.7 240.4Q321.3 246 313.7 246L313.7 246ZM512.9 167.5L501.0 167.5Q460.7 167.5 460.7 192.2L460.7 192.2Q460.7 201.1 466.0 206.2Q471.3 211.3 480.2 211.3L480.2 211.3Q496.0 211.3 505.9 201.3Q515.8 191.2 515.8 174.4L515.8 174.4L515.8 170.4Q515.8 167.5 512.9 167.5L512.9 167.5ZM464.0 249.3L464.0 249.3Q441.3 249.3 426.6 234.6Q411.9 219.9 411.9 196.5L411.9 196.5Q411.9 136.4 501.0 136.4L501.0 136.4L512.9 136.4Q515.8 136.4 515.8 133.8L515.8 133.8L515.8 132.1Q515.8 119.6 509.4 114Q503.0 108.4 487.8 108.4L487.8 108.4Q467.7 108.4 439.6 114.7L439.6 114.7Q432.7 116.0 427.2 111.7Q421.8 107.4 421.8 100.5L421.8 100.5L421.8 99.8Q421.8 91.6 426.9 84.8Q432.0 78.0 439.9 76.7L439.9 76.7Q469.0 71.1 490.1 71.1L490.1 71.1Q533.3 71.1 551.3 86.6Q569.3 102.1 569.3 138.1L569.3 138.1L569.3 227.2Q569.3 234.8 563.7 240.4Q558.1 246 550.5 246L550.5 246L538.3 246Q530.4 246 524.8 240.6Q519.1 235.1 518.8 227.2L518.8 227.2L518.8 223.6Q518.8 223.2 518.5 223.2L518.5 223.2Q517.8 223.2 517.8 223.6L517.8 223.6Q497.0 249.3 464.0 249.3ZM633.5 246L617.3 246Q609.8 246 604.3 240.4Q598.9 234.8 598.9 227.2L598.9 227.2L598.9 17.3Q598.9 9.7 604.3 4.1Q609.8-1.5 617.3-1.5L617.3-1.5L633.5-1.5Q641.1-1.5 646.5 4.1Q652.0 9.7 652.0 17.3L652.0 17.3L652.0 139.1Q652.0 139.4 652.3 139.4L652.3 139.4L653.0 139.1L694.2 88.9Q706.1 74.4 724.6 74.4L724.6 74.4L748.4 74.4Q753.6 74.4 756.1 79.3Q758.6 84.3 755.0 88.6L755.0 88.6L698.5 154.9Q696.9 156.9 698.5 159.2L698.5 159.2L755.6 231.5Q758.9 236.1 756.4 241.1Q754.0 246 748.4 246L748.4 246L724.6 246Q706.1 246 694.6 231.2L694.6 231.2L653.0 177.0Q652.7 176.7 652.3 176.7Q652.0 176.7 652.0 177.0L652.0 177.0L652.0 227.2Q652.0 234.8 646.5 240.4Q641.1 246 633.5 246L633.5 246ZM798.4 246L779.9 246Q773.6 246 770.5 240.7Q767.4 235.4 770.6 229.8L770.6 229.8L810.3 160.9Q811.6 158.6 810.3 156.2L810.3 156.2L772.3 90.6Q769 85.0 772.1 79.7Q775.3 74.4 781.5 74.4L781.5 74.4L801.3 74.4Q809.6 74.4 816.9 79.2Q824.1 84.0 827.7 91.6L827.7 91.6L846.2 131.5Q846.2 131.8 846.6 131.8Q846.9 131.8 846.9 131.5L846.9 131.5L865.4 91.6Q868.7 84.0 875.9 79.2Q883.2 74.4 891.8 74.4L891.8 74.4L910.2 74.4Q916.2 74.4 919.3 79.7Q922.5 85.0 919.5 90.6L919.5 90.6L881.5 156.2Q879.9 158.6 881.5 160.9L881.5 160.9L921.1 229.8Q924.1 235.4 921.0 240.7Q917.8 246 911.9 246L911.9 246L892.1 246Q883.5 246 876.1 241.4Q868.7 236.8 865.4 229.2L865.4 229.2L845.6 186.3Q845.6 185.9 845.2 185.9Q844.9 185.9 844.9 186.3L844.9 186.3L825.1 229.2Q821.5 236.8 814.0 241.4Q806.6 246 798.4 246L798.4 246Z"/>
           <clipPath id="gclip" clipPathUnits="objectBoundingBox"><use href="#gpath" transform="scale(.001,.0033333)"/></clipPath>
@@ -374,19 +529,19 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
     </div>
   </div>
   <div class="island-area">
-    <div class="island" id="isl">
+    <div class="island" id="isl" role="img" aria-label="Приклад: сповіщення від бота про новий запис">
       <div class="st s0"><span class="app"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg></span><div><small>Ваш бот · щойно</small><b id="isl-t">Новий запис: діагностика</b><span id="isl-s">Олександр, завтра о&nbsp;10:00</span></div></div>
-      <div class="st s1"><b>24/7</b><span>бот приймає заявки,<br>навіть коли ви зайняті</span></div>
-      <a class="st s2" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83." target="_blank" rel="noopener" tabindex="-1">Написати в Telegram <span aria-hidden="true">→</span></a>
     </div>
   </div>
   <div class="copy">
-    <h1 id="h1">Сайти й&nbsp;Telegram&#8209;боти для&nbsp;СТО&nbsp;та малого бізнесу</h1>
-    <p class="lead">Роблю все сам, від дизайну до запуску. Без передоплати: спочатку показую результат, оплата потім.</p>
+    <p class="eyebrow" id="kicker">Сайти й&nbsp;Telegram&#8209;боти для&nbsp;СТО та малого бізнесу</p>
+    <h1 id="h1">Клієнти записуються самі&nbsp;— навіть коли ви під&nbsp;машиною</h1>
+    <p class="lead">Роблю сайт і&nbsp;Telegram&#8209;бот, через які клієнти записуються без дзвінків. Без передоплати: спочатку показую результат, оплата потім.</p>
     <div class="ctas">
-      <a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83." target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
+      <a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0." target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
       <a class="pill light" href="#work">Мої роботи</a>
     </div>
+    <p class="proof"><a href="#work" id="proof"><b>+31%</b> закритих нарядів у&nbsp;Gold&nbsp;Auto за перший місяць із&nbsp;ботом</a></p>
   </div>
 </section>
 
@@ -397,17 +552,17 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <article class="card c-site rv">
         <h3>Сайти</h3>
         <p>Сторінка, де клієнт бачить ваші послуги й ціни та одразу записується. Швидко відкривається навіть на мобільному інтернеті.</p>
-        <div class="phone" id="phone"><img src="media/gold-mlong-360.webp" srcset="media/gold-mlong-360.webp 360w, media/gold-mlong-720.webp 720w" sizes="236px" width="360" height="2400" alt="Сайт Gold Auto на телефоні" loading="lazy" decoding="async"></div>
+        <div class="phone" id="phone"><img src="media/gold-mlong-360.webp" srcset="media/gold-mlong-360.webp 360w, media/gold-mlong-480.webp 480w, media/gold-mlong-720.webp 720w" sizes="236px" width="360" height="2400" alt="Сайт Gold Auto на телефоні" loading="lazy" decoding="async"></div>
       </article>
       <article class="card c-bot rv" id="c-bot" style="--d:.08s">
         <h3>Telegram&#8209;боти</h3>
         <p>Бот приймає записи й заявки, коли ви зайняті, і одразу передає їх вам або майстрам.</p>
-        <div class="chatbox" aria-hidden="true">
+        <div class="chatbox" role="img" aria-label="Приклад розмови з ботом: клієнт обирає послугу й час, бот підтверджує запис">
           <div class="m">Вітаю! Що потрібно?</div>
-          <div class="kb"><div class="m">Запис</div><div class="m">Ціни</div></div>
-          <div class="m me">Запис</div>
-          <div class="m">Вільно завтра о&nbsp;10:00 або&nbsp;14:30</div>
-          <div class="m me">10:00</div>
+          <div class="kb"><div class="m" id="ch1">Запис</div><div class="m" id="ch2">Ціни</div></div>
+          <div class="m me" id="ch3">Запис</div>
+          <div class="m" id="ch4">Вільно завтра о&nbsp;10:00 або&nbsp;14:30</div>
+          <div class="m me" id="ch5">10:00</div>
           <div class="m">Готово, чекаємо вас</div>
         </div>
       </article>
@@ -425,8 +580,8 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 
 <section class="block" id="work" aria-labelledby="work-h">
   <div class="wrap">
-    <div class="head rv"><p class="eyebrow">Роботи</p><h2 id="work-h">Живі проєкти</h2><p class="lead">Сайти й боти, які я зробив для реальних клієнтів.</p></div>
-    <p class="hint rv" id="lens-hint">Наведіть курсор на скриншот: лінза покаже, як зібрана сторінка</p>
+    <div class="head rv"><p class="eyebrow">Роботи</p><h2 id="work-h">Живі проєкти</h2><p class="lead">Сайти й боти, які я зробив для клієнтів.</p></div>
+    <p class="hint rv">Наведіть курсор на знімок: лінза покаже каркас сторінки</p>
 
     <article class="case">
       <figure class="shot rv">
@@ -442,8 +597,9 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
         <h3>Gold Auto</h3>
         <p>Сайт автосервісу: послуги, сертифікати, клубна програма Gold Club і кнопка запису на кожному екрані.</p>
         <div class="chips"><span>Запис онлайн</span><span>Світла й темна тема</span><span>Зручно на телефоні</span></div>
-        <p class="aside">Також зробив для СТО клієнтський Telegram&#8209;бот: ним користуються ~140 клієнтів, а за перший повний місяць із ботом закритих нарядів стало на 31% більше.</p>
-        <a class="link" href="https://goldauto.online/" target="_blank" rel="noopener">goldauto.online <span aria-hidden="true">↗</span></a>
+        <p class="aside">Для цього ж СТО зробив клієнтський Telegram&#8209;бот:</p>
+        <div class="nums"><div class="num"><b>+31%</b><span>закритих нарядів за перший повний місяць із&nbsp;ботом</span></div><div class="num"><b>~140</b><span>клієнтів СТО вже користуються ботом</span></div></div>
+        <a class="link" href="https://goldauto.online/" target="_blank" rel="noopener">goldauto.online <span aria-hidden="true">↗</span><span class="sr"> (відкриється в новій вкладці)</span></a>
       </div>
     </article>
 
@@ -459,10 +615,10 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <div class="rv" style="--d:.1s">
         <p class="tag">Фари й ліхтарі · Корнин, біля Рівного</p>
         <h3>Volt Master</h3>
-        <p>Сайт майстерні фар і ліхтарів із «живими» ліхтарями BMW: стоп, поворот і аварійку можна ввімкнути просто на сторінці.</p>
+        <p>Сайт майстерні фар: ліхтарі BMW «оживають» просто на сторінці&nbsp;— можна ввімкнути стопи, поворот і аварійку.</p>
         <div class="chips"><span>Живі ліхтарі</span><span>Роботи з відео</span><span>Запис у Telegram</span></div>
-        <p class="aside">Також зробив Telegram&#8209;бот, який розкладає заявки майстрам за темами.</p>
-        <a class="link" href="https://ddrakkx.github.io/voltmaster-site/" target="_blank" rel="noopener">Відкрити сайт <span aria-hidden="true">↗</span></a>
+        <p class="aside">До сайту додав Telegram&#8209;бот, який розподіляє заявки між майстрами за темами.</p>
+        <a class="link" href="https://ddrakkx.github.io/voltmaster-site/" target="_blank" rel="noopener">Відкрити сайт <span aria-hidden="true">↗</span><span class="sr"> (відкриється в новій вкладці)</span></a>
       </div>
     </article>
   </div>
@@ -470,39 +626,60 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 
 <section class="block" id="prices" aria-labelledby="prices-h">
   <div class="wrap">
-    <div class="head rv"><p class="eyebrow">Ціни</p><h2 id="prices-h">Скільки це коштує</h2><p class="lead">Більшість проєктів укладається в ці рамки. Точну суму назву, щойно опишете задачу, і зафіксую письмово. Без доплат, якщо не додасте нових задач.</p></div>
+    <div class="head rv"><p class="eyebrow">Ціни</p><h2 id="prices-h">Скільки це коштує</h2><p class="lead">Більшість проєктів вкладається в ці межі. Точну суму назву, щойно опишете завдання, і зафіксую письмово. Без доплат, якщо не додасте нових завдань.</p></div>
     <div class="prices" id="prices-grid">
       <div class="pcol">
         <h3 class="rv">Сайти</h3>
         <article class="card plan rv"><h4>Сайт на одну сторінку</h4><p class="cost">від 4&nbsp;500 до 6&nbsp;500&nbsp;грн</p>
           <ul><li>Послуги, ціни й контакти на одній сторінці</li><li>Кнопки дзвінка й Telegram</li><li>Зручно на телефоні</li></ul></article>
-        <article class="card plan rv"><h4>Сайт під ваш бізнес</h4><p class="cost">від 8&nbsp;000 до 12&nbsp;000&nbsp;грн</p>
-          <ul><li>Кілька розділів або сторінок</li><li>Власний дизайн і анімації</li><li>Налаштування для пошуку в Google</li></ul><p class="ex">Як у Gold Auto чи Volt Master</p></article>
+        <article class="card plan rv"><h4>Сайт для вашого бізнесу</h4><p class="cost">від 8&nbsp;000 до 12&nbsp;000&nbsp;грн</p>
+          <ul><li>Кілька розділів або сторінок</li><li>Власний дизайн і анімації</li><li>Щоб сайт знаходили в Google</li></ul><p class="ex">Як у Gold Auto чи Volt Master</p></article>
       </div>
       <div class="pcol">
         <h3 class="rv">Telegram&#8209;боти</h3>
         <article class="card plan rv" style="--d:.06s"><h4>Бот для запису</h4><p class="cost">від 2&nbsp;500 до 4&nbsp;000&nbsp;грн</p>
-          <ul><li>Запис на послугу з вибором часу</li><li>Заявки одразу вам у Telegram</li><li>Відповіді на часті питання</li></ul><p class="ex">Обслуговування бота: перший місяць у ціні, далі 500&nbsp;грн/міс</p></article>
-        <article class="card plan rv" style="--d:.06s"><h4>Бот під ваші процеси</h4><p class="cost">від 5&nbsp;000 до 9&nbsp;000&nbsp;грн</p>
-          <ul><li>Особистий кабінет клієнта в боті</li><li>Заявки майстрам за темами</li><li>Звʼязок із таблицями й іншими сервісами</li></ul><p class="ex">Як у Volt Master. Обслуговування бота: перший місяць у ціні, далі 500&nbsp;грн/міс</p></article>
+          <ul><li>Запис на послугу з вибором часу</li><li>Заявки одразу вам у Telegram</li><li>Відповіді на поширені запитання</li></ul><p class="ex">Обслуговування бота: перший місяць у ціні, далі 500&nbsp;грн/міс</p></article>
+        <article class="card plan rv" style="--d:.06s"><h4>Бот із кабінетом клієнта</h4><p class="cost">від 5&nbsp;000 до 9&nbsp;000&nbsp;грн</p>
+          <ul><li>Особистий кабінет клієнта в боті</li><li>Заявки майстрам за темами</li><li>Підключення до таблиць та інших сервісів</li></ul><p class="ex">Як у Volt Master. Обслуговування бота: перший місяць у ціні, далі 500&nbsp;грн/міс</p></article>
       </div>
-      <article class="card plan multi" id="multi"><div><p class="kind">Кілька точок</p><h4>Сайт і бот для 2–3 точок або мережі</h4>
+      <article class="card plan multi" id="multi"><div><p class="kind">Кілька точок</p><h4>Сайт і бот для 2–3 точок або&nbsp;мережі</h4>
         <p class="why">Ті самі сайт і бот, тільки з вибором філії: клієнт обирає адресу, а заявка йде майстрам саме цієї точки.</p></div>
-        <ul><li><b>2–3 точки:</b> зазвичай на 20–30% дорожче, ніж для однієї</li><li><b>Мережа від 4 точок:</b> окремий проєкт, від 15&nbsp;000&nbsp;грн</li><li>Наприклад, бот для запису на 2 точки зазвичай від 3&nbsp;000 до 5&nbsp;000&nbsp;грн</li></ul></article>
+        <ul><li><b>2–3 точки:</b> зазвичай на 20–30% дорожче, ніж для&nbsp;однієї</li><li><b>Мережа від 4 точок:</b> окремий проєкт, від 15&nbsp;000&nbsp;грн</li><li>Наприклад, бот для запису на 2 точки&nbsp;— від 3&nbsp;000 до 5&nbsp;000&nbsp;грн</li></ul></article>
     </div>
+    <div class="pcta rv"><a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B4%D1%96%D0%B7%D0%BD%D0%B0%D1%82%D0%B8%D1%81%D1%8F%20%D1%82%D0%BE%D1%87%D0%BD%D1%83%20%D1%86%D1%96%D0%BD%D1%83.%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%2C%20%D0%BF%D0%BE%D1%82%D1%80%D1%96%D0%B1%D0%BD%D0%BE%3A%20%E2%80%A6" target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Дізнатися точну ціну</a><p>Відповідаю протягом дня, у&nbsp;вихідні теж.</p></div>
   </div>
 </section>
 
 <section class="block" id="how" aria-labelledby="how-h">
   <div class="wrap">
-    <div class="head rv"><p class="eyebrow">Як я працюю</p><h2 id="how-h">Спочатку результат, потім оплата</h2></div>
-    <div class="terms">
-      <div class="card term rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="i-eye"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></g></svg><b>Без передоплати</b><p>Спочатку показую готовий результат і вношу правки. Платите, коли все влаштовує, і я запускаю.</p></div>
-      <div class="card term rv" style="--d:.08s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path class="i-hand" d="M12 7v5l3 2"/></svg><b>Перший варіант часто того ж дня</b><p>Прототип нерідко готовий уже того дня, коли ви написали. Загальний строк залежить від кількості правок.</p></div>
-      <div class="card term rv" style="--d:.16s"><svg class="i-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg><b>Підтримка після запуску</b><p>Якщо щось зламалось чи незрозуміло, пишіть будь-коли. Дрібні правки перший місяць безкоштовно, далі за невелику доплату.</p></div>
-      <div class="card term rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><b>Усе письмово</b><p>Ціну, строки й що саме входить фіксую письмово ще до початку роботи. Без сюрпризів у кінці.</p></div>
-      <div class="card term rv" style="--d:.08s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12z"/></svg><b>На звʼязку щодня</b><p>Відповідаю протягом дня, у вихідні теж. Ви пишете напряму розробнику, без менеджерів.</p></div>
-      <div class="card term rv" style="--d:.16s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg><b>Хостинг беру на себе</b><p>Розміщую сайт і бота та стежу, щоб усе працювало. Перший місяць входить у ціну. Якщо хочете тримати все у себе, після оплати передам файли й доступи.</p></div>
+    <div class="head rv"><p class="eyebrow">Як я працюю</p><h2 id="how-h">Спочатку результат, потім оплата</h2><p class="lead">Так виглядає робота зі мною: від першого повідомлення до запуску.</p></div>
+    <div class="how">
+      <div class="card flow" id="flow">
+        <div class="flow-top">
+          <div class="flow-who"><span class="flow-ava" aria-hidden="true"><svg viewBox="75 -2 850 252"><use href="#gpath"/></svg></span><div><b>drakx</b><small id="flow-sub">відповідає протягом дня</small></div></div>
+        </div>
+        <ol class="fsteps" aria-label="Етапи роботи"><li>Прототип</li><li>Правки</li><li>Погодження</li><li>Запуск</li></ol>
+        <div class="flow-log">
+          <p class="fsep" data-b="sep" data-s="1">1 · Прототип</p>
+          <div class="row me" data-b="me"><div class="m me">Привіт! Хочу сайт із записом для свого бізнесу<time>11:05<i class="tk" aria-hidden="true"></i></time></div></div>
+          <div class="row" data-b="bot" data-t="1300"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Ось перший варіант:<div class="lp"><div class="wf" role="img" aria-label="Макет сайту, перша версія"><div class="wf-bar"><i></i><i></i><i></i><u></u></div><div class="wf-page"><div class="wf-nav"><i class="logo"></i><i></i><i></i><i></i></div><div class="wf-hero"><div class="wf-txt"><i class="h"></i><i class="h s"></i><i class="t"></i><div class="wf-row"><i class="btn"></i></div></div><i class="img"></i></div><div class="wf-cards"><i></i><i></i><i></i></div></div></div><div class="lp-meta"><b>Прототип вашого сайту</b><small>ваш-сайт.com.ua</small></div></div>Подивіться й напишіть, що змінити<time>18:40</time></div></div>
+          <p class="fsep" data-b="sep" data-s="2">2 · Правки <span>наступного дня</span></p>
+          <div class="row me" data-b="me"><div class="m me">Класно! А можна кнопку запису зробити помітнішою і&nbsp;додати ціни?<time>09:12<i class="tk" aria-hidden="true"></i></time></div></div>
+          <div class="row" data-b="bot" data-t="1100"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Так, оновив:<div class="wf v2" role="img" aria-label="Макет сайту, оновлена версія: кнопка запису більша, додано блок цін"><div class="wf-bar"><i></i><i></i><i></i><u></u></div><div class="wf-page"><div class="wf-nav"><i class="logo"></i><i></i><i></i><i></i></div><div class="wf-hero"><div class="wf-txt"><i class="h"></i><i class="h s"></i><i class="t"></i><div class="wf-row"><i class="btn"></i><span class="wf-tag">кнопка</span></div></div><i class="img"></i></div><div class="wf-pr"><div><div class="in"><span class="wf-tag">ціни</span><i></i><i></i><i></i></div></div></div><div class="wf-cards"><i></i><i></i><i></i></div></div></div><ul class="fdone"><li>Кнопка запису помітніша</li><li>Додав блок із цінами</li></ul><time>10:30</time></div></div>
+          <p class="fsep" data-b="sep" data-s="3">3 · Погодження</p>
+          <div class="row me" data-b="me"><div class="m me">Тепер усе подобається, беремо!<time>10:41<i class="tk" aria-hidden="true"></i></time></div></div>
+          <p class="fsep" data-b="sep" data-s="4">4 · Оплата й запуск</p>
+          <div class="row" data-b="bot" data-t="700"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Чудово! Тоді оплата&nbsp;— і запускаю<time>10:43</time></div></div>
+          <div class="row me" data-b="pay"><div class="m me pay"><small>Рахунок від drakx</small><b>Сайт із записом</b><span class="paybtn"><span class="pb1">Оплатити</span><span class="pb2">Оплачено</span></span><time>10:44<i class="tk" aria-hidden="true"></i></time></div></div>
+          <div class="row" data-b="bot" data-t="1000"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Запустив! Сайт уже працює:<span class="live"><span class="dot"></span>ваш-сайт.com.ua<em>онлайн</em></span><time>11:20</time></div></div>
+          <div class="ntf" data-b="note"><span class="app"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg></span><div><span class="sr">Після запуску приходить перша заявка: </span><small>Ваш бот · щойно</small><b id="ntf-t">Новий запис: діагностика</b><span id="ntf-s">Олександр, завтра о&nbsp;10:00</span></div></div>
+          <button class="replay" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Переглянути ще раз</button>
+        </div>
+      </div>
+      <div class="how-side">
+        <div class="card term rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path class="i-hand" d="M12 7v5l3 2"/></svg><b>Швидко й письмово</b><p>Перший варіант часто готовий того&nbsp;ж&nbsp;дня. Ціну, строки й що входить фіксую письмово ще до початку&nbsp;— без сюрпризів у кінці.</p></div>
+        <div class="card term rv" style="--d:.08s"><svg class="i-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg><b>Хостинг і підтримка</b><p>Розміщую сайт і бота та стежу, щоб усе працювало. Перший місяць обслуговування й дрібні правки входять у ціну. Пишете мені напряму, без менеджерів: відповідаю протягом дня.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -511,14 +688,13 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
   <div class="wrap narrow">
     <div class="head rv"><p class="eyebrow">Питання</p><h2 id="faq-h">Що зазвичай питають</h2></div>
     <div class="faq rv">
-      <details><summary>Чи треба платити наперед?</summary><p>Ні. Спочатку показую результат і вношу правки. Оплата після того, як усе влаштовує, і тоді запускаю.</p></details>
-      <details><summary>Скільки часу це займає?</summary><p>Перший варіант часто показую того ж дня, коли ви написали. Далі все залежить від кількості правок.</p></details>
+      <details><summary>Що я побачу до оплати?</summary><p>Готовий сайт чи бота з вашими послугами, цінами й контактами. Вносите правки й платите, коли все влаштовує. Якщо не влаштує&nbsp;— нічого не платите.</p></details>
+      <details><summary>Скільки часу це займає?</summary><p>Перший варіант часто показую того&nbsp;ж&nbsp;дня, коли ви написали. Далі все залежить від кількості правок.</p></details>
       <details><summary>Що потрібно від мене?</summary><p>Розповісти про бізнес і надіслати те, що вже є: фото, послуги, ціни, контакти. Решту роблю я.</p></details>
       <details><summary>Можна сайт і бота разом?</summary><p>Так. Тоді кнопка запису на сайті веде одразу в бота, а заявки приходять вам у Telegram.</p></details>
-      <details><summary>Де буде сайт і бот?</summary><p>На моєму хостингу: я стежу, щоб усе працювало. Якщо хочете тримати все у себе, після оплати передам файли й доступи.</p></details>
+      <details><summary>Де будуть сайт і бот і чиї вони?</summary><p>На моєму хостингу: я стежу, щоб усе працювало. Захочете тримати все у себе&nbsp;— після оплати передам файли й доступи.</p></details>
       <details><summary>Чи є щомісячна плата?</summary><p>Перший місяць входить у ціну. Далі бот коштує 500&nbsp;грн на місяць: сервер, щоб він працював цілодобово, і виправлення, якщо щось зламалось. За сайт щомісячної плати немає: лише продовження домену раз на рік, перший рік теж входить у ціну. Вартість домену залежить від зони, назву її заздалегідь.</p></details>
-      <details><summary>У мене кілька точок. Це дорожче?</summary><p>Трохи дорожче, бо додається вибір філії, а заявки розходяться майстрам потрібної точки. Для 2–3 точок зазвичай на 20–30% більше, ніж для однієї. Для мережі від 4 точок окремий проєкт від 15&nbsp;000&nbsp;грн.</p></details>
-      <details><summary>Що буде після запуску?</summary><p>Якщо щось зламалось чи незрозуміло, пишіть будь-коли. Дрібні правки перший місяць безкоштовно, далі за невелику доплату. Для більших проєктів умови мʼякші.</p></details>
+      <details><summary>У мене кілька точок. Це&nbsp;дорожче?</summary><p>Трохи дорожче, бо додається вибір філії, а заявки розходяться майстрам потрібної точки. Для 2–3 точок зазвичай на 20–30% більше, ніж для однієї. Для мережі від 4 точок окремий проєкт від 15&nbsp;000&nbsp;грн.</p></details>
     </div>
   </div>
 </section>
@@ -528,17 +704,18 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
     <div class="contact rv">
       <p class="eyebrow">Контакт</p>
       <h2 id="contact-h">Напишіть, що потрібно</h2>
-      <p class="lead">Назва вашого бізнесу й що хочете: сайт, бот чи все разом. Відповім з орієнтовною ціною.</p>
+      <p class="lead">Напишіть назву бізнесу й що потрібно: сайт, бот чи все разом. У відповідь назву орієнтовну ціну.</p>
       <div class="ctas">
-        <a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83." target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
-        <a class="pill ghost" href="https://instagram.com/drakxwork" target="_blank" rel="noopener">Instagram @drakxwork</a>
+        <a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0." target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
+        <a class="pill ghost" href="https://instagram.com/drakxwork" target="_blank" rel="noopener">Instagram @drakxwork<span class="sr"> (відкриється в новій вкладці)</span></a>
       </div>
     </div>
   </div>
 </section>
 </main>
-<a class="pill dark dock" id="dock" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83." target="_blank" rel="noopener" tabindex="-1"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
-<footer>© 2026 drakx · сайт зроблено без конструкторів</footer>
+<a class="pill dark dock" id="dock" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0." target="_blank" rel="noopener" tabindex="-1"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
+<footer>© 2026 drakx. Усі права захищено.</footer>
+<svg id="lgdefs" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs></defs></svg>
 
 <script>
 (()=>{
@@ -547,60 +724,60 @@ const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const io=(els,cb,opt)=>{const o=new IntersectionObserver(es=>es.forEach(e=>cb(e,o)),opt);els.forEach(el=>el&&o.observe(el));return o};
 
-/* текст під нішу з холодного повідомлення: ?n=beauty|clinic|food|shop|fitness (за замовчуванням автосервіси) */
+/* текст під нішу. Ніша береться з <html data-n="…"> (окремі сторінки /beauty/ тощо, зі своїм превʼю в месенджерах)
+   або з ?n=beauty|clinic|food|shop|fitness; за замовчуванням — автосервіси */
 const NICHE={
-  beauty:{h1:'Сайти й&nbsp;Telegram&#8209;боти для салонів краси та&nbsp;барбершопів',t:'Новий запис: манікюр',s:'Олена, завтра о&nbsp;14:00',d1:'Клієнтка записалась через бота',d3t:'14:00',d3:'Клієнтка вже в кріслі майстра'},
-  clinic:{h1:'Сайти й&nbsp;Telegram&#8209;боти для клінік і&nbsp;кабінетів',t:'Новий запис: консультація',s:'Ірина, завтра о&nbsp;10:00',d1:'Пацієнт записався через бота',d3t:'10:00',d3:'Пацієнт уже на прийомі'},
-  food:{h1:'Сайти й&nbsp;Telegram&#8209;боти для кавʼярень і&nbsp;пекарень',t:'Нове замовлення: торт на суботу',s:'Марина, самовивіз о&nbsp;12:00',d1:'Клієнт замовив торт через бота',d3t:'12:00',d3:'Замовлення вже забрали'},
-  shop:{h1:'Сайти й&nbsp;Telegram&#8209;боти для магазинів',t:'Нове замовлення: 3 позиції',s:'Андрій, самовивіз сьогодні',d1:'Клієнт залишив заявку через бота',d3t:'11:00',d3:'Товар уже забрали'},
-  fitness:{h1:'Сайти й&nbsp;Telegram&#8209;боти для фітнес&#8209;студій',t:'Новий запис: групове тренування',s:'Юлія, завтра о&nbsp;19:00',d1:'Клієнтка записалась через бота',d3t:'19:00',d3:'Клієнтка вже на тренуванні'},
+  beauty:{k:'Сайти й&nbsp;Telegram&#8209;боти для салонів краси та&nbsp;барбершопів',h1:'Клієнтки записуються самі&nbsp;— навіть коли ви з&nbsp;клієнткою',biz:'салон краси',
+    t:'Новий запис: манікюр',s:'Олена, завтра о&nbsp;14:00',d1:'Клієнтка записалась через&nbsp;бота',d3t:'14:00',d3:'Клієнтка вже в кріслі майстра',
+    ch:['Манікюр','Брови','Манікюр','Олена&nbsp;— завтра об&nbsp;11:00, Ірина&nbsp;— о&nbsp;15:30','Олена, 11:00']},
+  clinic:{k:'Сайти й&nbsp;Telegram&#8209;боти для клінік і&nbsp;кабінетів',h1:'Пацієнти записуються самі&nbsp;— навіть коли ви на&nbsp;прийомі',biz:'клініка',
+    t:'Новий запис: консультація',s:'Ірина, завтра о&nbsp;10:00',d1:'Пацієнт записався через&nbsp;бота',d3t:'10:00',d3:'Пацієнт вже на прийомі',
+    ch:['Запис','Ціни','Запис','Лікар вільний завтра о&nbsp;9:30 або&nbsp;16:00','9:30']},
+  food:{k:'Сайти й&nbsp;Telegram&#8209;боти для кавʼярень і&nbsp;пекарень',h1:'Замовлення приходять самі&nbsp;— навіть у&nbsp;розпал зміни',biz:'кавʼярня',
+    t:'Нове замовлення: торт на суботу',s:'Марина, самовивіз о&nbsp;12:00',d1:'Клієнт замовив торт через&nbsp;бота',d3t:'12:00',d3:'Замовлення вже забрали',
+    ch:['Замовити','Меню','Замовити','Торт на суботу: самовивіз о&nbsp;12:00 чи доставка?','Самовивіз']},
+  shop:{k:'Сайти й&nbsp;Telegram&#8209;боти для магазинів',h1:'Замовлення приходять самі&nbsp;— навіть коли ви з&nbsp;покупцем',biz:'магазин',
+    t:'Нове замовлення: 3 позиції',s:'Андрій, самовивіз сьогодні',d1:'Клієнт залишив заявку через&nbsp;бота',d3t:'11:00',d3:'Товар вже забрали',
+    ch:['Замовити','Наявність','Замовити','Зберемо до&nbsp;17:00. Самовивіз чи доставка?','Самовивіз']},
+  fitness:{k:'Сайти й&nbsp;Telegram&#8209;боти для фітнес&#8209;студій',h1:'Клієнти записуються самі&nbsp;— навіть коли ви на&nbsp;тренуванні',biz:'фітнес-студія',
+    t:'Новий запис: групове тренування',s:'Юлія, завтра о&nbsp;19:00',d1:'Клієнтка записалась через&nbsp;бота',d3t:'19:00',d3:'Клієнтка вже на тренуванні',
+    ch:['Запис','Розклад','Запис','Групове завтра о&nbsp;8:00 або&nbsp;19:00','19:00']},
 };
-const nm=(location.search.match(/[?&]n=([a-z]+)/)||[])[1],NV=NICHE[nm];
-if(NV){$('#h1').innerHTML=NV.h1;$('#isl-t').innerHTML=NV.t;$('#isl-s').innerHTML=NV.s;$('#day1').textContent=NV.d1;$('#day3t').textContent=NV.d3t;$('#day3').textContent=NV.d3}
+const nm=document.documentElement.dataset.n||(location.search.match(/[?&]n=([a-z]+)/)||[])[1],NV=NICHE[nm];
+if(NV){
+  $('#kicker').innerHTML=NV.k;$('#h1').innerHTML=NV.h1;$('#isl-t').innerHTML=NV.t;$('#isl-s').innerHTML=NV.s;
+  $('#day1').innerHTML=NV.d1;$('#day3t').textContent=NV.d3t;$('#day3').textContent=NV.d3;
+  NV.ch.forEach((v,i)=>{$('#ch'+(i+1)).innerHTML=v});
+  $('#proof').innerHTML='<b>+31%</b> виконаних замовлень в&nbsp;автосервісі Gold&nbsp;Auto за перший місяць із&nbsp;ботом';
+  /* готовий текст у Telegram одразу з нішею: людині лишається вписати назву */
+  $$('a[href^="https://t.me/ddrakx"]').forEach(a=>{a.href='https://t.me/ddrakx?text='+encodeURIComponent(a.closest('.pcta')
+    ?`Привіт! Хочу дізнатися точну ціну. Мій бізнес: ${NV.biz} «…», потрібно: …`
+    :`Привіт! Мій бізнес: ${NV.biz} «…». Хочу обговорити сайт або бота.`)});
+}
 
-/* скляний нік: поява, блік за курсором або нахилом телефона */
+/* скляний нік: поява, блік пробігає один раз; на комп'ютері блік і нахил за курсором */
 const gs=$('#gs'),glight=$('#glight');
 let lx=760,ly=-60,lraf=0;
 const lset=()=>{lraf=0;glight.setAttribute('x',lx.toFixed(0));glight.setAttribute('y',ly.toFixed(0))};
-const lq=()=>{if(!lraf)lraf=requestAnimationFrame(lset)};
 const reveal=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{
-  gs.classList.add('on');document.querySelector('.island-area').classList.add('lit');if(reduce)return;
+  gs.classList.add('on');if(reduce)return;
   setTimeout(()=>{const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1300),e=1-Math.pow(1-k,3);lx=-150+e*910;lset();k<1&&requestAnimationFrame(f)})(t0)},500);
 }));
-let revealed=false;const rev=()=>{if(!revealed){revealed=true;reveal()}};rev();setTimeout(()=>{if(!gs.classList.contains('on')){gs.classList.add('on');document.querySelector('.island-area').classList.add('lit')}},400);
-if(fine&&!reduce)addEventListener('pointermove',e=>{const r=gs.getBoundingClientRect();if(r.bottom<0)return;lx=(e.clientX-r.left)/r.width*1000;ly=(e.clientY-r.top)/r.height*300-160;lq();
-  const dx=Math.max(-1,Math.min(1,(e.clientX-(r.left+r.width/2))/(r.width*.8))),dy=Math.max(-1,Math.min(1,(e.clientY-(r.top+r.height/2))/(innerHeight*.5)));gs.style.setProperty('--nry',(dx*7).toFixed(2)+'deg');gs.style.setProperty('--nrx',(-dy*5).toFixed(2)+'deg')},{passive:true});
-else if(!reduce&&'DeviceOrientationEvent' in window&&typeof DeviceOrientationEvent.requestPermission!=='function')
-  addEventListener('deviceorientation',e=>{if(e.gamma==null)return;lx=500+Math.max(-1,Math.min(1,e.gamma/30))*520;ly=-60+Math.max(-1,Math.min(1,(e.beta-45)/30))*120;lq()},{passive:true});
+let revealed=false;const rev=()=>{if(!revealed){revealed=true;reveal()}};rev();setTimeout(()=>gs.classList.add('on'),400);
+/* курсор: не частіше одного разу за кадр (миша може слати сотні подій за секунду), і лише поки нік на екрані */
+if(fine&&!reduce){let ne=null,nraf=0;
+  const nick=()=>{nraf=0;if(!heroOn)return;const e=ne,r=gs.getBoundingClientRect();if(r.bottom<0)return;
+    lx=(e.clientX-r.left)/r.width*1000;ly=(e.clientY-r.top)/r.height*300-160;lset();
+    const dx=Math.max(-1,Math.min(1,(e.clientX-(r.left+r.width/2))/(r.width*.8))),dy=Math.max(-1,Math.min(1,(e.clientY-(r.top+r.height/2))/(innerHeight*.5)));gs.style.setProperty('--nry',(dx*7).toFixed(2)+'deg');gs.style.setProperty('--nrx',(-dy*5).toFixed(2)+'deg')};
+  addEventListener('pointermove',e=>{ne=e;if(!nraf)nraf=requestAnimationFrame(nick)},{passive:true})}
+
 
 if(fine)document.documentElement.addEventListener('mouseleave',()=>{gs.style.setProperty('--nrx','0deg');gs.style.setProperty('--nry','0deg')});
-/* нік пружинить від дотику чи наведення */
-if(!reduce){const jelly=()=>{if(!gs.classList.contains('on')||gs.classList.contains('jelly'))return;gs.classList.add('jelly')};
-  gs.addEventListener(fine?'pointerenter':'pointerdown',jelly);
-  gs.addEventListener('animationend',e=>{if(e.animationName==='jelly')gs.classList.remove('jelly')})}
 
-/* острів */
-const isl=$('#isl'),sts=$$('.st',isl);
-const SZ=[[360,76,38],[312,64,32],[264,56,28]],T=[2600,2300,3400];
-let cur=-1,timer=0,heroOn=true;
-const fit=w=>Math.min(w,innerWidth-40,innerWidth<=430&&w===360?330:9999);
-function show(i){
-  cur=(i+SZ.length)%SZ.length;const [w,h,r]=SZ[cur];
-  isl.style.setProperty('--w',fit(w)+'px');isl.style.setProperty('--h',h+'px');isl.style.setProperty('--rad',r+'px');
-  sts.forEach((s,k)=>{s.classList.toggle('on',k===cur);s.toggleAttribute('inert',k!==cur)});
-  sts[2].tabIndex=cur===2?0:-1;
-  plan();
-}
-function plan(){clearTimeout(timer);if(reduce||cur<0||!heroOn||document.hidden||((fine&&isl.matches(':hover'))||isl.matches(':focus-within')))return;timer=setTimeout(()=>show(cur+1),T[cur])}
-['pointerleave','focusout'].forEach(ev=>isl.addEventListener(ev,()=>setTimeout(plan,0)));
-['pointerenter','focusin'].forEach(ev=>isl.addEventListener(ev,()=>clearTimeout(timer)));
-isl.addEventListener('click',e=>{if(cur!==2){e.preventDefault();show(cur+1)}});
-if(fine&&!reduce)isl.addEventListener('pointermove',e=>{const r=isl.getBoundingClientRect();isl.style.setProperty('--ix',e.clientX-r.left+'px');isl.style.setProperty('--iy',e.clientY-r.top+'px')});
-addEventListener('resize',()=>{if(cur>=0)isl.style.setProperty('--w',fit(SZ[cur][0])+'px')});
-document.addEventListener('visibilitychange',plan);
-io([$('.hero')],e=>{heroOn=e.isIntersecting;gs.classList.toggle('paused',!heroOn);plan()});
-if(reduce){isl.classList.add('in');show(0)}
-else setTimeout(()=>{isl.classList.add('in');show(0)},2000);
+/* острів: приклад сповіщення від бота — з'являється один раз і далі стоїть, не відволікає від заголовка */
+const isl=$('#isl');let heroOn=true;
+io([$('.hero')],e=>{heroOn=e.isIntersecting;gs.classList.toggle('paused',!heroOn);e.target.classList.toggle('paused',!heroOn)});
+if(reduce)isl.classList.add('in');else setTimeout(()=>isl.classList.add('in'),1100);
 
 /* поява блоків */
 if(!reduce)io($$('.rv'),(e,o)=>{if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}},{rootMargin:'0px 0px -8% 0px'});
@@ -610,11 +787,41 @@ io([$('#c-bot'),$('#c-day')],(e,o)=>{
   if(!e.isIntersecting)return;o.unobserve(e.target);const t=e.target;
   if(t.id==='c-day'){t.classList.add('go');return}
   const ms=$$('.m',t);if(reduce){ms.forEach(m=>m.classList.add('on'));return}
-  let d=300;ms.forEach(m=>{setTimeout(()=>m.classList.add('on'),d);d+=m.classList.contains('me')?520:760});
-},{threshold:.35});
+  let d=150;ms.forEach(m=>{setTimeout(()=>m.classList.add('on'),d);d+=m.classList.contains('me')?360:480});
+},{threshold:.2});
 if(reduce){$$('#c-bot .m').forEach(m=>m.classList.add('on'));$('#c-day').classList.add('go')}
-if(!fine)$('#lens-hint').textContent='Потягніть лінзу: вона покаже, як зібрана сторінка';
 
+/* як я працюю: переписка програється як живий чат — «друкує…», галочки «прочитано», макет збирається
+   й змінюється на очах, оплата, запуск і перша заявка. Кожен крок чекає, поки дійде до екрана */
+{const flow=$('#flow'),beats=$$('[data-b]',flow),steps=$$('.fsteps li',flow),rep=$('.replay',flow),sub=$('#flow-sub'),subTxt=sub.textContent;
+  $('#ntf-t').innerHTML=$('#isl-t').innerHTML;$('#ntf-s').innerHTML=$('#isl-s').innerHTML;
+  $$('.wf-page',flow).forEach(pg=>[...pg.children].forEach((c,i)=>c.style.setProperty('--i',i)));
+  const wait=ms=>new Promise(r=>setTimeout(r,ms));
+  const sio=new IntersectionObserver(es=>es.forEach(e=>{if((e.isIntersecting||e.boundingClientRect.top<0)&&e.target._r){e.target._r();e.target._r=null;sio.unobserve(e.target)}}),{rootMargin:'0px 0px -12% 0px'});
+  const seen=el=>new Promise(r=>{el._r=r;sio.observe(el)});
+  const step=n=>steps.forEach((li,i)=>{li.classList.toggle('on',i<n);li.classList.toggle('cur',i===n-1)});
+  const ALL=['on','built','changed','paid','read','typing','press'];
+  const finish=()=>{beats.forEach(el=>el.classList.add('on','built','changed','paid','read'));step(4);rep.classList.add('on')};
+  let run=0;
+  async function play(){
+    const id=++run;
+    for(const el of beats){
+      await seen(el);if(id!==run)return;
+      const t=el.dataset.b;
+      if(t==='bot'){$$('.row.me.on',flow).forEach(r=>r.classList.add('read'));el.classList.add('typing');sub.textContent='друкує…';sub.classList.add('ty');
+        await wait(+el.dataset.t||900);if(id!==run)return;el.classList.remove('typing');sub.textContent=subTxt;sub.classList.remove('ty')}
+      el.classList.add('on');if(el.dataset.s)step(+el.dataset.s);
+      if(el.querySelector('.wf')){await wait(80);el.classList.add('built');
+        if(el.querySelector('.v2')){await wait(700);el.classList.add('changed');await wait(1300)}else await wait(900)}
+      if(t==='pay'){await wait(900);el.classList.add('press');await wait(230);el.classList.remove('press');el.classList.add('paid');await wait(800)}
+      await wait(t==='sep'?240:t==='me'?700:500);
+    }
+    if(id===run)rep.classList.add('on');
+  }
+  if(reduce)finish();else play();
+  rep.addEventListener('click',()=>{run++;beats.forEach(el=>el.classList.remove(...ALL));step(0);rep.classList.remove('on');sub.textContent=subTxt;sub.classList.remove('ty');
+    flow.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(play,600)});
+}
 /* мікровзаємодії для миші: магнітні кнопки з бліком, нахил скриншотів */
 if(fine&&!reduce){
   $$('.pill').forEach(b=>{
@@ -629,6 +836,73 @@ if(fine&&!reduce){
     sh.addEventListener('pointerleave',()=>{sh.classList.remove('hov')});
   });
 }
+/* рідке скло. Під кожен скляний елемент малюємо карту заломлення (опуклий край, плаский центр)
+   і підставляємо її у backdrop-filter через SVG feDisplacementMap. Так уміє лише Chromium;
+   Safari й Firefox отримують звичайне матове скло з тим самим обідком.
+   Щоб не гальмувати сторінку: карти малює воркер (OffscreenCanvas) у фоні, готові кешуються за розміром,
+   стартуємо після завантаження, а скло вмикаємо лише елементам біля екрана. */
+const LQ=!matchMedia('(prefers-reduced-transparency: reduce)').matches&&'OffscreenCanvas' in window&&!!(navigator.userAgentData&&navigator.userAgentData.brands.some(b=>/Chromium/.test(b.brand)));
+if(LQ){
+  document.documentElement.classList.add('lg');
+  const NS='http://www.w3.org/2000/svg',defs=$('#lgdefs defs');
+  const A=(el,o)=>{for(const k in o)el.setAttribute(k,o[k]);return el};
+  /* R/G = зсув по x/y (128 = на місці). Біля краю беремо пікселі ближче до центру — край збільшує й гне те, що позаду.
+     Карта плавна, тож 1 піксель карти на 1 CSS-піксель достатньо навіть на ретіні: браузер її згладжує */
+  const WK=`onmessage=async({data:{key,w,h,b}})=>{const r=Math.min(w,h)/2,hw=w/2,hh=h/2,cv=new OffscreenCanvas(w,h),cx=cv.getContext('2d'),im=cx.createImageData(w,h),d=im.data;
+    for(let j=0;j<h;j++){const py=j+.5-hh,qy=Math.abs(py)-(hh-r);
+      for(let i=0;i<w;i++){const px=i+.5-hw,qx=Math.abs(px)-(hw-r);let e,nx=0,ny=0;
+        if(qx>0&&qy>0){const l=Math.hypot(qx,qy)||1;e=r-l;nx=qx/l;ny=qy/l}else if(qx>qy){e=r-qx;nx=1}else{e=r-qy;ny=1}
+        const t=Math.max(0,1-Math.max(0,e)/b),m=t*t,o=(j*w+i)*4;
+        d[o]=128-Math.sign(px)*nx*m*127;d[o+1]=128-Math.sign(py)*ny*m*127;d[o+2]=128;d[o+3]=255}}
+    cx.putImageData(im,0,0);postMessage({key,blob:await cv.convertToBlob()})}`;
+  let wk=null,wu='';const maps=new Map(),urls=new Map(),wait=new Map(),used=new Set();
+  const getMap=(w,h,b)=>{const key=w+'x'+h+'x'+b;let p=maps.get(key);if(p)return p;
+    wk||(wk=new Worker(wu=URL.createObjectURL(new Blob([WK],{type:'text/javascript'}))),setTimeout(()=>URL.revokeObjectURL(wu),5000),wk.onmessage=({data:{key,blob}})=>{
+      /* декодуємо заздалегідь: інакше на кадр-два фільтр лишився б без карти й увесь фон з'їхав би */
+      const url=URL.createObjectURL(blob),im=new Image();im.src=url;im.decode().catch(()=>{}).then(()=>{urls.set(key,url);wait.get(key)(url);wait.delete(key)})});
+    p=new Promise(res=>wait.set(key,res));maps.set(key,p);wk.postMessage({key,w,h,b});
+    /* острів під час морфінгу дає багато проміжних розмірів: тримаємо в кеші не більше 30 карт */
+    if(maps.size>30)for(const [k,u] of urls){if(maps.size<=24)break;if(!used.has(u)){URL.revokeObjectURL(u);urls.delete(k);maps.delete(k)}}
+    return p};
+  let gid=0;
+  /* ставимо фільтр: карта mw×mh, розтягнута на поточний розмір w×h */
+  const apply=(g,url,w,h)=>{
+    const id='lg'+(++gid),f=A(document.createElementNS(NS,'filter'),{id,x:0,y:0,width:w,height:h,filterUnits:'userSpaceOnUse',primitiveUnits:'userSpaceOnUse','color-interpolation-filters':'sRGB'});
+    f.append(A(document.createElementNS(NS,'feImage'),{href:url,x:0,y:0,width:w,height:h,preserveAspectRatio:'none',result:'m'}),
+      A(document.createElementNS(NS,'feDisplacementMap'),{in:'SourceGraphic',in2:'m',scale:g.s,xChannelSelector:'R',yChannelSelector:'G'}));
+    defs.append(f);g.el.style.setProperty('--lg',`url(#${id}) ${g.c}`);
+    if(g.url!==url){used.delete(g.url);used.add(url);g.url=url}
+    const old=g.f;g.f=f;if(old)setTimeout(()=>old.remove(),300);
+  };
+  /* точна карта під фінальний розмір; поки її чекаємо — тягнемо стару */
+  const build=g=>{
+    const w=g.el.offsetWidth,h=g.el.offsetHeight;if(!w||!h||!g.vis)return;
+    if(g.url&&(w!==g.w||h!==g.h)&&!g.st)g.st=requestAnimationFrame(()=>{g.st=0;g.url&&apply(g,g.url,g.el.offsetWidth,g.el.offsetHeight)});
+    clearTimeout(g.q);g.q=setTimeout(()=>{const w=g.el.offsetWidth,h=g.el.offsetHeight;if(!w||!h||(w===g.w&&h===g.h&&g.url))return;g.w=w;g.h=h;
+      getMap(w,h,Math.round(Math.min(Math.min(w,h)*.45,g.b))).then(url=>{if(g.w===w&&g.h===h)apply(g,url,w,h)})},g.url?150:0);
+  };
+  /* s = сила заломлення (px), b = ширина опуклого краю, c = що робимо з фоном після заломлення */
+  const DARK={s:24,b:20,c:'blur(4px)'},CLEAR={s:30,b:20,c:''};
+  const list=[[$('.nav'),{s:34,b:22,c:'blur(5px) grayscale(1) brightness(1.06)'}],[$('#isl'),{s:44,b:26,c:''}],
+    ...$$('.pill.dark').filter(el=>!el.closest('.contact')).map(el=>[el,DARK]),...$$('.pill.light').map(el=>[el,CLEAR]),
+    ...$$('.lens').map(el=>[el,{s:56,b:30,c:'brightness(1.04)'}])];
+  const start=()=>{
+    const gm=new Map(),ro=new ResizeObserver(es=>es.forEach(e=>build(gm.get(e.target))));
+    io(list.map(([el])=>el),e=>{const g=gm.get(e.target);g.vis=e.isIntersecting;if(g.vis)build(g)},{rootMargin:'200px 0px'});
+    list.forEach(([el,o])=>{if(el){gm.set(el,{el,...o});ro.observe(el)}});
+  };
+  const later=()=>'requestIdleCallback' in window?requestIdleCallback(start,{timeout:1200}):setTimeout(start,200);
+  document.readyState==='complete'?later():addEventListener('load',later,{once:true});
+}
+/* обідок скла ловить світло від курсора: кожен елемент «дивиться» на нього під своїм кутом; рахуємо лише видимі */
+if(fine&&!reduce){
+  const vis=new Set();let pe=null,lr=0;
+  io($$('.pill,.nav,.island'),e=>vis[e.isIntersecting?'add':'delete'](e.target));
+  const light=()=>{lr=0;vis.forEach(el=>{const r=el.getBoundingClientRect();
+    el.style.setProperty('--la',(Math.atan2(pe.clientX-r.left-r.width/2,r.top+r.height/2-pe.clientY)*57.2958).toFixed(1)+'deg')})};
+  addEventListener('pointermove',e=>{pe=e;if(!lr)lr=requestAnimationFrame(light)},{passive:true});
+}
+
 /* телефон сам гортає сайт, коли на екрані (дотикові пристрої) */
 if(!fine&&!reduce)io([$('#phone')],e=>e.target.classList.toggle('play',e.isIntersecting),{threshold:.4});
 
@@ -643,38 +917,27 @@ if(/[?&]v=pro\b/.test(location.search))$('#prices-grid').classList.add('pro');
 
 /* компактне меню після прокрутки */
 const nav=$('.nav');let nraf=0;
-addEventListener('scroll',()=>{if(nraf)return;nraf=requestAnimationFrame(()=>{nraf=0;nav.classList.toggle('small',scrollY>60)})},{passive:true});
+addEventListener('scroll',()=>{if(nraf)return;nraf=requestAnimationFrame(()=>{nraf=0;nav.classList.toggle('small',scrollY>200)})},{passive:true});
 
-/* лінза-рентген на кейсах */
-$$('.view').forEach((view,n)=>{
+/* лінза-рентген: лише на комп'ютері; з'являється під курсором і пружинисто його доганяє, у спокої цикл спить */
+if(fine)$$('.view').forEach(view=>{
   const lens=$('.lens',view),xi=$('.xclip img',view);
-  let W=0,H=0,p={x:0,y:0},v={x:0,y:0},t={x:0,y:0},mode='auto',drag=false,on=false,raf=0,idle=0;const t0=performance.now()+n*1700;
+  let W=0,H=0,p={x:0,y:0},v={x:0,y:0},t={x:0,y:0},raf=0,last=null;
   const set=()=>{view.style.setProperty('--lx',p.x.toFixed(1)+'px');view.style.setProperty('--ly',p.y.toFixed(1)+'px')};
-  const clamp=q=>({x:Math.max(0,Math.min(W,q.x)),y:Math.max(0,Math.min(H,q.y))});
-  const measure=()=>{W=view.clientWidth;H=view.clientHeight;p=clamp(p);t=clamp(t);if(on)set()};
-  let last=null;const local=e=>{const r=view.getBoundingClientRect();return clamp({x:(e.clientX-r.left)*W/r.width,y:(e.clientY-r.top)*H/r.height})};
-  function step(now){
-    raf=0;if(!on)return;
-    if(mode==='follow'&&last&&!drag)t=local(last);
-    if(mode==='auto'){const k=(now-t0)/1000;t.x=W*(.5+.33*Math.sin(k*.55));t.y=H*(.48+.26*Math.sin(k*1.1+1))}
-    const ks=drag?.32:.07,dm=drag?.55:.8;
-    v.x=(v.x+(t.x-p.x)*ks)*dm;v.y=(v.y+(t.y-p.y)*ks)*dm;p.x+=v.x;p.y+=v.y;set();
+  const local=e=>{const r=view.getBoundingClientRect();return {x:Math.max(0,Math.min(W,(e.clientX-r.left)*W/r.width)),y:Math.max(0,Math.min(H,(e.clientY-r.top)*H/r.height))}};
+  function step(){
+    raf=0;if(last)t=local(last);
+    v.x=(v.x+(t.x-p.x)*.12)*.72;v.y=(v.y+(t.y-p.y)*.12)*.72;p.x+=v.x;p.y+=v.y;set();
     const sp=Math.hypot(v.x,v.y),s=Math.min(.04,sp*.002),a=Math.atan2(v.y,v.x);
     lens.style.setProperty('--def',`rotate(${a.toFixed(3)}rad) scale(${(1+s).toFixed(3)},${(1-s*.8).toFixed(3)}) rotate(${(-a).toFixed(3)}rad)`);
+    if(sp<.02&&Math.hypot(t.x-p.x,t.y-p.y)<.1){lens.style.setProperty('--def','');return}
     raf=requestAnimationFrame(step);
   }
-  const go=()=>{if(!raf&&on&&!reduce)raf=requestAnimationFrame(step)};
-  io([view],e=>{
-    on=e.isIntersecting;
-    if(on&&xi.dataset.src){xi.srcset=xi.dataset.srcset;xi.src=xi.dataset.src;delete xi.dataset.src;measure();p={x:W*.5,y:H*.48};t={...p};set()}
-    go();
-  },{rootMargin:'120px 0px'});
-  addEventListener('resize',measure);
-  view.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'||drag){mode='follow';last=e;t=local(e);clearTimeout(idle);if(reduce){p={...t};set()}}});
-  view.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){mode='auto';last=null}});
-  lens.addEventListener('pointerdown',e=>{drag=true;mode='follow';lens.setPointerCapture(e.pointerId);clearTimeout(idle)});
-  const up=()=>{if(!drag)return;drag=false;idle=setTimeout(()=>mode='auto',2500)};
-  lens.addEventListener('pointerup',up);lens.addEventListener('pointercancel',up);
+  /* каркас підвантажуємо, коли скриншот наближається до екрана */
+  io([view],(e,o)=>{if(e.isIntersecting){xi.srcset=xi.dataset.srcset;xi.src=xi.dataset.src;o.unobserve(view)}},{rootMargin:'300px 0px'});
+  view.addEventListener('pointerenter',e=>{W=view.clientWidth;H=view.clientHeight;last=e;t=local(e);p={...t};v={x:0,y:0};set()});
+  view.addEventListener('pointermove',e=>{last=e;if(reduce){p=local(e);set()}else if(!raf)raf=requestAnimationFrame(step)});
+  view.addEventListener('pointerleave',()=>{last=null});
 });
 })();
 </script>
