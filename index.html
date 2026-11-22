@@ -286,9 +286,16 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .demo-card .shot{display:block}
 .dview{position:relative;border-radius:var(--r-in);overflow:hidden;aspect-ratio:16/10;background:#e8e8e8}
 .dview img{width:100%;height:100%;object-fit:cover;object-position:top}
-/* знімок демо спершу складається із символів коду, потім «компілюється» в справжній сайт */
-.js .pre>img{opacity:0}
-.view .ascii,.dview .ascii{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+/* знімок ще вантажиться (повільний інтернет): над розмитим превʼю крутиться кружечок на білій підкладці,
+   видно і на світлих, і на темних знімках. Зʼявляється через .3 с, тож на швидкому інтернеті його не видно */
+.phone{position:relative}
+.ld::after{content:"";position:absolute;left:50%;top:50%;z-index:2;box-sizing:border-box;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;
+  border:3px solid rgba(0,0,0,.13);border-top-color:var(--ink);background:#fff;box-shadow:0 0 0 7px #fff,0 8px 22px -6px rgba(0,0,0,.45);pointer-events:none;
+  animation:ldspin .75s linear infinite,ldin .25s .3s both}
+@keyframes ldspin{to{rotate:1turn}}
+@keyframes ldin{from{opacity:0}}
+@media (prefers-reduced-motion:reduce){.ld::after{animation:ldpulse 1.4s .3s ease-in-out infinite both}}
+@keyframes ldpulse{from,to{opacity:.35}50%{opacity:1}}
 /* поки знімок вантажиться, під ним видно розмите превʼю, вшите в сторінку (--lq вписує tools/make_niches.py) */
 img[style*="--lq"]{background:var(--lq) 50% 0/cover no-repeat}
 .demo-card .tag{margin-top:20px}
@@ -1022,48 +1029,9 @@ if(fine&&!reduce){
     requestAnimationFrame(()=>{apply(last||start);if(last){box.classList.add('on');$('#bs-state').textContent='Наживо з бота Gold Auto'}});
     if(!last)load()},{threshold:.3});
 }}
-/* знімки робіт «збираються з коду»: коли знімок доходить до екрана, він спершу виникає із символів, що перебираються, як код,
-   потім символи стають схемою сторінки, і вона перетікає в справжній знімок. Схему рахуємо з крихітного превʼю, вшитого
-   в сторінку (--lq), тож анімація стартує одразу й не чекає мережі; якщо знімок ще в дорозі, код «доскладається», поки він не прийде.
-   Один раз на знімок; хто вимкнув анімації в системі, бачить знімок одразу */
-{const views=$$('.view,.dview').filter(v=>v.querySelector(':scope>img'));
-  if(views.length&&!reduce&&'IntersectionObserver' in window){
-    const RAMP=' .,:;-=+*<>/(){}[]#%@',CODE='{}()[]<>/=+*;:#%&$01',
-      pick=s=>s[(Math.random()*s.length)|0],main=v=>v.querySelector(':scope>img');
-    views.forEach(v=>v.classList.add('pre'));
-    const show=v=>{v.classList.remove('pre');main(v).style.opacity=''};
-    /* з чого малювати символи: вшите превʼю, а якщо його нема — сам знімок, коли довантажиться */
-    const thumb=img=>new Promise((ok,no)=>{const m=/url\(["']?(data:[^"')]+)/.exec(img.style.getPropertyValue('--lq'));
-      if(!m&&img.complete&&img.naturalWidth)return ok(img);
-      const t=m?new Image():img;t.addEventListener('load',()=>ok(t),{once:true});t.addEventListener('error',no,{once:true});if(m)t.src=m[1]});
-    const play=(v,img,src)=>{const W=v.clientWidth,H=v.clientHeight,sw=src.naturalWidth,sh=src.naturalHeight;if(!W||!H||!sw||!sh)return show(v);
-      const dpr=Math.min(2,devicePixelRatio||1),cw=W<500?7:8,chh=Math.round(cw*1.55),cols=Math.floor(W/cw),rows=Math.floor(H/chh);
-      const sm=document.createElement('canvas');sm.width=cols;sm.height=rows;
-      const sx=sm.getContext('2d',{willReadFrequently:true}),sc=Math.max(cols/sw,rows/sh);
-      sx.drawImage(src,0,0,sw*sc,sh*sc);
-      const px=sx.getImageData(0,0,cols,rows).data,N=cols*rows,L=new Float32Array(N),D=new Float32Array(N),G=new Float32Array(N);
-      for(let k=0;k<N;k++){L[k]=(.2126*px[k*4]+.7152*px[k*4+1]+.0722*px[k*4+2])/255;
-        const q=k%cols,r=(k/cols)|0;D[k]=(q/cols*.72+r/rows*.28)*700+Math.random()*160}
-      /* темний сайт — світлі символи на темному тлі; яскравість розтягуємо на власний діапазон знімка, щоб було видно структуру */
-      const srt=Float32Array.from(L).sort(),lo=srt[(N*.04)|0],hi=srt[(N*.96)|0],dark=srt[N>>1]<.42;
-      for(let k=0;k<N;k++){const n=Math.min(1,Math.max(0,(L[k]-lo)/Math.max(.08,hi-lo)));L[k]=dark?1-n:n}
-      const BG=dark?'#121212':'#e8e8e8',INK=dark?'236,236,236':'11,11,11';
-      const c=document.createElement('canvas');c.className='ascii';c.width=W*dpr;c.height=H*dpr;v.append(c);
-      const x=c.getContext('2d');x.scale(dpr,dpr);x.textBaseline='top';x.font=`600 ${Math.round(chh*.82)}px ui-monospace,"SF Mono",Menlo,Consolas,monospace`;
-      const T0=performance.now(),SET=380,HOLD=1500,FADE=560,WAIT=15000;let out=0;
-      const f=t=>{const e=t-T0;
-        if(!out&&e>HOLD&&(img.complete||e>WAIT))out=e;
-        if(e>HOLD&&!out)for(let j=N/260;j>0;j--)G[(Math.random()*N)|0]=e+180;
-        x.fillStyle=BG;x.fillRect(0,0,W,H);
-        for(let k=0;k<N;k++){const d=D[k];if(e<d)continue;const l=L[k],ch=e<d+SET||e<G[k]?pick(CODE):RAMP[Math.min(RAMP.length-1,((1-l)*RAMP.length)|0)];
-          if(ch===' ')continue;x.fillStyle=`rgba(${INK},${(.22+.78*(1-l)).toFixed(2)})`;x.fillText(ch,(k%cols)*cw,((k/cols)|0)*chh)}
-        if(out){const a=Math.min(1,(e-out)/FADE);c.style.opacity=1-a;img.style.opacity=a;if(a>=1){c.remove();show(v);return}}
-        requestAnimationFrame(f)};
-      requestAnimationFrame(f)};
-    const run=v=>{const img=main(v);img.loading='eager';
-      thumb(img).then(src=>{try{play(v,img,src)}catch(_){show(v)}},()=>show(v))};
-    io(views,(e,o)=>{if(e.isIntersecting){o.unobserve(e.target);run(e.target)}},{threshold:.45});
-  }}
+/* поки знімок вантажиться, над розмитим превʼю біжить смужка (.ld); прибираємо, щойно знімок прийшов */
+$$('.view>img,.dview>img,.phone>img').forEach(i=>{if(i.complete&&i.naturalWidth)return;const v=i.parentElement,done=()=>v.classList.remove('ld');
+  v.classList.add('ld');i.addEventListener('load',done,{once:true});i.addEventListener('error',done,{once:true})});
 /* на повільному інтернеті Safari береться за lazy-знімки аж біля екрана, і вони встигають постояти порожніми.
    Тому, щойно сторінка завантажилась, тихо довантажуємо їх заздалегідь */
 addEventListener('load',()=>setTimeout(()=>$$('img[loading=lazy]').forEach(i=>i.loading='eager'),1500),{once:true});
