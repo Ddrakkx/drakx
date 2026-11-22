@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Демо: автозапчастини «Артикул», Дніпро | drakx</title>
-<meta name="description" content="Демо-сайт магазину автозапчастин: підбір за маркою, моделлю й роком, наявність на полиці сьогодні, резерв до 19:00 без передоплати.">
+<meta name="description" content="Демо-сайт магазину автозапчастин: підбір за маркою, моделлю й роком, наявність на полиці, резерв до 19:00 без передоплати.">
 <meta name="theme-color" content="#F2F3F5">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F1215'/%3E%3Cpath d='M11 9h15v14H11l-6-7z' fill='%23FFD23F'/%3E%3Ccircle cx='11.5' cy='16' r='2' fill='%230F1215'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,52 +13,74 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')t.classList.add('x')},true)</script>
 <style>
-:root{--bg:#F2F3F5;--sf:#fff;--ink:#0F1215;--ink2:#2A3038;--mut:#56606B;--line:#DCE0E5;--line2:#C3C9D0;--tag:#FFD23F;--ok:#13703A;--wait:#8A4F00;--f1:'IBM Plex Sans',system-ui,sans-serif;--fm:'IBM Plex Mono',ui-monospace,monospace;--ease:cubic-bezier(.2,0,0,1)}
+@font-face{font-family:'Plex Fallback';src:local('Arial');size-adjust:104%}
+:root{--bg:#F2F3F5;--sf:#fff;--ink:#0F1215;--ink2:#2A3038;--mut:#56606B;--line:#DCE0E5;--line2:#C3C9D0;--tag:#FFD23F;--ok:#13703A;--wait:#8A4F00;--f1:'IBM Plex Sans','Plex Fallback',system-ui,sans-serif;--fm:'IBM Plex Mono','Courier New',ui-monospace,monospace;--ease:cubic-bezier(.2,0,0,1);--gut:clamp(16px,4vw,40px)}
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:12px}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:12px;scrollbar-gutter:stable}
+html.hb{scroll-padding-bottom:96px}
+html.hb body{padding-bottom:76px}
+html:has(dialog[open]){overflow:hidden}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--f1)}
 img{display:block;max-width:100%;height:auto}
 img.x{visibility:hidden}
 a{color:inherit}
-h1,h2,h3,p,ul,figure,dl,dd{margin:0}
-ul{padding:0;list-style:none}
+h1,h2,h3,p,ul,ol,figure,dl,dd{margin:0}
+ul,ol{padding:0;list-style:none}
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}
+[tabindex="-1"]:focus{outline:none}
 .dk :focus-visible{outline-color:var(--tag)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.wrap{width:100%;max-width:1240px;margin-inline:auto;padding-inline:var(--gut)}
 .tn{font-variant-numeric:tabular-nums}
 .mono{font-family:var(--fm);font-weight:500;letter-spacing:-.01em}
 .ph{background:#DCE0E5;overflow:hidden}
 .ph img{width:100%;height:100%;object-fit:cover}
+.ic{width:18px;height:18px;flex:none;fill:currentColor}
+.lnk{padding:0;border:0;background:none;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 /* tag motif */
 .tag{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:30px;padding:4px 12px 4px 24px;background:var(--tag);color:var(--ink);font:500 14px/1.2 var(--fm);clip-path:polygon(11px 0,100% 0,100% 100%,11px 100%,0 50%);white-space:nowrap}
 .tag::before{content:"";position:absolute;left:10px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--ink)}
 /* demo bar */
 .demo{background:var(--ink);color:#E8EBEE;font-size:14px}
-.demo-in{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:40px}
-.demo p{display:flex;gap:10px;align-items:center;white-space:nowrap}
-.demo a{display:inline-flex;align-items:center;min-height:40px;text-underline-offset:3px}
+.demo-in{display:flex;align-items:center;gap:0 18px;min-height:44px;white-space:nowrap}
+.demo a{display:inline-flex;align-items:center;min-height:44px;text-underline-offset:3px}
 .demo a:hover{color:var(--tag)}
+.demo .bk{margin-left:auto;min-width:24px;justify-content:flex-end}
+.demo .cta,.demo .own{text-decoration:none}
+.demo .cta span{padding:5px 10px;border-radius:6px;background:var(--tag);color:var(--ink);font-weight:600;transition:background-color .15s}
+.demo .cta:hover span{background:#FFE07A}
+.demo .own{text-decoration:underline}
 .demo .s{display:none}
-@media(max-width:420px){.demo .l{display:none}.demo .s{display:inline}}
+@media(max-width:599px){.demo-in{gap:0 12px}.demo .cta{display:none}.demo .l{display:none}.demo .s{display:inline}.demo .own{text-decoration:none}.demo .own>span{padding:5px 10px;border-radius:6px;background:var(--tag);color:var(--ink);font-weight:600}.demo .bk{min-width:44px}}
+@media(max-width:359px){.demo-in{gap:0 8px}.demo .own>span{padding:5px 8px}}
 /* header */
 .hdr{background:var(--sf);border-bottom:1px solid var(--line)}
-.hdr-in{display:flex;align-items:center;gap:20px;min-height:68px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.hdr-in{display:flex;align-items:center;gap:16px;min-height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
 .logo b{font:700 21px/1 var(--f1);letter-spacing:-.01em}
-.logo small{display:block;white-space:nowrap;font:500 12px/1.2 var(--fm);color:var(--mut);margin-top:3px}
+.logo small{display:block;white-space:nowrap;font:500 13px/1.2 var(--fm);color:var(--mut);margin-top:3px}
 .nav{display:flex;gap:2px;margin-left:auto}
 .nav a{padding:10px 12px;text-decoration:none;font-weight:500;border-radius:8px;transition:background-color .15s}
 .nav a:hover{background:var(--bg)}
-.rbtn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 6px 0 16px;border:1.5px solid var(--ink);border-radius:8px;background:var(--sf);font-weight:600;cursor:pointer;transition:transform .1s var(--ease),background-color .15s}
+.telb{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-width:44px;min-height:44px;padding:0 8px;border:0;border-radius:8px;background:none;text-align:left;cursor:pointer;transition:background-color .15s}
+.telb:hover{background:var(--bg)}
+.telb .ic{width:20px;height:20px}
+.telb .tt{display:none}
+.telb b{display:block;font:500 15px/1.2 var(--fm)}
+.telb small{display:block;font-size:13px;line-height:1.2;color:var(--mut)}
+@media(min-width:1100px){.telb .tt{display:block}}
+.rbtn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;border:1.5px solid var(--ink);border-radius:8px;background:var(--sf);font-weight:600;white-space:nowrap;cursor:pointer;transition:transform .1s var(--ease),background-color .15s}
 .rbtn:hover{background:var(--bg)}
 .rbtn:active{transform:scale(.96)}
-.rbtn .tag{min-height:28px}
+.rbtn .tag{min-height:28px;margin-right:-8px}
+.rbtn .r2{display:none}
 .bump{animation:bump .4s var(--ease)}
 @keyframes bump{40%{transform:scale(1.18)}}
-@media(max-width:899px){.nav{display:none}.rbtn{margin-left:auto}}
+@media(max-width:899px){.nav{display:none}.telb{margin-left:auto}}
+@media(max-width:399px){.rbtn .r1{display:none}.rbtn .r2{display:inline}}
+@media(max-width:359px){.hdr-in{gap:8px}.logo{gap:8px}.logo small{display:none}.logo svg{width:28px}.logo b{font-size:19px}.rbtn{padding:0 10px;gap:6px}.rbtn .tag{padding:4px 8px 4px 20px;margin-right:-4px}}
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:8px;border:1.5px solid transparent;font:600 16px/1.1 var(--f1);text-decoration:none;cursor:pointer;text-align:center;transition:transform .1s var(--ease),background-color .15s,border-color .15s,color .15s}
 .btn:active{transform:scale(.97)}
@@ -66,73 +88,97 @@ button,input,select,textarea{font:inherit;color:inherit}
 .pri:hover{background:var(--ink2)}
 .sec{background:var(--sf);border-color:var(--ink)}
 .sec:hover{background:var(--bg)}
+.yl{background:var(--tag);color:var(--ink);border-color:var(--tag)}
+.yl:hover{background:#FFE07A;border-color:#FFE07A}
 /* hero */
-.hero{padding-block:32px 0}
+.hero{padding-block:28px 0}
 .hgrid{display:grid;gap:28px}
 .open{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:15px;color:var(--mut)}
 .open b{display:inline-flex;align-items:center;gap:8px;color:var(--ok);font-weight:600}
 .open b::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
 .open b.cl{color:var(--wait)}
-h1{font:700 clamp(34px,4.6vw,60px)/1.04 var(--f1);letter-spacing:-.025em;margin:16px 0 16px;max-width:15ch}
+.telL{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-block:-8px;padding:0;border:0;background:none;color:var(--ink);font:500 15px/1.2 var(--fm);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.telL .ic{width:16px;height:16px}
+h1{font:700 clamp(34px,4.1vw,54px)/1.05 var(--f1);letter-spacing:-.025em;margin:14px 0}
 .lead{font-size:clamp(17px,1.5vw,19px);color:var(--mut);max-width:34em}
 .hfig{display:none;position:relative}
 .hfig .ph{aspect-ratio:4/3;border-radius:14px}
-.hfig .tag{position:absolute;left:20px;top:20px}
-@media(min-width:900px){.hgrid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:stretch}.hgrid>div:first-child{padding-bottom:104px}.hfig{display:block}.hfig .ph{height:100%;min-height:380px;aspect-ratio:auto}.hero{padding-top:48px}}
-.finder{position:relative;z-index:2;margin-top:28px;background:var(--sf);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 12px 32px -18px rgba(15,18,21,.28)}
-@media(min-width:900px){.finder{margin-top:-72px;padding:22px}}
+.hfig .tag{position:absolute;left:20px;top:20px;font-size:15px;min-height:34px}
+@media(min-width:900px){.hgrid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:stretch}.hgrid>div:first-child{padding-bottom:96px}.hfig{display:block}.hfig .ph{height:100%;min-height:360px;aspect-ratio:auto}.hero{padding-top:40px}}
+.finder{position:relative;z-index:2;margin-top:28px;background:var(--sf);border:1px solid var(--line);border-top:4px solid var(--tag);border-radius:14px;padding:16px 18px 6px;box-shadow:0 12px 32px -18px rgba(15,18,21,.28)}
+@media(min-width:900px){.finder{margin-top:-72px;padding:20px 22px 8px}}
+.fstep{display:flex;flex-wrap:wrap;gap:4px 18px;margin-bottom:12px;font:500 13px/20px var(--fm);color:var(--mut)}
+.fstep b{display:inline-grid;place-items:center;width:20px;height:20px;margin-right:6px;border-radius:50%;background:var(--ink);color:var(--tag);font-size:12px}
 .fg{display:grid;gap:12px;grid-template-columns:repeat(6,minmax(0,1fr))}
 .fg .f-mk,.fg .f-md{grid-column:span 3}.fg .f-yr{grid-column:span 2}.fg .f-en{grid-column:span 4}.fg .go{grid-column:1/-1}
+@media(max-width:399px){.fg .f-mk,.fg .f-en{grid-column:1/-1}.fg .f-md{grid-column:span 4}.fg .f-yr{grid-column:span 2}}
 @media(min-width:900px){.fg{grid-template-columns:1.1fr 1fr .7fr 1.5fr 1.3fr;align-items:end}.fg>*{grid-column:auto!important}}
 .fld label,.lbl{display:block;font-size:14px;font-weight:600;color:var(--mut);margin-bottom:6px}
+.fld label span{color:var(--ink)}
 select,.inp{width:100%;min-height:52px;border:1.5px solid var(--line2);border-radius:8px;background:#fff;transition:border-color .15s}
 select{appearance:none;padding:0 38px 0 14px;font-weight:500;cursor:pointer;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230F1215' stroke-width='1.8'/%3E%3C/svg%3E") no-repeat right 14px center;text-overflow:ellipsis}
 .inp{padding:10px 14px}
 select:hover,.inp:hover{border-color:#8D96A0}
 .inp:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(15,18,21,.14)}
 .fg .go{min-height:52px;width:100%}
-@media(max-width:899px){select{padding:0 30px 0 12px;background-position:right 10px center}}
-.pop{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font-size:14px;color:var(--mut)}
-.pop button{min-height:36px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);font-size:14px;cursor:pointer;transition:background-color .15s,border-color .15s,transform .1s var(--ease)}
+@media(max-width:899px){select{padding:0 26px 0 10px;background-position:right 8px center}}
+.pop{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;font-size:14px;color:var(--mut)}
+.pop button{min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg);font-size:14px;cursor:pointer;transition:background-color .15s,border-color .15s,transform .1s var(--ease)}
 .pop button:hover{border-color:var(--line2);background:#fff}
 .pop button:active{transform:scale(.96)}
+.vind{margin-top:10px;border-top:1px solid var(--line)}
+.vind summary{display:flex;align-items:center;gap:10px;min-height:48px;font-weight:600;cursor:pointer;list-style:none}
+.vind summary::-webkit-details-marker{display:none}
+.vind summary::after{content:"";flex:none;width:8px;height:8px;margin:-4px 4px 0 auto;border:solid var(--ink);border-width:0 2px 2px 0;transform:rotate(45deg);transition:transform .2s var(--ease)}
+.vind[open] summary::after{transform:rotate(-135deg);margin-top:4px}
+.vin{padding:2px 0 14px;max-width:600px}
+.vin-r{display:flex;gap:8px}
+.vin-r .inp{flex:1;min-width:0;min-height:48px;font-family:var(--fm);text-transform:uppercase;letter-spacing:.02em}
+.vin-r .btn{flex:none}
+@media(max-width:479px){.vin-r{flex-wrap:wrap}.vin-r .btn{width:100%}}
 /* results */
-.parts{padding-block:48px 72px}
-.rh{display:grid;gap:20px;margin-bottom:20px}
-@media(min-width:900px){.rh{grid-template-columns:1fr auto;align-items:end}}
+.parts{padding-block:44px 64px}
+.rh{margin:0 -12px 14px;padding:8px 12px;border-radius:12px}
+.rh.flash{animation:flash 1.1s var(--ease)}
+@keyframes flash{0%,35%{background:#FFEFA8}}
 .rh h2{font:700 clamp(24px,2.6vw,34px)/1.15 var(--f1);letter-spacing:-.015em}
-.rh p{color:var(--mut);margin-top:6px}
-.vin{display:flex;gap:8px;align-items:flex-end}
-.vin .fld{flex:1;min-width:0}
-.vin .inp{min-height:48px;font-family:var(--fm);text-transform:uppercase;letter-spacing:.02em}
-.vin .btn{flex:none}
-@media(min-width:900px){.vin{width:420px}}
-.filt{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 0;border-block:1px solid var(--line);margin-bottom:8px}
-.cat{position:relative}
+.eng{white-space:nowrap}
+.rh .sub{color:var(--mut);margin-top:6px}
+.vnote{font-size:14px;color:var(--mut);margin-top:4px}
+@media(max-width:899px){.eng{display:block;font-size:.72em;color:var(--mut);margin-top:2px}.eng .dt{display:none}}
+.filt{display:flex;align-items:center;gap:8px 16px;padding:12px 0;border-block:1px solid var(--line)}
+.cats{display:flex;flex-wrap:wrap;gap:8px}
+.cat{position:relative;flex:none}
 .cat input,.sw input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
-.cat span{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:8px;border:1.5px solid var(--line2);background:#fff;font-weight:500;transition:background-color .15s,color .15s,border-color .15s}
-.cat span i{font:500 13px/1 var(--fm);font-style:normal;color:var(--mut)}
+.cat span{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:8px;border:1.5px solid var(--line2);background:#fff;font-weight:500;white-space:nowrap;transition:background-color .15s,color .15s,border-color .15s}
+.cat span i{font:500 14px/1 var(--fm);font-style:normal;color:var(--mut)}
 .cat:hover span{border-color:#8D96A0}
 .cat input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
 .cat input:checked+span i{color:#B9C0C8}
 .cat input:focus-visible+span,.sw input:focus-visible+span{outline:2.5px solid var(--ink);outline-offset:2px}
-.sw{position:relative;display:inline-flex;margin-left:auto}
+.sw{position:relative;display:inline-flex;margin-left:auto;flex:none}
 .sw span{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 4px;font-weight:500;cursor:pointer}
 .sw span::before{content:"";width:40px;height:24px;border-radius:12px;background:var(--line2);transition:background-color .18s;flex:none}
 .sw span::after{content:"";position:absolute;left:7px;top:50%;width:18px;height:18px;margin-top:-9px;border-radius:50%;background:#fff;transition:transform .18s var(--ease);box-shadow:0 1px 2px rgba(0,0,0,.2)}
 .sw input:checked+span::before{background:var(--ok)}
 .sw input:checked+span::after{transform:translateX(16px)}
-@media(max-width:899px){.sw{margin-left:0}}
-.pg{padding-top:24px}
-.pg h3{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;font-size:18px;font-weight:600;margin-bottom:6px}
-.pg h3 small{font:500 13px/1 var(--fm);color:var(--mut)}
-.row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.3fr) 110px 150px;gap:8px 16px;align-items:center;padding:12px 16px;background:#fff;border:1px solid var(--line);border-radius:10px;transition:border-color .2s,background-color .2s}
+@media(max-width:899px){.filt{flex-direction:column;align-items:stretch;gap:2px;padding:6px 0 8px}.sw{order:-1;margin-left:0;align-self:flex-start}.cats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--gut));padding:4px var(--gut);scroll-padding-inline:var(--gut)}.cats::-webkit-scrollbar{display:none}}
+.leg{font-size:14px;color:var(--mut);margin-top:12px}
+.leg b{color:var(--ink);font-weight:600}
+.pg{padding-top:22px}
+.pg h3{display:flex;flex-wrap:wrap;align-items:center;gap:2px 10px;font-size:18px;font-weight:600;margin-bottom:6px}
+.pg h3 small{font:500 14px/1 var(--fm);color:var(--mut)}
+.vchk{min-height:32px;padding:0 10px;border:1px dashed #8D96A0;border-radius:999px;background:none;font:500 14px/1 var(--f1);color:var(--ink2);cursor:pointer}
+.vchk:hover{background:#fff;border-style:solid}
+.gn{font-size:14px;color:var(--mut);margin:-2px 0 8px}
+.row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1.3fr) 110px 150px;gap:8px 16px;align-items:center;padding:12px 16px;background:#fff;border:1px solid var(--line);border-radius:10px;scroll-margin-bottom:96px;transition:border-color .2s,background-color .2s}
 .row+.row{margin-top:6px}
 .row.on{border-color:var(--ink);background:#FFFBEA}
 .rn{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px;min-width:0}
 .rn b{font-weight:600}
 .rn .mono{font-size:14px;color:var(--mut)}
-.rn small{font-size:13px;color:var(--mut);padding:1px 7px;border:1px solid var(--line);border-radius:4px}
+.rn small{font-size:14px;color:var(--mut);padding:1px 7px;border:1px solid var(--line);border-radius:4px}
+.bst{font:500 13px/1.3 var(--fm);font-style:normal;padding:2px 7px;border-radius:4px;background:#FFF1B8;color:var(--ink)}
 .st{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500}
 .st::before{content:"";width:9px;height:9px;border-radius:50%;flex:none;border:2px solid currentColor}
 .st.ok{color:var(--ok)}.st.ok::before{background:currentColor}
@@ -141,31 +187,45 @@ select:hover,.inp:hover{border-color:#8D96A0}
 .pr{font-weight:600;font-size:17px;text-align:right;white-space:nowrap}
 .row .btn{min-height:44px;padding:0 12px;font-size:15px}
 .row .btn[aria-pressed=true]{background:var(--tag);color:var(--ink);border-color:var(--tag)}
+@media(min-width:900px){#list,.leg,.nf{max-width:980px}.row{grid-template-columns:minmax(0,2fr) 200px 110px 140px}}
 @media(max-width:700px){.st .loc{display:none}.row{grid-template-columns:minmax(0,1fr) auto;padding:12px}.st{grid-column:1}.row .btn{grid-column:2;grid-row:2;width:132px}.pr{grid-row:1;grid-column:2}}
+@media(max-width:360px){.row .btn{width:116px;padding:0 8px}.st{font-size:14px;align-items:flex-start}.st::before{margin-top:6px}}
+.more{width:100%;margin-top:18px}
 .empty{padding:28px 0;color:var(--mut)}
+.nf{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:28px;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.nf p{flex:1 1 300px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
 /* how */
 .how{background:var(--sf);border-block:1px solid var(--line);padding-block:72px}
-.how h2,.win h2,.cont h2{font:700 clamp(28px,3.2vw,42px)/1.1 var(--f1);letter-spacing:-.02em}
+.how h2,.win h2,.cont h2,.own h2{font:700 clamp(28px,3.2vw,42px)/1.1 var(--f1);letter-spacing:-.02em}
 .steps{display:grid;gap:0;margin-top:36px;counter-reset:s}
 .steps li{position:relative;padding:0 0 28px 64px}
 .steps li::before{counter-increment:s;content:"0" counter(s);position:absolute;left:0;top:0;font:500 15px/1 var(--fm);width:44px;height:44px;display:grid;place-items:center;border:1.5px solid var(--ink);border-radius:50%;background:#fff}
 .steps li::after{content:"";position:absolute;left:21px;top:52px;bottom:8px;width:1.5px;background:var(--line2)}
 .steps li:last-child::after{display:none}
 .steps h3{font-size:20px;font-weight:600;margin:8px 0 6px}
-.steps p{color:var(--mut);max-width:30em}
+.steps p{color:var(--ink2);max-width:30em}
+.steps p+p{margin-top:8px;font-size:15px;color:var(--mut)}
 .steps .tag{margin-top:12px}
 @media(min-width:900px){.steps{grid-template-columns:repeat(3,1fr);gap:32px}.steps li{padding:64px 0 0}.steps li::after{left:56px;right:-24px;top:21px;bottom:auto;width:auto;height:1.5px}}
 /* winter */
 .win{padding-block:72px}
 .wgrid{display:grid;gap:32px}
 @media(min-width:900px){.wgrid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:start}}
-.win .ph{aspect-ratio:4/3;border-radius:14px}
-.win .note{margin-top:14px;color:var(--mut)}
+.win .ph{aspect-ratio:4/3;border-radius:14px;margin-top:24px}
+.win .ph img{filter:saturate(.9) contrast(1.05)}
+.wnote{margin-top:14px;color:var(--mut)}
 .tbl{width:100%;border-collapse:collapse;margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.tbl th,.tbl td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:baseline}
-.tbl th{font-size:14px;font-weight:600;color:var(--mut);background:#F8F9FA}
+.tbl th,.tbl td{text-align:left;padding:0 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl th{padding-block:12px;font-size:14px;font-weight:600;color:var(--mut);background:#F8F9FA}
 .tbl td:last-child,.tbl th:last-child{text-align:right;white-space:nowrap}
 .tbl tr:last-child td{border-bottom:0}
+.tbl td a{display:flex;align-items:center;gap:8px;min-height:50px;text-decoration:none;font-weight:500}
+.tbl td a::after{content:"→";color:var(--mut);transition:transform .15s var(--ease)}
+.tbl tbody tr{transition:background-color .15s}
+.tbl tbody tr:hover{background:#FFFBEA}
+.tbl tbody tr:hover a::after{transform:translateX(3px);color:var(--ink)}
+.win .btn{margin-top:16px}
 .brands{margin-top:20px;font-size:15px;color:var(--mut)}
 .brands b{color:var(--ink);font-weight:600}
 /* contacts */
@@ -175,29 +235,55 @@ select:hover,.inp:hover{border-color:#8D96A0}
 .dl{margin-top:24px}
 .dl div{display:grid;grid-template-columns:130px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
 .dl dt{color:var(--mut)}
+.dl .lnk{font-family:var(--fm);font-weight:500}
+.dl small{display:block;font-size:14px;color:var(--mut)}
 @media(max-width:480px){.dl div{grid-template-columns:1fr;gap:2px}}
-.cont .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.map{border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.cont .btns{margin-top:24px}
+.cont .hint{margin-top:8px}
+.map{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
 .map svg{display:block;width:100%;height:auto}
+.mcap{position:absolute;left:12px;top:12px;padding:4px 10px;border-radius:6px;background:#fff;font-size:14px;font-weight:600;box-shadow:0 1px 3px rgba(15,18,21,.15)}
+.mst{position:absolute;left:4%;top:39%;font-size:13px;color:var(--mut);transform:rotate(-2.6deg)}
+.pin{position:absolute;left:51.6%;top:43.9%;transform:translate(-50%,calc(-100% - 12px));padding:7px 10px;border-radius:6px;background:var(--ink);color:var(--tag);font:500 min(14px,3.6vw)/1 var(--fm);white-space:nowrap}
+.pin::after{content:"";position:absolute;left:50%;top:100%;margin-left:-7px;border:7px solid transparent;border-top-color:var(--ink);border-bottom:0}
+.route{margin-top:12px}
 .mphotos{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-.mphotos .ph{aspect-ratio:3/2;border-radius:10px}
-.ft{padding-block:32px 110px;font-size:15px;color:var(--mut)}
+.mphotos figure{position:relative;aspect-ratio:3/2;border-radius:10px}
+.mphotos figcaption{position:absolute;left:8px;bottom:8px;padding:3px 8px;border-radius:6px;background:rgba(15,18,21,.78);color:#fff;font-size:13px}
+/* owner */
+section.own{background:var(--ink);color:#C3CAD2;padding-block:72px}
+.own .eb{font:500 14px/1.3 var(--fm);color:var(--tag)}
+.own h2{color:#fff;margin-top:10px;max-width:18ch}
+.og{display:grid;gap:36px;margin-top:32px}
+@media(min-width:900px){.og{grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;align-items:start}}
+.ol{counter-reset:o}
+.ol li{position:relative;padding:18px 0 18px 48px;border-top:1px solid #2E353D}
+.ol li::before{counter-increment:o;content:"0" counter(o);position:absolute;left:0;top:21px;font:500 14px/1 var(--fm);color:var(--tag)}
+.ol h3{font-size:19px;font-weight:600;color:#fff;margin-bottom:6px}
+.own .tg{margin-top:0}
+.tg-k{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px;max-width:460px}
+.tg-k span{display:grid;place-items:center;min-height:36px;padding:4px 8px;border-radius:8px;background:rgba(255,255,255,.8);color:var(--ink);font-size:14px;font-weight:500;text-align:center}
+.pz{margin-top:20px;padding:20px;border:1px solid #2E353D;border-radius:14px}
+.pz b{color:#fff;font-weight:600}
+.pz p+p{margin-top:8px}
+.pz .btn{margin-top:18px}
+.ft{padding-block:32px 40px;font-size:15px;color:var(--mut)}
 .ft-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px}
 /* reserve bar */
 .rbar{position:fixed;left:50%;bottom:12px;z-index:20;display:flex;align-items:center;gap:14px;width:min(680px,calc(100% - 24px));padding:10px 10px 10px 14px;background:var(--ink);color:#fff;border-radius:12px;box-shadow:0 12px 30px rgba(15,18,21,.3);transform:translate(-50%,160%);visibility:hidden;transition:transform .3s var(--ease),visibility 0s .3s}
 .rbar.on{transform:translate(-50%,0);visibility:visible;transition:transform .3s var(--ease)}
 .rbar p{flex:1;min-width:0;font-size:15px;line-height:1.3}
 .rbar p span{color:#B9C0C8}
-.rbar .btn{background:var(--tag);color:var(--ink)}
+.rbar .btn{gap:0;background:var(--tag);color:var(--ink)}
 .rbar .btn:hover{background:#FFE07A}
 @media(max-width:520px){.rbar .tag,.rbar .hm{display:none}.rbar .btn{padding:0 14px}}
 /* dialog */
 dialog{padding:0;border:0;color:var(--ink);background:var(--sf)}
 dialog::backdrop{background:rgba(15,18,21,.55)}
-.ck{width:min(600px,100%);max-height:min(92vh,820px);border-radius:16px;flex-direction:column}
+.ck{width:min(600px,100%);max-height:min(92vh,820px);max-height:min(92dvh,820px);border-radius:16px;flex-direction:column}
 .ck[open]{display:flex;animation:up .26s var(--ease)}
 @keyframes up{from{transform:translateY(20px);opacity:0}}
-@media(max-width:600px){.ck{margin:auto 0 0;max-width:100%;max-height:94vh;border-radius:16px 16px 0 0}}
+@media(max-width:600px){.ck{margin:auto 0 0;max-width:100%;max-height:94vh;max-height:94dvh;border-radius:16px 16px 0 0}}
 .ck-h{display:flex;align-items:center;gap:12px;padding:18px 20px 12px}
 .ck-h p{font:500 13px/1.2 var(--fm);color:var(--mut)}
 .ck-h h2{font-size:24px;font-weight:700;letter-spacing:-.01em}
@@ -206,24 +292,26 @@ dialog::backdrop{background:rgba(15,18,21,.55)}
 .bar3{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:0 20px}
 .bar3 i{height:4px;border-radius:2px;background:var(--line)}
 .bar3 i.on{background:var(--ink)}
-.ck-b{padding:18px 20px;overflow:auto;flex:1}
+.ck-b{padding:18px 20px;overflow:auto;overscroll-behavior:contain;flex:1}
 .ck-f{display:flex;gap:10px;padding:14px 20px 20px;border-top:1px solid var(--line)}
-.ck-f .pri{flex:1}
+.ck-f #ckNext{flex:1}
+.ck-f .btn:disabled{cursor:default}
 .li{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
 .li p{font-size:15px;line-height:1.35}
-.li p small{display:block;color:var(--mut);font-size:13px}
+.li p small{display:block;color:var(--mut);font-size:14px}
 .li .pr{font-size:16px}
+.li .mono,.tg-m .mono{white-space:nowrap}
 .qty{display:flex;align-items:center;gap:4px}
-.qty button{width:40px;height:40px;border:1.5px solid var(--line2);border-radius:8px;background:#fff;cursor:pointer;font-size:18px;line-height:1;transition:transform .1s var(--ease)}
+.qty button{width:44px;height:44px;border:1.5px solid var(--line2);border-radius:8px;background:#fff;cursor:pointer;font-size:18px;line-height:1;transition:transform .1s var(--ease)}
 .qty button:active{transform:scale(.92)}
 .qty button:disabled{opacity:.4;cursor:not-allowed}
 .qty output{min-width:28px;text-align:center;font-weight:600}
-.qty .rm{width:auto;height:auto;border:0;background:none;font-size:14px}
-.rm{margin-left:6px;border:0;background:none;color:var(--mut);text-decoration:underline;min-height:40px;cursor:pointer;font-size:14px}
+.qty .rm{width:auto;height:auto;margin-left:6px;padding:0 8px;min-height:44px;border:0;background:none;color:var(--mut);text-decoration:underline;font-size:14px}
 .tot{display:flex;justify-content:space-between;margin-top:14px;font-size:18px;font-weight:700}
 .hint{font-size:14px;color:var(--mut);margin-top:6px}
 .err{color:#B42318;font-size:14px;font-weight:600;margin-top:6px}
 .inp[aria-invalid=true]{border-color:#B42318}
+.wait{margin-top:18px;padding:14px 16px;border:1px solid #EBD27A;border-radius:10px;background:#FFF8DC}
 .opt{position:relative;display:block}
 .opt input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
 .ob{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:14px 16px;border:1.5px solid var(--line2);border-radius:10px;background:#fff;transition:border-color .15s,background-color .15s}
@@ -240,7 +328,7 @@ dialog::backdrop{background:rgba(15,18,21,.55)}
 .done .tag{font-size:16px;min-height:38px;padding-left:28px}
 .done h3{font-size:24px;line-height:1.2;margin:14px 0 8px}
 .done>p{color:var(--mut)}
-.tg{margin-top:18px;border-radius:14px;background:#E4E8EC;padding:14px}
+.tg{margin-top:18px;border-radius:14px;background:#E4E8EC;padding:14px;color:var(--ink)}
 .tg-h{display:flex;gap:10px;align-items:center;margin-bottom:10px;font-size:15px}
 .tg-h i{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--tag);font:700 16px/1 var(--fm);font-style:normal}
 .tg-h small{display:block;color:var(--mut)}
@@ -248,254 +336,329 @@ dialog::backdrop{background:rgba(15,18,21,.55)}
 .tg-m.me{margin:0 0 10px auto;border-radius:14px 14px 4px 14px;background:#FFF3C4}
 .tg-m p+p{margin-top:8px}
 .tg-m .mono{font-size:14px}
-.tg-t{position:absolute;right:12px;bottom:5px;font-size:12px;color:var(--mut)}
+.tg-t{position:absolute;right:12px;bottom:5px;font-size:13px;color:var(--mut)}
 .note{width:min(440px,calc(100% - 32px));border-radius:16px;padding:24px}
 .note h2{font-size:24px;margin-bottom:8px}
 .note p{color:var(--mut)}
-.note .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.note .btns{margin-top:20px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ph" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol></svg>
 <div class="demo dk">
-  <div class="wrap demo-in">
-    <p><span class="l">Демо-сайт від drakx</span><span class="s">Демо від drakx</span><a href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%90%D1%80%D1%82%D0%B8%D0%BA%D1%83%D0%BB%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий</a></p>
-    <a href="../../shop/">← Інші роботи</a>
-  </div>
+<div class="wrap demo-in">
+<span><span class="l">Демо-сайт від drakx</span><span class="s">Демо-сайт · drakx</span></span>
+<a class="own" href="#owner"><span><span class="l">Як це працює для власника</span><span class="s">Для власника</span></span></a>
+<a class="cta" href="https://t.me/ddrakx" data-hire target="_blank" rel="noopener"><span>Замовити такий сайт</span></a>
+<a class="bk" href="../../shop/" aria-label="Інші роботи drakx">←<span class="l">&nbsp;Інші роботи</span></a>
+</div>
 </div>
 
 <header class="hdr">
-  <div class="wrap hdr-in">
-    <a class="logo" href="#top" aria-label="Артикул, на початок сторінки"><svg width="34" height="26" viewBox="0 0 34 26" aria-hidden="true"><path d="M10 1h23v24H10L1 13z" fill="#FFD23F" stroke="#0F1215" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10.5" cy="13" r="2.6" fill="#0F1215"/><path d="M17 9h11M17 13h8M17 17h11" stroke="#0F1215" stroke-width="1.6"/></svg><span><b>Артикул</b><small>запчастини · Дніпро</small></span></a>
-    <nav class="nav" aria-label="Розділи"><a href="#parts">Підбір</a><a href="#how">Як працює резерв</a><a href="#winter">Зима</a><a href="#contacts">Контакти</a></nav>
-    <button class="rbtn" type="button" data-ck aria-label="Резерв, позицій: 0">Резерв <span class="tag tn" id="cnt">0</span></button>
-  </div>
+<div class="wrap hdr-in">
+<a class="logo" href="#top" aria-label="Артикул, на початок сторінки"><svg width="34" height="26" viewBox="0 0 34 26" aria-hidden="true"><path d="M10 1h23v24H10L1 13z" fill="#FFD23F" stroke="#0F1215" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10.5" cy="13" r="2.6" fill="#0F1215"/><path d="M17 9h11M17 13h8M17 17h11" stroke="#0F1215" stroke-width="1.6"/></svg><span><b>Артикул</b><small>запчастини · Дніпро</small></span></a>
+<nav class="nav" aria-label="Розділи"><a href="#parts">Підбір</a><a href="#how">Як працює резерв</a><a href="#winter">Зима</a><a href="#contacts">Контакти</a></nav>
+<button class="telb" type="button" data-note="tel" aria-label="Подзвонити: +380 XX XXX XX XX, у демо тут буде ваш номер"><svg class="ic" aria-hidden="true"><use href="#ph"/></svg><span class="tt"><b>+380 XX XXX XX XX</b><small>у демо тут буде ваш номер</small></span></button>
+<button class="rbtn" type="button" data-ck aria-label="Мій резерв, порожній"><span class="r1">Мій резерв</span><span class="r2">Резерв</span><span class="tag tn" id="cnt" hidden>0</span></button>
+</div>
 </header>
 
 <main id="top">
 <section class="hero">
-  <div class="wrap">
-    <div class="hgrid">
-      <div>
-        <p class="open"><b id="openS">Відкрито до 19:30</b><span>вул. Робоча, 158-Б · парковка біля входу</span></p>
-        <h1>Запчастини, що лежать на полиці сьогодні</h1>
-        <p class="lead">Оберіть авто, і побачите, що підходить, скільки коштує й скільки штук на складі. Відкладемо до 19:00, заберете без передоплати.</p>
-      </div>
-      <figure class="hfig">
-        <div class="ph"><img src="img/hero.webp" width="1200" height="900" loading="lazy" alt="Склад магазину: сірі стелажі з підписаними коробками запчастин"></div>
-        <span class="tag" id="heroTag">B-14 · TRW · 4 шт</span>
-      </figure>
-    </div>
-    <form class="finder" id="finder" onsubmit="return false" aria-label="Підбір запчастин за авто">
-      <div class="fg">
-        <div class="fld f-mk"><label for="mk">Марка</label><select id="mk"></select></div>
-        <div class="fld f-md"><label for="md">Модель</label><select id="md"></select></div>
-        <div class="fld f-yr"><label for="yr">Рік</label><select id="yr"></select></div>
-        <div class="fld f-en"><label for="en">Двигун</label><select id="en"></select></div>
-        <button class="btn pri go" type="button" id="goB">Показати запчастини</button>
-      </div>
-      <div class="pop"><span>Часто шукають:</span>
-        <button type="button" data-car="Skoda|Octavia|2017|0">Octavia A7</button>
-        <button type="button" data-car="Toyota|Camry|2019|0">Camry 70</button>
-        <button type="button" data-car="Volkswagen|Golf|2015|1">Golf VII TDI</button>
-        <button type="button" data-car="Kia|Sportage|2018|0">Sportage QL</button>
-        <button type="button" data-car="Renault|Megane|2018|0">Megane IV</button>
-      </div>
-    </form>
-  </div>
+<div class="wrap">
+<div class="hgrid">
+<div>
+<p class="open"><b id="openS">Відкрито до 19:30</b><span>вул. Робоча, 158-Б · парковка біля входу</span><button class="telL" type="button" data-note="tel" aria-label="Подзвонити: у демо тут буде ваш номер"><svg class="ic" aria-hidden="true"><use href="#ph"/></svg>+380 XX XXX XX XX</button></p>
+<h1>Запчастини, що лежать на полиці сьогодні</h1>
+<p class="lead">Оберіть авто — побачите, що підходить, скільки коштує і скільки штук є на полиці. Тримаємо в резерві до 19:00, платите на касі. Після 18:00 відкладемо на завтра.</p>
+</div>
+<figure class="hfig">
+<div class="ph"><img src="img/hero.webp" srcset="img/hero-480.webp 480w, img/hero.webp 1200w" sizes="(min-width:900px) 40vw, 1px" width="1200" height="896" loading="lazy" alt="Склад магазину: сірі стелажі з підписаними коробками запчастин"></div>
+<span class="tag" id="heroTag">B-14 · TRW · 4 шт</span>
+</figure>
+</div>
+<div class="finder" id="finder" role="group" aria-label="Підбір запчастин за авто">
+<p class="fstep" aria-hidden="true"><span><b>1</b>Авто</span><span><b>2</b>Двигун</span><span><b>3</b>Що є на полиці</span></p>
+<div class="fg">
+<div class="fld f-mk"><label for="mk">Марка</label><select id="mk"></select></div>
+<div class="fld f-md"><label for="md">Модель</label><select id="md"></select></div>
+<div class="fld f-yr"><label for="yr">Рік <span id="genL"></span></label><select id="yr"></select></div>
+<div class="fld f-en"><label for="en">Двигун</label><select id="en"></select></div>
+<button class="btn yl go" type="button" id="goB">Показати запчастини</button>
+</div>
+<div class="pop"><span>Часто шукають:</span>
+<button type="button" data-car="Skoda|Octavia|2017|0">Octavia A7</button>
+<button type="button" data-car="Toyota|Camry|2019|0">Camry 70</button>
+<button type="button" data-car="Volkswagen|Golf|2015|1">Golf VII TDI</button>
+<button type="button" data-car="Kia|Sportage|2018|0">Sportage QL</button>
+<button type="button" data-car="Renault|Megane|2018|0">Megane IV</button>
+</div>
+<details class="vind" id="vinD">
+<summary>Не впевнені, що підійде? Пришліть VIN — продавець перевірить</summary>
+<form class="vin" id="vinF" novalidate>
+<label class="lbl" for="vinI">VIN, 17 символів</label>
+<div class="vin-r"><input class="inp" id="vinI" maxlength="17" autocomplete="off" spellcheck="false" placeholder="TMBJG7NE1H0123456" aria-describedby="vinH"><button class="btn sec" type="submit">Перевірити за VIN</button></div>
+<p class="err" id="vinI-e" hidden></p>
+<p class="hint" id="vinH">Відповімо в Telegram за 15 хвилин у робочий час. VIN є в техпаспорті.</p>
+</form>
+</details>
+</div>
+</div>
 </section>
 
 <section class="parts wrap" id="parts" aria-labelledby="carT">
-  <div class="rh">
-    <div>
-      <h2 id="carT">Skoda Octavia</h2>
-      <p id="carS" aria-live="polite"></p>
-    </div>
-    <form class="vin" id="vinF" onsubmit="return false" novalidate>
-      <div class="fld"><label for="vinI">Не впевнені? Перевіримо за VIN</label><input class="inp" id="vinI" maxlength="17" autocomplete="off" spellcheck="false" placeholder="17 символів"></div>
-      <button class="btn sec" type="submit">Перевірити</button>
-    </form>
-  </div>
-  <div class="filt" role="group" aria-label="Фільтр">
-    <div id="cats" style="display:contents"></div>
-    <label class="sw"><input type="checkbox" id="only"><span>Тільки на полиці</span></label>
-  </div>
-  <div id="list"></div>
+<div class="rh" id="rh">
+<h2 id="carT" tabindex="-1">Skoda Octavia</h2>
+<p class="sub"><span id="carS" aria-live="polite"></span> <span id="upd"></span></p>
+<p class="vnote">Підібрано за поколінням і двигуном. Гальма й підвіску продавець звіряє за VIN перед видачею.</p>
+</div>
+<div class="filt">
+<div class="cats" id="cats" role="radiogroup" aria-label="Категорія"></div>
+<label class="sw"><input type="checkbox" id="only"><span>Тільки на полиці</span></label>
+</div>
+<p class="leg"><b>Оригінал</b> — від виробника авто. <b>Якісний аналог</b> — від постачальників конвеєра й перевірених брендів, дешевше. <b>Преміум</b> — посилені, для активної їзди.</p>
+<div id="list"></div>
+<div class="nf"><p><b>Не знайшли потрібне?</b> Подзвоніть або напишіть марку й деталь — у робочий час відповімо за 15 хвилин.</p><div class="btns"><button class="btn sec" type="button" data-note="tel"><svg class="ic" aria-hidden="true"><use href="#ph"/></svg>Подзвонити</button><button class="btn sec" type="button" data-note="tg">Написати в Telegram</button></div></div>
 </section>
 
 <section class="how" id="how" aria-labelledby="hT">
-  <div class="wrap">
-    <h2 id="hT">Як працює резерв</h2>
-    <ol class="steps" style="padding:0;list-style:none">
-      <li><h3>Знайдіть деталь під своє авто</h3><p>Наявність рахуємо по полицях магазину на Робочій. Якщо на полиці немає, привеземо зі складу партнера завтра до 11:00.</p></li>
-      <li><h3>Натисніть «Відкласти»</h3><p>Заявка приходить продавцю в Telegram. Деталь знімають з полиці й кладуть на видачу з номером вашого резерву.</p><span class="tag">А-4821 · до 19:00</span></li>
-      <li><h3>Заберіть до 19:00</h3><p>Перевірите деталь на касі й оплатите карткою або готівкою. Не підійшла і не встановлювали — повернення 14 днів.</p></li>
-    </ol>
-  </div>
+<div class="wrap">
+<h2 id="hT">Як працює резерв</h2>
+<ol class="steps">
+<li><h3>Знайдіть деталь під своє авто</h3><p>Наявність рахуємо по полицях магазину на Робочій. Якщо на полиці немає, привеземо зі складу партнера завтра до 11:00.</p></li>
+<li><h3>Натисніть «У резерв»</h3><p>Заявка приходить продавцю в Telegram. Деталь знімають з полиці й кладуть на видачу з номером вашого резерву.</p><span class="tag">А-4821 · до 19:00</span></li>
+<li><h3>Заберіть до 19:00</h3><p>Перевірите деталь на касі й оплатите карткою або готівкою. Якщо деталь не підійшла й ви її не встановлювали, повернемо гроші протягом 14 днів. Потрібні чек і упаковка.</p><p>Резерв тримаємо до 19:00 — за пів години до закриття, щоб встигли перевірити деталь на касі. Не встигаєте — напишіть, протримаємо до 19:30. Оформлений після 18:00 резерв чекає до 19:00 завтра.</p></li>
+</ol>
+</div>
 </section>
 
 <section class="win wrap" id="winter" aria-labelledby="wT">
-  <div class="wgrid">
-    <div>
-      <h2 id="wT">Листопад: що беруть перед морозами</h2>
-      <p class="note">Акумулятор перевіримо навантажувальною вилкою безкоштовно, поки чекаєте. Це 5 хвилин.</p>
-      <div class="ph" style="margin-top:24px"><img src="img/winter.webp" width="1200" height="900" loading="lazy" alt="Акумулятор, пара щіток склоочисника й каністра зимового омивача на сірому фоні"></div>
-    </div>
-    <div>
-      <table class="tbl tn">
-        <thead><tr><th scope="col">Що</th><th scope="col">Ціна</th></tr></thead>
-        <tbody>
-          <tr><td>Акумулятор 60–74 А·год</td><td>3&nbsp;100–5&nbsp;200 грн</td></tr>
-          <tr><td>Щітки склоочисника, пара</td><td>390–1&nbsp;290 грн</td></tr>
-          <tr><td>Омивач зимовий −20&nbsp;°C, 4 л</td><td>165–240 грн</td></tr>
-          <tr><td>Антифриз G12+, 5 л</td><td>520–890 грн</td></tr>
-          <tr><td>Лампи H7, пара</td><td>260–890 грн</td></tr>
-          <tr><td>Комплект ТО: олива 4 л + 3 фільтри</td><td>2&nbsp;150–3&nbsp;900 грн</td></tr>
-          <tr><td>Свічки запалювання, 4 шт</td><td>640–1&nbsp;600 грн</td></tr>
-        </tbody>
-      </table>
-      <p class="brands"><b>На полицях:</b> Bosch, Mann-Filter, Filtron, TRW, Brembo, Ferodo, ATE, Sachs, KYB, Lemförder, Febi, Gates, SKF, NGK, Denso, Varta, Exide, Valeo, Osram, Castrol, Motul.</p>
-    </div>
-  </div>
+<div class="wgrid">
+<div>
+<h2 id="wT">Листопад: що беруть перед морозами</h2>
+<p class="wnote">Акумулятор перевіримо навантажувальною вилкою безкоштовно, поки чекаєте. Це 5 хвилин.</p>
+<div class="ph"><img src="img/winter.webp" srcset="img/winter-480.webp 480w, img/winter.webp 1200w" sizes="(max-width:899px) 100vw, 40vw" width="1200" height="896" loading="lazy" alt="Акумулятор, пара щіток склоочисника й каністра зимового омивача на сірому фоні"></div>
+</div>
+<div>
+<table class="tbl tn">
+<thead><tr><th scope="col">Що</th><th scope="col">Ціна</th></tr></thead>
+<tbody>
+<tr><td><a href="#parts" data-cat="wi">Акумулятор 60–74 А·год</a></td><td>2&nbsp;900–5&nbsp;200 грн</td></tr>
+<tr><td><a href="#parts" data-cat="wi">Щітки склоочисника, пара</a></td><td>390–1&nbsp;290 грн</td></tr>
+<tr><td><a href="#parts" data-cat="wi">Омивач зимовий −20&nbsp;°C, 4 л</a></td><td>165–240 грн</td></tr>
+<tr><td><a href="#parts" data-cat="wi">Антифриз G12+, 5 л</a></td><td>520–890 грн</td></tr>
+<tr><td><a href="#parts" data-cat="wi">Лампи H7, пара</a></td><td>260–890 грн</td></tr>
+<tr><td><a href="#parts" data-cat="to">Комплект ТО: олива 4 л + 3 фільтри</a></td><td>2&nbsp;150–3&nbsp;900 грн</td></tr>
+<tr><td><a href="#parts" data-cat="to">Свічки запалювання</a></td><td>640–1&nbsp;900 грн</td></tr>
+</tbody>
+</table>
+<a class="btn pri" href="#parts" data-cat="wi">Показати для мого авто</a>
+<p class="brands"><b>На полицях:</b> Bosch, Mann-Filter, Filtron, TRW, Brembo, Ferodo, ATE, Sachs, KYB, Lemförder, Febi, Gates, SKF, NGK, Denso, Varta, Exide, Valeo, Osram, Castrol, Motul.</p>
+</div>
+</div>
 </section>
 
 <section class="cont" id="contacts" aria-labelledby="cT">
-  <div class="wrap cgrid">
-    <div>
-      <h2 id="cT">Магазин на Робочій</h2>
-      <dl class="dl">
-        <div><dt>Адреса</dt><dd>Дніпро, вул. Робоча, 158-Б. Парковка на 6 авто біля входу.</dd></div>
-        <div><dt>Години</dt><dd>Щодня 8:30–19:30. Резерв тримаємо до 19:00.</dd></div>
-        <div><dt>Оплата</dt><dd>Картка або готівка на касі. Без передоплати.</dd></div>
-        <div><dt>Кур’єр</dt><dd>По Дніпру 150 грн. Сьогодні, якщо оформити до 16:00.</dd></div>
-        <div><dt>Повернення</dt><dd>14 днів, якщо деталь не встановлювали і є упаковка.</dd></div>
-      </dl>
-      <div class="btns">
-        <a class="btn pri" href="#top">Підібрати запчастини</a>
-        <button class="btn sec" type="button" data-tg>Написати в Telegram</button>
-      </div>
-    </div>
-    <div>
-      <div class="map">
-        <svg viewBox="0 0 640 360" role="img" aria-label="Схема: магазин «Артикул» на вулиці Робочій, неподалік річки Дніпро">
-          <rect width="640" height="360" fill="#E6E9ED"/>
-          <path d="M-10 40C140 70 260 10 420 30S600 90 650 60V-10H-10Z" fill="#C7D2DC"/>
-          <g fill="none" stroke="#fff" stroke-linecap="round">
-            <path d="M-10 170L650 140" stroke-width="18"/><path d="M90 90L60 370" stroke-width="10"/><path d="M300 70L320 370" stroke-width="12"/>
-            <path d="M500 80L560 370" stroke-width="10"/><path d="M-10 290L650 270" stroke-width="10"/>
-          </g>
-          <g fill="#D7DCE2"><rect x="120" y="190" width="150" height="70" rx="4"/><rect x="345" y="185" width="130" height="70" rx="4"/><rect x="120" y="95" width="150" height="50" rx="4"/><rect x="345" y="92" width="130" height="48" rx="4"/></g>
-          <g font-family="IBM Plex Sans,system-ui,sans-serif" font-size="14" fill="#56606B">
-            <text x="20" y="160" transform="rotate(-2.6 20 160)">вул. Робоча</text>
-            <text x="470" y="40">р. Дніпро</text>
-          </g>
-          <g transform="translate(330 158)">
-            <path d="M0 0L-16-22H-56V-58H40V-22H16Z" fill="#0F1215"/>
-            <text x="-8" y="-34" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="15" fill="#FFD23F">Артикул</text>
-          </g>
-        </svg>
-      </div>
-      <div class="mphotos">
-        <div class="ph"><img src="img/store.webp" width="1200" height="800" loading="lazy" alt="Вхід у магазин зі скляною вітриною та парковкою перед ним"></div>
-        <div class="ph"><img src="img/counter.webp" width="1200" height="800" loading="lazy" alt="Стійка видачі замовлень у магазині, на ній коробка з гальмівними колодками"></div>
-      </div>
-    </div>
-  </div>
+<div class="wrap cgrid">
+<div>
+<h2 id="cT">Магазин на Робочій</h2>
+<dl class="dl">
+<div><dt>Адреса</dt><dd>Дніпро, вул. Робоча, 158-Б. Парковка на 6 авто біля входу.</dd></div>
+<div><dt>Телефон</dt><dd><button class="lnk" type="button" data-note="tel">+380 XX XXX XX XX</button><small>у демо тут буде ваш номер</small></dd></div>
+<div><dt>Години</dt><dd>Щодня 8:30–19:30. Резерв тримаємо до 19:00, оформлений після 18:00 — до 19:00 завтра.</dd></div>
+<div><dt>Оплата</dt><dd>Картка або готівка на касі. Без передоплати.</dd></div>
+<div><dt>Доставка</dt><dd>Кур’єр по Дніпру 150 грн: сьогодні, якщо оформити до 16:00. Нова пошта по Україні: відправляємо сьогодні, якщо оформили до 16:00, оплата при отриманні.</dd></div>
+<div><dt>Повернення</dt><dd>14 днів, якщо деталь не встановлювали і є упаковка. Гарантія 12 місяців.</dd></div>
+</dl>
+<div class="btns">
+<button class="btn pri" type="button" data-note="tel"><svg class="ic" aria-hidden="true"><use href="#ph"/></svg>Подзвонити</button>
+<button class="btn sec" type="button" data-note="tg">Написати в Telegram</button>
+</div>
+<p class="hint">«Подзвонити»: у демо тут буде ваш номер.</p>
+</div>
+<div>
+<figure class="map">
+<svg viewBox="0 0 640 360" role="img" aria-label="Схема проїзду: магазин «Артикул» на вулиці Робочій, 158-Б, парковка біля входу">
+<rect width="640" height="360" fill="#E6E9ED"/>
+<path d="M-10 40C140 70 260 10 420 30S600 90 650 60V-10H-10Z" fill="#C7D2DC"/>
+<g fill="none" stroke="#fff" stroke-linecap="round">
+<path d="M-10 170L650 140" stroke-width="18"/><path d="M90 90L60 370" stroke-width="10"/><path d="M300 70L320 370" stroke-width="12"/>
+<path d="M500 80L560 370" stroke-width="10"/><path d="M-10 290L650 270" stroke-width="10"/>
+</g>
+<g fill="#D7DCE2"><rect x="120" y="190" width="150" height="70" rx="4"/><rect x="345" y="185" width="130" height="70" rx="4"/><rect x="120" y="95" width="150" height="50" rx="4"/><rect x="345" y="92" width="130" height="48" rx="4"/></g>
+<rect x="345" y="185" width="56" height="40" rx="4" fill="#FFD23F" stroke="#0F1215" stroke-width="2"/>
+<rect x="412" y="196" width="22" height="22" rx="4" fill="#2F6FB3"/><path d="M419 213v-12h5a3.5 3.5 0 0 1 0 7h-5" fill="none" stroke="#fff" stroke-width="2.4"/>
+<circle cx="330" cy="158" r="8" fill="#0F1215" stroke="#fff" stroke-width="3"/>
+</svg>
+<figcaption class="mcap">Схема проїзду</figcaption>
+<span class="mst" aria-hidden="true">вул. Робоча</span>
+<span class="pin" aria-hidden="true">Артикул · 158-Б</span>
+</figure>
+<a class="btn sec route" id="route" href="https://www.google.com/maps" target="_blank" rel="noopener">Прокласти маршрут</a>
+<div class="mphotos">
+<figure class="ph"><img src="img/store.webp" srcset="img/store-480.webp 480w, img/store.webp 1200w" sizes="(max-width:899px) 45vw, 340px" width="1200" height="805" loading="lazy" alt="Вхід у магазин зі скляною вітриною та парковкою перед ним"><figcaption>Вхід з боку парковки</figcaption></figure>
+<figure class="ph"><img src="img/counter.webp" srcset="img/counter-480.webp 480w, img/counter.webp 1200w" sizes="(max-width:899px) 45vw, 340px" width="1200" height="805" loading="lazy" alt="Стійка видачі замовлень у магазині, на ній коробка з гальмівними колодками"><figcaption>Видача резервів</figcaption></figure>
+</div>
+</div>
+</div>
+</section>
+
+<section class="own dk" id="owner" aria-labelledby="oT">
+<div class="wrap">
+<p class="eb">Для власника · це демо від drakx</p>
+<h2 id="oT">Такий сайт для вашого магазину</h2>
+<div class="og">
+<ol class="ol">
+<li><h3>Заявки приходять вам у Telegram</h3><p>Хто, що відклав, коли забере і як з ним зв’язатися. Незабраний резерв повертається на полицю однією кнопкою.</p></li>
+<li><h3>Наявність і ціни — з вашого обліку</h3><p>Залишки підтягуються з вашої таблиці Google Sheets або вивантаження з BAS/1С і оновлюються самі. Обліку немає — оновлюєте самі через Telegram-бота або пишете розробнику, і він оновить. Тоді замість кількості сайт пише «Уточнимо наявність за 15 хв», без зайвих обіцянок.</p></li>
+<li><h3>Під ваш магазин</h3><p>Ваша назва, місто, адреса, бренди, ціни й фото. Статуси й доставку налаштуємо під вас: немає складу партнера — не буде й «привеземо завтра». Демо лише показує, як це працює.</p></li>
+</ol>
+<div>
+<div class="tg" role="img" aria-label="Приклад повідомлення бота: новий резерв А-4821, колодки TRW для Skoda Octavia A7, сьогодні 17:00–18:00, Олег, телефон">
+<div class="tg-h"><i>А</i><div><b>Артикул · резерви</b><small>бот</small></div></div>
+<div class="tg-m"><p><b>Новий резерв А-4821</b></p><p>Колодки гальмівні передні, TRW · 1 шт · полиця F-20<br>Skoda Octavia A7 · сьогодні, 17:00–18:00</p><p>Олег, +380 XX XXX XX XX</p><span class="tg-t">14:32</span></div>
+<div class="tg-k" aria-hidden="true"><span>✓ Видано</span><span>↩ На полицю</span></div>
+</div>
+<div class="pz">
+<p><b>Сайт із резервом і ботом, як цей: 11 000–17 000 грн.</b> Простіше, сторінка й бот для заявок: від 6 000 грн.</p>
+<p>Без передоплати: спершу безкоштовний прототип під вашу назву, часто того ж дня.</p>
+<a class="btn yl" href="https://t.me/ddrakx" data-hire target="_blank" rel="noopener">Хочу такий сайт</a>
+</div>
+</div>
+</div>
+</div>
 </section>
 </main>
 
 <footer class="ft wrap">
-  <div class="ft-in">
-    <p><b>Артикул</b> · Дніпро, вул. Робоча, 158-Б · щодня 8:30–19:30</p>
-    <p>Демо-сайт, зроблений drakx для прикладу. Бізнес вигаданий.</p>
-  </div>
+<div class="ft-in">
+<p><b>Артикул</b> · Дніпро, вул. Робоча, 158-Б · щодня 8:30–19:30 · <button class="lnk" type="button" data-note="tel">+380 XX XXX XX XX</button></p>
+<p>Це демо-сайт від drakx. Магазин і товари вигадані, ціни умовні. <a href="#owner">Як це працює для власника</a></p>
+</div>
 </footer>
 
+<p class="sr" id="live" aria-live="polite"></p>
 <div class="rbar" id="rbar" aria-hidden="true">
-  <span class="tag tn" id="rbarN">0</span>
-  <p id="rbarT"></p>
-  <button class="btn" type="button" data-ck tabindex="-1">Оформити<span class="hm">&nbsp;резерв</span></button>
+<span class="tag tn" id="rbarN">0</span>
+<p id="rbarT"></p>
+<button class="btn" type="button" data-ck tabindex="-1">Оформити<span class="hm">&nbsp;резерв</span></button>
 </div>
 
 <dialog class="ck" id="ck" aria-labelledby="ckT">
-  <div class="ck-h">
-    <div style="flex:1"><p id="ckS">Крок 1 з 3</p><h2 id="ckT" tabindex="-1">Резерв</h2></div>
-    <button class="x" type="button" data-close aria-label="Закрити"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-  </div>
-  <div class="bar3" id="ckBar" aria-hidden="true"><i></i><i></i><i></i></div>
-  <div class="ck-b" id="ckB"></div>
-  <div class="ck-f" id="ckF">
-    <button class="btn sec" type="button" id="ckBack">Назад</button>
-    <button class="btn pri" type="button" id="ckNext">Далі</button>
-  </div>
+<div class="ck-h">
+<div style="flex:1"><p id="ckS">Крок 1 з 3</p><h2 id="ckT" tabindex="-1">Резерв</h2></div>
+<button class="x" type="button" data-close aria-label="Закрити"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+</div>
+<div class="bar3" id="ckBar" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="ck-b" id="ckB"></div>
+<div class="ck-f" id="ckF">
+<button class="btn sec" type="button" id="ckBack">Назад</button>
+<button class="btn pri" type="button" id="ckNext">Далі</button>
+</div>
 </dialog>
 
-<dialog class="note" id="tgN" aria-labelledby="tgNT">
-  <h2 id="tgNT">Тут буде ваш Telegram</h2>
-  <p>Це демо-сайт. На справжньому ця кнопка відкриває чат магазину в Telegram, а резерви й запити за VIN приходять туди ж.</p>
-  <div class="btns">
-    <a class="btn pri" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%90%D1%80%D1%82%D0%B8%D0%BA%D1%83%D0%BB%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий сайт</a>
-    <button class="btn sec" type="button" data-close>Закрити</button>
-  </div>
+<dialog class="note" id="nt" aria-labelledby="ntT">
+<h2 id="ntT">Тут буде ваш Telegram</h2>
+<p id="ntP"></p>
+<div class="btns">
+<a class="btn pri" href="https://t.me/ddrakx" data-hire target="_blank" rel="noopener">Хочу такий сайт</a>
+<button class="btn sec" type="button" data-close>Закрити</button>
+</div>
 </dialog>
 
 <script>
 (function(){
 'use strict';
 var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
-var sp=function(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')},uah=function(n){return sp(n)+' грн'};
+var sp=function(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')},uah=function(n){return sp(n)+' грн'};
 var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 function pl(n,a,b,c){var m=n%10,h=n%100;return m===1&&h!==11?a:m>=2&&m<=4&&(h<12||h>14)?b:c}
+var pad=function(n){return(n<10?'0':'')+n},hm=function(d){return d.getHours()+':'+pad(d.getMinutes())};
+function rm(){return matchMedia('(prefers-reduced-motion: reduce)').matches}
+$$('[data-hire]').forEach(function(a){a.href='https://t.me/ddrakx?text='+encodeURIComponent('Привіт! Бачив демо «Артикул». Хочу такий сайт для свого бізнесу: …')});
+$('#route').href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('Дніпро, вул. Робоча, 158-Б');
+
+var OPEN=510,CLOSE=1170,CUT=1080,CCUT=960;
+function now(){return new Date()}
+function mins(d){return d.getHours()*60+d.getMinutes()}
+function isOpen(m){return m>=OPEN&&m<CLOSE}
+function dd(o){var d=now();d.setDate(d.getDate()+o);return pad(d.getDate())+'.'+pad(d.getMonth()+1)}
+function openS(){var m=mins(now()),el=$('#openS'),o=isOpen(m);
+el.textContent=o?(CLOSE-m<=30?'Зачиняємось о 19:30, за '+(CLOSE-m)+' хв':'Відкрито до 19:30'):m>=CLOSE?'Зачинено, відкриємось завтра о 8:30':'Зачинено, відкриємось о 8:30';el.classList.toggle('cl',!o)}
+function upd(){var m=mins(now());$('#upd').textContent=m<OPEN?'Залишки оновлено вчора о 19:30.':m>=CLOSE?'Залишки оновлено о 19:30.':'Залишки оновлено о '+Math.floor(m/60)+':'+pad(Math.floor(m%60/10)*10)+'.'}
 
 /* ---------- cars ---------- */
 var C={
-Volkswagen:{Golf:[['VI',2008,2011,'1.4, 80 к.с.|1.6, 102 к.с.|1.6 TDI, 105 к.с.'],['VII',2012,2020,'1.4 TSI, 125 к.с.|1.6 TDI, 110 к.с.|2.0 TDI, 150 к.с.']],Passat:[['B7',2010,2014,'1.8 TSI, 160 к.с.|2.0 TDI, 140 к.с.'],['B8',2015,2023,'1.8 TSI, 180 к.с.|2.0 TDI, 150 к.с.']],Jetta:[['VI',2011,2018,'1.4 TSI, 150 к.с.|1.8 TSI, 170 к.с.|2.0, 115 к.с.']]},
-Skoda:{Octavia:[['A5',2005,2012,'1.6, 102 к.с.|1.8 TSI, 160 к.с.|1.9 TDI, 105 к.с.'],['A7',2013,2019,'1.4 TSI, 150 к.с.|1.6 MPI, 110 к.с.|1.8 TSI, 180 к.с.|2.0 TDI, 150 к.с.'],['A8',2020,2025,'1.4 TSI, 150 к.с.|1.5 TSI, 150 к.с.|2.0 TDI, 150 к.с.']],Fabia:[['III',2014,2021,'1.0 MPI, 75 к.с.|1.2 TSI, 90 к.с.|1.4 TDI, 90 к.с.']],Superb:[['III',2015,2023,'1.8 TSI, 180 к.с.|2.0 TDI, 150 к.с.']]},
-Toyota:{Camry:[['XV50',2011,2017,'2.5, 181 к.с.|3.5, 249 к.с.'],['XV70',2018,2024,'2.5, 209 к.с.|3.5, 249 к.с.']],RAV4:[['XA40',2013,2018,'2.0, 146 к.с.|2.5, 180 к.с.'],['XA50',2019,2025,'2.0, 175 к.с.|2.5 Hybrid, 218 к.с.']],Corolla:[['E210',2019,2025,'1.6, 132 к.с.|1.8 Hybrid, 122 к.с.']]},
-Renault:{Megane:[['III',2008,2015,'1.5 dCi, 110 к.с.|1.6, 110 к.с.'],['IV',2016,2022,'1.5 dCi, 110 к.с.|1.3 TCe, 140 к.с.']],Logan:[['II',2013,2022,'1.5 dCi, 90 к.с.|1.6, 82 к.с.']],Duster:[['I',2010,2017,'1.5 dCi, 110 к.с.|1.6, 105 к.с.|2.0, 135 к.с.']]},
-Hyundai:{Tucson:[['TL',2015,2020,'2.0 MPi, 155 к.с.|1.6 T-GDi, 177 к.с.|2.0 CRDi, 185 к.с.']],Elantra:[['AD',2016,2020,'1.6 MPi, 128 к.с.|2.0 MPi, 150 к.с.']]},
-Kia:{Sportage:[['QL',2016,2021,'2.0 MPi, 155 к.с.|1.6 T-GDi, 177 к.с.|1.7 CRDi, 141 к.с.']],Ceed:[['CD',2018,2024,'1.4 MPi, 100 к.с.|1.4 T-GDi, 140 к.с.|1.6 CRDi, 136 к.с.']]},
-Ford:{Focus:[['III',2011,2018,'1.6, 125 к.с.|1.0 EcoBoost, 125 к.с.|2.0, 160 к.с.']],Fusion:[['II',2013,2020,'2.5, 175 к.с.|2.0 EcoBoost, 240 к.с.']]},
-Nissan:{Qashqai:[['J11',2014,2021,'1.2 DIG-T, 115 к.с.|1.5 dCi, 110 к.с.|2.0, 144 к.с.']],'X-Trail':[['T32',2014,2021,'2.0, 144 к.с.|2.5, 171 к.с.|1.6 dCi, 130 к.с.']]}};
+Volkswagen:{Golf:[['VI',2008,2011,'1.4, 80|1.6, 102|1.6 TDI, 105'],['VII',2012,2020,'1.4 TSI, 125|1.6 TDI, 110|2.0 TDI, 150']],Passat:[['B7',2010,2014,'1.8 TSI, 160|2.0 TDI, 140'],['B8',2015,2023,'1.8 TSI, 180|2.0 TDI, 150']],Jetta:[['VI',2011,2018,'1.4 TSI, 150|1.8 TSI, 170|2.0, 115']]},
+Skoda:{Octavia:[['A5',2005,2012,'1.6, 102|1.8 TSI, 160|1.9 TDI, 105'],['A7',2013,2019,'1.4 TSI, 150|1.6 MPI, 110|1.8 TSI, 180|2.0 TDI, 150'],['A8',2020,2025,'1.4 TSI, 150|1.5 TSI, 150|2.0 TDI, 150']],Fabia:[['III',2014,2021,'1.0 MPI, 75|1.2 TSI, 90|1.4 TDI, 90']],Superb:[['III',2015,2023,'1.8 TSI, 180|2.0 TDI, 150']]},
+Toyota:{Camry:[['XV50',2011,2017,'2.5, 181|3.5, 249'],['XV70',2018,2024,'2.5, 209|3.5, 249']],RAV4:[['XA40',2013,2018,'2.0, 146|2.5, 180'],['XA50',2019,2025,'2.0, 175|2.5 Hybrid, 218']],Corolla:[['E210',2019,2025,'1.6, 132|1.8 Hybrid, 122']]},
+Renault:{Megane:[['III',2008,2015,'1.5 dCi, 110|1.6, 110'],['IV',2016,2022,'1.5 dCi, 110|1.3 TCe, 140']],Logan:[['II',2013,2022,'1.5 dCi, 90|1.6, 82']],Duster:[['I',2010,2017,'1.5 dCi, 110|1.6, 105|2.0, 135']]},
+Hyundai:{Tucson:[['TL',2015,2020,'2.0 MPi, 155|1.6 T-GDi, 177|2.0 CRDi, 185']],Elantra:[['AD',2016,2020,'1.6 MPi, 128|2.0 MPi, 150']]},
+Kia:{Sportage:[['QL',2016,2021,'2.0 MPi, 155|1.6 T-GDi, 177|1.7 CRDi, 141']],Ceed:[['CD',2018,2024,'1.4 MPi, 100|1.4 T-GDi, 140|1.6 CRDi, 136']]},
+Ford:{Focus:[['III',2011,2018,'1.6, 125|1.0 EcoBoost, 125|2.0, 160']],Fusion:[['II',2013,2020,'2.5, 175|2.0 EcoBoost, 240']]},
+Nissan:{Qashqai:[['J11',2014,2021,'1.2 DIG-T, 115|1.5 dCi, 110|2.0, 144']],'X-Trail':[['T32',2014,2021,'2.0, 144|2.5, 171|1.6 dCi, 130']]}};
 var K={Volkswagen:1,Skoda:.97,Toyota:1.12,Renault:.88,Hyundai:.94,Kia:.94,Ford:.95,Nissan:1.02};
-var OE={Volkswagen:'0#? ### ### ?',Skoda:'0#? ### ### ?',Toyota:'#####-#####',Renault:'## ## ### ##R',Hyundai:'#####-#####',Kia:'#####-#####',Ford:'# ### ###',Nissan:'#####-#####'};
 var CAT={to:'ТО',br:'Гальма',su:'Ходова',tb:'ГРМ і ремені',wi:'Зима'};
-/* [cat, name, offers[[brand,kind,price,pattern]], fuel] */
+var A='якісний аналог';
 var P=[
-['to','Фільтр масляний',[['Mann-Filter','аналог',380,'W 7##/##'],['Bosch','аналог',330,'F 026 407 ###'],['Оригінал','оригінал',560,'OE']]],
-['to','Фільтр повітряний',[['Mann-Filter','аналог',590,'C 2# ###'],['Filtron','аналог',440,'AP ###/#'],['Оригінал','оригінал',920,'OE']]],
-['to','Фільтр салону вугільний',[['Mann-Filter','аналог',720,'CUK 2# ###'],['Bosch','аналог',560,'1 987 435 ###']]],
-['to','Олива моторна 5W-30, 4 л',[['Castrol Edge','синтетика',1690,'LL 5W-30'],['Motul 8100','синтетика',1950,'X-clean 5W-30'],['Shell Helix Ultra','синтетика',1480,'ECT C3 5W-30']]],
-['to','Свічки запалювання, 4 шт',[['NGK','іридій',1240,'ILZKR7#'],['Bosch','платина',1080,'0 242 1## ###'],['Denso','іридій',1160,'IKH2#']],'p'],
-['to','Свічки розжарювання, 4 шт',[['Bosch','Duraterm',1980,'0 250 2## ###'],['NGK','аналог',2150,'Y-####J']],'d'],
-['to','Фільтр паливний',[['Mann-Filter','аналог',890,'WK 8##/#'],['Bosch','аналог',760,'F 026 402 ###']],'d'],
-['br','Колодки гальмівні передні',[['TRW','аналог',1180,'GDB####'],['Brembo','преміум',1690,'P 85 ###'],['Ferodo','аналог',1380,'FDB####'],['Оригінал','оригінал',2650,'OE']]],
-['br','Колодки гальмівні задні',[['TRW','аналог',920,'GDB####'],['Brembo','преміум',1290,'P 85 ###']]],
-['br','Диски гальмівні передні, 2 шт',[['TRW','аналог',3400,'DF####'],['Brembo','преміум',4200,'09.####.11'],['ATE','аналог',3800,'24.0125-0###.1']]],
-['br','Гальмівна рідина DOT 4, 1 л',[['ATE','SL.6',420,'03.9901-6402.2'],['Bosch','ESP',360,'1 987 479 107']]],
-['su','Амортизатор передній',[['Sachs','газовий',2850,'315 ###'],['KYB','газовий',2650,'33####'],['Оригінал','оригінал',5400,'OE']]],
-['su','Стійка стабілізатора передня',[['Lemförder','аналог',780,'3## ## 01'],['Febi','аналог',620,'#####']]],
-['su','Кульова опора',[['Lemförder','аналог',1150,'3## ## 01'],['Febi','аналог',890,'#####']]],
-['su','Опора амортизатора',[['Sachs','аналог',1350,'802 ###'],['Febi','аналог',980,'#####']]],
-['tb','Комплект ГРМ з помпою',[['Gates','аналог',6200,'KP15###XS'],['SKF','аналог',6600,'VKMC 01###'],['Contitech','аналог',5800,'CT####WP#']]],
-['tb','Ремінь поліклиновий',[['Gates','аналог',520,'6PK####'],['Contitech','аналог',480,'6PK####']]],
-['tb','Ролик натяжний',[['INA','аналог',1450,'534 0### 10'],['SKF','аналог',1320,'VKM 3####']]],
-['wi','Акумулятор 60 А·год, 540 А',[['Varta Blue Dynamic','D24',3650,'560 408 054'],['Bosch S4','S4 005',3450,'0 092 S40 050'],['Exide Premium','EA602',3100,'EA602']]],
+['to','Фільтр масляний',[['Mann-Filter',A,380,'W 7##/##'],['Bosch',A,330,'F 026 407 ###'],[0,'оригінал',560,'oil']]],
+['to','Фільтр повітряний',[['Mann-Filter',A,590,'C 2# ###'],['Filtron',A,440,'AP ###/#'],[0,'оригінал',920,'air']]],
+['to','Фільтр салону вугільний',[['Mann-Filter',A,720,'CUK 2# ###'],['Bosch',A,560,'1 987 435 ###']]],
+['to','oil'],['to','plug'],
+['to','Свічки розжарювання, 4 шт',[['Bosch',A,1980,'0 250 2## ###'],['NGK',A,2150,'Y-####J']],'d'],
+['to','Фільтр паливний',[['Mann-Filter',A,890,'WK 8##/#'],['Bosch',A,760,'F 026 402 ###']],'d'],
+['br','Колодки гальмівні передні',[['TRW',A,1180,'GDB####'],['Brembo','преміум',1690,'P 85 ###'],['Ferodo',A,1380,'FDB####'],[0,'оригінал',2650,'pad']]],
+['br','Колодки гальмівні задні',[['TRW',A,920,'GDB####'],['Brembo','преміум',1290,'P 85 ###']]],
+['br','Диски гальмівні передні, 2 шт',[['TRW',A,3400,'DF####'],['Brembo','преміум',4200,'09.####.11'],['ATE',A,3800,'24.0125-0###.1']]],
+['br','Гальмівна рідина DOT 4, 1 л',[['ATE','DOT 4, клас SL.6',420,'03.9901-6402.2'],['Bosch','для авто з ESP',360,'1 987 479 107']]],
+['su','Амортизатор передній, 1 шт (лів./прав.)',[['Sachs','газовий',2850,'315 ###'],['KYB','газовий',2650,'33####'],[0,'оригінал',5400,'shk']]],
+['su','Стійка стабілізатора передня, 1 шт',[['Lemförder',A,780,'3## ## 01'],['Febi',A,620,'#####']]],
+['su','Кульова опора',[['Lemförder',A,1150,'3## ## 01'],['Febi',A,890,'#####']]],
+['su','Опора амортизатора',[['Sachs',A,1350,'802 ###'],['Febi',A,980,'#####']]],
+['tb','grm'],
+['tb','Ремінь поліклиновий',[['Gates',A,520,'6PK####'],['Contitech',A,480,'6PK####']]],
+['tb','Ролик натяжний',[['INA',A,1450,'534 0### 10'],['SKF',A,1320,'VKM 3####']]],
+['wi','bat'],
 ['wi','Щітки склоочисника, пара',[['Bosch Aerotwin','безкаркасні',890,'3 397 0## ###'],['Valeo Silencio','безкаркасні',840,'574 ###']]],
-['wi','Лампи H7, 2 шт',[['Osram Night Breaker','+150% світла',690,'64210NB'],['Philips Vision','+30% світла',420,'12972PR']]]];
+['wi','Лампи H7, 2 шт',[['Osram Night Breaker','+150% світла',690,'64210NB'],['Philips Vision','+30% світла',420,'12972PR']]],
+['wi','Омивач зимовий −20 °C, 4 л',[['Sonax AntiFrost','концентрат до −20 °C',240,'332 541'],['Kerry','готовий, −20 °C',165,'KR-###']]],
+['wi','Антифриз G12+, 5 л',[['Febi','готовий, −35 °C',690,'172 0##'],['Motul Inugel','готовий, −37 °C',860,'109 1##'],['Hepu','концентрат',540,'P999-G12PLUS']]]];
 
-var car={mk:'Skoda',md:'Octavia',yr:2017,en:0},view={cat:'br',only:false},cur=[];
+var car={mk:'Skoda',md:'Octavia',yr:2017,en:0},view={cat:'all',only:false,more:false},cur=[],LIM=3;
 function gens(){return C[car.mk][car.md]}
 function gen(){var g=gens();for(var i=0;i<g.length;i++)if(car.yr>=g[i][1]&&car.yr<=g[i][2])return g[i];return g[g.length-1]}
-function engines(){return gen()[3].split('|')}
-function carName(){var g=gen();return car.mk+' '+car.md+' '+g[0]+' · '+car.yr+' · '+engines()[car.en]}
+function engines(){return gen()[3].split('|').map(function(e){return e+' к.с.'})}
+function carName(){return car.mk+' '+car.md+' '+gen()[0]+' · '+car.yr+' · '+engines()[car.en]}
+function vag(){return car.mk==='Skoda'||car.mk==='Volkswagen'}
+function chain(e){return/Toyota|Hyundai|Kia/.test(car.mk)||/1\.8 TSI|TCe|DIG-T|EcoBoost, 240|1\.6 dCi/.test(e)||/Ford|Nissan/.test(car.mk)&&/^2\.[05],/.test(e)}
+function oeP(t,e,dz){var g=gen()[0],old=/^(VI|A5|B7)$/.test(g),mk=car.mk;
+if(vag()){var p=car.md==='Fabia'?'6V0':g==='B7'?'3C0':old?'1K0':'5Q0';
+return{oil:dz?(old?'03L 115 562 ?':'03N 115 562 ?'):/1\.8 TSI/.test(e)?'06J 115 403 ?':old?'03C 115 561 ?':'04E 115 561 ?',air:p+' 129 ### ?',pad:p+' 698 151 ?',shk:p+' 413 031 ?'}[t]}
+if(mk==='Toyota')return{oil:'04152-#####',air:'17801-#####',pad:'04465-#####',shk:'48510-#####'}[t];
+if(mk==='Hyundai'||mk==='Kia')return{oil:dz?'26320-2A###':'26300-35###',air:'28113-?####',pad:'58101-?####',shk:'54651-?####'}[t];
+if(mk==='Renault')return{oil:'15208 ####R',air:'16546 ####R',pad:'41060 ####R',shk:'54302 ####R'}[t];
+if(mk==='Nissan')return{oil:'15208-##?#?',air:'16546-##?#?',pad:'D1060-#??#?',shk:'54302-#??#?'}[t];
+return'# ### ###'}
+function special(k,e,dz){var cyl=/^1\.0 /.test(e)?3:/^3\.5/.test(e)?6:4,mk=car.mk,o;
+if(k==='oil'){var v=/^3\.5|2\.0 TDI/.test(e)?5:4;
+if(vag())o=['5W-30, допуск VW 504/507',[['Castrol Edge','синтетика',1690,'LL 5W-30'],['Motul 8100','синтетика',1950,'X-clean+ 5W-30'],['Shell Helix Ultra','синтетика',1480,'ECT C3 5W-30']]];
+else if(mk==='Toyota')o=['0W-20',[['Castrol Edge','синтетика',1750,'0W-20 V'],['Mobil 1','синтетика',1890,'ESP x2 0W-20'],['Shell Helix Ultra','синтетика',1560,'SP 0W-20']]];
+else if(mk==='Renault')o=dz?['5W-30, допуск RN0720',[['Elf Evolution','синтетика',1590,'Full-Tech FE 5W-30'],['Motul Specific','синтетика',1890,'0720 5W-30']]]:['5W-40, допуск RN0700/0710',[['Elf Evolution','синтетика',1380,'900 SXR 5W-40'],['Castrol Edge','синтетика',1620,'5W-40 A3/B4'],['Motul 8100','синтетика',1790,'X-clean 5W-40']]];
+else o=['5W-30',[['Castrol Edge','синтетика',1650,'5W-30 C3'],['Motul 8100','синтетика',1890,'X-clean 5W-30'],['Shell Helix Ultra','синтетика',1450,'ECT C3 5W-30']]];
+return['to','Олива моторна '+o[0]+', '+v+' л',o[1].map(function(x){return[x[0],x[1],Math.round(x[2]*v/4),x[3]]})]}
+if(k==='plug')return['to','Свічки запалювання, '+cyl+' шт',[['NGK','іридій',310,'ILZKR7#'],['Bosch','платина',270,'0 242 1## ###'],['Denso','іридій',290,'IKH2#']].map(function(x){return[x[0],x[1],x[2]*cyl,x[3]]}),'p'];
+if(k==='grm')return chain(e)?['tb','Комплект ланцюга ГРМ',[['Febi',A,7400,'1## ###'],['INA',A,8200,'559 0### 10'],['SWAG',A,6900,'30 94 ####']],0,'На цьому двигуні ланцюг. Його міняють за станом, а не за пробігом — продавець підкаже, як перевірити розтяг.']:['tb','Комплект ГРМ з помпою',[['Gates',A,6200,'KP15###XS'],['SKF',A,6600,'VKMC 01###'],['Contitech',A,5800,'CT####WP#']]];
+var big=dz||/^3\.5/.test(e);
+return['wi','Акумулятор '+(big?'74 А·год, 680 А':'60 А·год, 540 А'),big?[['Varta Blue Dynamic','',4900,'574 012 068'],['Bosch S4','',4600,'0 092 S40 080'],['Exide Premium','72 А·год, 720 А',4200,'EA722']]:[['Varta Blue Dynamic','',3650,'560 408 054'],['Bosch S4','',3450,'0 092 S40 050'],['Exide Premium','',3100,'EA602']],0,'Полярність зворотна («+» праворуч). Здайте старий акумулятор — мінус 300 грн.']}
 
 /* ---------- selects ---------- */
 function opts(el,list,val){el.innerHTML=list.map(function(v){var x=Array.isArray(v)?v:[v,v];return'<option value="'+esc(x[0])+'"'+(String(x[0])===String(val)?' selected':'')+'>'+esc(x[1])+'</option>'}).join('')}
 function fill(){
-  opts($('#mk'),Object.keys(C),car.mk);opts($('#md'),Object.keys(C[car.mk]),car.md);
-  var ys=[],g=gens();g.forEach(function(x){for(var y=x[2];y>=x[1];y--)ys.push(y)});ys.sort(function(a,b){return b-a});opts($('#yr'),ys,car.yr);
-  opts($('#en'),engines().map(function(e,i){return[i,e]}),car.en);
+opts($('#mk'),Object.keys(C),car.mk);opts($('#md'),Object.keys(C[car.mk]),car.md);
+var ys=[];gens().forEach(function(x){for(var y=x[2];y>=x[1];y--)ys.push(y)});ys.sort(function(a,b){return b-a});opts($('#yr'),ys,car.yr);
+opts($('#en'),engines().map(function(e,i){return[i,e]}),car.en);
+$('#genL').textContent='· '+gen()[0];
 }
 function latest(){var g=gens();car.yr=g[g.length-1][2];car.en=0}
 $('#mk').addEventListener('change',function(){car.mk=this.value;car.md=Object.keys(C[car.mk])[0];latest();sync()});
@@ -503,158 +666,198 @@ $('#md').addEventListener('change',function(){car.md=this.value;latest();sync()}
 $('#yr').addEventListener('change',function(){var g0=gen()[0];car.yr=+this.value;if(gen()[0]!==g0)car.en=0;sync()});
 $('#en').addEventListener('change',function(){car.en=+this.value;sync()});
 $$('[data-car]').forEach(function(b){b.addEventListener('click',function(){var a=b.getAttribute('data-car').split('|');car={mk:a[0],md:a[1],yr:+a[2],en:+a[3]};sync();show()})});
-function show(){$('#parts').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+function show(){$('#parts').scrollIntoView({behavior:rm()?'auto':'smooth'});var r=$('#rh');r.classList.remove('flash');void r.offsetWidth;r.classList.add('flash');$('#carT').focus({preventScroll:true})}
 $('#goB').addEventListener('click',show);
+function openVin(){var d=$('#vinD');d.open=true;$('#vinI').focus({preventScroll:true});d.scrollIntoView({behavior:rm()?'auto':'smooth',block:'center'})}
 
 /* ---------- parts ---------- */
 function hash(s){var h=2166136261;for(var i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
 function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 function pn(pat,r){return pat.replace(/#/g,function(){return Math.floor(r()*10)}).replace(/\?/g,function(){return'ABCDEFGH'[Math.floor(r()*8)]})}
+var RES={},TAKEN={};
 function build(){
-  var e=engines()[car.en],dz=/TDI|dCi|CRDi/.test(e),key=car.mk+car.md+gen()[0]+e,out=[];
-  P.forEach(function(p,pi){
-    if(p[3]==='p'&&dz||p[3]==='d'&&!dz)return;
-    var offs=p[2].map(function(o,oi){var r=rng(hash(key+p[1]+o[0])),v=r(),st;
-      if(v<.6)st={t:'ok',q:1+Math.floor(r()*6),loc:'ABCDEF'[Math.floor(r()*6)]+'-'+(10+Math.floor(r()*30))};else if(v<.86)st={t:'wt'};else st={t:'dy'};
-      return{id:key+'|'+pi+'|'+oi,part:p[1],cat:p[0],brand:o[0],kind:o[1],pn:o[3]==='OE'?pn(OE[car.mk],r):/#/.test(o[3])?pn(o[3],r):o[3],price:Math.round(o[2]*K[car.mk]*(.94+r()*.12)/10)*10,st:st,car:car.mk+' '+car.md+' '+gen()[0]}});
-    if(!offs.some(function(o){return o.st.t==='ok'}))offs[0].st={t:'ok',q:2,loc:'C-1'+pi%10};
-    offs.sort(function(a,b){return(a.st.t==='ok'?0:1)-(b.st.t==='ok'?0:1)||a.price-b.price});
-    out.push({cat:p[0],name:p[1],offs:offs});
-  });
-  return out;
+var e=engines()[car.en],dz=/TDI|dCi|CRDi/.test(e),g=gen()[0],key=car.mk+car.md+g+e,cn=car.mk+' '+car.md+' '+g,mqb=vag()&&!/^(VI|A5|B7)$/.test(g)&&car.md!=='Fabia',out=[];
+P.forEach(function(p,pi){
+if(p.length===2)p=special(p[1],e,dz);
+if(p[3]==='p'&&dz||p[3]==='d'&&!dz)return;
+var offs=p[2].map(function(o,oi){var r=rng(hash(key+p[1]+o[0])),v=r(),st,pat=/^(oil|air|pad|shk)$/.test(o[3])?oeP(o[3],e,dz):o[3];
+if(v<.6)st={t:'ok',q:1+Math.floor(r()*6),loc:'ABCDEF'[Math.floor(r()*6)]+'-'+(10+Math.floor(r()*30))};else if(v<.86)st={t:'wt'};else st={t:'dy'};
+if(mqb&&o[0]==='Brembo'&&p[1]==='Колодки гальмівні передні')pat='P 85 126';
+return{id:key+'|'+pi+'|'+oi,part:p[1],cat:p[0],brand:o[0]||(vag()?'VAG':car.mk),kind:o[1],pn:/[#?]/.test(pat)?pn(pat,r):pat,price:Math.round(o[2]*(p[0]==='wi'?1:K[car.mk])*(.94+r()*.12)/10)*10,st:st,car:cn}});
+if(!offs.some(function(o){return o.st.t==='ok'}))offs[0].st={t:'ok',q:2,loc:'C-1'+pi%10};
+offs.forEach(function(o){var t=TAKEN[o.id];if(t&&o.st.t==='ok'){o.st.q-=t;if(o.st.q<1)o.st={t:'wt'}}});
+offs.sort(function(a,b){return(a.st.t==='ok'?0:1)-(b.st.t==='ok'?0:1)||a.price-b.price});
+out.push({cat:p[0],name:p[1],offs:offs,note:p[4]});
+});
+return out;
 }
 function stTxt(s,h){return s.t==='ok'?(h?'На полиці<span class="loc">&nbsp;'+s.loc+'</span> · '+s.q+'&nbsp;шт':'На полиці '+s.loc+' · '+s.q+' шт'):s.t==='wt'?'Привеземо завтра до 11:00':'Під замовлення, 2–3 дні'}
-var RES={};
+$('#cats').innerHTML=['all'].concat(Object.keys(CAT)).map(function(k){return'<label class="cat"><input type="radio" name="cat" value="'+k+'"><span>'+(k==='all'?'Усе':CAT[k])+' <i data-n="'+k+'">0</i></span></label>'}).join('');
+function shown(o){return!view.only||o.st.t==='ok'}
 function render(){
-  var all=0,ok=0,counts={all:0};
-  cur.forEach(function(g){g.offs.forEach(function(o){all++;if(o.st.t==='ok')ok++;if(!view.only||o.st.t==='ok'){counts.all++;counts[g.cat]=(counts[g.cat]||0)+1}})});
-  $('#carT').textContent=carName();
-  $('#carS').textContent=all+' '+pl(all,'позиція','позиції','позицій')+' під це авто, '+ok+' — на полиці сьогодні';
-  $('#cats').innerHTML=['all'].concat(Object.keys(CAT)).map(function(k){return'<label class="cat"><input type="radio" name="cat" value="'+k+'"'+(view.cat===k?' checked':'')+'><span>'+(k==='all'?'Усе':CAT[k])+' <i>'+(counts[k]||0)+'</i></span></label>'}).join('');
-  var html='';
-  cur.forEach(function(g){
-    if(view.cat!=='all'&&g.cat!==view.cat)return;
-    var offs=g.offs.filter(function(o){return!view.only||o.st.t==='ok'});if(!offs.length)return;
-    html+='<div class="pg"><h3>'+g.name+' <small>'+offs.length+' '+pl(offs.length,'варіант','варіанти','варіантів')+'</small></h3><ul>'+offs.map(function(o){var on=!!RES[o.id];
-      return'<li class="row'+(on?' on':'')+'"><div class="rn"><b>'+esc(o.brand)+'</b><span class="mono">'+esc(o.pn)+'</span><small>'+esc(o.kind)+'</small></div><div class="st '+o.st.t+'">'+stTxt(o.st,1)+'</div><div class="pr tn">'+uah(o.price)+'</div><button class="btn '+(on?'':'sec')+'" type="button" data-r="'+esc(o.id)+'" aria-pressed="'+on+'" aria-label="'+(on?'Прибрати з резерву':'Відкласти')+': '+esc(o.brand+' '+o.pn+', '+g.name)+'">'+(on?'У резерві ✓':'Відкласти')+'</button></li>'}).join('')+'</ul></div>';
-  });
-  $('#list').innerHTML=html||'<p class="empty">У цій категорії на полиці зараз нічого. Вимкніть «Тільки на полиці», і побачите, що привеземо завтра.</p>';
-  var t;cur.some(function(g){if(g.name==='Колодки гальмівні передні'){t=g.offs[0];return true}});
-  if(t&&t.st.t==='ok')$('#heroTag').textContent=t.st.loc+' · '+t.brand+' '+t.pn+' · '+t.st.q+' шт';
+var all=0,ok=0,counts={all:0},html='',rest=0;
+cur.forEach(function(g){g.offs.forEach(function(o){all++;if(o.st.t==='ok')ok++;if(shown(o)){counts.all++;counts[g.cat]=(counts[g.cat]||0)+1}})});
+$('#carT').innerHTML=esc(car.mk+' '+car.md+' '+gen()[0]+' · '+car.yr)+'<span class="eng"><span class="dt"> · </span>'+esc(engines()[car.en])+'</span>';
+var s=all+' '+pl(all,'позиція','позиції','позицій')+' під це авто, '+ok+' — на полиці.';if($('#carS').textContent!==s)$('#carS').textContent=s;
+$('#goB').textContent='Показати '+all+' '+pl(all,'позицію','позиції','позицій');
+$$('#cats i').forEach(function(i){i.textContent=counts[i.getAttribute('data-n')]||0});
+$$('#cats input').forEach(function(x){x.checked=x.value===view.cat});
+var gs=cur.filter(function(g){return(view.cat==='all'||g.cat===view.cat)&&g.offs.some(shown)}),cut=view.cat==='all'&&!view.more&&gs.length>LIM+1?LIM:gs.length;
+gs.forEach(function(g,gi){var offs=g.offs.filter(shown);
+if(gi>=cut){rest+=offs.length;return}
+var min=Math.min.apply(0,offs.map(function(o){return o.price})),fi=-1;offs.some(function(o,k){if(o.st.t==='ok'){fi=k;return true}});
+html+='<div class="pg"><h3>'+esc(g.name)+' <small>'+offs.length+' '+pl(offs.length,'варіант','варіанти','варіантів')+'</small>'+(g.cat==='br'||g.cat==='su'?'<button type="button" class="vchk" data-vin>звірити за VIN</button>':'')+'</h3>'+(g.note?'<p class="gn">'+esc(g.note)+'</p>':'')+'<ul>'+offs.map(function(o,k){var on=!!RES[o.id];
+return'<li class="row'+(on?' on':'')+'"><div class="rn"><b>'+esc(o.brand)+'</b><span class="mono">'+esc(o.pn)+'</span>'+(o.kind?'<small>'+esc(o.kind)+'</small>':'')+(offs.length>1&&o.price===min?'<em class="bst">найдешевше</em>':'')+'</div><div class="st '+o.st.t+'">'+stTxt(o.st,1)+'</div><div class="pr tn">'+uah(o.price)+'</div><button class="btn '+(on?'':k===fi?'pri':'sec')+'" type="button" data-r="'+esc(o.id)+'" aria-pressed="'+on+'" aria-label="'+(on?'Прибрати з резерву':'Додати в резерв')+': '+esc(o.brand+' '+o.pn+', '+g.name)+'">'+(on?'У резерві ✓':o.st.t==='ok'?'У резерв':'Замовити')+'</button></li>'}).join('')+'</ul></div>';
+});
+if(cut<gs.length)html+='<button class="btn sec more" type="button" id="moreB">Показати ще '+(gs.length-cut)+' '+pl(gs.length-cut,'групу','групи','груп')+' · '+rest+' '+pl(rest,'позиція','позиції','позицій')+'</button>';
+$('#list').innerHTML=html||'<p class="empty">У цій категорії на полиці зараз нічого. Вимкніть «Тільки на полиці», і побачите, що привеземо завтра.</p>';
+var t;cur.some(function(g){if(g.name==='Колодки гальмівні передні'){t=g.offs[0];return true}});
+if(t&&t.st.t==='ok')$('#heroTag').textContent=t.st.loc+' · '+t.brand+' '+t.pn+' · '+t.st.q+' шт';
 }
-function sync(){fill();cur=build();render()}
-$('#cats').addEventListener('change',function(e){view.cat=e.target.value;render();$('input[name=cat]:checked').focus()});
+function sync(){fill();cur=build();view.more=false;render()}
+function stripTo(){var s=$('#cats'),l=$('#cats input:checked');if(l&&s.scrollWidth>s.clientWidth)s.scrollLeft+=l.parentNode.getBoundingClientRect().left-s.getBoundingClientRect().left-16}
+$('#cats').addEventListener('change',function(e){view.cat=e.target.value;view.more=false;render();e.target.focus()});
 $('#only').addEventListener('change',function(){view.only=this.checked;render()});
-$('#list').addEventListener('click',function(e){var b=e.target.closest('[data-r]');if(!b)return;var id=b.getAttribute('data-r');
-  if(RES[id])delete RES[id];else cur.some(function(g){return g.offs.some(function(o){if(o.id===id){RES[id]={o:o,q:1};return true}})});
-  render();refresh(true);var nb=$('[data-r="'+CSS.escape(id)+'"]');if(nb)nb.focus()});
-
-/* ---------- time ---------- */
-var pad=function(n){return(n<10?'0':'')+n},hm=function(d){return d.getHours()+':'+pad(d.getMinutes())};
-function mins(d){return d.getHours()*60+d.getMinutes()}
-function hold(){return mins(new Date())<1080?'до 19:00 сьогодні':'до 19:00 завтра'}
-function openS(){var m=mins(new Date()),el=$('#openS');var o=m>=510&&m<1170;el.textContent=o?'Відкрито до 19:30':'Зачинено, відкриємось о 8:30';el.classList.toggle('cl',!o)}
+$$('a[data-cat]').forEach(function(a){a.addEventListener('click',function(){view.cat=a.getAttribute('data-cat');view.more=false;render();stripTo()})});
+$('#list').addEventListener('click',function(e){
+if(e.target.closest('#moreB')){view.more=true;render();var f=$$('#list .pg')[LIM];if(f)$('[data-r]',f).focus();return}
+if(e.target.closest('[data-vin]')){openVin();return}
+var b=e.target.closest('[data-r]');if(!b||e.detail>1)return;var id=b.getAttribute('data-r'),o;
+if(RES[id]){o=RES[id].o;delete RES[id]}else cur.some(function(g){return g.offs.some(function(x){if(x.id===id){o=x;RES[id]={o:x,q:1};return true}})});
+if(!o)return;render();refresh(true);
+$('#live').textContent=(RES[id]?'Додано в резерв: ':'Прибрано з резерву: ')+o.brand+' '+o.pn+'. У резерві '+nQty()+' шт.';
+var nb=$('[data-r="'+CSS.escape(id)+'"]');if(nb)nb.focus()});
 
 /* ---------- reserve ---------- */
 function items(){return Object.keys(RES).map(function(k){return RES[k]})}
-function total(){return items().reduce(function(s,i){return s+i.o.price*i.q},0)}
+function total(l){return(l||items()).reduce(function(s,i){return s+i.o.price*i.q},0)}
 function nQty(){return items().reduce(function(s,i){return s+i.q},0)}
+function lvl(l){return(l||items()).reduce(function(a,i){return Math.max(a,{ok:0,wt:1,dy:2}[i.o.st.t])},0)}
+function hDay(day,L){return day==='0'||day==='1'?day:L===0&&mins(now())<CUT?'0':'1'}
+function holdTxt(day,L){if(L==null)L=lvl();return L===2?'повідомимо, коли деталь приїде (2–3 дні)':'тримаємо до 19:00 '+(hDay(day,L)==='0'?'сьогодні':'завтра')}
+var lastT='';
 function refresh(b){
-  var n=nQty(),c=$('#cnt');c.textContent=n;$('.rbtn').setAttribute('aria-label','Резерв, позицій: '+n);
-  if(b){c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump')}
-  var bar=$('#rbar');bar.classList.toggle('on',n>0);bar.setAttribute('aria-hidden',n?'false':'true');$('.btn',bar).tabIndex=n?0:-1;
-  $('#rbarN').textContent=n+' шт';
-  $('#rbarT').innerHTML='<b class="tn">'+uah(total())+'</b> <span>· тримаємо '+hold()+'<span class="hm">, без передоплати</span></span>';
+var n=nQty(),c=$('#cnt');c.textContent=n;c.hidden=!n;$('.rbtn').setAttribute('aria-label',n?'Мій резерв, позицій: '+n:'Мій резерв, порожній');
+if(b&&n){c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump')}
+var bar=$('#rbar');bar.classList.toggle('on',n>0);bar.setAttribute('aria-hidden',n?'false':'true');$('.btn',bar).tabIndex=n?0:-1;document.documentElement.classList.toggle('hb',n>0);
+$('#rbarN').textContent=n+' шт';
+var t='<b class="tn">'+uah(total())+'</b> <span>· '+holdTxt()+'<span class="hm">, без передоплати</span></span>';if(t!==lastT)$('#rbarT').innerHTML=lastT=t;
 }
 
 /* ---------- checkout ---------- */
 var dlg=$('#ck'),B=$('#ckB'),next=$('#ckNext'),back=$('#ckBack');
-var ck,mode='res',vinTxt='';
-function reset(){ck={step:0,how:'pick',day:'',slot:'',addr:'',name:'',phone:'',vin:'',note:''}}reset();
+var ck,mode='res',vinTxt='',tNav=0,lockT;
+function reset(){ck={step:0,how:'pick',day:'',slot:'',addr:'',name:'',phone:'',vin:vinTxt}}reset();
 function fee(){return ck.how==='cour'?150:0}
-function allShelf(){return items().every(function(i){return i.o.st.t==='ok'})}
-function slots(day){var out=[],now=new Date(),m=mins(now),h;
-  if(ck.how==='pick'){if(day===0){if(!allShelf())return out;h=Math.ceil((m+30)/60);for(;h<=18;h++)out.push(h+':00–'+(h+1)+':00')}else for(h=9;h<=18;h+=2)out.push(h+':00–'+(h+2>19?19:h+2)+':00')}
-  else{if(day===0){if(allShelf()&&m<960)out.push('18:00–20:00')}else out=['10:00–13:00','13:00–16:00','17:00–20:00']}
-  return out}
+function slots(day){var m=mins(now()),L=lvl(),h,out=[];
+if(L===2)return out;
+if(ck.how==='pick'){if(day===0){if(L===0&&m<CUT){h=Math.min(18,Math.max(9,Math.ceil((m+30)/60)));for(;h<=18;h++)out.push(h+':00–'+(h+1)+':00')}}
+else out=L?['11:00–13:00','13:00–15:00','15:00–17:00','17:00–19:00']:['9:00–11:00','11:00–13:00','13:00–15:00','15:00–17:00','17:00–19:00']}
+else{if(day===0){if(L===0&&m<CCUT)out.push('18:00–20:00')}else out=L?['13:00–16:00','17:00–20:00']:['10:00–13:00','13:00–16:00','17:00–20:00']}
+return out}
+function tgH(n){return'<div class="tg-h"><i>А</i><div><b>Артикул · '+n+'</b><small>бот</small></div></div>'}
 function opt(name,val,label,checked,extra,dis){return'<label class="opt"><input type="radio" name="'+name+'" value="'+esc(val)+'"'+(checked?' checked':'')+(dis?' disabled':'')+'><span class="ob">'+label+(extra||'')+'</span></label>'}
 function draw(){
-  var s=ck.step,h='';
-  $('#ckBar').hidden=mode==='vin';
-  $('#ckS').textContent=mode==='vin'?'Перевірка сумісності':s<3?'Крок '+(s+1)+' з 3':'Резерв оформлено';
-  $('#ckT').textContent=mode==='vin'?'Запит за VIN':['Резерв','Отримання','Контакти','Готово!'][s];
-  $$('#ckBar i').forEach(function(i,k){i.classList.toggle('on',k<=s)});
-  back.hidden=s===0||s===3||mode==='vin';
-  if(mode==='vin'){
-    h='<div class="done"><p>На справжньому сайті відкриється бот магазину в Telegram з уже вписаним VIN, а продавець перевірить, які деталі підходять саме вашому авто.</p><div class="tg" aria-label="Приклад листування з ботом"><div class="tg-h"><i>А</i><div><b>Артикул · підбір</b><small>бот</small></div></div>'+
-      '<div class="tg-m me"><p>VIN: <span class="mono">'+esc(vinTxt)+'</span><br>Авто: '+esc(carName())+(items().length?'<br>Хочу перевірити: '+items().map(function(i){return esc(i.o.brand+' '+i.o.pn)}).join(', '):'')+'</p><span class="tg-t">'+hm(new Date())+'</span></div>'+
-      '<div class="tg-m"><p>Прийняли. Продавець перевірить сумісність за каталогом виробника й відповість тут протягом 15 хвилин.</p><span class="tg-t">'+hm(new Date())+'</span></div></div></div>';
-    next.textContent='Зрозуміло';
-  }else if(s===0){
-    if(!items().length){h='<p>Резерв порожній. Оберіть авто й натисніть «Відкласти» біля потрібної деталі.</p>';next.textContent='До підбору'}
-    else{h=items().map(function(i){var o=i.o,max=o.st.t==='ok'?o.st.q:8;return'<div class="li"><p>'+esc(o.part)+' · <b>'+esc(o.brand)+'</b> <span class="mono">'+esc(o.pn)+'</span><small>'+esc(o.car)+' · '+stTxt(o.st)+'</small></p><span class="pr tn">'+uah(o.price*i.q)+'</span>'+
-      '<div class="qty"><button type="button" data-q="-1" data-id="'+esc(o.id)+'" aria-label="Менше"'+(i.q<2?' disabled':'')+'>−</button><output aria-live="polite">'+i.q+'</output><button type="button" data-q="1" data-id="'+esc(o.id)+'" aria-label="Більше"'+(i.q>=max?' disabled':'')+'>+</button><button class="rm" type="button" data-del="'+esc(o.id)+'">Прибрати</button></div></div>'}).join('')+
-      '<div class="tot"><span>Разом</span><span class="tn">'+uah(total())+'</span></div><p class="hint">Оплата при отриманні. Тримаємо '+hold()+'.</p>';next.textContent='Далі: отримання'}
-  }else if(s===1){
-    var t0=slots(0),t1=slots(1);if(!ck.day)ck.day=t0.length?'0':'1';var list=ck.day==='0'?t0:t1;if(list.indexOf(ck.slot)<0)ck.slot='';
-    h='<div class="seg" role="radiogroup" aria-label="Спосіб отримання">'+opt('how','pick','<b>Самовивіз</b>',ck.how==='pick','<span>0 грн</span><small>вул. Робоча, 158-Б · без передоплати, оплата на касі</small>')+
-      opt('how','cour','<b>Кур’єр по Дніпру</b>',ck.how==='cour','<span>150 грн</span><small>Оплата кур’єру карткою або готівкою</small>')+'</div>';
-    if(ck.how==='cour')h+='<div class="fld"><label for="f-addr">Адреса</label><input class="inp" id="f-addr" name="addr" autocomplete="street-address" value="'+esc(ck.addr)+'" placeholder="Вулиця, будинок"></div>';
-    h+='<div class="grp"><p class="lbl" id="l-day">День</p><div class="chips" role="radiogroup" aria-labelledby="l-day">'+opt('day','0','Сьогодні',ck.day==='0','',!t0.length)+opt('day','1','Завтра',ck.day==='1')+'</div>'+
-      (!t0.length?'<p class="hint">'+(allShelf()?'На сьогодні вільного часу вже немає.':'Частина позицій приїде завтра до 11:00, тому отримання — з завтра.')+'</p>':'')+'</div>'+
-      '<div class="grp"><p class="lbl" id="l-slot">'+(ck.how==='pick'?'Коли приблизно приїдете':'Вікно доставки')+'</p><div class="chips" id="slotBox" role="radiogroup" aria-labelledby="l-slot">'+list.map(function(v){return opt('slot',v,v,ck.slot===v)}).join('')+'</div></div>';
-    next.textContent='Далі: контакти';
-  }else if(s===2){
-    h='<div class="fld" style="margin-top:0"><label for="f-name">Ім’я</label><input class="inp" id="f-name" name="name" autocomplete="given-name" value="'+esc(ck.name)+'"></div>'+
-      '<div class="fld"><label for="f-phone">Телефон</label><input class="inp" id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" value="'+esc(ck.phone)+'" placeholder="+380"><p class="hint">Назвете на касі. Сюди ж прийде номер резерву.</p></div>'+
-      '<div class="fld"><label for="f-vin">VIN, якщо хочете перевірити сумісність</label><input class="inp mono" id="f-vin" name="vin" maxlength="17" autocomplete="off" spellcheck="false" value="'+esc(ck.vin)+'" style="text-transform:uppercase"></div>'+
-      '<div class="li"><p>Деталі, '+nQty()+' шт</p><span class="pr tn">'+uah(total())+'</span></div><div class="li"><p>'+(ck.how==='pick'?'Самовивіз':'Кур’єр')+'</p><span class="pr tn">'+uah(fee())+'</span></div>'+
-      '<div class="tot"><span>При отриманні</span><span class="tn">'+uah(total()+fee())+'</span></div>';
-    next.textContent='Відкласти без передоплати';
-  }else{
-    var num='А-'+(4100+Math.floor(Math.random()*800)),when=(ck.day==='0'?'сьогодні':'завтра')+', '+ck.slot;
-    h='<div class="done"><span class="tag">'+num+' · '+(ck.how==='pick'?hold():when)+'</span><h3>Резерв уже в Telegram у «Артикулі»</h3><p>Продавець зніме деталі з полиці й покладе на видачу. Назвіть номер резерву або телефон на касі.</p>'+
-      '<div class="tg" aria-label="Повідомлення, яке отримав магазин"><div class="tg-h"><i>А</i><div><b>Артикул · резерви</b><small>бот</small></div></div><div class="tg-m">'+
-      '<p><b>Резерв '+num+'</b></p><p>'+items().map(function(i,k){var o=i.o;return(k+1)+'. '+esc(o.part)+', '+esc(o.brand)+' <span class="mono">'+esc(o.pn)+'</span> — '+i.q+' × '+uah(o.price)+(o.st.t==='ok'?' · полиця '+o.st.loc:' · '+stTxt(o.st).toLowerCase())}).join('<br>')+'</p>'+
-      '<p>Авто: '+esc(items()[0].o.car)+(ck.vin?'<br>VIN: <span class="mono">'+esc(ck.vin.toUpperCase())+'</span> — перевірити':'')+'</p>'+
-      '<p>'+(ck.how==='pick'?'Самовивіз: '+when+', тримати '+hold():'Кур’єр: '+when+'<br>'+esc(ck.addr))+'</p>'+
-      '<p>Клієнт: '+esc(ck.name)+', '+esc(ck.phone)+'</p><p><b>Разом: '+uah(total()+fee())+' · без передоплати</b></p><span class="tg-t">'+hm(new Date())+'</span></div></div></div>';
-    next.textContent='Закрити';
-  }
-  B.innerHTML=h;
+var s=ck.step,h='',m=mins(now()),L;
+$('#ckBar').hidden=mode==='vin';
+$('#ckS').textContent=mode==='vin'?'Перевірка сумісності':s<3?'Крок '+(s+1)+' з 3':'Резерв оформлено';
+$('#ckT').textContent=mode==='vin'?'Запит за VIN':['Резерв','Отримання','Контакти','Готово!'][s];
+$$('#ckBar i').forEach(function(i,k){i.classList.toggle('on',k<=s)});
+back.hidden=s===0||s===3||mode==='vin';
+next.className='btn '+(mode==='vin'||s===3?'sec':'pri');
+if(mode==='vin'){
+h='<div class="done"><p>На справжньому сайті відкриється бот магазину в Telegram з уже вписаним VIN, а продавець перевірить, які деталі підходять саме вашому авто.</p><div class="tg" aria-label="Приклад листування з ботом"><div class="tg-h"><i>А</i><div><b>Артикул · підбір</b><small>бот</small></div></div>'+
+'<div class="tg-m me"><p>VIN: <span class="mono">'+esc(vinTxt)+'</span><br>Авто: '+esc(carName())+(items().length?'<br>Хочу перевірити: '+items().map(function(i){return esc(i.o.brand+' '+i.o.pn)}).join(', '):'')+'</p><span class="tg-t">'+hm(now())+'</span></div>'+
+'<div class="tg-m"><p>'+(isOpen(m)?'Прийняли. Продавець перевірить сумісність за каталогом виробника й відповість тут протягом 15 хвилин.':'Прийняли. Зараз магазин зачинено — продавець перевірить сумісність і відповість тут '+(m>=CLOSE?'завтра':'сьогодні')+' після 8:30.')+'</p><span class="tg-t">'+hm(now())+'</span></div></div></div>';
+next.textContent='Зрозуміло';
+}else if(s===0){
+if(!items().length){h='<p>Резерв порожній. Оберіть авто й натисніть «У резерв» біля потрібної деталі.</p>';next.textContent='До підбору'}
+else{h=items().map(function(i){var o=i.o,max=o.st.t==='ok'?o.st.q:8;return'<div class="li"><p>'+esc(o.part)+' · <b>'+esc(o.brand)+'</b> <span class="mono">'+esc(o.pn)+'</span><small>'+esc(o.car)+' · '+stTxt(o.st)+'</small></p><span class="pr tn">'+uah(o.price*i.q)+'</span>'+
+'<div class="qty"><button type="button" data-q="-1" data-id="'+esc(o.id)+'" aria-label="Менше"'+(i.q<2?' disabled':'')+'>−</button><output aria-live="polite">'+i.q+'</output><button type="button" data-q="1" data-id="'+esc(o.id)+'" aria-label="Більше"'+(i.q>=max?' disabled':'')+'>+</button><button class="rm" type="button" data-del="'+esc(o.id)+'">Прибрати</button></div></div>'}).join('')+
+'<div class="tot"><span>Разом</span><span class="tn">'+uah(total())+'</span></div><p class="hint">Оплата при отриманні. '+holdTxt().replace(/^./,function(c){return c.toUpperCase()})+'.</p>';next.textContent='Далі: отримання'}
+}else if(s===1){
+L=lvl();
+h='<div class="seg" role="radiogroup" aria-label="Спосіб отримання">'+opt('how','pick','<b>Самовивіз</b>',ck.how==='pick','<span>0 грн</span><small>вул. Робоча, 158-Б · без передоплати, оплата на касі</small>')+
+opt('how','cour','<b>Кур’єр по Дніпру</b>',ck.how==='cour','<span>150 грн</span><small>Оплата кур’єру карткою або готівкою</small>')+'</div>';
+if(ck.how==='cour')h+='<div class="fld"><label for="f-addr">Адреса</label><input class="inp" id="f-addr" name="addr" autocomplete="street-address" value="'+esc(ck.addr)+'" placeholder="Вулиця, будинок"></div>';
+if(L===2){ck.day=ck.slot='';h+='<div class="wait"><b>Частину позицій веземо під замовлення, 2–3 дні.</b> Зателефонуємо, щойно все приїде, і домовимося, коли '+(ck.how==='pick'?'заберете':'привезти')+'.</div>'}
+else{var t0=slots(0),t1=slots(1),hint='';
+if(ck.day!=='0'&&ck.day!=='1'||ck.day==='0'&&!t0.length)ck.day=t0.length?'0':'1';
+var list=ck.day==='0'?t0:t1;if(list.indexOf(ck.slot)<0)ck.slot='';
+if(!t0.length)hint=L===1?(ck.how==='pick'?'Частина позицій приїде завтра до 11:00, тому забрати можна завтра з 11:00.':'Частина позицій приїде завтра до 11:00, тому доставка — завтра з 13:00.'):ck.how==='cour'?'Кур’єр на сьогодні — якщо оформити до 16:00. Найближче — завтра з 10:00.':m>=CLOSE?'Зараз зачинено. Найближче — завтра з 9:00.':'Сьогодні вже не встигнемо зібрати — заберете завтра з 9:00.';
+h+='<div class="grp"><p class="lbl" id="l-day">День</p><div class="chips" role="radiogroup" aria-labelledby="l-day">'+opt('day','0','Сьогодні · '+dd(0),ck.day==='0','',!t0.length)+opt('day','1','Завтра · '+dd(1),ck.day==='1')+'</div>'+(hint?'<p class="hint">'+hint+'</p>':'')+'</div>'+
+'<div class="grp"><p class="lbl" id="l-slot">'+(ck.how==='pick'?'Коли приблизно приїдете':'Вікно доставки')+'</p><div class="chips" id="slotBox" role="radiogroup" aria-labelledby="l-slot">'+list.map(function(v){return opt('slot',v,v,ck.slot===v)}).join('')+'</div></div>'}
+next.textContent='Далі: контакти';
+}else if(s===2){
+h='<div class="fld" style="margin-top:0"><label for="f-name">Ім’я</label><input class="inp" id="f-name" name="name" autocomplete="given-name" value="'+esc(ck.name)+'"></div>'+
+'<div class="fld"><label for="f-phone">Телефон</label><input class="inp" id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" value="'+esc(ck.phone)+'" placeholder="+380"><p class="hint">Назвете на касі. Сюди ж прийде номер резерву.</p></div>'+
+'<div class="fld"><label for="f-vin">VIN, якщо хочете перевірити сумісність</label><input class="inp mono" id="f-vin" name="vin" maxlength="17" autocomplete="off" spellcheck="false" value="'+esc(ck.vin)+'" style="text-transform:uppercase"></div>'+
+'<div class="li"><p>Деталі, '+nQty()+' шт</p><span class="pr tn">'+uah(total())+'</span></div><div class="li"><p>'+(ck.how==='pick'?'Самовивіз':'Кур’єр')+'</p><span class="pr tn">'+uah(fee())+'</span></div>'+
+'<div class="tot"><span>При отриманні</span><span class="tn">'+uah(total()+fee())+'</span></div>';
+next.textContent='Відкласти без передоплати';
+}else{
+var D=ck.done,pick=ck.how==='pick',cars=[],dw=hDay(ck.day,D.L)==='0'?'сьогодні':'завтра',when=D.L===2?'після дзвінка, коли деталь приїде':dw+', '+ck.slot;L=D.L;
+D.list.forEach(function(i){if(cars.indexOf(i.o.car)<0)cars.push(i.o.car)});
+var multi=cars.length>1,msg=L===2?'Продавець замовить деталь і зателефонує, щойно вона приїде.':!isOpen(m)?'Зараз зачинено: продавець побачить резерв '+(m>=CLOSE?'завтра ':'')+'о 8:30 і покладе деталі на видачу.':L===1?'Деталі приїдуть завтра до 11:00, продавець покладе їх на видачу.':'Продавець зніме деталі з полиці й покладе на видачу.';
+h='<div class="done"><span class="tag">'+D.num+' · '+(L===2?'чекаємо деталь':pick?'до 19:00 '+dw:when)+'</span><h3>Резерв уже в Telegram у «Артикулі»</h3><p>'+msg+' Назвіть номер резерву або телефон на касі.</p>'+
+'<div class="tg" aria-label="Повідомлення, яке отримав магазин">'+tgH('резерви')+'<div class="tg-m">'+
+'<p><b>Резерв '+D.num+'</b></p><p>'+D.list.map(function(i,k){var o=i.o;return(k+1)+'. '+esc(o.part)+(multi?' ('+esc(o.car)+')':'')+', '+esc(o.brand)+' <span class="mono">'+esc(o.pn)+'</span> — '+i.q+' × '+uah(o.price)+(o.st.t==='ok'?' · полиця '+o.st.loc:' · '+stTxt(o.st).toLowerCase())}).join('<br>')+'</p>'+
+(multi&&!ck.vin?'':'<p>'+(multi?'':'Авто: '+esc(cars[0]))+(ck.vin?(multi?'':'<br>')+'VIN: <span class="mono">'+esc(ck.vin.toUpperCase())+'</span> — перевірити':'')+'</p>')+
+'<p>'+(pick?'Самовивіз: '+when+(L===2?'':', тримати до 19:00 '+dw):'Кур’єр: '+when+'<br>'+esc(ck.addr))+'</p>'+
+'<p>Клієнт: '+esc(ck.name)+', '+esc(ck.phone)+'</p><p><b>Разом: '+uah(D.sum+fee())+' · без передоплати</b></p><span class="tg-t">'+hm(now())+'</span></div></div></div>';
+next.textContent='Закрити';
 }
+B.innerHTML=h;
+}
+function clearErr(el){if(el){el.removeAttribute('aria-invalid');var p=$('#'+el.id+'-e');if(p)p.remove();return}$$('.err',B).forEach(function(e){e.remove()});$$('[aria-invalid]',B).forEach(function(e){e.removeAttribute('aria-invalid')})}
 function err(id,msg){var el=$('#'+id);el.setAttribute('aria-invalid','true');el.setAttribute('aria-describedby',id+'-e');var p=document.createElement('p');p.className='err';p.id=id+'-e';p.textContent=msg;el.insertAdjacentElement('afterend',p);return el}
 function valid(){
-  $$('.err',B).forEach(function(e){e.remove()});$$('[aria-invalid]',B).forEach(function(e){e.removeAttribute('aria-invalid')});var bad=null;
-  if(ck.step===1){if(!ck.slot){var p=document.createElement('p');p.className='err';p.textContent='Оберіть час.';$('#slotBox').insertAdjacentElement('afterend',p);bad=$('#slotBox input')}
-    if(ck.how==='cour'&&ck.addr.trim().length<5)bad=err('f-addr','Вкажіть вулицю й номер будинку.')}
-  if(ck.step===2){if(ck.vin&&!/^[A-HJ-NPR-Z0-9]{17}$/i.test(ck.vin))bad=err('f-vin','VIN має 17 символів, без літер I, O, Q.');
-    if(ck.phone.replace(/\D/g,'').length<10)bad=err('f-phone','Потрібен номер з кодом, наприклад +380 67 123 45 67.');
-    if(ck.name.trim().length<2)bad=err('f-name','Як до вас звертатися?')}
-  if(bad){bad.focus();return false}return true}
-function go(s){ck.step=s;draw();$('#ckT').focus()}
-next.addEventListener('click',function(){
-  if(mode==='vin'||ck.step===3){dlg.close();return}
-  if(ck.step===0&&!items().length){dlg.close();$('#mk').focus();return}
-  if(!valid())return;
-  go(ck.step+1);
-  if(ck.step===3){RES={};render();refresh()}
+clearErr();var ok=true,bad=null;
+if(ck.step===1){
+if(lvl()<2){var stale=!!ck.slot&&slots(+ck.day).indexOf(ck.slot)<0;
+if(stale||ck.day==='0'&&!slots(0).length){ck.slot='';draw()}
+if(!ck.slot){var p=document.createElement('p');p.className='err';p.id='slot-e';p.textContent=stale?'Цей час уже минув. Оберіть інший.':'Оберіть час.';$('#slotBox').insertAdjacentElement('afterend',p);bad=$('#slotBox input')||next;ok=false}}
+if(ck.how==='cour'&&ck.addr.trim().length<5){bad=err('f-addr','Вкажіть вулицю й номер будинку.');ok=false}}
+if(ck.step===2){if(ck.vin&&!/^[A-HJ-NPR-Z0-9]{17}$/i.test(ck.vin)){bad=err('f-vin','VIN має 17 символів, без літер I, O, Q.');ok=false}
+if(ck.phone.replace(/\D/g,'').length<10){bad=err('f-phone','Потрібен номер з кодом, наприклад +380 67 123 45 67.');ok=false}
+if(ck.name.trim().length<2){bad=err('f-name','Як до вас звертатися?');ok=false}}
+if(bad)bad.focus();return ok}
+function lock(){tNav=Date.now();next.disabled=back.disabled=true;clearTimeout(lockT);lockT=setTimeout(function(){next.disabled=back.disabled=false},450)}
+function go(s){ck.step=s;draw();lock();$('#ckT').focus()}
+function finish(){var list=items();ck.done={L:lvl(list),list:list,sum:total(list),num:'А-'+(4100+Math.floor(Math.random()*800))};
+list.forEach(function(i){if(i.o.st.t==='ok')TAKEN[i.o.id]=(TAKEN[i.o.id]||0)+i.q});
+go(3);RES={};cur=build();render();refresh()}
+function quick(e){return e.detail>1||Date.now()-tNav<400}
+next.addEventListener('click',function(e){
+if(quick(e))return;
+if(mode==='vin'||ck.step===3){dlg.close();return}
+if(ck.step===0&&!items().length){dlg.close();$('#mk').focus();return}
+if(!valid())return;
+if(ck.step===2)finish();else go(ck.step+1);
 });
-back.addEventListener('click',function(){go(ck.step-1)});
+back.addEventListener('click',function(e){if(!quick(e))go(ck.step-1)});
 B.addEventListener('click',function(e){var q=e.target.closest('[data-q]'),d=e.target.closest('[data-del]');
-  if(q){var it=RES[q.getAttribute('data-id')];it.q+= +q.getAttribute('data-q');draw();refresh();var nb=$('[data-id="'+CSS.escape(it.o.id)+'"][data-q="'+q.getAttribute('data-q')+'"]',B);(nb&&!nb.disabled?nb:next).focus()}
-  if(d){delete RES[d.getAttribute('data-del')];draw();render();refresh();next.focus()}});
-B.addEventListener('input',function(e){var t=e.target;if(t.name&&t.type!=='radio')ck[t.name]=t.value});
-B.addEventListener('change',function(e){var t=e.target;if(t.type==='radio'){ck[t.name]=t.value;if(t.name!=='slot'){if(t.name==='how')ck.day='';ck.slot='';draw();$('input[name='+t.name+']:checked',B).focus()}}});
-function openCk(){if(ck.step===3)reset();mode='res';ck.step=0;draw();dlg.showModal();$('#ckT').focus()}
+if(q){var it=RES[q.getAttribute('data-id')];if(!it)return;var max=it.o.st.t==='ok'?it.o.st.q:8;it.q=Math.max(1,Math.min(max,it.q+ +q.getAttribute('data-q')));draw();refresh();var nb=$('[data-id="'+CSS.escape(it.o.id)+'"][data-q="'+q.getAttribute('data-q')+'"]',B);(nb&&!nb.disabled?nb:next).focus()}
+if(d&&e.detail<2){delete RES[d.getAttribute('data-del')];draw();render();refresh();next.focus()}});
+B.addEventListener('input',function(e){var t=e.target;if(t.name&&t.type!=='radio'){ck[t.name]=t.value;if(t.getAttribute('aria-invalid'))clearErr(t)}});
+B.addEventListener('change',function(e){var t=e.target;if(t.type!=='radio')return;ck[t.name]=t.value;if(t.name==='slot'){var p=$('#slot-e');if(p)p.remove();return}if(t.name==='how')ck.day='';ck.slot='';draw();$('input[name='+t.name+']:checked',B).focus()});
+B.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.matches('.inp')){e.preventDefault();next.click()}});
+function openD(d){d._bd=false;d.showModal();d._t=Date.now()}
+function openCk(){if(dlg.open)return;if(ck.step===3)reset();mode='res';ck.step=0;draw();openD(dlg);lock();$('#ckT').focus()}
 $$('[data-ck]').forEach(function(b){b.addEventListener('click',openCk)});
-$('#vinF').addEventListener('submit',function(){var i=$('#vinI'),v=i.value.trim();$$('.err',this).forEach(function(e){e.remove()});i.removeAttribute('aria-invalid');
-  if(!/^[A-HJ-NPR-Z0-9]{17}$/i.test(v)){err('vinI','VIN має 17 символів, без літер I, O, Q. Він є в техпаспорті.');i.focus();return}
-  vinTxt=v.toUpperCase();mode='vin';draw();dlg.showModal();$('#ckT').focus()});
-$$('[data-tg]').forEach(function(b){b.addEventListener('click',function(){$('#tgN').showModal()})});
-$$('dialog').forEach(function(d){d.addEventListener('click',function(e){if(e.target===d||e.target.closest('[data-close]'))d.close()})});
+$('#vinF').addEventListener('submit',function(e){e.preventDefault();if(dlg.open)return;var i=$('#vinI'),v=i.value.replace(/\s/g,''),er=$('#vinI-e');
+if(!/^[A-HJ-NPR-Z0-9]{17}$/i.test(v)){er.textContent='VIN має 17 символів, без літер I, O, Q. Він є в техпаспорті.';er.hidden=false;i.setAttribute('aria-invalid','true');i.setAttribute('aria-describedby','vinI-e vinH');i.focus();return}
+vinTxt=v.toUpperCase();if(!ck.vin)ck.vin=vinTxt;mode='vin';draw();openD(dlg);lock();$('#ckT').focus()});
+$('#vinI').addEventListener('input',function(){if(this.getAttribute('aria-invalid')){this.removeAttribute('aria-invalid');this.setAttribute('aria-describedby','vinH');$('#vinI-e').hidden=true}});
+var NT={tel:['Тут буде номер вашого магазину','Це демо-сайт. На справжньому кнопка одразу набирає номер магазину, а на комп’ютері показує його великими цифрами.'],tg:['Тут буде ваш Telegram','Це демо-сайт. На справжньому ця кнопка відкриває чат магазину в Telegram, а резерви й запити за VIN приходять туди ж.']};
+$$('[data-note]').forEach(function(b){b.addEventListener('click',function(){var d=$('#nt'),n=NT[b.getAttribute('data-note')];if(d.open)return;$('#ntT').textContent=n[0];$('#ntP').textContent=n[1];openD(d)})});
+function outside(d,e){var r=d.getBoundingClientRect();return e.target===d&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)}
+$$('dialog').forEach(function(d){
+d.addEventListener('pointerdown',function(e){d._bd=outside(d,e)});
+d.addEventListener('click',function(e){if(e.target.closest('[data-close]')){d.close();return}
+if(d._bd&&outside(d,e)&&e.detail<2&&Date.now()-(d._t||0)>500)d.close();d._bd=false})});
 
-sync();openS();refresh();setInterval(function(){openS();refresh()},60000);
+sync();openS();upd();refresh();setInterval(function(){openS();upd();refresh()},60000);
 })();
 </script>
 </body>

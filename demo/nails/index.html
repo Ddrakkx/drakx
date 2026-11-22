@@ -5,17 +5,18 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Демо: студія манікюру «Мигдаль», Львів | drakx</title>
-<meta name="description" content="Демо-сайт студії манікюру й педикюру у Львові: примірка кольору й форми нігтів і онлайн-запис без дзвінків.">
+<meta name="description" content="Демо-сайт студії манікюру й педикюру у Львові: примірка кольору й форми нігтів на фото руки і онлайн-запис без дзвінків.">
 <meta name="theme-color" content="#FCF7F6">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2C9 9 6.5 15 6.5 21a9.5 9.5 0 0 0 19 0C25.5 15 23 9 16 2z' fill='%239C2C4C'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300..600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hand.webp" type="image/webp">
 <style>
 :root{--bg:#FCF7F6;--blush:#F5E8E5;--nude:#ECD6D0;--ink:#2B1C22;--ink2:#694F58;--line:#E4D2CD;--acc:#9C2C4C;--acc2:#82213E;
---sk1:#F2D5C6;--sk2:#D9AE98;--ease:cubic-bezier(.22,.7,.2,1);--wrap:1200px;--gut:clamp(16px,4vw,40px);--sec:clamp(72px,9vw,128px)}
+--ease:cubic-bezier(.22,.7,.2,1);--wrap:1200px;--gut:clamp(16px,4vw,40px);--sec:clamp(72px,9vw,128px);--hd:68px}
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:76px}
 body{font:400 17px/1.55 Jost,system-ui,sans-serif;color:var(--ink);background:var(--bg);overflow-x:clip;font-variant-numeric:lining-nums}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
@@ -29,22 +30,25 @@ h2{font-size:clamp(32px,4.2vw,52px);font-weight:300}
 .sub{color:var(--ink2);max-width:52ch;margin-top:14px}
 /* demo bar */
 .demo{background:var(--ink);color:#F5E8E5;font-size:13px;line-height:1}
-.demo .wrap{display:flex;align-items:center;gap:14px;min-height:34px;white-space:nowrap}
-.demo a{text-underline-offset:3px;padding:10px 0}
-.demo span{opacity:.8;margin-right:auto;overflow:hidden;text-overflow:ellipsis}
+.demo .wrap{display:flex;align-items:center;gap:14px;white-space:nowrap}
+.demo a{text-underline-offset:3px;min-height:44px;display:inline-flex;align-items:center}
+.demo span{opacity:.8;margin-right:auto;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .demo a:first-child{text-decoration:none}
 .demo a:last-child{font-weight:500}
+.demo .s{display:none}
+@media (max-width:560px){.demo .wrap{gap:12px}.demo .l{display:none}.demo .s{display:inline}.demo a.w{display:none}}
 /* header */
 .hd{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid transparent;transition:border-color .2s}
 .hd.on{border-color:var(--line)}
-.hd .wrap{display:flex;align-items:center;gap:28px;height:68px}
+.hd .wrap{display:flex;align-items:center;gap:28px;height:var(--hd)}
 .logo{display:flex;align-items:center;min-height:44px;gap:10px;text-decoration:none;font-size:22px;letter-spacing:.01em;margin-right:auto}
 .logo svg{width:18px;height:24px}
 .logo small{font-size:13px;color:var(--ink2);letter-spacing:.04em;margin-left:2px}
-.nav{display:flex;gap:26px;font-size:16px}
+.nav{display:flex;gap:24px;font-size:16px}
 .nav a{text-decoration:none;padding:10px 0;position:relative}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}
 .nav a:hover::after{transform:scaleX(1)}
+.mnav{display:none}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 26px;border-radius:999px;border:1px solid var(--ink);background:none;text-decoration:none;font-weight:500;font-size:16px;cursor:pointer;transition:background .2s,color .2s,transform .12s var(--ease);white-space:nowrap}
 .btn:active{transform:scale(.97)}
 .btn.p{background:var(--acc);border-color:var(--acc);color:#fff}
@@ -52,10 +56,10 @@ h2{font-size:clamp(32px,4.2vw,52px);font-weight:300}
 .btn.s:hover{background:var(--ink);color:var(--bg)}
 .btn[disabled]{opacity:.4;cursor:not-allowed;transform:none}
 .hd .btn{min-height:44px;padding:0 20px}
-@media (max-width:860px){.nav{display:none}}
+@media (max-width:860px){.nav{display:none}.mnav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px var(--gut) 6px;font-size:15px;white-space:nowrap}.mnav::-webkit-scrollbar{display:none}.mnav a{text-decoration:none;min-height:40px;display:inline-flex;align-items:center;padding:0 14px;border:1px solid var(--line);border-radius:999px;color:var(--ink2)}}
 @media (max-width:380px){.logo small{display:none}.hd .wrap{gap:12px}.hd .btn{padding:0 16px}}
 /* hero */
-.hero{padding:clamp(28px,5vw,72px) 0 var(--sec)}
+.hero{padding:clamp(24px,5vw,72px) 0 var(--sec)}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,6vw,88px);align-items:center}
 .hero h1{font-size:clamp(42px,6.4vw,84px);font-weight:300;letter-spacing:-.035em;line-height:1}
 .hero h1 em{font-style:normal;color:var(--acc)}
@@ -67,54 +71,69 @@ h2{font-size:clamp(32px,4.2vw,52px);font-weight:300}
 .arch img{width:100%;height:100%;object-fit:cover}
 .hero .arch{aspect-ratio:4/5;max-height:640px;justify-self:end;width:100%}
 @media (max-width:860px){.cta .btn{flex:1 1 220px}.hero .wrap{grid-template-columns:minmax(0,1fr)}.hero .arch{aspect-ratio:5/4;border-radius:22px;justify-self:stretch}}
+/* looks */
+.looks{padding:0 0 var(--sec)}
+.lk-g{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:clamp(28px,4vw,44px)}
+.lk{background:var(--blush);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.lk svg{display:block;width:100%;aspect-ratio:4/3;background:#EAD8D3}
+.lk-b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:2px;flex:1}
+.lk h3{font-size:21px;font-weight:500;letter-spacing:-.01em}
+.lk p{color:var(--ink2);font-size:15px}
+.lk .pz{color:var(--ink);font-weight:500;margin-top:6px;font-size:16px}
+.lk-a{display:flex;gap:8px;margin-top:auto;padding-top:14px}
+.lk-a .btn{flex:1;min-height:44px;padding:0 12px;font-size:15px}
+@media (max-width:860px){.lk-g{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:min(78%,300px);overflow-x:auto;scroll-snap-type:x mandatory;margin-left:calc(-1*var(--gut));margin-right:calc(-1*var(--gut));padding:0 var(--gut) 10px;scroll-padding:0 var(--gut);scrollbar-width:thin}.lk{scroll-snap-align:start}}
 /* try-on */
 .try{background:var(--blush);padding:var(--sec) 0}
-.try-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,72px);margin-top:clamp(32px,4vw,52px);align-items:start}
-.stage{position:sticky;top:84px;background:#E0C7C8;border-radius:28px;overflow:hidden;aspect-ratio:420/470}
-.stage svg{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 14px 22px rgba(74,40,50,.16))}
-.np,.fr,.hl{transition:d .35s var(--ease),fill .3s,opacity .3s}
-.nl{transition:fill .3s}
-.tones{position:absolute;top:14px;left:14px;display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(252,247,246,.86);z-index:1}
-.tones label{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;cursor:pointer}
-.tones span{width:24px;height:24px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(43,28,34,.15)}
-.tones input{position:absolute;opacity:0}
-.tones input:checked+span{box-shadow:0 0 0 2px var(--bg),0 0 0 3.5px var(--ink)}
-.tones label:has(:focus-visible){outline:2px solid var(--acc)}
-.stage-cap{position:absolute;right:16px;bottom:14px;left:16px;font-size:14px;color:var(--ink2);text-align:right}
+.try-g{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);margin-top:clamp(32px,4vw,52px);align-items:start}
+.stage-w{position:sticky;top:88px}
+.stage{position:relative;background:#EAD8D3;border-radius:28px;overflow:hidden;height:min(600px,calc(100vh - 140px));min-height:420px}
+.stage svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.nail{cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
+.nail:hover .n-o{stroke-opacity:.45}
+.nail:focus-visible .n-o{stroke:#9C2C4C;stroke-opacity:1;stroke-width:1.6}
+.cap{font-size:14px;color:var(--ink2);margin-top:12px}
+.cap-m{display:none}
 fieldset{border:0;min-width:0}
-legend{font-size:15px;color:var(--ink2);margin-bottom:12px;display:flex;gap:8px;width:100%}
+legend{font-size:15px;color:var(--ink2);margin-bottom:12px;display:flex;gap:8px;width:100%;flex-wrap:wrap}
 legend b{font-weight:500;color:var(--ink)}
 .ctl>*+*{margin-top:30px}
-.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:6px 4px}
-.sw label{display:grid;justify-items:center;gap:3px;cursor:pointer;padding:4px 0;font-size:12px;color:var(--ink2);border-radius:10px}
-.sw i{width:26px;height:36px;border-radius:50% 50% 45% 45%/64% 64% 36% 36%;position:relative;box-shadow:inset 0 0 0 1px rgba(43,28,34,.12);transition:transform .2s var(--ease)}
-.sw i::after{content:"";position:absolute;left:6px;top:7px;width:4px;height:15px;border-radius:4px;background:rgba(255,255,255,.5)}
+.ctl .total{margin-top:24px}
+#try input{scroll-margin:110px 0 200px}
+.sw{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px 6px}
+.sw label{display:grid;justify-items:center;gap:3px;cursor:pointer;padding:4px 0;font-size:13px;color:var(--ink);border-radius:10px;position:relative}
+.sw i{width:30px;height:42px;border-radius:50% 50% 45% 45%/64% 64% 36% 36%;position:relative;box-shadow:inset 0 0 0 1px rgba(43,28,34,.12),inset -4px -6px 8px rgba(43,28,34,.12);transition:transform .2s var(--ease)}
+.sw i::after{content:"";position:absolute;left:7px;top:8px;width:4px;height:16px;border-radius:4px;background:rgba(255,255,255,.55);filter:blur(.6px)}
 .sw input,.chips input{position:absolute;opacity:0;pointer-events:none}
 .sw input:checked+i{transform:translateY(-3px);box-shadow:0 0 0 2px var(--blush),0 0 0 3.5px var(--ink)}
-.sw input:checked~span{color:var(--ink);font-weight:500}
+.sw input:checked~span{font-weight:600}
 .sw label:hover i{transform:translateY(-3px)}
 .sw label:has(:focus-visible),.chips label:has(:focus-visible){outline:2px solid var(--acc);outline-offset:2px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips label{cursor:pointer;border-radius:16px}
+.chips label{cursor:pointer;border-radius:16px;position:relative}
 .chips span{display:flex;align-items:center;gap:8px;min-height:46px;padding:8px 16px;border:1px solid var(--line);border-radius:16px;background:var(--bg);font-size:16px;line-height:1.2;transition:background .2s,color .2s,border-color .2s}
-.chips small{font-size:13px;color:var(--ink2);transition:color .2s}
+.chips small{font-size:13px;color:var(--ink2);transition:color .2s;white-space:nowrap}
 .chips svg{width:14px;height:22px;flex:none}
 .chips input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .chips input:checked+span small{color:#D9C3C9}
 .chips label:hover span{border-color:var(--ink2)}
 .len,.fin{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr))}.len{--n:3}.fin{--n:4}.len span,.fin span{flex-direction:column;align-items:flex-start;justify-content:center;gap:0;height:100%}
-@media (max-width:520px){.fin{--n:2}.len{--n:1}.len span{flex-direction:row;justify-content:space-between;align-items:center;gap:12px}}
+.hint-s{font-size:14px;color:var(--ink2);margin-top:8px}
+@media (max-width:520px){.fin{--n:2}.len{--n:1}.len span{flex-direction:row;justify-content:space-between;align-items:center;gap:12px}#sh{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1*var(--gut));padding:2px var(--gut) 6px;scroll-padding:0 var(--gut);scrollbar-width:none}#sh::-webkit-scrollbar{display:none}#sh label{scroll-snap-align:start;flex:none}}
 .ext label{display:flex;gap:12px;align-items:flex-start;cursor:pointer;padding:8px 0;font-size:16px;line-height:1.35}
 .ext input{width:20px;height:20px;accent-color:var(--acc);margin-top:1px;flex:none}
 .ext small{display:block;color:var(--ink2);font-size:14px}
-.total{background:var(--bg);border-radius:22px;padding:22px 24px 24px;display:grid;gap:4px}
+.total{position:sticky;bottom:14px;z-index:6;background:var(--bg);border-radius:22px;padding:18px 22px 20px;display:grid;gap:4px;box-shadow:0 0 0 1px var(--line),0 -10px 30px -14px rgba(74,40,50,.3)}
 .total .row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.price{font-size:clamp(38px,4vw,48px);font-weight:300;letter-spacing:-.03em;line-height:1.1}
+.price{font-size:clamp(34px,3.6vw,44px);font-weight:300;letter-spacing:-.03em;line-height:1.1}
 .dur{font-size:18px}
 .desc{color:var(--ink2);font-size:15px;min-height:2.6em}
-.total .btn{margin-top:14px;width:100%}
-@media (max-width:860px){.try-g{grid-template-columns:minmax(0,1fr)}.stage{top:68px;z-index:5;aspect-ratio:auto;height:min(300px,38vh);min-height:200px;width:100%;box-shadow:0 12px 24px -16px rgba(74,40,50,.35)}}
-@media (max-width:860px) and (max-height:560px){.stage{position:relative;top:0;height:300px}}
+.total .btn{margin-top:12px;width:100%}
+@media (max-width:860px){.try-g{grid-template-columns:minmax(0,1fr)}.stage-w{top:calc(var(--hd) + 6px);z-index:5}.stage{height:min(240px,32vh);min-height:190px;box-shadow:0 12px 24px -16px rgba(74,40,50,.35);border-radius:22px}.stage-w .cap{display:none}.cap-m{display:block}
+#try input{scroll-margin:calc(var(--hd) + 18px + min(240px,32vh)) 0 110px}
+.total{bottom:8px;padding:10px 10px 10px 18px;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 12px}.total .row{flex-direction:column;align-items:flex-start;gap:0}.price{font-size:28px}.dur{font-size:14px;color:var(--ink2)}.total .desc{display:none}.total .btn{margin:0;width:auto;padding:0 20px}}
+@media (max-width:480px){.total .lg{display:none}}
+@media (max-width:860px) and (max-height:560px){.stage-w{position:relative;top:0}}
 /* prices */
 .pr .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px);align-items:start}
 .pr-side{position:sticky;top:96px}
@@ -147,6 +166,7 @@ legend b{font-weight:500;color:var(--ink)}
 .ct dl{margin-top:32px;display:grid;gap:22px}
 .ct dt{font-size:14px;color:#CDB6BD;margin-bottom:2px}
 .ct dd{font-size:19px}
+.ct dd small{display:block;font-size:14px;color:#CDB6BD}
 .ct .cta{margin-top:36px}
 .ct .btn.s{border-color:#F5E8E5;color:#F5E8E5}
 .ct .btn.s:hover{background:#F5E8E5;color:var(--ink)}
@@ -155,8 +175,28 @@ legend b{font-weight:500;color:var(--ink)}
 .map svg{display:block;width:100%;height:auto}
 .ct .ph{margin-top:16px;border-radius:22px;overflow:hidden;aspect-ratio:3/2;background:#3A2830}
 @media (max-width:860px){.ct .wrap{grid-template-columns:minmax(0,1fr)}}
-.ft{background:var(--ink);color:#CDB6BD;font-size:14px;padding:0 0 32px}
-.ft .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid #4A3640;padding-top:24px}
+/* owner */
+.own{background:var(--nude);padding:var(--sec) 0}
+.own-k{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);font-weight:500;margin-bottom:14px}
+.own-g{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,72px);margin-top:clamp(28px,4vw,44px);align-items:start}
+.own-l{list-style:none}
+.own-l li{padding:20px 0;border-top:1px solid rgba(43,28,34,.16)}
+.own-l li:first-child{padding-top:0;border-top:0}
+.own-l b{font-weight:500;font-size:19px;display:block}
+.own-l p{color:var(--ink2);margin-top:4px;max-width:52ch}
+.own-m{margin-top:14px;background:#DCE5EC;border-radius:18px;padding:12px;max-width:420px}
+.own-p{background:var(--bg);border-radius:22px;padding:clamp(20px,3vw,30px)}
+.own-p .big{font-size:clamp(24px,2.4vw,30px);font-weight:300;letter-spacing:-.02em;line-height:1.2}
+.own-p .big b{font-weight:500}
+.own-p p+p{margin-top:12px;color:var(--ink2)}
+.own-p .btn{margin-top:22px;width:100%}
+@media (max-width:860px){.own-g{grid-template-columns:minmax(0,1fr)}}
+.ft{background:var(--ink);color:#CDB6BD;font-size:14px;padding:32px 0}
+.ft .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px}
+.ft a{padding:12px 0}
+/* toast */
+.toast{position:fixed;left:50%;bottom:24px;z-index:60;transform:translate(-50%,16px);max-width:calc(100% - 32px);width:max-content;background:var(--ink);color:#fff;border-radius:14px;padding:12px 18px;font-size:15px;line-height:1.35;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s var(--ease);box-shadow:0 14px 40px rgba(43,28,34,.3)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
 /* booking dialog */
 dialog{border:0;padding:0;margin:auto;width:min(620px,100%);max-height:min(860px,100dvh - 32px);border-radius:28px;background:var(--bg);color:var(--ink);box-shadow:0 30px 80px rgba(43,28,34,.25)}
 dialog::backdrop{background:rgba(43,28,34,.45)}
@@ -175,7 +215,7 @@ dialog[open]{animation:dlg .32s var(--ease)}
 .pane{animation:pane .3s var(--ease)}
 @keyframes pane{from{opacity:0;transform:translateX(16px)}}
 .opts{display:grid;gap:8px}
-.opt{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:16px;cursor:pointer;min-height:56px;transition:border-color .2s,background .2s}
+.opt{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:16px;cursor:pointer;min-height:56px;transition:border-color .2s,background .2s;position:relative}
 .opt input,.days input,.times input{position:absolute;opacity:0;pointer-events:none}
 .opt small{display:block;color:var(--ink2);font-size:14px}
 .opt .pp{white-space:nowrap;font-weight:500;text-align:right}
@@ -183,7 +223,7 @@ dialog[open]{animation:dlg .32s var(--ease)}
 .opt:has(:checked){border-color:var(--ink);background:var(--blush);box-shadow:inset 0 0 0 1px var(--ink)}
 .opt:has(:focus-visible),.days label:has(:focus-visible),.times label:has(:focus-visible){outline:2px solid var(--acc);outline-offset:2px}
 .days{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:8px}
-.days label,.times label{display:grid;place-items:center;text-align:center;border:1px solid var(--line);border-radius:14px;cursor:pointer;min-height:64px;padding:6px;line-height:1.2;transition:background .2s,border-color .2s}
+.days label,.times label{display:grid;place-items:center;text-align:center;border:1px solid var(--line);border-radius:14px;cursor:pointer;min-height:64px;padding:6px;line-height:1.2;transition:background .2s,border-color .2s;position:relative}
 .days small{font-size:12px;color:var(--ink2)}
 .days b{font-weight:500;font-size:17px}
 .days label:has(:checked),.times label:has(:checked){background:var(--ink);border-color:var(--ink);color:var(--bg)}
@@ -193,7 +233,8 @@ dialog[open]{animation:dlg .32s var(--ease)}
 .times label{min-height:48px;font-variant-numeric:tabular-nums}
 .times label:has(:disabled){color:#A8949B;text-decoration:line-through;cursor:not-allowed;border-style:dashed}
 .tgrp+.tgrp{margin-top:16px}
-.tgrp p{font-size:14px;color:var(--ink2);margin-bottom:8px}
+.tgrp p,.bk-n{font-size:14px;color:var(--ink2);margin-bottom:8px}
+.warn{background:#F7DDE2;color:#7A1A33;border-radius:12px;padding:10px 14px;font-size:15px;margin-bottom:14px}
 .fld{display:grid;gap:6px;margin-bottom:16px}
 .fld label{font-size:15px;font-weight:500}
 .fld input,.fld textarea{width:100%;min-height:50px;border:1px solid #CDB6BD;border-radius:14px;padding:12px 14px;background:#fff;font-size:17px}
@@ -207,13 +248,12 @@ dialog[open]{animation:dlg .32s var(--ease)}
 .bk-nav{display:flex;align-items:center;gap:12px;padding:16px 24px 20px;border-top:1px solid var(--line)}
 .bk-nav .sum{flex:1;font-size:14px;color:var(--ink2);line-height:1.3;min-width:0}
 .bk-nav .btn{min-height:48px;padding:0 22px}
-.done{text-align:left}
 .done h3{font-size:26px;font-weight:400;letter-spacing:-.02em}
 .done .ok{width:52px;height:52px;border-radius:50%;background:var(--acc);display:grid;place-items:center;margin-bottom:16px}
 .tg{margin-top:20px;background:#DCE5EC;border-radius:20px;padding:18px 16px 14px;font-size:15px;line-height:1.45}
 .tg-h{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:14px;color:#33414D}
 .tg-h i{width:34px;height:34px;border-radius:50%;background:var(--acc);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:500}
-.tg-m{background:#fff;border-radius:16px 16px 16px 4px;padding:12px 14px 8px;color:#1D2730;max-width:440px;font-family:system-ui,sans-serif;font-size:14.5px}
+.tg-m{background:#fff;border-radius:16px 16px 16px 4px;padding:12px 14px 8px;color:#1D2730;max-width:440px;font-family:system-ui,sans-serif;font-size:14.5px;line-height:1.45}
 .tg-m b{font-weight:600}
 .tg-m time{display:block;text-align:right;font-size:12px;color:#7A8A96}
 .tg-k{display:grid;grid-template-columns:1fr 1fr;gap:4px;max-width:440px;margin-top:4px}
@@ -225,50 +265,56 @@ dialog[open]{animation:dlg .32s var(--ease)}
 </style>
 </head>
 <body>
-<div class="demo"><div class="wrap"><a href="../../beauty/">← Інші роботи</a><span>Демо-сайт від drakx</span><a href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%9C%D0%B8%D0%B3%D0%B4%D0%B0%D0%BB%D1%8C%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий</a></div></div>
+<div class="demo"><div class="wrap"><a href="../../beauty/">← Інші роботи</a><span>Демо-сайт від drakx</span><a href="#owner"><b class="l" style="font-weight:400">Як це працює для власника</b><b class="s" style="font-weight:400">Для власника</b></a><a class="w" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%9C%D0%B8%D0%B3%D0%B4%D0%B0%D0%BB%D1%8C%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий</a></div></div>
 
 <header class="hd" id="hd"><div class="wrap">
 <a class="logo" href="#top" aria-label="Мигдаль, на початок сторінки"><svg viewBox="0 0 18 24" aria-hidden="true"><path d="M9 1C4 6 2 10.5 2 15a7 7 0 0 0 14 0C16 10.5 14 6 9 1z" fill="#9C2C4C"/><path d="M6 8.5v7" stroke="#fff" stroke-opacity=".55" stroke-width="1.6" stroke-linecap="round"/></svg>Мигдаль<small>Львів</small></a>
-<nav class="nav" aria-label="Розділи"><a href="#prymirka">Примірка</a><a href="#tsiny">Ціни</a><a href="#hihiiena">Стерильність</a><a href="#kontakty">Контакти</a></nav>
+<nav class="nav" aria-label="Розділи"><a href="#obrazy">Образи</a><a href="#prymirka">Примірка</a><a href="#tsiny">Ціни</a><a href="#hihiiena">Стерильність</a><a href="#kontakty">Контакти</a></nav>
 <button class="btn p" type="button" data-book>Записатися</button>
 </div></header>
 
 <main id="top">
+<nav class="mnav" aria-label="Розділи сторінки"><a href="#obrazy">Образи</a><a href="#prymirka">Примірка</a><a href="#tsiny">Ціни</a><a href="#hihiiena">Стерильність</a><a href="#kontakty">Контакти</a></nav>
 <section class="hero"><div class="wrap">
 <div>
 <h1>Манікюр і&nbsp;педикюр у&nbsp;центрі <em>Львова</em></h1>
-<p class="lead">Гель-лак від 750&nbsp;грн, тримається 3–4 тижні. Приміряйте колір і форму на сайті та займіть вільний час без дзвінків.</p>
-<div class="cta"><button class="btn p" type="button" data-book>Записатися онлайн</button><a class="btn s" href="#prymirka">Приміряти колір</a></div>
-<ul class="facts"><li>Найближче вільне<b id="next">сьогодні</b></li><li>Щодня<b>9:00–20:00</b></li><li>Адреса<b>Князя Романа, 21</b></li></ul>
+<p class="lead">Гель-лак від 750&nbsp;грн, тримається 3–4 тижні. Підберіть колір і форму на сайті та займіть вільний час без дзвінків.</p>
+<div class="cta"><button class="btn p" type="button" data-book>Записатися онлайн</button><a class="btn s" href="#prymirka">Підібрати манікюр</a></div>
+<ul class="facts"><li><span id="next-l">Найближче вільне</span><b id="next">запис онлайн 24/7</b></li><li>Щодня<b>9:00–20:00</b></li><li>Адреса<b>Князя Романа, 21</b></li></ul>
 </div>
 <figure class="arch"><img src="img/hero.webp" width="1000" height="1250" alt="Рука з мигдалеподібними нігтями в молочно-рожевому гель-лаку на світлому травертині" fetchpriority="high" onerror="this.style.opacity=0"></figure>
 </div></section>
 
+<section class="looks" id="obrazy" aria-labelledby="lk-h"><div class="wrap">
+<h2 id="lk-h">Готові образи</h2>
+<p class="sub">Поєднання форми, кольору й покриття з нашого прайсу. Приміряйте будь-яке й змініть деталі під себе або одразу запишіться.</p>
+<ul class="lk-g" id="lk"></ul>
+</div></section>
+
 <section class="try" id="prymirka" aria-labelledby="try-h"><div class="wrap">
-<h2 id="try-h">Приміряйте манікюр до запису</h2>
-<p class="sub">Ціна й тривалість рахуються одразу. Колір на екрані трохи відрізняється від живого, тому в студії ще раз приміряєте його на типсах.</p>
+<h2 id="try-h">Підберіть манікюр до запису</h2>
+<p class="sub">Оберіть колір, форму й довжину — ціна й час рахуються одразу, а записатися можна в один клік.</p>
 <div class="try-g">
-<div class="stage">
-<fieldset class="tones"><legend class="vh">Тон шкіри для примірки</legend>
-<label><input type="radio" name="tone" value="0" checked><span style="background:#F2D5C6"></span><b class="vh">Світла шкіра</b></label>
-<label><input type="radio" name="tone" value="1"><span style="background:#D6A383"></span><b class="vh">Середня шкіра</b></label>
-<label><input type="radio" name="tone" value="2"><span style="background:#8A5A40"></span><b class="vh">Темна шкіра</b></label>
-</fieldset>
-<svg id="hand" viewBox="0 0 420 470" role="img" aria-label="Рука з манікюром"></svg>
+<div class="stage-w">
+<div class="stage"><svg id="hand" preserveAspectRatio="xMidYMid slice" role="group" aria-label="Примірка на фото руки"></svg></div>
+<p class="cap">Відтінок на екрані орієнтовний — у студії покажемо його вживу на пробному нігті.</p>
 </div>
 <form class="ctl" id="try" onsubmit="return false">
-<fieldset><legend>Колір <b id="o-col"></b></legend><div class="sw" id="sw"></div></fieldset>
+<fieldset><legend><span id="l-col">Колір</span> <b id="o-col"></b></legend><div class="sw" id="sw"></div><p class="hint-s cap-m">Відтінок на екрані орієнтовний — у студії покажемо його вживу на пробному нігті.</p></fieldset>
 <fieldset><legend>Форма <b id="o-sh"></b></legend><div class="chips" id="sh"></div></fieldset>
-<fieldset><legend>Довжина</legend><div class="chips len" id="ln"></div></fieldset>
+<fieldset><legend>Послуга й довжина</legend><div class="chips len" id="ln"></div><p class="hint-s">Довше за власні — лише з нарощуванням.</p></fieldset>
 <fieldset><legend>Покриття</legend><div class="chips fin" id="fn"></div></fieldset>
+<fieldset class="ext"><legend>Дизайн <b id="o-ds">без дизайну</b></legend>
+<label><input type="checkbox" id="x-ac"><span>Акцент на безіменних: стрази й втирка<small>30 грн і 5 хв за ніготь. Торкніться будь-якого нігтя на фото, щоб додати дизайн і на ньому</small></span></label>
+</fieldset>
 <fieldset class="ext"><legend>Додати</legend>
 <label><input type="checkbox" id="x-rm"><span>Зняти покриття іншого майстра<small>+100 грн, +15 хв</small></span></label>
-<label><input type="checkbox" id="x-pd"><span>Педикюр у тон, у 4 руки<small>+900 грн. Два майстри працюють одночасно, візит не довшає</small></span></label>
+<label><input type="checkbox" id="x-pd"><span>Педикюр у тон, у 4 руки<small>+850 грн. Педикюр робить другий майстер одночасно з манікюром, тож візит майже не довшає</small></span></label>
 </fieldset>
 <div class="total" aria-live="polite">
-<div class="row"><span class="price" id="t-price">750 грн</span><span class="dur" id="t-dur">1 год 30 хв</span></div>
+<div class="row"><span class="price" id="t-price">900 грн</span><span class="dur" id="t-dur">1 год 50 хв</span></div>
 <p class="desc" id="t-desc"></p>
-<button class="btn p" type="button" id="t-book">Записатися на цей манікюр</button>
+<button class="btn p" type="button" id="t-book">Записатися<span class="lg">&nbsp;на цей манікюр</span></button>
 </div>
 </form>
 </div>
@@ -277,7 +323,7 @@ dialog[open]{animation:dlg .32s var(--ease)}
 <section class="pr" id="tsiny" aria-labelledby="pr-h" style="padding:var(--sec) 0"><div class="wrap">
 <div class="pr-side">
 <h2 id="pr-h">Ціни</h2>
-<p class="sub">У ціну входять обробка, форма й покриття в один колір. Дизайн рахуємо окремо.</p>
+<p class="sub">У ціну входять обробка, форма й покриття в один колір. Дизайн — від 30 грн за ніготь.</p>
 <figure class="arch"><img src="img/pedicure.webp" width="800" height="1000" loading="lazy" alt="Стопи на білому рушнику, нігті в глянцевому вишневому гель-лаку" onerror="this.style.opacity=0"></figure>
 </div>
 <div>
@@ -298,7 +344,7 @@ dialog[open]{animation:dlg .32s var(--ease)}
 <div class="grp"><h3>Додатково</h3><ul class="list">
 <li><span class="n">Френч</span><span class="d">+20 хв</span><span class="p">150 грн</span></li>
 <li><span class="n">Втирка, хром</span><span class="d">+10 хв</span><span class="p">100 грн</span></li>
-<li><span class="n">Дизайн<small>Малюнок, стемпінг, наліпки</small></span><span class="d">за ніготь</span><span class="p">від 30 грн</span></li>
+<li><span class="n">Дизайн<small>Стрази, втирка, малюнок, стемпінг</small></span><span class="d">5 хв / ніготь</span><span class="p">30 грн / ніготь</span></li>
 <li><span class="n">Зняття покриття іншого майстра</span><span class="d">15 хв</span><span class="p">100 грн</span></li>
 <li><span class="n">Ремонт одного нігтя</span><span class="d">15 хв</span><span class="p">60 грн</span></li>
 </ul></div>
@@ -323,11 +369,12 @@ dialog[open]{animation:dlg .32s var(--ease)}
 <h2 id="ct-h">Як нас знайти</h2>
 <dl>
 <div><dt>Адреса</dt><dd>Львів, вул. Князя Романа, 21<br>Вхід з вулиці, перший поверх</dd></div>
-<div><dt>Години</dt><dd>Щодня 9:00–20:00, останній запис о 18:30</dd></div>
-<div><dt>Оплата</dt><dd>Картка, готівка, переказ</dd></div>
+<div><dt>Години</dt><dd>Щодня 9:00–20:00<small>Останній запис на манікюр із покриттям — о 18:30</small></dd></div>
+<div><dt>Телефон</dt><dd>+380 XX XXX XX XX<small>у демо тут буде ваш номер</small></dd></div>
+<div><dt>Запис і оплата</dt><dd>Без передоплати. Перенести чи скасувати можна за 12 годин до візиту<small>Оплата карткою, готівкою або переказом</small></dd></div>
 </dl>
-<div class="cta"><button class="btn p" type="button" data-book>Записатися онлайн</button><a class="btn s" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%9C%D0%B8%D0%B3%D0%B4%D0%B0%D0%BB%D1%8C%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Написати в Telegram</a></div>
-<p class="hint">У демо кнопка Telegram відкриває чат із розробником цього сайту.</p>
+<div class="cta"><button class="btn p" type="button" data-book>Записатися онлайн</button><button class="btn s" type="button" data-tel>Подзвонити</button><a class="btn s" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%9C%D0%B8%D0%B3%D0%B4%D0%B0%D0%BB%D1%8C%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Написати в Telegram</a></div>
+<p class="hint">У демо Telegram відкриває чат із розробником цього сайту, а «Подзвонити» показує, де буде ваш номер.</p>
 </div>
 <div>
 <div class="map"><svg viewBox="0 0 600 360" role="img" aria-label="Схема: студія на вулиці Князя Романа, 6 хвилин пішки від площі Ринок">
@@ -341,8 +388,28 @@ dialog[open]{animation:dlg .32s var(--ease)}
 <figure class="ph"><img src="img/studio.webp" width="1400" height="933" loading="lazy" alt="Світла студія з арковим вікном, два манікюрні столи й полиця з гель-лаками" onerror="this.style.opacity=0"></figure>
 </div>
 </div></section>
+
+<section class="own" id="owner" aria-labelledby="own-h"><div class="wrap">
+<p class="own-k">Для власника студії</p>
+<h2 id="own-h">Такий сайт для вашого бізнесу</h2>
+<div class="own-g">
+<ul class="own-l">
+<li><b>Заявки приходять вам у Telegram</b><p>Хто записався, на що, на коли і як звʼязатися — одним повідомленням, без дзвінків і переписок.</p>
+<div class="own-m" aria-label="Приклад повідомлення бота"><div class="tg-m"><b>Новий запис</b><br>Манікюр, гель-лак · завтра 14:30<br>Олена, +380 XX XXX XX XX<time>12:04</time></div></div></li>
+<li><b>Вільний час, ціни й наявність</b><p>Оновлюєте самі через Telegram-бота або пишете розробнику, і він оновить.</p></li>
+<li><b>Під ваш бізнес</b><p>Ваша назва, адреса, місто, ціни й фото. Це демо лише показує, як усе працює.</p></li>
+</ul>
+<div class="own-p">
+<p class="big">Сайт із записом і ботом, як цей: <b>11&nbsp;000–17&nbsp;000&nbsp;грн</b></p>
+<p>Простіше, сторінка й бот для запису: від 6&nbsp;000&nbsp;грн.</p>
+<p>Без передоплати: спершу безкоштовний прототип під вашу назву, часто того ж дня.</p>
+<a class="btn p" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%9C%D0%B8%D0%B3%D0%B4%D0%B0%D0%BB%D1%8C%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий сайт</a>
+</div>
+</div>
+</div></section>
 </main>
 <footer class="ft"><div class="wrap"><p>Демо-сайт, зроблений drakx для прикладу. Бізнес вигаданий.</p><a href="../../beauty/">← Інші роботи</a></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <dialog id="bk" aria-labelledby="bk-h">
 <form class="bk" method="dialog" novalidate>
@@ -360,121 +427,189 @@ const hm=m=>Math.floor(m/60)+':'+String(m%60).padStart(2,'0');
 const dur=m=>(m>=60?Math.floor(m/60)+' год':'')+(m%60?(m>=60?' ':'')+m%60+' хв':'');
 const uah=n=>String(n).replace(/\B(?=(\d{3})+$)/g,' ')+' грн';
 const same=(a,b)=>a.toDateString()==b.toDateString();
-const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-/* header line */
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const RM=matchMedia('(prefers-reduced-motion: reduce)');
 const hd=$('#hd');addEventListener('scroll',()=>hd.classList.toggle('on',scrollY>8),{passive:true});
+let tT;function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(tT);tT=setTimeout(()=>e.classList.remove('on'),3800)}
+$$('[data-tel]').forEach(b=>b.onclick=()=>toast('Тут буде номер вашого бізнесу. У демо дзвінок не відбувається.'));
 
-/* ---------- примірка ---------- */
-const COL=[['01','Молоко','#F3E7E1'],['02','Пудра','#E7C2B8'],['03','Мигдаль','#D4A189'],['04','Капучино','#A8785F'],['05','Півонія','#F0A3B5'],['06','Фламінго','#E2738F'],['07','Малина','#BF3460'],['08','Червоний','#B0182F'],['09','Вишня','#7A1430'],['10','Теракота','#B5553B'],['11','Бордо','#4C1322'],['12','Шоколад','#4A2C24'],['13','Графіт','#34313A'],['14','Шавлія','#A7B69C'],['15','Лаванда','#B8ACD6'],['16','Лід','#A8C5D9']];
+/* ---------- примірка: фото руки + SVG-нігті ---------- */
+const COL=[['01','Молоко','#F3E7E1'],['02','Пудра','#E7C2B8'],['03','Карамель','#D4A189'],['04','Капучино','#A8785F'],['05','Півонія','#F0A3B5'],['06','Фламінго','#E2738F'],['07','Малина','#BF3460'],['08','Червоний','#B0182F'],['09','Вишня','#7A1430'],['10','Теракота','#B5553B'],['11','Бордо','#4C1322'],['12','Шоколад','#4A2C24'],['13','Графіт','#34313A'],['14','Шавлія','#A7B69C'],['15','Лаванда','#B8ACD6'],['16','Лід','#A8C5D9']];
 const SH=[['sq','Квадрат'],['sv','Мʼякий квадрат'],['ov','Овал'],['al','Мигдаль'],['ba','Балерина']];
-const LN=[['Коротка','на своїх нігтях','Манікюр + гель-лак',750,90],['Середня','з укріпленням','Манікюр + укріплення + гель-лак',900,110],['Довга','нарощування','Нарощування + гель-лак',1250,150]];
+const LN=[['Коротка','Свої нігті','Манікюр + гель-лак',750,90],['Середня','Укріплення','Манікюр + укріплення + гель-лак',900,110],['Довга','Нарощування','Нарощування + гель-лак',1250,150]];
 const FN=[['Глянець',0,0],['Мат',0,0],['Френч',150,20],['Втирка',100,10]];
-const TONE=[['#F2D5C6','#D9AE98'],['#D6A383','#B47E5E'],['#8A5A40','#6B422D']];
-const S={c:5,s:3,l:1,f:0};
-const F=[[178,112,360,48,-9],[228,76,360,50,-2],[276,98,360,47,5],[320,168,360,40,13],[150,292,452,58,-40]];
-const hand=$('#hand');
-(()=>{let h='<defs><linearGradient id="sk" gradientUnits="userSpaceOnUse" x1="60" x2="400" y1="0" y2="0"><stop offset="0" style="stop-color:var(--sk1)"/><stop offset=".55" style="stop-color:var(--sk1)"/><stop offset="1" style="stop-color:var(--sk2)"/></linearGradient><linearGradient id="chr" x1="0" y1="0" x2="1" y2="1"><stop offset=".1"/><stop offset=".42"/><stop offset=".58"/><stop offset="1"/></linearGradient>';
-F.forEach((f,i)=>h+=`<clipPath id="c${i}"><path class="np"/></clipPath>`);
-const sk='fill="url(#sk)"',fg=([cx,t,b,w])=>`<path ${sk} d="M${cx-w/2} ${b+40}L${cx-w*.43} ${t+w*.43}A${w*.43} ${w*.43} 0 0 1 ${cx+w*.43} ${t+w*.43}L${cx+w/2} ${b+40}Z"/>`,T=F[4];
-h+=`</defs><g transform="rotate(${T[4]} ${T[0]} ${T[2]})">${fg(T)}</g><path ${sk} d="M150 330C150 300 182 290 228 290S346 296 349 332L338 470H124C130 420 140 380 150 330Z"/>`;
-F.forEach(([cx,t,b,w,r],i)=>{const k=t+(b-t)*(i==4?.42:.5);
-h+=`<g transform="rotate(${r} ${cx} ${b})">${i<4?fg(F[i])+`<path d="M${cx+w*.43} ${t+w*.75}L${cx+w*.47} ${b-56}" style="stroke:var(--sk2)" stroke-width="1.5" opacity=".7"/>`:''}<path d="M${cx-w*.2} ${k}q${w*.2} 5 ${w*.4} 0M${cx-w*.15} ${k+6}q${w*.15} 3 ${w*.3} 0" style="stroke:var(--sk2)" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".8"/><g clip-path="url(#c${i})"><path class="np nl"/><path class="fr"/><path class="hl" stroke="#fff" stroke-linecap="round" fill="none"/></g><path class="np" fill="none" stroke="rgba(60,30,35,.18)" stroke-width="1"/></g>`});
-hand.innerHTML=h})();
-function nail(i){const[cx,t,,w]=F[i],th=i==4,nw=w*(th?.6:.66),x0=cx-nw/2,x1=cx+nw/2,yc=t+w*(th?1.02:.98),yk=yc-nw*.3,yt=t-[.05,.42,.85][S.l]*w*(th?.8:1),L=yk-yt;
-let d=`M${x0} ${yk}`;const sh=SH[S.s][0];
-if(sh=='sq'||sh=='sv'){const r=nw*(sh=='sq'?.1:.34);d+=`L${x0} ${yt+r}Q${x0} ${yt} ${x0+r} ${yt}L${x1-r} ${yt}Q${x1} ${yt} ${x1} ${yt+r}`}
-else if(sh=='ov'){const ry=Math.min(nw*.55,L*.8);d+=`L${x0} ${yt+ry}A${nw/2} ${ry} 0 0 1 ${x1} ${yt+ry}`}
-else if(sh=='al'){const ys=yt+Math.min(L*.78,nw*1.25),k=(ys-yt)*.55;d+=`L${x0} ${ys}C${x0} ${ys-k} ${cx-nw*.14} ${yt} ${cx} ${yt}C${cx+nw*.14} ${yt} ${x1} ${ys-k} ${x1} ${ys}`}
-else{const ys=yt+Math.min(L*.72,nw*1.2),a=nw*.24;d+=`L${x0} ${ys}L${cx-a} ${yt+1.5}Q${cx-a+.6} ${yt} ${cx-a+2.5} ${yt}L${cx+a-2.5} ${yt}Q${cx+a-.6} ${yt} ${cx+a} ${yt+1.5}L${x1} ${ys}`}
-d+=`L${x1} ${yk}C${x1-nw*.06} ${yk+(yc-yk)*1.33} ${x0+nw*.06} ${yk+(yc-yk)*1.33} ${x0} ${yk}Z`;
-const td=Math.max(L*.3,8),ym=yt+td,dp=nw*.32;
-const fr=`M${x0-4} ${yt-4}H${x1+4}V${ym+dp}C${x1-nw*.12} ${ym+dp*.2} ${cx+nw*.22} ${ym} ${cx} ${ym}C${cx-nw*.22} ${ym} ${x0+nw*.12} ${ym+dp*.2} ${x0-4} ${ym+dp}Z`;
-const hx=x0+nw*.25,hl=`M${hx} ${yk-3}L${hx} ${yt+Math.min(L*.25,nw*.7)}`;return{d,fr,hl,nw}}
-const mix=(h,t,a)=>'#'+[1,3,5].map(i=>Math.round(parseInt(h.substr(i,2),16)*(1-a)+parseInt(t.substr(i,2),16)*a).toString(16).padStart(2,'0')).join('');
-function draw(){const c=COL[S.c][2],f=S.f;
-const st=$$('#chr stop');[mix(c,'#ffffff',.55),c,mix(c,'#ffffff',.35),mix(c,'#000000',.35)].forEach((v,i)=>st[i].setAttribute('stop-color',v));
-const groups=$$(':scope>g[transform]',hand),clips=$$('clipPath path',hand);
-F.forEach((_,i)=>{const n=nail(i),g=groups[i+1];
-for(const p of [clips[i],...$$('.np',g)]){p.setAttribute('d',n.d);p.style.d=`path("${n.d}")`}
-const nl=$('.nl',g),fr=$('.fr',g),hl=$('.hl',g);
-nl.style.fill=f==2?'#F1D6CF':f==3?'url(#chr)':c;
-fr.setAttribute('d',n.fr);fr.style.d=`path("${n.fr}")`;fr.style.fill=c;fr.style.opacity=f==2?1:0;
-hl.setAttribute('d',n.hl);hl.style.d=`path("${n.hl}")`;hl.setAttribute('stroke-width',n.nw*.11);hl.style.opacity=f==1?0:f==3?.75:.5});
-const l=LN[S.l],fn=FN[f],rm=$('#x-rm').checked,pd=$('#x-pd').checked;
-let p=l[3]+fn[1]+(rm?100:0),m=l[4]+fn[2]+(rm?15:0);if(pd)p+=900;
-$('#t-price').textContent=uah(p);$('#t-dur').textContent=dur(m);
-const desc=`${l[2]}${pd?' + педикюр у 4 руки':''}. Форма «${SH[S.s][1].toLowerCase()}», ${l[0].toLowerCase()} довжина · №${COL[S.c][0]} ${COL[S.c][1]}, ${fn[0].toLowerCase()}${rm?' · зняття покриття':''}`;
-$('#t-desc').textContent=desc;$('#o-col').textContent='№'+COL[S.c][0]+' '+COL[S.c][1];$('#o-sh').textContent=SH[S.s][1];
-hand.setAttribute('aria-label','Рука з манікюром: '+SH[S.s][1].toLowerCase()+', '+l[0].toLowerCase()+' довжина, колір '+COL[S.c][1]+', '+fn[0].toLowerCase());
-S.svc={id:'try',name:l[2]+(pd?' + педикюр у 4 руки':''),note:desc.split('. ')[1],price:p,dur:m}}
+/* нігті на фото hand.webp (928×1152): x,y — центр лінії кутикули; a — кут осі; w — ширина пластини; n — від кутикули до вільного краю; k — глибина дуги кутикули */
+const NL=[{x:279.6,y:519.5,a:-10,s:-9,w:23,n:46,k:3,t:1,nm:'великому'},{x:385,y:311.5,a:-3,w:34.5,n:36,k:5,nm:'вказівному'},{x:476,y:285.5,a:0,w:36.5,n:43,k:3.5,nm:'середньому'},{x:552,y:335,a:0,w:33,n:44,k:4.5,nm:'безіменному'},{x:636,y:429,a:3,w:26.5,n:37,k:3.5,nm:'мізинці'}];
+const IW=928,IH=1152,EXT=[.1,.55,1.02];
+/* форма кінчика: [висота заокруглення ×w, ×L, півширина зрізу ×w, ручка біля боку, ручка біля кінчика] */
+const SHP={sq:[.1,0,.4,.55,.55],sv:[.26,0,.22,.6,.6],ov:[.52,.22,0,.55,.55],al:[.8,.58,0,.5,.3],ba:[.6,.46,.27,.18,.18]};
+const hx=h=>[1,3,5].map(i=>parseInt(h.substr(i,2),16)),rgb=a=>'rgb('+a.map(v=>Math.round(v)).join(',')+')',mixA=(a,b,t)=>a.map((x,i)=>x+(b[i]-x)*t);
+const f2=x=>+x.toFixed(2);
+function geo(n,v){const w=n.w,R=w/2,r=R*.9,k=n.k,[hw,hl,aa,c1,c2]=v.sh,L=n.n+v.ext*w*(n.t?.85:1),
+hs=Math.min(Math.max(hw*w,hl*L),L-k-2),ys=hs-L,a=aa*w,q=a+c2*(R-a),cy=ys-c1*hs,F=f2;
+const d=`M${F(-r)} ${F(-k)}L${F(-R)} ${F(ys)}C${F(-R)} ${F(cy)} ${F(-q)} ${F(-L)} ${F(-a)} ${F(-L)}L${F(a)} ${F(-L)}C${F(q)} ${F(-L)} ${F(R)} ${F(cy)} ${F(R)} ${F(ys)}L${F(r)} ${F(-k)}C${F(r)} ${F(-k*.2)} ${F(r*.55)} 0 0 0C${F(-r*.55)} 0 ${F(-r)} ${F(-k*.2)} ${F(-r)} ${F(-k)}Z`;
+const yS=Math.max(-n.n*.84,-L+w*.26),dp=w*.28;
+const fr=`M${F(-R-3)} ${F(-L-3)}H${F(R+3)}V${F(yS+dp)}C${F(R)} ${F(yS+dp*.1)} ${F(R*.5)} ${F(yS)} 0 ${F(yS)}C${F(-R*.5)} ${F(yS)} ${F(-R)} ${F(yS+dp*.1)} ${F(-R-3)} ${F(yS+dp)}Z`;
+const gx=-R*.12,gw=w*.095,y0=-(k+L*.06),y1=-(L-Math.max(hs*.55,w*.2));
+const g1=`M${F(gx-gw)} ${F(y0)}L${F(gx-gw*.7)} ${F(y1)}A${F(gw*.7)} ${F(gw*.7)} 0 0 1 ${F(gx+gw*.7)} ${F(y1)}L${F(gx+gw)} ${F(y0)}A${F(gw)} ${F(gw)} 0 0 1 ${F(gx-gw)} ${F(y0)}Z`;
+return{d,fr,g1,L,R}}
+function build(svg,p,live){
+let h=`<defs><linearGradient id="${p}vx"><stop offset="0" stop-color="#3a1820" stop-opacity=".3"/><stop offset=".16" stop-color="#3a1820" stop-opacity=".06"/><stop offset=".36" stop-color="#fff" stop-opacity=".06"/><stop offset=".56" stop-color="#fff" stop-opacity="0"/><stop offset=".84" stop-color="#3a1820" stop-opacity=".12"/><stop offset="1" stop-color="#3a1820" stop-opacity=".34"/></linearGradient>
+<linearGradient id="${p}vy" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#3a1820" stop-opacity=".26"/><stop offset=".08" stop-color="#3a1820" stop-opacity=".05"/><stop offset=".2" stop-color="#3a1820" stop-opacity="0"/><stop offset=".78" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient>
+<linearGradient id="${p}hg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".2" stop-color="#fff" stop-opacity=".7"/><stop offset=".6" stop-color="#fff" stop-opacity=".62"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<radialGradient id="${p}ch" cx=".32" cy=".3" r=".95"><stop offset="0"/><stop offset=".3"/><stop offset=".62"/><stop offset="1"/></radialGradient>
+<radialGradient id="${p}gm" cx=".38" cy=".32" r=".72"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#EEEAF3"/><stop offset="1" stop-color="#8C8598"/></radialGradient>
+<filter id="${p}b1" x="-60%" y="-30%" width="220%" height="160%"><feGaussianBlur stdDeviation="1.1"/></filter><filter id="${p}b0" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation=".45"/></filter>
+<filter id="${p}b3" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
+<filter id="${p}sh" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
+<filter id="${p}sf" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation=".35"/></filter>
+<filter id="${p}gr" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 .25 0 0 0 0 .14 0 0 0 0 .16 0 0 0 1.6 -.62"/><feComposite in2="SourceGraphic" operator="in"/></filter>`;
+NL.forEach((n,i)=>h+=`<clipPath id="${p}c${i}"><path/></clipPath><clipPath id="${p}s${i}"><rect x="-60" y="-220" width="120" height="${f2(220-n.n*.88)}"/></clipPath>`);
+h+=`</defs><image href="img/hand.webp" width="${IW}" height="${IH}"/>`;
+NL.forEach((n,i)=>{const w=n.w,gem=(x,y,r)=>`<circle cx="${f2(x+.3)}" cy="${f2(y+.6)}" r="${f2(r)}" fill="#3a1820" opacity=".35"/><circle cx="${f2(x)}" cy="${f2(y)}" r="${f2(r)}" fill="url(#${p}gm)" stroke="#fff" stroke-opacity=".85" stroke-width=".3"/><circle cx="${f2(x-r*.35)}" cy="${f2(y-r*.38)}" r="${f2(r*.26)}" fill="#fff"/>`;
+h+=`<g class="nail" transform="translate(${n.x} ${n.y}) rotate(${n.a})${n.s?` skewY(${n.s})`:''}"${live?` data-i="${i}" role="button" tabindex="0" aria-pressed="false" aria-label="Дизайн на ${n.nm} пальці"`:''}><g clip-path="url(#${p}s${i})"><path class="n-sh" fill="#4a2028" filter="url(#${p}sh)" transform="translate(1 3.5)"/></g><g filter="url(#${p}sf)"><path class="n-b"/><path class="n-ch" fill="url(#${p}ch)"/><g clip-path="url(#${p}c${i})"><path class="n-fr"/><g class="n-sn" filter="url(#${p}b3)"><ellipse fill="#fff"/></g></g><path class="n-vx" fill="url(#${p}vx)"/><path class="n-vy" fill="url(#${p}vy)"/><path class="n-mt" filter="url(#${p}gr)"/><g clip-path="url(#${p}c${i})"><g class="n-gl"><g filter="url(#${p}b1)"><path fill="url(#${p}hg)"/><ellipse fill="#fff" fill-opacity=".35"/></g><path class="n-sp" filter="url(#${p}b0)" fill="none" stroke="#fff" stroke-opacity=".75" stroke-linecap="round"/></g><g class="n-ds">${gem(0,-w*.17,w*.095)+gem(-w*.27,-(n.k*.4+w*.15),w*.075)+gem(w*.27,-(n.k*.4+w*.15),w*.075)}</g></g><path class="n-o" fill="none" stroke="#3c1e23" stroke-opacity=".14" stroke-width=".6"/></g></g>`});
+svg.innerHTML=h;
+return{chs:$$(`#${p}ch stop`,svg),n:$$('.nail',svg).map((g,i)=>{const q=c=>$(c,g);return{g,p:[$(`#${p}c${i} path`,svg),q('.n-sh'),q('.n-b'),q('.n-ch'),q('.n-vx'),q('.n-vy'),q('.n-mt'),q('.n-o')],sh:q('.n-sh'),b:q('.n-b'),ch:q('.n-ch'),fr:q('.n-fr'),sn:q('.n-sn'),se:q('.n-sn ellipse'),mt:q('.n-mt'),gl:q('.n-gl'),g1:q('.n-gl path'),g2:q('.n-gl g ellipse'),sp:q('.n-sp'),ds:q('.n-ds')}})}}
+const sa=(e,o)=>{for(const k in o)e.setAttribute(k,o[k])};
+function paint(E,v){E.chs.forEach((s,j)=>s.setAttribute('stop-color',rgb(v.ch[j])));
+E.n.forEach((e,i)=>{const n=NL[i],G=geo(n,v),w=n.w,L=G.L,R=G.R;
+for(const p of e.p)p.setAttribute('d',G.d);
+sa(e.b,{fill:rgb(v.base),'fill-opacity':v.bo});
+e.ch.setAttribute('opacity',f2(Math.max(v.chr,v.acc[i]*.85)));
+sa(e.fr,{d:G.fr,fill:rgb(v.tip),opacity:f2(v.fr)});
+sa(e.se,{cx:f2(-R*.15),cy:f2(-L*.5),rx:f2(w*.34),ry:f2(L*.36)});e.sn.setAttribute('opacity',f2(v.sn));
+e.g1.setAttribute('d',G.g1);sa(e.g2,{cx:f2(R*.42),cy:f2(-L+w*.3),rx:f2(w*.05),ry:f2(w*.12)});sa(e.sp,{d:`M${f2(-R*.62)} ${f2(-(n.k*.7+w*.3))}Q${f2(-R*.5)} ${f2(-w*.13)} ${f2(-R*.05)} ${f2(-w*.12)}`,'stroke-width':f2(w*.045)});e.gl.setAttribute('opacity',f2(v.gl));
+e.mt.setAttribute('opacity',f2(v.mt*.6));e.ds.setAttribute('opacity',f2(v.acc[i]));
+e.sh.setAttribute('opacity',f2(Math.min(1,v.ext*1.4)*.55));
+if(e.g.dataset.i)e.g.setAttribute('aria-pressed',v.acc[i]>.5)})}
+function tgt(st){const c=hx(COL[st.c][2]),f=st.f,W=[255,255,255],K=[0,0,0];
+return{sh:SHP[SH[st.s][0]],ext:EXT[st.l],base:f==2?[246,223,224]:c,bo:f==2?.92:1,tip:f==2&&st.c<3?[255,252,250]:c,fr:+(f==2),chr:+(f==3),gl:f==1?0:f==3?1:.85,sn:f==1?.45:.3,mt:+(f==1),acc:[0,1,2,3,4].map(i=>st.acc&&st.acc[i]?1:0),ch:[mixA(c,W,.8),mixA(c,W,.34),c,mixA(c,K,.4)]}}
+const lerp=(a,b,t)=>typeof a=='number'?a+(b-a)*t:Array.isArray(a)?a.map((x,i)=>lerp(x,b[i],t)):Object.fromEntries(Object.keys(a).map(k=>[k,lerp(a[k],b[k],t)]));
+function fit(svg){const r=svg.getBoundingClientRect();if(!r.width||!r.height)return;let[x,y,w,h]=svg._f(),ar=r.width/r.height;
+if(w/h<ar){const W=h*ar;x-=(W-w)/2;w=W}else{const H=w/ar;y-=(H-h)*.3;h=H}
+if(w>IW){h*=IW/w;w=IW}if(h>IH){w*=IH/h;h=IH}x=Math.max(0,Math.min(IW-w,x));y=Math.max(0,Math.min(IH-h,y));
+svg.setAttribute('viewBox',[x,y,w,h].map(f2).join(' '))}
+const RO=new ResizeObserver(es=>es.forEach(e=>fit(e.target)));
+
+const S={c:5,s:3,l:1,f:0,acc:[0,0,0,0,0]};
+let tried=false;
+const hand=$('#hand'),HE=build(hand,'h',true),mq=matchMedia('(max-width:860px)');
+hand._f=()=>mq.matches?[352,196,231,152]:[236,190,445,350];RO.observe(hand);
+function calc(st,rm,pd){const l=LN[st.l],fn=FN[st.f],nd=st.acc.filter(Boolean).length*2;
+let p=l[3]+fn[1]+(rm?100:0)+nd*30,m=l[4]+fn[2]+(rm?15:0)+nd*5;if(pd){p+=850;m=Math.max(m,100)}
+const note=`Форма «${SH[st.s][1].toLowerCase()}», ${l[0].toLowerCase()} довжина · №${COL[st.c][0]} ${COL[st.c][1]}, ${fn[0].toLowerCase()}${nd?' · дизайн на '+nd+' нігтях':''}${rm?' · зняття покриття':''}`;
+return{id:'try',name:l[2]+(pd?' + педикюр у 4 руки':''),note,price:p,dur:m,two:!!pd,nd}}
+let cur=null,raf=0,lastP='';
+function draw(){const f=S.f,rm=$('#x-rm').checked,pd=$('#x-pd').checked,sv=calc(S,rm,pd),to=tgt(S);
+cancelAnimationFrame(raf);
+if(!cur||RM.matches){cur=to;paint(HE,cur)}else{const from=cur,t0=performance.now(),tick=t=>{let k=Math.min(1,(t-t0)/320);k=1-Math.pow(1-k,3);cur=lerp(from,to,k);paint(HE,cur);if(k<1)raf=requestAnimationFrame(tick)};raf=requestAnimationFrame(tick)}
+const tp=$('#t-price');tp.textContent=uah(sv.price);$('#t-dur').textContent=dur(sv.dur);
+if(lastP&&lastP!=sv.price&&!RM.matches&&tp.animate)tp.animate([{color:'#9C2C4C'},{color:'#2B1C22'}],{duration:600,easing:'ease-out'});lastP=sv.price;
+$('#t-desc').textContent=sv.name+'. '+sv.note;
+$('#l-col').textContent=f==2?'Колір кінчика':'Колір';$('#o-col').textContent='№'+COL[S.c][0]+' '+COL[S.c][1]+(f==2&&S.c<3?' (класичний білий)':'');$('#o-sh').textContent=SH[S.s][1];
+$('#o-ds').textContent=sv.nd?`на ${sv.nd} нігтях · +${sv.nd*30} грн`:'без дизайну';
+hand.setAttribute('aria-label','Примірка на фото руки: '+SH[S.s][1].toLowerCase()+', '+LN[S.l][0].toLowerCase()+' довжина, колір '+COL[S.c][1]+', '+FN[f][0].toLowerCase()+(sv.nd?', дизайн на '+sv.nd+' нігтях':''));
+S.svc=sv}
 const radio=(n,v,ch,inner)=>`<label><input type="radio" name="${n}" value="${v}"${ch?' checked':''}>${inner}</label>`;
 $('#sw').innerHTML=COL.map((c,i)=>radio('col',i,i==S.c,`<i style="background:${c[2]}"></i><span>${c[0]}</span><b class="vh">${c[1]}</b>`)).join('');
 const shIco={sq:'M2 21V4Q2 2 4 2H10Q12 2 12 4V21',sv:'M2 21V7Q2 2 7 2Q12 2 12 7V21',ov:'M2 21V8A5 6 0 0 1 12 8V21',al:'M2 21V12C2 6 5 1 7 1S12 6 12 12V21',ba:'M2 21V13L4.5 2H9.5L12 13V21'};
 $('#sh').innerHTML=SH.map((s,i)=>radio('sh',i,i==S.s,`<span><svg viewBox="0 0 14 22" aria-hidden="true"><path d="${shIco[s[0]]}" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>${s[1]}</span>`)).join('');
-$('#ln').innerHTML=LN.map((l,i)=>radio('ln',i,i==S.l,`<span>${l[0]}<small>${l[1]}, ${uah(l[3])}</small></span>`)).join('');
+$('#ln').innerHTML=LN.map((l,i)=>radio('ln',i,i==S.l,`<span>${l[1]} · ${l[0].toLowerCase()}<small>${uah(l[3])}</small></span>`)).join('');
 $('#fn').innerHTML=FN.map((f,i)=>radio('fn',i,i==S.f,`<span>${f[0]}<small>${f[1]?'+'+f[1]+' грн':'без доплати'}</small></span>`)).join('');
-$('#try').addEventListener('change',e=>{const t=e.target,k={col:'c',sh:'s',ln:'l',fn:'f'}[t.name];if(k)S[k]=+t.value;draw()});
-$('.tones').addEventListener('change',e=>{const t=TONE[e.target.value];hand.style.setProperty('--sk1',t[0]);hand.style.setProperty('--sk2',t[1])});
+const KEY={col:'c',sh:'s',ln:'l',fn:'f'};
+function sync(){$$('#try input[type=radio]').forEach(i=>{const k=KEY[i.name];if(k)i.checked=+i.value==S[k]});$('#x-ac').checked=!!S.acc[3]}
+$('#try').addEventListener('change',e=>{const t=e.target,k=KEY[t.name];if(k)S[k]=+t.value;if(t.id=='x-ac')S.acc[3]=t.checked?1:0;tried=true;draw()});
+const tog=g=>{const i=+g.dataset.i;S.acc[i]=S.acc[i]?0:1;sync();tried=true;draw()};
+hand.addEventListener('click',e=>{const g=e.target.closest('.nail');if(g)tog(g)});
+hand.addEventListener('keydown',e=>{const g=e.target.closest('.nail');if(g&&(e.key=='Enter'||e.key==' ')){e.preventDefault();tog(g)}});
 draw();
 
+/* ---------- готові образи ---------- */
+const LOOKS=[['Фламінго',{c:5,s:3,l:1,f:0},[350,196,235,150]],['Класичний френч',{c:0,s:1,l:0,f:2},[244,226,275,315]],['Вишневий овал',{c:8,s:2,l:1,f:0},[440,200,228,240]],['Перлинна втирка',{c:1,s:3,l:1,f:3},[350,196,235,150]],['Шоколадний мат',{c:11,s:0,l:0,f:1},[440,200,228,240]],['Балерина з акцентом',{c:7,s:4,l:2,f:0,acc:[0,0,0,1,0]},[236,170,445,370]]];
+$('#lk').innerHTML=LOOKS.map(([t,st],j)=>{st.acc=st.acc||[0,0,0,0,0];const v=calc(st);return`<li class="lk"><svg preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"></svg><div class="lk-b"><h3>${t}</h3><p>${SH[st.s][1]} · ${LN[st.l][0].toLowerCase()} · ${FN[st.f][0].toLowerCase()} · №${COL[st.c][0]} ${COL[st.c][1]}</p><p class="pz">${uah(v.price)} · ${dur(v.dur)}</p><div class="lk-a"><button class="btn s" type="button" data-tryit="${j}">Приміряти</button><button class="btn p" type="button" data-bookit="${j}">Записатися</button></div></div></li>`}).join('');
+$$('#lk svg').forEach((s,j)=>{const E=build(s,'g'+j,false);s._f=()=>LOOKS[j][2];paint(E,tgt(LOOKS[j][1]));RO.observe(s)});
+function useLook(j){const st=LOOKS[j][1];Object.assign(S,{c:st.c,s:st.s,l:st.l,f:st.f,acc:[...st.acc]});sync();tried=true;draw()}
+$('#lk').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+if(b.dataset.tryit){useLook(+b.dataset.tryit);$('#prymirka').scrollIntoView({behavior:RM.matches?'auto':'smooth'})}
+else{useLook(+b.dataset.bookit);openBk({...S.svc},b,1)}});
+
 /* ---------- запис ---------- */
-const SV=[['m1','Манікюр + гель-лак',750,90],['m2','Манікюр + укріплення + гель-лак',900,110],['m3','Нарощування + гель-лак',1250,150],['m0','Манікюр без покриття',450,45],['p1','Педикюр + гель-лак',900,90],['k4','Манікюр + педикюр у 4 руки',1600,100],['mm','Чоловічий манікюр',500,50]].map(a=>({id:a[0],name:a[1],price:a[2],dur:a[3]}));
+const SV=[['m1','Манікюр + гель-лак',750,90],['m2','Манікюр + укріплення + гель-лак',900,110],['m3','Нарощування + гель-лак',1250,150],['m0','Манікюр без покриття',450,45],['p1','Педикюр + гель-лак',900,90],['k4','Манікюр + педикюр у 4 руки',1600,100],['mm','Чоловічий манікюр',500,50]].map(a=>({id:a[0],name:a[1],price:a[2],dur:a[3],two:a[0]=='k4'}));
 const OPEN=540,CLOSE=1200;
 const rnd=s=>()=>{s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
 const BC={};
 function busy(d){const k=d.toDateString();if(BC[k])return BC[k];const w=d.getDay(),p=w==5||w==6?.8:w==0?.5:.62,sd=d.getFullYear()*1e4+(d.getMonth()+1)*100+d.getDate(),o=[];
 for(let m=0;m<3;m++){const r=rnd(sd*7+m*977);let t=OPEN+(r()*3|0)*30;const b=[];while(t<CLOSE){const l=[60,90,90,120,150][r()*5|0];if(r()<p)b.push([t,t+l]);t+=l+(r()<.4?30:0)}o.push(b)}return BC[k]=o}
-function slots(d,du){const n=new Date();let mn=OPEN;if(same(d,n))mn=Math.max(OPEN,Math.ceil((n.getHours()*60+n.getMinutes()+30)/30)*30);const r=[];
-for(let s=mn;s+du<=CLOSE;s+=30)r.push({s,ok:busy(d).some(b=>!b.some(([a,e])=>s<e&&s+du>a))});return r}
+const nowM=()=>{const n=new Date();return n.getHours()*60+n.getMinutes()};
+const freeM=(d,s,du)=>busy(d).filter(b=>!b.some(([a,e])=>s<e&&s+du>a)).length;
+function slots(d,du,two){const n=new Date();let mn=OPEN;if(same(d,n))mn=Math.max(OPEN,Math.ceil((nowM()+30)/30)*30);const r=[];
+for(let s=mn;s+du<=CLOSE;s+=30)r.push({s,ok:freeM(d,s,du)>=(two?2:1)});return r}
+function book(d,s,du,two){let need=two?2:1;for(const b of busy(d))if(need&&!b.some(([a,e])=>s<e&&s+du>a)){b.push([s,s+du]);need--}}
 const days=()=>{const a=[],t=new Date();t.setHours(0,0,0,0);for(let i=0;i<14;i++){const d=new Date(t);d.setDate(t.getDate()+i);a.push(d)}return a};
 const dname=(d,i)=>i==0?'сьогодні':i==1?'завтра':WD[d.getDay()]+', '+d.getDate()+' '+MO[d.getMonth()];
-(()=>{const ds=days();for(let i=0;i<2;i++){const f=slots(ds[i],90).find(x=>x.ok);if(f){$('#next').textContent=dname(ds[i],i)+' о '+hm(f.s);return}}})();
+const pl=n=>n%10==1&&n%100!=11?n+' вільне':n%10>=2&&n%10<=4&&(n%100<12||n%100>14)?n+' вільні':n+' вільних';
+const isOpen=()=>{const m=nowM();return m>=OPEN&&m<CLOSE};
+function heroNext(){const ds=days();let n=null;for(let i=0;i<14&&!n;i++){const f=slots(ds[i],90).find(x=>x.ok);if(f)n={i,s:f.s}}
+const o=isOpen();$('#next-l').textContent=o?'Найближче вільне':'Зараз зачинено';
+$('#next').textContent=n?(o?'':'найближче — ')+dname(ds[n.i],n.i)+' о '+hm(n.s):'запис онлайн 24/7'}
+heroNext();setInterval(heroNext,60000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)heroNext()});
 
 const dlg=$('#bk'),body=$('#bkb'),nx=$('#b-next'),bk=$('#b-back');
-let B={},step=0,opener=null;
-function openBk(svc,from){opener=from||document.activeElement;B={svc:svc||null,di:null,t:null,name:B.name||'',ct:B.ct||'',cm:''};step=svc?1:0;dlg.showModal();render()}
-function close(){dlg.close()}
-dlg.addEventListener('close',()=>opener&&opener.focus&&opener.focus());
-dlg.addEventListener('click',e=>{if(e.target==dlg)close()});
+let B={},step=0,opener=null,lockT=0,unl=0,advT=0,lastPtr=0,openT=0,downBg=false;
+function openBk(svc,from,s0){if(dlg.open)return;opener=from||document.activeElement;
+B={svc:svc||null,di:null,t:null,name:B.name||'',ct:B.ct||'',cm:'',sub:false};step=svc&&s0?1:0;openT=performance.now();dlg.showModal();render()}
+function close(){clearTimeout(advT);dlg.close()}
+dlg.addEventListener('close',()=>{clearTimeout(advT);heroNext();opener&&opener.focus&&opener.focus()});
+dlg.addEventListener('pointerdown',e=>downBg=e.target==dlg);
+dlg.addEventListener('click',e=>{if(e.target==dlg&&downBg&&e.detail<2&&performance.now()-openT>600)close();downBg=false});
 $('[data-x]',dlg).onclick=close;
-$$('[data-book]').forEach(b=>b.addEventListener('click',()=>openBk(SV.find(s=>s.id==b.dataset.book),b)));
-$('#t-book').onclick=e=>openBk({...S.svc},e.currentTarget);
+$$('[data-book]').forEach(b=>b.addEventListener('click',()=>{const s=SV.find(s=>s.id==b.dataset.book);openBk(s||(tried?{...S.svc}:null),b,s?1:0)}));
+$('#t-book').onclick=e=>openBk({...S.svc},e.currentTarget,1);
 const opt=(n,v,ch,inner,dis)=>`<label class="${n=='svc'?'opt':''}"><input type="radio" name="${n}" value="${v}"${ch?' checked':''}${dis?' disabled':''}>${inner}</label>`;
 function render(){
 $$('#stp li').forEach((l,i)=>l.classList.toggle('on',i<=step&&step<4));
 $('#stp').hidden=step==4;
 let h='';const ds=days();
-if(step==0){const list=(B.svc&&B.svc.id=='try'?[B.svc]:[]).concat(SV);h=`<h3>Що робимо?</h3><div class="opts">`+list.map(s=>opt('svc',s.id,B.svc&&B.svc.id==s.id,`<span>${s.id=='try'?'Ваш вибір з примірки':s.name}<small>${s.id=='try'?esc(s.name+'. '+s.note):dur(s.dur)}</small></span><span class="pp">${uah(s.price)}${s.id=='try'?'<small>'+dur(s.dur)+'</small>':''}</span>`)).join('')+'</div>';body._list=list}
-if(step==1){h=`<h3>Оберіть день</h3><div class="days">`+ds.map((d,i)=>{const n=slots(d,B.svc.dur).filter(x=>x.ok).length;return opt('day',i,B.di===i,`<span><small>${i==0?'сьогодні':i==1?'завтра':WD[d.getDay()]}</small><br><b>${d.getDate()} ${MO[d.getMonth()].slice(0,3)}</b><br><small>${n?n+' вільн.':'зайнято'}</small></span>`,!n)}).join('')+'</div>'}
-if(step==2){const d=ds[B.di],sl=slots(d,B.svc.dur),g=[['Ранок',0,720],['День',720,1020],['Вечір',1020,1440]];
-h=`<h3>Вільний час, ${dname(d,B.di)}</h3>`+g.map(([n,a,b])=>{const x=sl.filter(s=>s.s>=a&&s.s<b);return x.length?`<div class="tgrp"><p>${n}</p><div class="times">`+x.map(s=>opt('tm',s.s,B.t===s.s,hm(s.s)+(s.ok?'':'<span class="vh"> зайнято</span>'),!s.ok)).join('')+'</div></div>':''}).join('')}
+if(step==0){const mine=B.svc&&B.svc.id=='try'?B.svc:tried?{...S.svc}:null,list=(mine?[mine]:[]).concat(SV);
+h=`<h3>Що робимо?</h3><div class="opts">`+list.map(s=>opt('svc',s.id,B.svc&&B.svc.id==s.id,`<span>${s.id=='try'?'Ваш вибір з примірки':s.name}<small>${s.id=='try'?esc(s.name+'. '+s.note):dur(s.dur)}</small></span><span class="pp">${uah(s.price)}${s.id=='try'?'<small>'+dur(s.dur)+'</small>':''}</span>`)).join('')+'</div>';body._list=list}
+if(step==1){h=`<h3>Оберіть день</h3>${B.svc.two?'<p class="bk-n">Показуємо час, коли вільні два майстри одночасно.</p>':''}<div class="days">`+ds.map((d,i)=>{const sl=slots(d,B.svc.dur,B.svc.two),n=sl.filter(x=>x.ok).length;return opt('day',i,B.di===i,`<span><small>${i==0?'сьогодні':i==1?'завтра':WD[d.getDay()]}</small><br><b>${d.getDate()} ${MO[d.getMonth()].slice(0,3)}</b><br><small>${n?pl(n):i==0&&!sl.length?'вже пізно':'зайнято'}</small></span>`,!n)}).join('')+'</div>'}
+if(step==2){const d=ds[B.di],sl=slots(d,B.svc.dur,B.svc.two),g=[['Ранок',0,720],['Після обіду',720,1020],['Вечір',1020,1440]];
+h=(B.warn?'<p class="warn" role="alert">Цей час щойно зайняли — оберіть інший.</p>':'')+`<h3>Вільний час, ${dname(d,B.di)}</h3>`+(sl.some(s=>s.ok)?g.map(([n,a,b])=>{const x=sl.filter(s=>s.s>=a&&s.s<b);return x.length?`<div class="tgrp"><p>${n}</p><div class="times">`+x.map(s=>opt('tm',s.s,B.t===s.s,hm(s.s)+(s.ok?'':'<span class="vh"> зайнято</span>'),!s.ok)).join('')+'</div></div>':''}).join(''):'<p class="bk-n">На цей день вільного часу вже немає — поверніться й оберіть інший день.</p>');B.warn=0}
 if(step==3){h=`<h3>Куди надіслати підтвердження</h3><p class="recap"><b>${esc(B.svc.name)}</b><br>${dname(ds[B.di],B.di)}, ${hm(B.t)} · ${dur(B.svc.dur)} · ${uah(B.svc.price)}</p>
-<div class="fld" id="f-n"><label for="i-n">Імʼя</label><input id="i-n" autocomplete="given-name" value="${esc(B.name)}"><span class="err">Напишіть, як до вас звертатися</span></div>
-<div class="fld" id="f-c"><label for="i-c">Телефон або нік у Telegram</label><input id="i-c" autocomplete="tel" inputmode="text" placeholder="+380… або @нік" value="${esc(B.ct)}"><span class="err">Потрібен номер (10+ цифр) або нік, що починається з @</span></div>
+<div class="fld" id="f-n"><label for="i-n">Імʼя</label><input id="i-n" autocomplete="given-name" aria-describedby="e-n" value="${esc(B.name)}"><span class="err" id="e-n">Напишіть, як до вас звертатися</span></div>
+<div class="fld" id="f-c"><label for="i-c">Телефон або нік у Telegram</label><input id="i-c" autocomplete="tel" inputmode="text" placeholder="+380… або @нік" aria-describedby="e-c" value="${esc(B.ct)}"><span class="err" id="e-c">Потрібен номер (10–13 цифр) або нік у Telegram від 5 символів</span></div>
 <div class="fld"><label for="i-m">Побажання <small style="font-weight:400;color:var(--ink2)">(необовʼязково)</small></label><textarea id="i-m" placeholder="Наприклад, фото дизайну скину в Telegram">${esc(B.cm)}</textarea></div>`}
-if(step==4){const d=ds[B.di];h=`<div class="done"><div class="ok"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></div>
-<h3 tabindex="-1" id="dh">Готово! Заявка вже в Telegram у «Мигдаль»</h3><p class="fine">Майстер підтвердить запис протягом 15 хвилин. Так заявку бачить студія:</p>
+if(step==4){const d=ds[B.di],m=nowM(),o=m>=OPEN&&m<CLOSE-15;h=`<div class="done"><div class="ok"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg></div>
+<h3 tabindex="-1" id="dh">Готово! Заявка вже в Telegram у «Мигдаль»</h3><p class="fine">${o?'Майстер підтвердить запис протягом 15 хвилин.':'Студія зараз зачинена — майстер підтвердить запис '+(m<OPEN?'сьогодні':'завтра')+' після 9:00.'} Так заявку бачить студія:</p>
 <div class="tg" aria-label="Повідомлення бота студії"><div class="tg-h"><i aria-hidden="true">М</i><span><b>Мигдаль · записи</b><br>бот</span></div>
-<div class="tg-m"><b>Нова заявка</b><br>${esc(B.svc.name)}${B.svc.note?'<br>'+esc(B.svc.note):''}<br><b>${WD[d.getDay()]}, ${d.getDate()} ${MO[d.getMonth()]}, ${hm(B.t)}</b> (${dur(B.svc.dur)})<br>${uah(B.svc.price)}<br>Клієнтка: ${esc(B.name)}, ${esc(B.ct)}${B.cm?'<br>Побажання: '+esc(B.cm):''}<time>${hm(new Date().getHours()*60+new Date().getMinutes())}</time></div>
+<div class="tg-m"><b>Новий запис</b><br>${esc(B.svc.name)}${B.svc.note?'<br>'+esc(B.svc.note):''}<br><b>${WD[d.getDay()]}, ${d.getDate()} ${MO[d.getMonth()]}, ${hm(B.t)}</b> (${dur(B.svc.dur)})<br>${uah(B.svc.price)}<br>Клієнтка: ${esc(B.name)}, ${esc(B.ct)}${B.cm?'<br>Побажання: '+esc(B.cm):''}<time>${hm(m)}</time></div>
 <div class="tg-k" aria-hidden="true"><span>Підтвердити</span><span>Запропонувати інший час</span></div></div></div>`}
 body.innerHTML=`<div class="pane">${h}</div>`;body.scrollTop=0;
 bk.style.visibility=step==0||step==4?'hidden':'visible';
 nx.textContent=step==3?'Надіслати заявку':step==4?'Закрити':'Далі';
-upd();
+lockT=performance.now()+420;upd();clearTimeout(unl);unl=setTimeout(upd,440);
 const f=step==4?$('#dh'):step==3?$('#i-n'):$('input:checked',body)||$('input:not(:disabled)',body);
 if(f)f.focus({preventScroll:step!=4})}
-function upd(){nx.disabled=(step==0&&!B.svc)||(step==1&&B.di==null)||(step==2&&B.t==null);
+function upd(){nx.disabled=performance.now()<lockT||(step==0&&!B.svc)||(step==1&&B.di==null)||(step==2&&B.t==null);
 const p=[];if(B.svc&&step>0)p.push(B.svc.name);if(B.di!=null&&step>1)p.push(dname(days()[B.di],B.di)+(B.t!=null&&step>2?' '+hm(B.t):''));$('#b-sum').textContent=step<4?p.join(' · '):''}
+body.addEventListener('pointerdown',()=>lastPtr=performance.now());
 body.addEventListener('change',e=>{const t=e.target;
 if(t.name=='svc'){B.svc=body._list.find(s=>s.id==t.value);B.di=null;B.t=null}
 if(t.name=='day'){B.di=+t.value;B.t=null}
-if(t.name=='tm')B.t=+t.value;upd()});
-body.addEventListener('click',e=>{const l=e.target.closest('label');if(!l||e.detail==0||step>2)return;const i=$('input',l);if(i&&!i.disabled)setTimeout(()=>{if(!nx.disabled)go(1)},160)});
-body.addEventListener('input',e=>{if(e.target.id=='i-n')B.name=e.target.value;if(e.target.id=='i-c')B.ct=e.target.value;if(e.target.id=='i-m')B.cm=e.target.value;const f=e.target.closest('.fld');if(f)f.classList.remove('bad')});
-function go(d){if(d>0&&step==3){const okN=B.name.trim().length>1,v=B.ct.trim(),okC=/^@[\w]{4,}$/.test(v)||v.replace(/\D/g,'').length>=10;
-$('#f-n').classList.toggle('bad',!okN);$('#f-c').classList.toggle('bad',!okC);
-$('#i-n').setAttribute('aria-invalid',!okN);$('#i-c').setAttribute('aria-invalid',!okC);
-if(!okN||!okC){(okN?$('#i-c'):$('#i-n')).focus();return}}
+if(t.name=='tm')B.t=+t.value;upd();
+/* автоперехід лише від реальної зміни вибору мишею/тапом, один таймер на поточний крок */
+const now=performance.now();if(t.type!='radio'||step>2||now<lockT||now-lastPtr>1500)return;
+const s0=step;clearTimeout(advT);advT=setTimeout(()=>{if(dlg.open&&step==s0&&!nx.disabled)go(1)},240)});
+const nick=v=>/^[A-Za-z]\w{4,31}$/.test(v)?'@'+v:v;
+const okC=v=>{v=nick(v.trim());const dg=v.replace(/\D/g,'').length;return/^@[A-Za-z]\w{4,31}$/.test(v)||/^[+\d][\d\s()-]{8,}$/.test(v)&&dg>=10&&dg<=13};
+const okN=v=>v.trim().length>1;
+function mark(id,ok){const f=$('#'+id);if(!f)return;f.classList.toggle('bad',!ok);$('input',f).setAttribute('aria-invalid',!ok)}
+body.addEventListener('input',e=>{const t=e.target;if(t.id=='i-n')B.name=t.value;if(t.id=='i-c')B.ct=t.value;if(t.id=='i-m')B.cm=t.value;t.dataset.d=1;const f=t.closest('.fld');if(f)f.classList.remove('bad')});
+body.addEventListener('focusout',e=>{const t=e.target;if(!dlg.open||!(t.dataset.d||B.sub))return;if(t.id=='i-n')mark('f-n',okN(B.name));if(t.id=='i-c')mark('f-c',okC(B.ct))});
+function go(d){if(performance.now()<lockT)return;clearTimeout(advT);
+if(d>0&&step==3){B.sub=true;const a=okN(B.name),c=okC(B.ct);mark('f-n',a);mark('f-c',c);if(!a||!c){(a?$('#i-c'):$('#i-n')).focus();return}
+const dd=days()[B.di];if(!slots(dd,B.svc.dur,B.svc.two).some(x=>x.s==B.t&&x.ok)){B.t=null;B.warn=1;step=2;render();return}
+book(dd,B.t,B.svc.dur,B.svc.two);B.ct=nick(B.ct.trim())}
 if(d>0&&step==4){close();return}
 step=Math.max(0,step+d);render()}
 nx.onclick=()=>go(1);bk.onclick=()=>go(-1);

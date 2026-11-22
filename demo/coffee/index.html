@@ -2,23 +2,25 @@
 <html lang="uk">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Демо: кавʼярня «Помол», Дніпро | drakx</title>
-<meta name="description" content="Демо-сайт specialty-кавʼярні: замовлення кави наперед з вибором розміру, молока й сиропу та самовивіз без черги.">
+<meta name="description" content="Демо-сайт кавʼярні: замовлення кави наперед з вибором розміру, молока й сиропу, точний час готовності й самовивіз без черги.">
 <meta name="theme-color" content="#1c1411">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c1411'/%3E%3Cg transform='rotate(35 16 16)'%3E%3Cellipse cx='16' cy='16' rx='7.5' ry='11' fill='%23e3aa6c'/%3E%3Cpath d='M16 5c-3 4 3 7 0 11s3 7 0 11' stroke='%231c1411' stroke-width='1.8' fill='none'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'Unbounded fb';src:local('Arial');size-adjust:118%;ascent-override:90%;descent-override:22%}
 :root{--bg:#1c1411;--bg2:#251a15;--bg3:#30231c;--line:#43322a;--tx:#f4eadf;--mu:#c4b3a2;--cr:#e3aa6c;--cr2:#f1c38f;--paper:#fbf6ee;--paper2:#f1e8dc;--ink:#1c1411;--ink2:#5a483d;--tg:#3e88c7;
---fd:'Unbounded',system-ui,sans-serif;--fb:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;
+--fd:'Unbounded','Unbounded fb',system-ui,sans-serif;--fb:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;
 --e:cubic-bezier(.2,.7,.2,1);--t1:.12s;--t2:.22s;--t3:.36s;--r1:10px;--r2:18px;--r3:28px}
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:12px}
+html.qb,html.hb{scroll-padding-bottom:100px}
 body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.55 var(--fb);overflow-x:hidden}
-body.has-bar{padding-bottom:84px}
+body.has-bar{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit}
 p,ul,ol,dl,dd,figure,fieldset{margin:0;padding:0}
@@ -31,6 +33,7 @@ h3{font-weight:500}
 .mu{color:var(--mu)}
 [hidden]{display:none!important}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip:focus{position:fixed;left:12px;top:12px;z-index:70;width:auto;height:auto;clip:auto;padding:12px 18px;border-radius:999px;background:var(--cr);color:var(--ink);font-weight:600;text-decoration:none}
 .ph{position:relative;overflow:hidden;background:var(--bg3)}
 .ph img{width:100%;height:100%;object-fit:cover}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border:0;border-radius:999px;background:var(--cr);color:var(--ink);font:600 16px/1.1 var(--fb);text-decoration:none;cursor:pointer;transition:transform var(--t1) var(--e),background-color var(--t2) var(--e)}
@@ -41,12 +44,14 @@ h3{font-weight:500}
 .btn-ink{background:var(--ink);color:var(--paper)}
 .btn-ink:hover{background:#3a2a21}
 .btn-ink:focus-visible{outline-color:var(--ink)}
+[aria-disabled=true]{opacity:.35;cursor:not-allowed}
 /* demo bar */
-.demo{background:#120d0b;color:#d6c7b7;font-size:12.5px;border-bottom:1px solid #2a1f1a}
-.demo .wrap{display:flex;align-items:center;gap:14px;white-space:nowrap}
-.demo a{display:inline-flex;align-items:center;min-height:44px;color:var(--cr2);font-weight:600;text-decoration:none}
+.demo{background:#120d0b;color:#d6c7b7;font-size:14px;line-height:1.4;border-bottom:1px solid #2a1f1a}
+.demo .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;column-gap:20px}
+.demo nav{display:flex;flex-wrap:wrap;column-gap:18px}
+.demo a{display:inline-flex;align-items:center;min-height:44px;color:#efe3d6;font-weight:500;text-decoration:none}
+.demo a.hot{color:var(--cr2);font-weight:600}
 .demo a:hover{text-decoration:underline}
-.demo .back{margin-left:auto;color:#d6c7b7;font-weight:500}
 /* header */
 .hd{display:flex;align-items:center;gap:24px;min-height:72px}
 .logo{font:700 24px/1 var(--fd);text-decoration:none;letter-spacing:-.03em}
@@ -56,22 +61,25 @@ h3{font-weight:500}
 .nav a:hover{color:var(--tx);background:var(--bg2)}
 .hd .btn{min-height:44px;padding:0 18px;font-size:15px}
 /* hero */
-.hero{padding:clamp(16px,4vw,48px) 0 clamp(48px,7vw,96px)}
-.hero-in{display:grid;gap:28px}
-.meta{color:var(--mu);font-size:15px;margin-bottom:16px}
+.hero{padding:clamp(12px,4vw,48px) 0 clamp(48px,7vw,96px)}
+.hero-in{display:grid;gap:24px}
+.meta{color:var(--mu);font-size:15px}
 .meta b{color:var(--cr2);font-weight:600}
+.now{display:inline-flex;align-items:center;gap:9px;margin:12px 0 18px;padding:5px 14px 5px 11px;border-radius:999px;background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line);font-size:14px;line-height:1.35;color:#e3d6c8}
+.now i{flex:none;width:8px;height:8px;border-radius:50%;background:#8fcf86;box-shadow:0 0 0 3px rgba(143,207,134,.2)}
+.now.off i{background:#de8d74;box-shadow:0 0 0 3px rgba(222,141,116,.2)}
 .hero h1{font-size:clamp(30px,4.6vw,56px)}
-.lead{margin-top:20px;font-size:clamp(16px,1.5vw,19px);color:#e3d6c8;max-width:34em}
+.lead{margin-top:16px;font-size:clamp(16px,1.5vw,19px);color:#e3d6c8;max-width:34em}
 .hours{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:0 20px;font-size:15px;color:var(--mu)}
 .hours a{color:var(--cr2);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
 .hero-vis{position:relative}
 .hero-ph{border-radius:var(--r3);aspect-ratio:2/1}
 /* ticket */
-.tk{position:relative;z-index:1;margin:-72px 12px 0;color:var(--ink);border-radius:var(--r2);filter:drop-shadow(0 24px 30px rgba(0,0,0,.45));max-width:420px}
+.tk{position:relative;z-index:1;margin:0;color:var(--ink);border-radius:var(--r2);filter:drop-shadow(0 24px 30px rgba(0,0,0,.45))}
 .tk-top{padding:20px 20px 18px;display:grid;gap:12px;border-radius:var(--r2) var(--r2) 0 0;background:radial-gradient(circle at 0 100%,#0000 11px,var(--paper) 11.5px) left/51% 100% no-repeat,radial-gradient(circle at 100% 100%,#0000 11px,var(--paper) 11.5px) right/51% 100% no-repeat}
 .tk-h{font:500 13px/1.2 var(--fd);text-transform:uppercase;letter-spacing:.06em;color:var(--ink2)}
 .fl{display:grid;gap:4px;font-size:13px;font-weight:600;color:var(--ink2)}
-.sel{appearance:none;width:100%;min-height:44px;padding:0 36px 0 12px;border:1px solid #d6c8b7;border-radius:var(--r1);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231c1411' stroke-width='1.6' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center;color:var(--ink);font:500 16px var(--fb)}
+.sel{appearance:none;width:100%;min-height:44px;padding:0 28px 0 10px;border:1px solid #d6c8b7;border-radius:var(--r1);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231c1411' stroke-width='1.6' fill='none'/%3E%3C/svg%3E") no-repeat right 10px center;color:var(--ink);font:500 16px var(--fb);text-overflow:ellipsis}
 .sel:disabled{opacity:.55}
 .sel:focus-visible,.tk .seg input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -82,51 +90,74 @@ h3{font-weight:500}
 .seg small{font-weight:400;font-size:12px;color:var(--ink2)}
 .seg input:checked+span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .seg input:checked+span small{color:#d8c9b8}
-.tk-bot{position:relative;padding:18px 20px 20px;display:grid;gap:4px;border-radius:0 0 var(--r2) var(--r2);background:radial-gradient(circle at 0 0,#0000 11px,var(--paper) 11.5px) left/51% 100% no-repeat,radial-gradient(circle at 100% 0,#0000 11px,var(--paper) 11.5px) right/51% 100% no-repeat}
+.tk-bot{position:relative;padding:18px 20px 16px;display:grid;gap:4px;border-radius:0 0 var(--r2) var(--r2);background:radial-gradient(circle at 0 0,#0000 11px,var(--paper) 11.5px) left/51% 100% no-repeat,radial-gradient(circle at 100% 0,#0000 11px,var(--paper) 11.5px) right/51% 100% no-repeat}
 .tk-bot::before{content:"";position:absolute;left:20px;right:20px;top:-1px;border-top:2px dashed #d9cbb9}
 .tk-k{font-size:14px;color:var(--ink2)}
-.tk-time{font:700 clamp(54px,8vw,72px)/1 var(--fd);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-.tk-note{font-size:13px;color:var(--ink2);margin-bottom:12px}
+.tk-time{min-height:1em;font:700 clamp(54px,8vw,72px)/1 var(--fd);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.tk-note{font-size:14px;color:var(--ink2);margin-bottom:12px}
 .tk .btn{width:100%}
+.tk-pay{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:6px;font-size:13px;font-weight:500;color:var(--ink2)}
 .pop{animation:pop var(--t3) var(--e)}
 @keyframes pop{from{opacity:.2;transform:translateY(6px)}}
 /* timeline */
-.how{padding-block:clamp(40px,6vw,72px);border-top:1px solid var(--line)}
+.how{padding-block:clamp(40px,6vw,72px) clamp(48px,6vw,80px);border-top:1px solid var(--line)}
 .how h2{font-size:clamp(22px,2.6vw,30px);max-width:20ch}
-.tl{display:grid;gap:24px;margin-top:32px;counter-reset:t}
-.tl li{display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:baseline}
-.tl time{font:700 22px/1 var(--fd);color:var(--cr);font-variant-numeric:tabular-nums}
-.tl p{color:#e3d6c8}
+.tl{display:grid;gap:32px;margin-top:32px}
+.tl li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:14px 14px;align-items:baseline}
+.tl time{grid-row:1/3;font:700 22px/1 var(--fd);color:var(--cr);font-variant-numeric:tabular-nums}
+.tl p{grid-column:2;color:#e3d6c8}
+.tl-v{grid-column:2;align-self:start}
+.mt{display:none}
+.tl-ph{border-radius:var(--r2);aspect-ratio:4/3}
+.ph-tag{position:absolute;left:11%;top:25%;padding:6px 12px;border-radius:999px;background:var(--paper);color:var(--ink);font:700 13px/1.2 var(--fd);letter-spacing:-.01em;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+.ph-tag::after{content:"";position:absolute;left:18px;bottom:-6px;border:6px solid transparent;border-bottom:0;border-top-color:var(--paper)}
+.peak{display:flex;gap:10px;align-items:flex-start;margin-top:32px;max-width:44em;color:var(--mu);font-size:15px}
+.peak svg{flex:none;margin-top:2px;color:var(--cr2)}
+/* mini ticket */
+.mt{gap:4px;padding:16px 18px;border-radius:var(--r2);background:var(--paper);color:var(--ink);max-width:300px}
+.mt-h{font:500 12px/1.2 var(--fd);text-transform:uppercase;letter-spacing:.06em;color:var(--ink2)}
+.mt-k{margin-top:8px;font-size:13px;color:var(--ink2)}
+.mt b{font:700 40px/1 var(--fd);letter-spacing:-.04em}
+.mt-b{display:grid;place-items:center;min-height:38px;margin-top:10px;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:600;font-size:14px}
 /* menu */
 .sec{padding-block:clamp(56px,8vw,104px)}
 .sec-hd{display:grid;gap:12px;margin-bottom:36px}
 .sec-hd h2{font-size:clamp(28px,4vw,46px)}
 .sec-hd p{color:var(--mu);max-width:44em}
-.menu{display:grid;gap:40px}
-.cat h3{font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--cr2);padding-bottom:12px;border-bottom:1px solid var(--line)}
+.menu{display:grid;gap:4px}
 .cat{container-type:inline-size}
+.cat h3{font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--cr2);padding-bottom:12px;border-bottom:1px solid var(--line)}
+.cat summary{display:flex;align-items:center;gap:12px;min-height:60px;list-style:none;cursor:pointer;border-bottom:1px solid var(--line)}
+.cat summary::-webkit-details-marker{display:none}
+.cat summary h3{flex:1;padding:0;border:0}
+.cat summary span{font-size:14px;color:var(--mu)}
+.cat summary::after{content:"";flex:none;width:9px;height:9px;margin:0 8px 4px 2px;border:solid var(--cr2);border-width:0 2px 2px 0;transform:rotate(45deg);transition:transform var(--t2) var(--e)}
+.cat[open] summary::after{transform:rotate(-135deg);margin-bottom:-4px}
+.cat summary:focus-visible{outline-offset:-2px;border-radius:8px}
 .it{display:grid;grid-template-columns:1fr 44px;gap:2px 12px;align-items:center;width:100%;min-height:68px;padding:12px 0;border:0;border-bottom:1px solid var(--line);background:none;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:background-color var(--t2) var(--e)}
 .it b{display:block;font-weight:600;font-size:17px}
 .it small{display:block;color:var(--mu);font-size:14px;line-height:1.35;margin-top:2px}
 .it .pr{grid-column:1;grid-row:2;font-variant-numeric:tabular-nums;font-weight:500;white-space:nowrap;color:var(--cr2)}
 @container (min-width:400px){.it{grid-template-columns:1fr auto 44px;gap:12px}.it .pr{grid-column:2;grid-row:1;text-align:right}.it .pl{grid-column:3!important;grid-row:1!important}}
-.it .pl{grid-column:2;grid-row:1/3;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--bg3);color:var(--cr2);transition:background-color var(--t2) var(--e),color var(--t2) var(--e),transform var(--t1) var(--e)}
+.it .pl{grid-column:2;grid-row:1/3;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:transparent;box-shadow:inset 0 0 0 1.5px var(--cr);color:var(--cr);transition:background-color var(--t2) var(--e),color var(--t2) var(--e),transform var(--t1) var(--e)}
 .it:hover .pl{background:var(--cr);color:var(--ink)}
 .it:active .pl{transform:scale(.9)}
 .it:focus-visible{outline-offset:-2px;border-radius:8px}
 .it .in{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:999px;background:var(--cr);color:var(--ink);font-size:12px;font-weight:600;vertical-align:2px}
+.allg{margin-top:28px;font-size:14px;color:var(--mu)}
 /* beans */
 .beans{display:grid;gap:28px;align-items:center}
 .beans .ph{border-radius:var(--r3);aspect-ratio:1}
-.notes{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+.notes{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:20px 0}
 .notes li{padding:6px 14px;border-radius:999px;border:1px solid var(--line);font-size:15px}
+.notes .nl{padding-inline:0 2px;border:0;color:var(--mu)}
 .beans p+p{margin-top:12px}
 .beans .btn{margin-top:24px}
 /* pickup */
-.pick{display:grid;gap:32px}
-.pick .ph{border-radius:var(--r3);aspect-ratio:4/3}
+.pick{display:grid;gap:12px}
+.pick h2{font-size:clamp(26px,3.4vw,40px)}
 .dl{display:grid;gap:0}
-.dl div{padding:18px 0;border-bottom:1px solid var(--line);display:grid;gap:4px}
+.dl div{padding:18px 0;border-bottom:1px solid var(--line);display:grid;gap:4px;align-content:start}
 .dl dt{font-weight:600;font-size:17px}
 .dl dd{color:var(--mu)}
 /* where */
@@ -134,37 +165,75 @@ h3{font-weight:500}
 .map{border-radius:var(--r3);overflow:hidden;background:var(--bg2);border:1px solid var(--line)}
 .map svg{display:block;width:100%;height:auto}
 .addr{font:500 clamp(20px,2.4vw,26px)/1.25 var(--fd)}
-.hrs{margin:24px 0;display:grid;gap:8px;max-width:360px}
+.hrs{margin:24px 0 10px;display:grid;gap:8px;width:100%}
 .hrs div{display:flex;justify-content:space-between;gap:16px;padding-bottom:8px;border-bottom:1px solid var(--line)}
 .hrs dd{font-variant-numeric:tabular-nums}
-.acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.sm{font-size:14px}
+.acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.ct{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.ctb{display:flex;align-items:center;gap:12px;min-height:60px;padding:8px 14px;border:0;border-radius:var(--r2);background:var(--bg2);box-shadow:inset 0 0 0 1px var(--line);color:var(--tx);font:inherit;text-align:left;text-decoration:none;cursor:pointer;transition:background-color var(--t2) var(--e)}
+.ctb:hover{background:var(--bg3)}
+.ctb svg{flex:none;color:var(--cr2)}
+.ctb b{display:block;font-weight:600;line-height:1.25}
+.ctb small{display:block;font-size:13px;line-height:1.35;color:var(--mu);font-variant-numeric:tabular-nums}
+.ctb.call{grid-column:1/-1}
 .tiny{font-size:13px;color:var(--mu);margin-top:12px}
 .wide{margin-top:clamp(40px,6vw,72px);border-radius:var(--r3);aspect-ratio:16/9}
-@media (min-width:960px){.wide{aspect-ratio:21/9}}
-footer{border-top:1px solid var(--line);padding-block:32px;color:var(--mu);font-size:14px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
-/* order bar */
-.bar{visibility:hidden;position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(18,13,11,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform var(--t3) var(--e),visibility 0s var(--t3)}
-.bar.on{transition:transform var(--t3) var(--e)}
-.bar.on{transform:none;visibility:visible}
-.bar .wrap{display:flex;align-items:center;gap:16px;min-height:72px}
-.bar p{flex:1;min-width:0;line-height:1.3}
+.wide img{object-position:center 55%}
+@media (min-width:960px){.wide{aspect-ratio:21/8}}
+/* owner */
+.own{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--line);background:linear-gradient(180deg,var(--bg2),var(--bg) 75%)}
+.own-k{font:500 13px/1.2 var(--fd);text-transform:uppercase;letter-spacing:.08em;color:var(--cr2);margin-bottom:12px}
+.own h2{font-size:clamp(28px,4vw,46px);max-width:15ch}
+.own-g{display:grid;gap:32px;margin-top:32px}
+.own-l li{display:grid;gap:6px;padding:20px 0;border-top:1px solid var(--line)}
+.own-l h3{font:600 18px/1.3 var(--fb);letter-spacing:0}
+.own-l p{color:var(--mu)}
+.own .tg{margin-top:10px;max-width:400px}
+.own-p{display:grid;gap:12px;align-content:start;padding:24px;border-radius:var(--r3);background:var(--paper);color:var(--ink)}
+.own-p small{font-size:14px;font-weight:600;color:var(--ink2)}
+.own-p b{display:block;font:700 clamp(26px,3vw,34px)/1.1 var(--fd);letter-spacing:-.02em}
+.own-p p{color:var(--ink2)}
+.own-p .btn{margin-top:6px}
+.own-p a.more{display:inline-flex;align-items:center;justify-content:center;min-height:44px;color:var(--ink);font-weight:600}
+.own-p a.more:focus-visible{outline-color:var(--ink)}
+footer{border-top:1px solid var(--line);padding-block:24px;color:var(--mu);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:4px 24px;justify-content:space-between}
+footer nav{display:flex;flex-wrap:wrap;column-gap:24px}
+footer a{display:inline-flex;align-items:center;min-height:44px}
+/* order bars */
+.bar,.qbar{visibility:hidden;position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(18,13,11,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform var(--t3) var(--e),visibility 0s var(--t3)}
+.bar.on,.qbar.on{transform:none;visibility:visible;transition:transform var(--t3) var(--e)}
+.bar .wrap,.qbar .wrap{display:flex;align-items:center;gap:16px;min-height:72px;padding-bottom:env(safe-area-inset-bottom)}
+.bar p,.qbar p{flex:1;min-width:0;line-height:1.3}
 .bar p b{font-weight:600}
 .bar p span{display:block;font-size:14px;color:var(--mu)}
+.qbar .wrap{min-height:68px;gap:12px}
+.qbar p{line-height:1.1}
+.qbar p span{display:block;font-size:13px;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qbar p b{font:700 26px/1.05 var(--fd);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.qbar .btn{padding:0 18px}
 .bump{animation:bump .3s var(--e)}
 @keyframes bump{40%{transform:scale(1.12)}}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));z-index:60;transform:translateX(-50%);width:min(calc(100% - 32px),420px);padding:14px 18px;border-radius:var(--r2);background:var(--paper);color:var(--ink);font-size:15px;box-shadow:0 18px 40px rgba(0,0,0,.45);animation:up var(--t3) var(--e)}
+html.hb .toast,html.qb .toast{bottom:calc(92px + env(safe-area-inset-bottom))}
 /* dialogs */
 dialog{padding:0;border:0;background:var(--paper);color:var(--ink);width:100%;max-width:560px;max-height:min(92vh,860px);border-radius:var(--r3) var(--r3) 0 0;margin:auto auto 0;overflow:auto;overscroll-behavior:contain}
 dialog::backdrop{background:rgba(10,7,6,.62)}
 dialog[open]{animation:up var(--t3) var(--e)}
 @keyframes up{from{transform:translateY(32px);opacity:0}}
+.toast{animation-name:tup}
+@keyframes tup{from{opacity:0;translate:0 16px}}
 .dl-in{padding:20px 20px 24px;display:grid;gap:20px}
+#co .dl-in{display:flex;flex-direction:column}
+#co .dft{margin-top:auto}
 .dh{display:flex;gap:12px;align-items:flex-start}
-.dh h2{font-size:22px;flex:1}
+.dh>div{min-width:0}
+.dh h2{font-size:clamp(18px,5.6vw,22px);flex:1;overflow-wrap:anywhere}
 .dh p{font-size:14px;color:var(--ink2);margin-top:6px;font-family:var(--fb)}
 .x{flex:none;display:grid;place-items:center;width:44px;height:44px;margin:-6px -8px 0 0;border:0;border-radius:50%;background:var(--paper2);color:var(--ink);cursor:pointer}
 .x:hover{background:#e6dacb}
-.x:focus-visible,dialog .btn:focus-visible,dialog .chip input:focus-visible+span,dialog .q button:focus-visible,dialog .lnk:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.x:focus-visible,dialog .btn:focus-visible,dialog .chip input:focus-visible+span,dialog .q button:focus-visible,dialog .lnk:focus-visible,dialog a:focus-visible,dialog .sel:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .stk{flex:none;width:132px;padding:10px 12px;border-radius:8px;background:#fff;border:1px solid #e3d7c8;font:500 12px/1.35 var(--fb);color:var(--ink2);box-shadow:0 2px 0 #e3d7c8;transform:rotate(2deg)}
 .stk b{display:block;font:700 13px/1.2 var(--fd);color:var(--ink);text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
 .og legend{font-weight:600;font-size:15px;margin-bottom:10px}
@@ -176,18 +245,25 @@ dialog[open]{animation:up var(--t3) var(--e)}
 .chip input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .chip input:checked+span small{color:#d8c9b8}
 .chip span:active{transform:scale(.97)}
-.dft{display:flex;gap:12px;align-items:center;position:sticky;bottom:0;margin:0 -20px -24px;padding:14px 20px 18px;background:var(--paper);border-top:1px solid #e6dacb}
+.chip input:disabled+span{background:transparent;border-style:dashed;color:#8a776a;cursor:not-allowed;transform:none}
+.sl-h{font-size:13px;font-weight:600;color:var(--ink2);text-transform:uppercase;letter-spacing:.05em;margin:2px 0 8px}
+.sl-h~.sl-h{margin-top:14px}
+.oth{display:grid;gap:6px;margin-top:14px;font-size:14px;font-weight:600;color:var(--ink2)}
+.dft{display:flex;gap:12px;align-items:center;position:sticky;bottom:0;margin:0 -20px -24px;padding:14px 20px calc(18px + env(safe-area-inset-bottom));background:var(--paper);border-top:1px solid #e6dacb}
 .dft .btn{flex:1}
 .q{display:inline-flex;align-items:center;border-radius:999px;background:var(--paper2)}
 .q button{width:44px;height:44px;border:0;border-radius:50%;background:none;color:var(--ink);font:600 20px/1 var(--fb);cursor:pointer}
 .q button:hover{background:#e6dacb}
 .q output{min-width:22px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.lim{grid-column:1/-1;font-size:13px;color:var(--ink2)}
 .lines{display:grid}
 .ln{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 0;border-bottom:1px solid #e6dacb;align-items:center}
 .ln b{font-weight:600}
 .ln small{display:block;color:var(--ink2);font-size:14px}
 .ln .q{grid-row:span 2;align-self:center}
 .ln .pr{font-variant-numeric:tabular-nums;font-size:15px}
+.empty{display:grid;gap:14px;justify-items:start;padding:12px 0 4px}
+.empty p{font:700 20px/1.25 var(--fd)}
 .ready{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:16px 18px;border-radius:var(--r2);background:var(--ink);color:var(--paper)}
 .ready span{font-size:14px;color:#d8c9b8}
 .ready b{font:700 40px/1 var(--fd);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
@@ -202,11 +278,13 @@ dialog[open]{animation:up var(--t3) var(--e)}
 .pay{font-size:14px;color:var(--ink2);padding:12px 14px;border-radius:var(--r1);background:var(--paper2)}
 .lnk{border:0;background:none;color:var(--ink);font:600 15px var(--fb);text-decoration:underline;min-height:44px;padding:0 8px;cursor:pointer}
 .done-tk{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;padding:18px;border-radius:var(--r2);background:var(--ink);color:var(--paper)}
-.done-tk small{display:block;color:#d8c9b8;font-size:13px}
+.done-tk small{display:block;color:#d8c9b8;font-size:13px;margin-bottom:4px}
 .done-tk b{font:700 44px/1 var(--fd);letter-spacing:-.03em}
-.done-tk .nm{font:700 18px/1.2 var(--fd);text-align:right}
-.ok{font:700 20px/1.25 var(--fd)}
-.tg{border-radius:var(--r2);background:#dfe9f1;padding:12px;font-size:14px;line-height:1.45}
+.done-tk .nm{font:700 18px/1.2 var(--fd);text-align:right;overflow-wrap:anywhere}
+.ok{flex:1;margin:0;font:700 20px/1.25 var(--fd);color:var(--ink)}
+.n3{font-size:14px;color:var(--ink2)}
+.n3 a{display:inline-block;margin-top:6px;color:var(--ink);font-weight:600}
+.tg{border-radius:var(--r2);background:#dfe9f1;padding:12px;font-size:14px;line-height:1.45;color:#152230}
 .tg-hd{display:flex;align-items:center;gap:10px;margin-bottom:10px;color:#1f3447}
 .tg-av{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--cr2);font:700 15px var(--fd)}
 .tg-hd small{display:block;color:#4b6378;font-size:12px}
@@ -215,33 +293,53 @@ dialog[open]{animation:up var(--t3) var(--e)}
 .tg-msg .tm{display:block;text-align:right;font-size:11px;color:#6b7f90}
 .tg-b{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
 .tg-b span{display:grid;place-items:center;min-height:36px;border-radius:10px;background:rgba(255,255,255,.7);color:#1f5f99;font-weight:600;font-size:13px}
+@media (max-width:419px){.row2{grid-template-columns:1fr}}
 @media (min-width:640px){
- .tk{margin:-96px 0 0 24px}
- .tl{grid-template-columns:repeat(3,1fr);gap:32px}
- .tl li{grid-template-columns:1fr;gap:12px}
- .tl time{font-size:28px}
- .menu{grid-template-columns:1fr 1fr;gap:48px 56px}
- dialog{border-radius:var(--r3);margin:auto}
- .dl-in{padding:28px 28px 28px}
+ .tk{margin:-96px 0 0 24px;max-width:420px}
+ .tl{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto auto;gap:0 32px;margin-top:40px}
+ .tl li{grid-row:span 3;grid-template-rows:subgrid;grid-template-columns:minmax(0,1fr);row-gap:14px;position:relative;padding-top:28px;align-items:start}
+ .tl li::before{content:"";position:absolute;top:0;left:0;width:11px;height:11px;border-radius:50%;background:var(--cr);box-shadow:0 0 0 4px rgba(227,170,108,.16)}
+ .tl li:not(:last-child)::after{content:"";position:absolute;top:5px;left:22px;right:-26px;height:1px;background:linear-gradient(90deg,var(--cr),var(--line))}
+ .tl time{grid-row:auto;font-size:28px}
+ .tl p,.tl-v{grid-column:auto}
+ .mt{display:grid}
+ .menu{display:block;columns:2;column-gap:56px}
+ .cat{break-inside:avoid;margin-bottom:44px}
+ dialog{border-radius:var(--r3);margin:8vh auto auto}
+ #co .dl-in{min-height:min(560px,80vh)}
+ .dl-in{padding:28px}
  .dft{margin:0 -28px -28px;padding:16px 28px 22px}
+ .qbar{display:none}
 }
 @media (max-width:719px){.nav{display:none}.hd .btn{margin-left:auto}}
-@media (max-width:639px){.hours{display:none}.lead{margin-top:14px}.hero-in{gap:24px}}
-@media (max-width:379px){.demo .xs{display:none}.demo .wrap{gap:12px}.stk{width:112px}}
+@media (max-width:639px){
+ .demo p{width:100%;padding-top:10px}
+ .hd{min-height:64px}
+ .hours{display:none}
+ .hero-vis{display:flex;flex-direction:column;gap:16px}
+ .tk{order:-1}
+ .hero-ph{aspect-ratio:16/9;border-radius:var(--r2)}
+}
+@media (max-width:400px){#cz .stk{display:none}}
+@media (max-width:379px){.ct{grid-template-columns:1fr}}
 @media (min-width:960px){
  .hero-in{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:72px;align-items:start}
- .hero-txt{padding-top:24px}
+ .hero-txt{align-self:center;padding-bottom:40px}
  .hero-ph{aspect-ratio:4/5}
  .tk{position:absolute;left:-48px;bottom:-40px;margin:0;width:360px}
  .beans{grid-template-columns:5fr 6fr;gap:72px}
- .pick{grid-template-columns:6fr 5fr;gap:72px;align-items:center}
+ .pick{grid-template-columns:4fr 7fr;gap:72px}
+ .pick .dl{grid-template-columns:1fr 1fr;column-gap:40px}
+ .pick .dl div:nth-child(-n+2){padding-top:4px}
  .where{grid-template-columns:7fr 5fr;gap:56px;align-items:start}
+ .own-g{grid-template-columns:7fr 5fr;gap:56px;align-items:start}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<div class="demo"><div class="wrap"><span>Демо<span class="xs">-сайт</span> від drakx</span><a href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%9F%D0%BE%D0%BC%D0%BE%D0%BB%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий</a><a class="back" href="../../food/">← Інші роботи</a></div></div>
+<a class="sr skip" href="#quick">До замовлення</a>
+<div class="demo"><div class="wrap"><p>Демо-сайт від drakx · назва, місто й меню — ваші</p><nav aria-label="Про демо"><a href="#owner">Як це працює для власника</a><a class="hot" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%9F%D0%BE%D0%BC%D0%BE%D0%BB%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий</a></nav></div></div>
 
 <header class="wrap hd">
  <a class="logo" href="#top" aria-label="Помол, на початок сторінки">помол<i>.</i></a>
@@ -253,9 +351,10 @@ dialog[open]{animation:up var(--t3) var(--e)}
 <section class="hero">
  <div class="wrap hero-in">
   <div class="hero-txt">
-   <p class="meta">Specialty-кавʼярня · Дніпро, <b>2 хв від метро «Вокзальна»</b></p>
+   <p class="meta">Кавʼярня свіжообсмаженої кави · Дніпро, <b>2 хв від метро «Вокзальна»</b></p>
+   <p class="now" id="now"><i aria-hidden="true"></i><span id="now-t">Пн–Пт 7:30–20:00, Сб–Нд 9:00–20:00</span></p>
    <h1>Замовте каву з&nbsp;дороги. Заберіть без черги.</h1>
-   <p class="lead">Оберіть напій, розмір, молоко й сироп. Бариста почне готувати так, щоб кава була гарячою саме тоді, коли ви заходите, а стакан з вашим імʼям уже стояв на полиці біля входу.</p>
+   <p class="lead">Оберіть напій, розмір, молоко й сироп. Стакан з вашим імʼям чекатиме на полиці, коли ви зайдете.</p>
    <p class="hours"><span>Пн–Пт 7:30–20:00</span><span>Сб–Нд 9:00–20:00</span><a href="#menu">Усе меню й ціни ↓</a></p>
   </div>
   <div class="hero-vis">
@@ -267,11 +366,12 @@ dialog[open]{animation:up var(--t3) var(--e)}
      <fieldset><legend class="sr">Розмір</legend><div class="seg" id="q-s"></div></fieldset>
      <div class="row2"><label class="fl">Молоко<select class="sel" id="q-m"></select></label><label class="fl">Сироп<select class="sel" id="q-y"></select></label></div>
     </div>
-        <div class="tk-bot">
-     <p class="tk-k" id="q-k">Замовите зараз — буде готово о</p>
+    <div class="tk-bot">
+     <p class="tk-k" id="q-k">Замовите зараз — забирайте о</p>
      <p class="tk-time" id="q-t" aria-live="polite">—</p>
      <p class="tk-note" id="q-n"></p>
      <button class="btn btn-ink" type="submit">Замовити · <span id="q-p">85</span> грн</button>
+     <p class="tk-pay">Без передоплати: платите, коли забираєте</p>
     </div>
    </form>
   </div>
@@ -281,18 +381,27 @@ dialog[open]{animation:up var(--t3) var(--e)}
 <section class="wrap how" aria-labelledby="how-h">
  <h2 id="how-h">Як це виглядає о восьмій ранку</h2>
  <ol class="tl">
-  <li><time>8:35</time><p>Замовили флет вайт на вівсяному, поки їхали в метро.</p></li>
-  <li><time>8:38</time><p>Бариста бачить замовлення і ставить його в чергу на 8:42, а не «на зараз». Молоко не вистигне.</p></li>
-  <li><time>8:42</time><p>Стакан з вашим імʼям на полиці праворуч від входу. Оплачуєте на терміналі поруч і йдете.</p></li>
+  <li><time>8:35</time><p>Замовили флет вайт на вівсяному з дороги. Бариста одразу бачить повідомлення.</p>
+   <div class="mt tl-v" aria-hidden="true"><span class="mt-h">Флет вайт · вівсяне</span><span class="mt-k">Забрати о</span><b>8:42</b><span class="mt-b">Замовити · 120 грн</span></div></li>
+  <li><time>8:38</time><p>Бариста починає готувати, щоб кава була гарячою саме о 8:42, а не вистоювалась на стійці.</p>
+   <figure class="tg tl-v"><figcaption class="sr">Так замовлення бачить бариста в Telegram</figcaption>
+    <div class="tg-hd" aria-hidden="true"><span class="tg-av">п.</span><div><b>Помол · замовлення</b><small>бот</small></div></div>
+    <div class="tg-msg"><p><b>Нове замовлення №47</b> · з собою</p><p>1× Флет вайт, вівсяне молоко — 120 грн</p><p>Забере: <b>Олена</b> о <b>8:42</b></p><span class="tm">8:35</span></div>
+    <div class="tg-b" aria-hidden="true"><span>Прийняти</span><span>Написати клієнту</span></div>
+   </figure></li>
+  <li><time>8:42</time><p>Стакан з вашим імʼям на полиці праворуч від входу. Оплачуєте на терміналі поруч і йдете.</p>
+   <div class="ph tl-ph tl-v"><img src="img/shelf.webp" width="1200" height="900" loading="lazy" alt="Полиця самовивозу біля входу: стакани з наліпками для імен і термінал для оплати"><span class="ph-tag" aria-hidden="true">Олена · 8:42</span></div></li>
  </ol>
+ <p class="peak"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>У пік сайт не дає записати на один час більше замовлень, ніж встигає бар.</p>
 </section>
 
 <section class="wrap sec" id="menu" aria-labelledby="menu-h">
  <div class="sec-hd">
   <h2 id="menu-h">Меню</h2>
-  <p>Розміри: S 250 мл, M 350 мл, L 450 мл. Рослинне молоко +15–30 грн, сироп +20 грн, додатковий шот +30 грн. Натисніть на позицію, щоб налаштувати й додати до замовлення.</p>
+  <p>Розміри: S 250 мл, M 350 мл, L 450 мл. Молоко: вівсяне +25, мигдальне й кокосове +30, безлактозне +15 грн. Сироп +20 грн, додатковий шот +30 грн. Натисніть на позицію, щоб налаштувати й додати до замовлення.</p>
  </div>
  <div class="menu" id="menu-list"></div>
+ <p class="allg">Про алергени питайте баристу; у банановому хлібі й сиропі «Лісовий горіх» є горіхи.</p>
 </section>
 
 <section class="wrap sec" aria-labelledby="bean-h" style="padding-top:0">
@@ -300,8 +409,8 @@ dialog[open]{animation:up var(--t3) var(--e)}
   <div class="ph"><img src="img/beans.webp" width="900" height="900" loading="lazy" alt="Свіжообсмажене зерно Ефіопія Гуджі в керамічній мисці"></div>
   <div>
    <h2 id="bean-h" style="font-size:clamp(26px,3.4vw,40px)">Зерно тижня: Ефіопія Гуджі</h2>
-   <ul class="notes" aria-label="Смакові ноти"><li>полуниця</li><li>какао</li><li>чорний чай</li></ul>
-   <p>Натуральна обробка, світле обсмаження. Його ж наливаємо цього тижня у V60 і батч-брю, тож можна спочатку спробувати в чашці.</p>
+   <ul class="notes" aria-label="Смак"><li class="nl" aria-hidden="true">Смак:</li><li>полуниця</li><li>какао</li><li>чорний чай</li></ul>
+   <p>Натуральна обробка, світле обсмаження. Його ж цього тижня заварюємо як фільтр-каву, тож можна спочатку спробувати в чашці.</p>
    <p class="mu">Пачка 250 г — 460 грн. Змелемо під еспресо, фільтр чи турку, або віддамо в зернах.</p>
    <button class="btn" type="button" data-add="bns">Додати пачку до замовлення</button>
   </div>
@@ -310,22 +419,20 @@ dialog[open]{animation:up var(--t3) var(--e)}
 
 <section class="wrap sec" id="pickup" aria-labelledby="pick-h" style="padding-top:0">
  <div class="pick">
-  <div class="ph"><img src="img/shelf.webp" width="1200" height="900" loading="lazy" alt="Полиця самовивозу з підписаними паперовими стаканами біля входу"></div>
-  <div>
-   <h2 id="pick-h" style="font-size:clamp(26px,3.4vw,40px)">Як забрати замовлення</h2>
-   <dl class="dl" style="margin-top:20px">
-    <div><dt>Де стоїть</dt><dd>Полиця праворуч від входу. Стакани підписані імʼям, до каси підходити не треба.</dd></div>
-    <div><dt>Як оплатити</dt><dd>Термінал на полиці: картка, Apple Pay, Google Pay. Готівкою можна баристі.</dd></div>
-    <div><dt>Якщо запізнюєтесь</dt><dd>Тримаємо напій 15 хвилин. Вистиг — переробимо без доплати.</dd></div>
-    <div><dt>Передумали</dt><dd>Напишіть боту «скасувати», поки бариста не почав готувати.</dd></div>
-   </dl>
-  </div>
+  <h2 id="pick-h">Як забрати замовлення</h2>
+  <dl class="dl">
+   <div><dt>Де стоїть</dt><dd>Полиця праворуч від входу, на очах у бариста. Стакани підписані імʼям, до каси підходити не треба.</dd></div>
+   <div><dt>Як оплатити</dt><dd>При отриманні: термінал біля полиці (картка, Apple Pay, Google Pay) або готівкою баристі. Передоплати немає.</dd></div>
+   <div><dt>Якщо запізнюєтесь</dt><dd>Тримаємо напій 15 хвилин. Не встигаєте — напишіть у чат, пересунемо час. Якщо не прийшли, замовлення скасовується.</dd></div>
+   <div><dt>Передумали</dt><dd>Скасуйте в чаті з «Помолом» у Telegram (посилання прийде з підтвердженням), поки бариста не почав готувати.</dd></div>
+  </dl>
  </div>
 </section>
 
 <section class="wrap sec" id="where" aria-labelledby="where-h" style="padding-top:0">
  <div class="sec-hd"><h2 id="where-h">Як нас знайти</h2></div>
  <div class="where">
+  <div>
   <div class="map">
    <svg viewBox="0 0 560 360" role="img" aria-labelledby="map-t">
     <title id="map-t">Схема: кавʼярня на проспекті Дмитра Яворницького, 2 хвилини пішки від метро «Вокзальна»</title>
@@ -345,26 +452,60 @@ dialog[open]{animation:up var(--t3) var(--e)}
     <rect x="18" y="132" width="98" height="40" rx="20" fill="#e3aa6c"/><text x="67" y="158" text-anchor="middle" font-family="Unbounded,sans-serif" font-weight="700" font-size="16" fill="#1c1411">помол.</text>
    </svg>
   </div>
+  <p class="tiny">Схема, не масштаб</p>
+  </div>
   <div>
    <p class="addr">просп. Дмитра Яворницького, 107, Дніпро</p>
    <p class="mu" style="margin-top:8px">Вихід з метро «Вокзальна» на проспект, далі 150 метрів у бік центру. Вітрина з барною стійкою вздовж вікна.</p>
    <dl class="hrs"><div><dt>Понеділок – пʼятниця</dt><dd>7:30–20:00</dd></div><div><dt>Субота, неділя</dt><dd>9:00–20:00</dd></div></dl>
-   <div class="acts"><a class="btn" href="#quick">Замовити наперед</a><a class="btn btn-ghost" id="tg-btn" href="https://t.me/ddrakx" target="_blank" rel="noopener">Написати в Telegram</a></div>
-   <p class="tiny">У демо кнопка Telegram відкриває чат з розробником сайту.</p>
+   <p class="mu sm">Замовлення наперед приймаємо до 19:50. Під час тривоги — тільки з собою.</p>
+   <div class="acts"><a class="btn" href="#quick">Замовити наперед</a></div>
+   <div class="ct">
+    <button class="ctb call" type="button" data-demo="tel"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 006 6L16 13l5 2v4a2 2 0 01-2 2A17 17 0 013 5a2 2 0 012-2z"/></svg><span><b>Подзвонити</b><small>+380 XX XXX XX XX · у демо тут буде ваш номер</small></span></button>
+    <a class="ctb" id="tg-btn" href="https://t.me/ddrakx" target="_blank" rel="noopener"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M21 4L3 11.5l6 2.2L11.5 20l3.3-4.2L19 19z"/><path d="M9 13.7L21 4"/></svg><span><b>Telegram</b><small>написати</small></span></a>
+    <button class="ctb" type="button" data-demo="ig"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg><span><b>Instagram</b><small>фото й новини</small></span></button>
+   </div>
+   <p class="tiny">У вашому сайті тут будуть ваші канали. У демо Telegram відкриває чат з розробником сайту.</p>
   </div>
  </div>
  <div class="ph wide"><img src="img/interior.webp" width="1600" height="900" loading="lazy" alt="Зал кавʼярні ввечері: барна стійка вздовж вікна й теплі лампи"></div>
 </section>
 </main>
 
-<footer><div class="wrap"><p>Демо-сайт, зроблений drakx для прикладу. Бізнес вигаданий.</p><a href="../../food/">Інші роботи drakx для кавʼярень</a></div></footer>
+<section class="own" id="owner" aria-labelledby="own-h">
+ <div class="wrap">
+  <p class="own-k">Для власника кавʼярні</p>
+  <h2 id="own-h">Такий сайт для вашої кавʼярні</h2>
+  <div class="own-g">
+   <ul class="own-l">
+    <li><h3>Замовлення приходять вам у Telegram</h3><p>Хто, що замовив, на котру забере і як звʼязатися.</p>
+     <div class="tg" role="img" aria-label="Приклад повідомлення бота: нове замовлення №52, капучино M на вівсяному, 110 грн, Олена забере завтра о 8:42"><div class="tg-msg"><p><b>Нове замовлення №52</b> · з собою</p><p>1× Капучино M, вівсяне молоко — 110 грн</p><p>Забере: <b>Олена</b> завтра о <b>8:42</b></p><p>Звʼязок: +380 XX XXX XX XX</p><span class="tm">21:14</span></div></div></li>
+    <li><h3>Вільний час, ціни й наявність</h3><p>Закінчилось вівсяне чи змінилась ціна — оновлюєте самі через Telegram-бота або пишете розробнику, і він оновить.</p></li>
+    <li><h3>Під ваш бізнес</h3><p>Ваша назва, адреса, місто, меню, ціни й фото. Демо лише показує, як це працює.</p></li>
+   </ul>
+   <div class="own-p">
+    <small>Сайт із замовленням наперед і ботом, як цей</small>
+    <b>11 000–17 000 грн</b>
+    <p>Простіше, сторінка й бот для замовлень: від 6 000 грн.</p>
+    <p>Без передоплати: спершу безкоштовний прототип під вашу назву, часто того ж дня.</p>
+    <a class="btn btn-ink" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%9F%D0%BE%D0%BC%D0%BE%D0%BB%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий сайт</a>
+    <a class="more" href="../../food/#prices">Ціни й умови докладно →</a>
+   </div>
+  </div>
+ </div>
+</section>
 
-<div class="bar" id="bar" aria-hidden="true"><div class="wrap"><p><b id="bar-n">1 позиція · 85 грн</b><span id="bar-t">буде готово о 8:42</span></p><button class="btn" type="button" id="bar-go" tabindex="-1">Оформити</button></div></div>
+<footer><div class="wrap"><p>Демо-сайт, зроблений drakx для прикладу. Бізнес вигаданий.</p><nav aria-label="drakx"><a href="../../food/#prices">Сайт і бот для вашої кавʼярні: ціни й як це працює →</a><a href="../../food/#work">← Інші роботи drakx</a></nav></div></footer>
+
+<div class="bar" id="bar" aria-hidden="true" inert><div class="wrap"><p><b id="bar-n" role="status" aria-live="polite">1 позиція · 85 грн</b><span id="bar-t">буде готово о 8:42</span></p><button class="btn" type="button" id="bar-go">Оформити</button></div></div>
+<div class="qbar" id="qbar" aria-hidden="true" inert><div class="wrap"><p><span id="qb-k">Буде готово о</span><b id="qb-t">—</b></p><button class="btn" type="submit" form="quick">Замовити · <span id="qb-p">85</span> грн</button></div></div>
+<div class="toast" id="toast" role="status" hidden></div>
 
 <dialog id="cz" aria-labelledby="cz-h">
  <div class="dl-in">
   <div class="dh"><div style="flex:1"><h2 id="cz-h">Капучино</h2><p id="cz-d"></p></div><div class="stk" id="cz-stk" aria-hidden="true"></div><button class="x" type="button" data-close aria-label="Закрити"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
   <div id="cz-o" style="display:grid;gap:20px"></div>
+  <p class="lim" id="cz-lim" hidden>Більше 9 — напишіть нам, приготуємо до потрібного часу.</p>
   <div class="dft"><div class="q"><button type="button" data-q="-1" aria-label="Менше">−</button><output id="cz-q">1</output><button type="button" data-q="1" aria-label="Більше">+</button></div><button class="btn btn-ink" type="button" id="cz-add">Додати · 85 грн</button></div>
  </div>
 </dialog>
@@ -373,27 +514,29 @@ dialog[open]{animation:up var(--t3) var(--e)}
  <div class="dl-in" id="co-1">
   <div class="dh"><h2 id="co-h">Ваше замовлення</h2><button class="x" type="button" data-close aria-label="Закрити"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
   <div class="lines" id="co-l"></div>
-  <fieldset class="og"><legend>Як забираєте</legend><div class="chips"><label class="chip"><input type="radio" name="how" value="З собою" checked><span>З собою, у стакані</span></label><label class="chip"><input type="radio" name="how" value="На місці"><span>На місці, у чашці</span></label></div></fieldset>
-  <fieldset class="og slots"><legend>Коли заберете</legend><div class="chips" id="co-s"></div></fieldset>
-  <div class="ready" aria-live="polite"><span id="co-rk">Буде готово о</span><b id="co-rt">8:42</b></div>
-  <div class="dft"><button class="btn btn-ink" type="button" id="co-next">Далі · <span id="co-sum">85</span> грн</button></div>
+  <div class="empty" id="co-e" hidden><p>Замовлення порожнє</p><button class="btn btn-ink" type="button" id="co-menu">До меню</button></div>
+  <fieldset class="og co-x"><legend>Як забираєте</legend><div class="chips"><label class="chip"><input type="radio" name="how" value="З собою" checked><span>З собою, у стакані</span></label><label class="chip"><input type="radio" name="how" value="На місці"><span>На місці, у чашці</span></label></div></fieldset>
+  <fieldset class="og slots co-x"><legend>Коли заберете</legend><div id="co-s"></div><label class="oth">Інший час<select class="sel" id="co-o"></select></label></fieldset>
+  <div class="ready co-x" aria-live="polite"><span id="co-rk">Буде готово о</span><b id="co-rt">8:42</b></div>
+  <div class="dft co-x"><button class="btn btn-ink" type="button" id="co-next">Далі · <span id="co-sum">85</span> грн</button></div>
  </div>
  <div class="dl-in" id="co-2" hidden>
   <div class="dh"><h2 tabindex="-1" id="co-2h">Кому підписати стакан</h2><button class="x" type="button" data-close aria-label="Закрити"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
-  <label class="fld">Імʼя<input id="f-n" autocomplete="given-name" maxlength="20" aria-describedby="f-ne" required><span class="err" id="f-ne" hidden>Напишіть імʼя, ним підпишемо стакан.</span></label>
+  <label class="fld">Імʼя<input id="f-n" autocomplete="given-name" maxlength="20" enterkeyhint="next" aria-describedby="f-ne" required><span class="err" id="f-ne" hidden>Напишіть імʼя, щоб бариста знав, чиє замовлення.</span></label>
+  <label class="fld">Телефон або @нік у Telegram <small>необовʼязково: щоб написати, якщо щось зміниться</small><input id="f-p" autocomplete="tel" maxlength="40" enterkeyhint="send"></label>
   <label class="fld">Коментар баристі <small>необовʼязково, наприклад «менше льоду»</small><textarea id="f-c" maxlength="140"></textarea></label>
-  <p class="pay">Оплата при отриманні: термінал на полиці самовивозу або готівкою баристі.</p>
+  <p class="pay">Без передоплати: платите, коли забираєте. Термінал біля полиці або готівкою баристі.</p>
   <div class="dft"><button class="lnk" type="button" id="co-back">Назад</button><button class="btn btn-ink" type="button" id="co-send">Надіслати · <span id="co-sum2">85</span> грн</button></div>
  </div>
  <div class="dl-in" id="co-3" hidden>
-  <div class="dh"><p class="ok" tabindex="-1" id="co-ok" style="flex:1;margin:0;font-family:var(--fd);color:var(--ink);font-size:20px">Готово! Замовлення вже в Telegram у «Помолі»</p><button class="x" type="button" data-close aria-label="Закрити"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
-  <div class="done-tk"><div><small id="d-no">Замовлення №47</small><b id="d-t">8:42</b></div><div class="nm" id="d-n">Олена</div></div>
-  <div class="tg" aria-label="Так замовлення бачить бариста в Telegram">
-   <div class="tg-hd"><span class="tg-av" aria-hidden="true">п.</span><div><b>Помол · замовлення</b><small>бот</small></div></div>
+  <div class="dh"><p class="ok" tabindex="-1" id="co-ok">Замовлення надіслано</p><button class="x" type="button" data-close aria-label="Закрити"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
+  <div class="done-tk"><div><small id="d-k">Забрати о</small><b id="d-t">8:42</b></div><div class="nm" id="d-n">Олена</div></div>
+  <figure class="tg"><figcaption class="sr">Так замовлення бачить бариста в Telegram</figcaption>
+   <div class="tg-hd" aria-hidden="true"><span class="tg-av">п.</span><div><b>Помол · замовлення</b><small>бот</small></div></div>
    <div class="tg-msg" id="d-msg"></div>
    <div class="tg-b" aria-hidden="true"><span>Прийняти</span><span>Написати клієнту</span></div>
-  </div>
-  <p style="font-size:14px;color:var(--ink2)">Це демо: замовлення нікуди не надсилається. На справжньому сайті воно за секунду приходить баристі в Telegram, а вам приходить підтвердження.</p>
+  </figure>
+  <p class="n3">Це демо: замовлення нікуди не надсилається. На справжньому сайті воно за секунду приходить баристі в Telegram, а якщо ви залишили контакт, вам прийде підтвердження з посиланням на чат, де можна змінити час чи скасувати.<br><a href="../../food/#prices">Сайт і бот для вашої кавʼярні: ціни й як це працює →</a></p>
   <div class="dft"><button class="btn btn-ink" type="button" data-close>Зрозуміло</button></div>
  </div>
 </dialog>
@@ -403,8 +546,9 @@ dialog[open]{animation:up var(--t3) var(--e)}
 const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const SL={250:'S',350:'M',450:'L'};
-const MILK=[['Коровʼяче 3,2%',0],['Вівсяне',25],['Мигдальне',30],['Безлактозне',15],['Кокосове',30]];
-const SYR=[['Без сиропу',0],['Ваніль',20],['Солона карамель',20],['Лісовий горіх',20],['Кленовий',20]];
+// [name, extra price, short label for the ticket]
+const MILK=[['Коровʼяче 3,2%',0,'Коровʼяче'],['Вівсяне',25],['Мигдальне',30],['Безлактозне',15,'Без лактози'],['Кокосове',30]];
+const SYR=[['Без сиропу',0],['Ваніль',20],['Солона карамель',20,'Карамель'],['Лісовий горіх',20],['Кленовий',20]];
 const GR=['У зернах','Під еспресо','Під фільтр','Під турку'];
 const TEA=['Ассам','Сенча','Чебрець і липа'];
 // [id,name,desc,prices,sizes,opts,kind]  opts: m milk, y syrup, x shot, w warm, g grind, t tea
@@ -413,13 +557,13 @@ const MENU=[
 ['esp','Еспресо','бленд Бразилія + Ефіопія, 30 мл',[55],0,'yx'],
 ['ame','Американо','',[60,70,80],[250,350,450],'yx'],
 ['cap','Капучино','',[75,85,95],[250,350,450],'myx'],
-['flw','Флет вайт','подвійний ристрето, 220 мл',[95],0,'myx'],
+['flw','Флет вайт','подвійний еспресо й тонкий шар піни, 220 мл',[95],0,'myx'],
 ['lat','Лате','',[80,90,100],[250,350,450],'myx'],
 ['raf','Раф ванільний','на вершках 10%',[105,120],[350,450],'x']]],
 ['Фільтр і холодне',[
-['v60','V60 із зерна тижня','Ефіопія Гуджі, 300 мл',[95],0,''],
-['bat','Батч-брю','фільтр із термоса, наливаємо одразу',[55,65],[250,350],''],
-['cbt','Колд брю тонік','колд брю 18 год, тонік, апельсин, 400 мл',[115],0,'y'],
+['v60','V60 із зерна тижня','фільтр-кава, заварена вручну, Ефіопія Гуджі, 300 мл',[95],0,''],
+['bat','Батч-брю','фільтр-кава з термоса, наливаємо одразу',[55,65],[250,350],''],
+['cbt','Колд брю тонік','кава холодного заварювання, тонік, апельсин, 400 мл',[115],0,'y'],
 ['ice','Айс лате','',[95,110],[350,450],'myx']]],
 ['Не кава',[
 ['mat','Матча лате','японська матча, 2 г',[110,125],[350,450],'my'],
@@ -430,6 +574,7 @@ const MENU=[
 ['cin','Булочка з корицею','з вершковим сиром',[70],0,'w','b'],
 ['ban','Банановий хліб','шматок, з волоським горіхом',[65],0,'w','b'],
 ['cok','Печиво','темний шоколад і морська сіль',[55],0,'','b']]]];
+const FAST=new Set(['bat','tea','cbt']);
 const I={};
 MENU.forEach(([c,a])=>a.forEach(r=>I[r[0]]={id:r[0],n:r[1],d:r[2],p:r[3],s:r[4],o:r[5],k:r[6]||'d'}));
 I.bns={id:'bns',n:'Зерно тижня, 250 г',d:'Ефіопія Гуджі, натуральна обробка',p:[460],s:0,o:'g',k:'g'};
@@ -449,34 +594,54 @@ const fresh=id=>({id,s:I[id].s&&I[id].s.length>2?1:0,m:0,y:0,x:false,w:true,g:0,
 const plural=(n,f)=>f[n%10==1&&n%100!=11?0:n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?1:2];
 const pad=n=>String(n).padStart(2,'0');
 const hm=d=>d.getHours()+':'+pad(d.getMinutes());
-let cart=[];
+const cz=$('#cz'),co=$('#co'),bar=$('#bar'),go=$('#bar-go'),qbar=$('#qbar'),root=document.documentElement,mq=matchMedia('(max-width:639px)');
+let cart=[],slot=null,step=1,orderNo=0,cur=null;
 
-/* ---------- time ---------- */
+/* ---------- double-tap guard: swallow clicks right after a dialog/step change ---------- */
+let lock=0;const arm=(ms=450)=>{lock=performance.now()+ms};
+document.addEventListener('click',e=>{if(performance.now()<lock){e.preventDefault();e.stopImmediatePropagation()}},true);
+
+/* ---------- time & hours ---------- */
+const mins=d=>d.getHours()*60+d.getMinutes();
+const fm=m=>Math.floor(m/60)+':'+pad(m%60);
 const hrs=d=>{const w=d.getDay();return w==0||w==6?[540,1200]:[450,1200]};
-function prep(list){let d=0,b=0;list.forEach(c=>{const k=I[c.id].k;if(k=='d')d+=c.q;else if(k=='b')b+=c.q});return Math.min(4+2*Math.max(d,1)+(b?1:0),20)}
-function slots(p,n){const now=new Date(),out=[];
- for(let k=0;k<4&&out.length<n;k++){
-  const y=now.getFullYear(),mo=now.getMonth(),da=now.getDate()+k,[o,c]=hrs(new Date(y,mo,da));
-  let f=new Date(y,mo,da,0,o+p),last=new Date(y,mo,da,0,c-10);
-  if(k==0){const e=new Date(now.getTime()+p*60000);if(e>f){f=e;if(f.getSeconds()||f.getMilliseconds()){f.setSeconds(0,0);f=new Date(f.getTime()+60000)}}}
-  if(f>last)continue;
-  out.push({d:f,k});
-  let m=Math.ceil((f.getHours()*60+f.getMinutes()+5)/5)*5;
-  for(let t=new Date(y,mo,da,0,m);t<=last&&out.length<n;t=new Date(t.getTime()+300000))out.push({d:t,k});
- }return out}
+const day0=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate());
+const dk=d=>Math.round((day0(d)-day0(new Date()))/864e5);
 const DAYS=['неділю','понеділок','вівторок','середу','четвер','пʼятницю','суботу'];
-const dayw=s=>s.k==0?'':s.k==1?'завтра':'у '+DAYS[s.d.getDay()];
+const DN=['неділя','понеділок','вівторок','середа','четвер','пʼятниця','субота'];
+const dayw=d=>{const k=dk(d);return k<1?'':k==1?'завтра':'у '+DAYS[d.getDay()]};
+const dayh=d=>{const k=dk(d),n=DN[d.getDay()];return k<1?'Сьогодні':k==1?'Завтра, '+n:n[0].toUpperCase()+n.slice(1)};
+function state(){const n=new Date(),[o,c]=hrs(n),m=mins(n);return{open:m>=o&&m<c,before:m<o,o,c,tmr:hrs(new Date(n.getFullYear(),n.getMonth(),n.getDate()+1))[0]}}
+function prep(list){let e=0,f=0,b=0;list.forEach(c=>{const it=I[c.id];if(it.k=='b')b+=c.q;else if(it.k=='d'){if(FAST.has(c.id))f+=c.q;else e+=c.q}});return Math.min((e?4+2*e:2)+f+(b?1:0),20)}
+// demo bar capacity: orders per 5-minute slot; some peak slots are already full
+const CAP=3,booked={};
+function busy(d){const m=mins(d),w=d.getDay(),s=w==0||w==6?600:480,pk=m>=s&&m<s+90;return (pk?(m%15==5?3:m%5==0?2:1):(m%10==0?1:0))+(booked[+d]||0)>=CAP}
+function dayList(k,p,step){const n=new Date(),y=n.getFullYear(),mo=n.getMonth(),da=n.getDate()+k,[o,c]=hrs(new Date(y,mo,da)),last=new Date(y,mo,da,0,c-10);
+ let f=new Date(y,mo,da,0,o+p);
+ if(k==0){let e=new Date(+n+p*6e4);if(e.getSeconds()||e.getMilliseconds()){e.setSeconds(0,0);e=new Date(+e+6e4)}if(e>f)f=e}
+ const out=[];if(f>last)return out;
+ if(step==5)out.push(f);
+ for(let t=new Date(y,mo,da,0,Math.ceil((mins(f)+(step==5?5:0))/step)*step);t<=last;t=new Date(+t+step*6e4))out.push(t);
+ return out}
+function plan(p){const r=[];for(let k=0;k<4&&r.length<2;k++){const a=dayList(k,p,5);if(a.length)r.push({a,b:dayList(k,p,15)})}return r}
+function firstFree(p){for(let k=0;k<4;k++){const d=dayList(k,p,5).find(x=>!busy(x));if(d)return{d,asap:true}}return null}
+const valid=(s,p)=>!!s&&!busy(s.d)&&plan(p).some(x=>x.a.some(d=>+d==+s.d)||x.b.some(d=>+d==+s.d));
 
 /* ---------- menu ---------- */
 const ml=$('#menu-list');
-ml.innerHTML=MENU.map(([c,a])=>`<div class="cat"><h3>${c}</h3><ul>${a.map(r=>{const it=I[r[0]];return `<li><button class="it" type="button" data-add="${it.id}"><span><b>${it.n}<span class="in" data-in="${it.id}" hidden></span></b>${it.d?`<small>${it.d}</small>`:it.s?`<small>${it.s.map(s=>SL[s]).join(' / ')}</small>`:''}</span><span class="pr">${it.p.join(' / ')} грн</span><span class="pl" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2"/></svg></span></button></li>`}).join('')}</ul></div>`).join('');
-$$('.it').forEach(b=>b.setAttribute('aria-label',b.querySelector('b').textContent+', '+b.querySelector('.pr').textContent+'. Налаштувати й додати'));
+const itemH=it=>{const sub=[it.d,it.s&&it.s.length>1?it.s.map(s=>SL[s]).join(' / '):''].filter(Boolean).join(' · ');
+ return `<li><button class="it" type="button" data-add="${it.id}" aria-label="${esc(it.n)}, ${it.p.join(' / ')} грн. Налаштувати й додати"><span><b>${it.n}<span class="in" data-in="${it.id}" hidden></span></b>${sub?`<small>${sub}</small>`:''}</span><span class="pr">${it.p.join(' / ')} грн</span><span class="pl" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2"/></svg></span></button></li>`};
+function menuR(){const m=mq.matches;
+ ml.innerHTML=MENU.map(([c,a],i)=>{const ul=`<ul>${a.map(r=>itemH(I[r[0]])).join('')}</ul>`;
+  return m?`<details class="cat"${i?'':' open'}><summary><h3>${c}</h3><span>${a.length} ${plural(a.length,['позиція','позиції','позицій'])}</span></summary>${ul}</details>`:`<div class="cat"><h3>${c}</h3>${ul}</div>`}).join('');
+ badges()}
+mq.addEventListener('change',()=>{menuR();qbarUp()});
 
 /* ---------- customizer ---------- */
-const cz=$('#cz');let cur=null;
 const chip=(name,label,i,chk,type='radio')=>`<label class="chip"><input type="${type}" name="${name}" value="${i}"${chk?' checked':''}><span>${label}</span></label>`;
 const grp=(leg,inner)=>`<fieldset class="og"><legend>${leg}</legend><div class="chips">${inner}</div></fieldset>`;
-function openCz(id,opener){
+function openCz(id){
+ if(cz.open||co.open)return;
  const it=I[id];cur=fresh(id);
  $('#cz-h').textContent=it.n;$('#cz-d').textContent=it.d||'';
  let h='';
@@ -490,69 +655,109 @@ function openCz(id,opener){
  if(has(it,'w'))ex+=chip('w','Підігріти',1,1,'checkbox');
  if(ex)h+=grp(has(it,'w')?'Подача':'Додатково',ex);
  $('#cz-o').innerHTML=h;
- cz.dataset.op=opener||'';
- czUp();cz.showModal();
+ czUp();cz._t=performance.now();cz.showModal();cz.scrollTop=0;arm();qbarUp();
 }
 function czUp(){const it=I[cur.id],f=$('#cz-o');
  ['s','m','y','t','g'].forEach(k=>{const r=f.querySelector(`input[name=${k}]:checked`);if(r)cur[k]=+r.value});
  const x=f.querySelector('input[name=x]');cur.x=!!(x&&x.checked);
  const w=f.querySelector('input[name=w]');cur.w=w?w.checked:true;
  $('#cz-q').value=cur.q;
+ $('#cz [data-q="1"]').setAttribute('aria-disabled',cur.q>=9);$('#cz [data-q="-1"]').setAttribute('aria-disabled',cur.q<=1);$('#cz-lim').hidden=cur.q<9;
  $('#cz-add').textContent='Додати · '+price(cur)*cur.q+' грн';
  $('#cz-stk').innerHTML=`<b>${esc(it.n)}</b>${parts(cur).map(esc).join('<br>')||'без змін'}`;
 }
 $('#cz-o').addEventListener('change',czUp);
-cz.addEventListener('click',e=>{const q=e.target.closest('[data-q]');if(q){cur.q=Math.max(1,Math.min(9,cur.q+ +q.dataset.q));czUp()}});
-$('#cz-add').addEventListener('click',()=>{add(cur);cz.close()});
+cz.addEventListener('click',e=>{const q=e.target.closest('[data-q]');if(q&&q.getAttribute('aria-disabled')!='true'){cur.q=Math.max(1,Math.min(9,cur.q+ +q.dataset.q));czUp()}});
+$('#cz-add').addEventListener('click',e=>{add(cur);cz.close();if(e.detail===0)go.focus()});
 
 /* ---------- cart ---------- */
 const keyOf=c=>[c.id,c.s,c.m,c.y,c.x,c.w,c.g,c.t].join('|');
-function add(c){const k=keyOf(c),f=cart.find(e=>keyOf(e)==k);if(f)f.q=Math.min(9,f.q+c.q);else cart.push({...c});sync(true)}
+function add(c){const k=keyOf(c),f=cart.find(e=>!e.quick&&keyOf(e)==k);if(f)f.q=Math.min(9,f.q+c.q);else cart.push({...c});sync(true)}
 const total=()=>cart.reduce((s,c)=>s+price(c)*c.q,0);
 const count=()=>cart.reduce((s,c)=>s+c.q,0);
-const bar=$('#bar'),go=$('#bar-go');
+const curSlot=()=>{const p=prep(cart);return slot&&!slot.asap&&valid(slot,p)?slot:firstFree(p)};
+function badges(){$$('[data-in]').forEach(el=>{const q=cart.filter(c=>c.id==el.dataset.in).reduce((s,c)=>s+c.q,0);el.hidden=!q;el.textContent=q?'× '+q:''})}
 function sync(bump){
  const n=count();
- bar.classList.toggle('on',n>0);bar.setAttribute('aria-hidden',n?'false':'true');go.tabIndex=n?0:-1;
- document.body.classList.toggle('has-bar',n>0);
- if(n){const s=slots(prep(cart),1)[0];
+ bar.classList.toggle('on',n>0);bar.inert=!n;bar.setAttribute('aria-hidden',n?'false':'true');
+ document.body.classList.toggle('has-bar',n>0);root.classList.toggle('hb',n>0);
+ if(n){const s=curSlot();
   $('#bar-n').textContent=`${n} ${plural(n,['позиція','позиції','позицій'])} · ${total()} грн`;
-  $('#bar-t').textContent=s?`буде готово ${dayw(s)?dayw(s)+' ':''}о ${hm(s.d)}`:'';
+  $('#bar-t').textContent=s?`буде готово ${dayw(s.d)?dayw(s.d)+' ':''}о ${hm(s.d)}`:'';
   if(bump){const b=$('#bar-n');b.classList.remove('bump');void b.offsetWidth;b.classList.add('bump')}}
- $$('[data-in]').forEach(el=>{const q=cart.filter(c=>c.id==el.dataset.in).reduce((s,c)=>s+c.q,0);el.hidden=!q;el.textContent=q?'× '+q:''});
- if(co.open&&!$('#co-1').hidden)coRender();
+ badges();
+ if(co.open&&step==1)coRender();
+ qbarUp();
 }
-document.addEventListener('click',e=>{const a=e.target.closest('[data-add]');if(a)openCz(a.dataset.add)});
-$$('dialog').forEach(d=>{d.addEventListener('click',e=>{if(e.target.closest('[data-close]')||e.target==d)d.close()})});
+document.addEventListener('click',e=>{
+ const a=e.target.closest('[data-add]');if(a){openCz(a.dataset.add);return}
+ const d=e.target.closest('[data-demo]');if(d)say(d.dataset.demo=='tel'?'Демо: тут буде номер вашого бізнесу. Клієнт натисне — і одразу подзвонить.':'Демо: тут буде Instagram вашої кавʼярні.');
+});
+$$('dialog').forEach(d=>{
+ // close on backdrop only when the press also started on the backdrop, and not on the 2nd tap of the tap that opened it
+ d.addEventListener('pointerdown',e=>{d._dn=e.target===d&&performance.now()-(d._t||0)>500});
+ d.addEventListener('click',e=>{if(e.target.closest('[data-close]'))d.close();else if(e.target===d&&d._dn)d.close();d._dn=false});
+ d.addEventListener('close',()=>{arm();sync()});
+});
 
 /* ---------- checkout ---------- */
-const co=$('#co');let slot=null,step=1,orderNo=0;
-function show(n){step=n;[1,2,3].forEach(i=>$('#co-'+i).hidden=i!=n);co.scrollTop=0}
+function show(n){step=n;[1,2,3].forEach(i=>$('#co-'+i).hidden=i!=n);co.scrollTop=0;arm()}
+function lines(){
+ $('#co-l').innerHTML=cart.map((c,i)=>{const n=esc(I[c.id].n);return `<div class="ln"><div><b>${n}</b><small>${esc(parts(c).join(', '))}</small></div><div class="q" aria-label="Кількість"><button type="button" data-ci="${i}" data-d="-1" aria-label="Менше: ${n}">−</button><output>${c.q}</output><button type="button" data-ci="${i}" data-d="1" aria-label="Більше: ${n}" aria-disabled="${c.q>=9}">+</button></div><span class="pr">${price(c)*c.q} грн</span><small class="lim"${c.q<9?' hidden':''}>Більше 9 — напишіть нам</small></div>`}).join('')}
 function coRender(){
- if(!cart.length){co.close();return}
- $('#co-l').innerHTML=cart.map((c,i)=>`<div class="ln"><div><b>${esc(I[c.id].n)}</b><small>${esc(parts(c).join(', '))}</small></div><div class="q" aria-label="Кількість"><button type="button" data-ci="${i}" data-d="-1" aria-label="Менше: ${esc(I[c.id].n)}">−</button><output>${c.q}</output><button type="button" data-ci="${i}" data-d="1" aria-label="Більше: ${esc(I[c.id].n)}">+</button></div><span class="pr">${price(c)*c.q} грн</span></div>`).join('');
- const sl=slots(prep(cart),9);
- if(!slot||!sl.some(s=>+s.d==+slot.d))slot=sl[0];
- $('#co-s').innerHTML=sl.map((s,i)=>chip('slot',(i==0&&s.k==0?'Якнайшвидше · ':dayw(s)?dayw(s)+' ':'')+hm(s.d),i,+s.d==+slot.d)).join('');
- $('#co-s').sl=sl;
- readyUp();$('#co-sum').textContent=$('#co-sum2').textContent=total();
+ const e=!cart.length;$('#co-e').hidden=!e;$$('.co-x').forEach(x=>x.hidden=e);
+ if(e){$('#co-l').innerHTML='';return}
+ slotsR();$('#co-sum').textContent=$('#co-sum2').textContent=total();
 }
-function readyUp(){if(!slot)return;$('#co-rk').textContent='Буде готово '+(dayw(slot)?dayw(slot)+' ':'')+'о';const t=$('#co-rt');t.textContent=hm(slot.d);t.classList.remove('pop');void t.offsetWidth;t.classList.add('pop')}
-$('#co-s').addEventListener('change',e=>{slot=$('#co-s').sl[+e.target.value];readyUp()});
-$('#co-l').addEventListener('click',e=>{const b=e.target.closest('[data-ci]');if(!b)return;const c=cart[+b.dataset.ci];c.q+= +b.dataset.d;if(c.q<1)cart.splice(+b.dataset.ci,1);if(c.q>9)c.q=9;sync();});
-function openCo(){slot=null;show(1);coRender();co.showModal()}
+function slotsR(){
+ const p=prep(cart),pl=plan(p),ff=firstFree(p);if(!ff)return;
+ if(!slot||slot.asap||!valid(slot,p))slot=ff;
+ const chips=[];pl.forEach(x=>x.a.forEach(d=>{if(chips.length<6)chips.push(d)}));
+ const tag=d=>+d+(busy(d)?'b':''),key=chips.map(tag).join()+'|'+pl.map(x=>x.b.map(tag).join()).join('|')+'|'+(+ff.d);
+ const box=$('#co-s'),o=$('#co-o');
+ if(box.dataset.key!==key){
+  const af=document.activeElement,fv=af&&af.name=='slot'?af.value:null,fo=af===o;
+  let h='',ck=null;
+  chips.forEach(d=>{const k=dk(d),b=busy(d);if(k!==ck){if(ck!==null)h+='</div>';ck=k;h+=`<p class="sl-h">${dayh(d)}</p><div class="chips">`}
+   h+=`<label class="chip"><input type="radio" name="slot" value="${+d}"${b?' disabled':''}><span>${+d==+ff.d&&!k?'Якнайшвидше · ':''}${hm(d)}${b?' <small>зайнято</small>':''}</span></label>`});
+  box.innerHTML=h+'</div>';box.dataset.key=key;
+  o.innerHTML='<option value="">Оберіть інший час…</option>'+pl.filter(x=>x.b.length).map(x=>`<optgroup label="${dayh(x.b[0])}">${x.b.map(d=>{const b=busy(d);return `<option value="${+d}"${b?' disabled':''}>${hm(d)}${b?' — зайнято':''}</option>`}).join('')}</optgroup>`).join('');
+  if(fv){const r=$(`input[name=slot][value="${fv}"]`,box)||$('input[name=slot]:not(:disabled)',box);if(r)r.focus()}else if(fo)o.focus();
+ }
+ let hit=false;$$('input[name=slot]',box).forEach(r=>{r.checked=+r.value==+slot.d;hit=hit||r.checked});
+ o.value=!hit&&[...o.options].some(x=>x.value==String(+slot.d))?String(+slot.d):'';
+ readyUp();
+}
+function readyUp(){if(!slot)return;const w=dayw(slot.d);$('#co-rk').textContent='Буде готово '+(w?w+' ':'')+'о';const t=$('#co-rt'),v=hm(slot.d);if(t.textContent!==v){t.textContent=v;t.classList.remove('pop');void t.offsetWidth;t.classList.add('pop')}}
+$('#co-s').addEventListener('change',e=>{const d=new Date(+e.target.value),ff=firstFree(prep(cart));slot={d,asap:!!ff&&+d==+ff.d};$('#co-o').value='';readyUp()});
+$('#co-o').addEventListener('change',e=>{if(!e.target.value)return;const d=new Date(+e.target.value);slot={d,asap:false};$$('#co-s input').forEach(r=>r.checked=false);readyUp()});
+$('#co-l').addEventListener('click',e=>{const b=e.target.closest('[data-ci]');if(!b||b.getAttribute('aria-disabled')=='true')return;
+ const i=+b.dataset.ci,c=cart[i];c.q=Math.min(9,c.q+ +b.dataset.d);
+ if(c.q<1){cart.splice(i,1);lines();sync();const nb=$('#co-l [data-ci]');(nb||$('#co-menu')).focus();return}
+ const ln=b.closest('.ln');ln.querySelector('output').value=c.q;ln.querySelector('.pr').textContent=price(c)*c.q+' грн';
+ ln.querySelector('[data-d="1"]').setAttribute('aria-disabled',c.q>=9);ln.querySelector('.lim').hidden=c.q<9;sync()});
+function openCo(){if(co.open||cz.open)return;lines();show(1);coRender();co._t=performance.now();co.showModal();arm();qbarUp()}
 go.addEventListener('click',openCo);
-$('#co-next').addEventListener('click',()=>{show(2);$('#f-n').focus()});
+$('#co-menu').addEventListener('click',()=>{co.close();$('#menu').scrollIntoView();const f=$('#menu .it');if(f)f.focus({preventScroll:true})});
+$('#co-next').addEventListener('click',()=>{if(!cart.length)return;$('#co-2h').textContent=$('input[name=how]:checked').value=='На місці'?'Як вас звати?':'Кому підписати стакан';show(2);$('#f-n').focus()});
 $('#co-back').addEventListener('click',()=>{show(1);coRender()});
-$('#f-n').addEventListener('input',e=>{if(e.target.value.trim()){e.target.removeAttribute('aria-invalid');$('#f-ne').hidden=true}});
+const fn=$('#f-n');let dirty=false;
+const nErr=on=>{if(on)fn.setAttribute('aria-invalid','true');else fn.removeAttribute('aria-invalid');$('#f-ne').hidden=!on};
+fn.addEventListener('input',()=>{dirty=true;if(fn.value.trim())nErr(false)});
+fn.addEventListener('blur',()=>{if(dirty&&!fn.value.trim()&&!co.querySelector('#co-2').hidden)nErr(true)});
+fn.addEventListener('keydown',e=>{if(e.key=='Enter'){e.preventDefault();$('#f-p').focus()}});
+$('#f-p').addEventListener('keydown',e=>{if(e.key=='Enter'){e.preventDefault();$('#co-send').click()}});
 $('#co-send').addEventListener('click',()=>{
- const nm=$('#f-n').value.trim();
- if(!nm){$('#f-n').setAttribute('aria-invalid','true');$('#f-ne').hidden=false;$('#f-n').focus();return}
- const how=$('input[name=how]:checked').value,cm=$('#f-c').value.trim(),now=new Date();
+ const nm=fn.value.trim();
+ if(!nm){nErr(true);fn.focus();return}
+ if(!cart.length)return;
+ const p=prep(cart);if(!slot||slot.asap||!valid(slot,p))slot=firstFree(p);if(!slot)return;
+ const how=$('input[name=how]:checked').value,cm=$('#f-c').value.trim(),ct=$('#f-p').value.trim(),now=new Date(),st=state(),w=dayw(slot.d);
  orderNo=orderNo?orderNo+1:12+Math.floor(Math.random()*70);
- $('#d-no').textContent='Замовлення №'+orderNo+(dayw(slot)?', '+dayw(slot):'');
- $('#d-t').textContent=hm(slot.d);$('#d-n').textContent=nm;
- $('#d-msg').innerHTML=`<p><b>Нове замовлення №${orderNo}</b> · ${how.toLowerCase()}</p>${cart.map(c=>`<p>${c.q}× ${esc(I[c.id].n)}${parts(c).length?', '+esc(parts(c).join(', ')):''} — ${price(c)*c.q} грн</p>`).join('')}<p>Разом: <b>${total()} грн</b>, оплата при отриманні</p><p>Забере: <b>${esc(nm)}</b> ${dayw(slot)?esc(dayw(slot))+' ':''}о <b>${hm(slot.d)}</b></p>${cm?`<p>Коментар: ${esc(cm)}</p>`:''}<span class="tm">${hm(now)}</span>`;
+ booked[+slot.d]=(booked[+slot.d]||0)+1;
+ $('#co-ok').textContent=`Замовлення №${orderNo} надіслано. `+(st.open?'Бариста підтвердить за хвилину.':`Бариста підтвердить, щойно відкриємось${st.before?'':' завтра'} о ${fm(st.before?st.o:st.tmr)}.`);
+ $('#d-k').textContent='Забрати '+(w?w+' ':'')+'о';$('#d-t').textContent=hm(slot.d);$('#d-n').textContent=nm;
+ $('#d-msg').innerHTML=`<p><b>Нове замовлення №${orderNo}</b> · ${how.toLowerCase()}</p>${cart.map(c=>`<p>${c.q}× ${esc(I[c.id].n)}${parts(c).length?', '+esc(parts(c).join(', ')):''} — ${price(c)*c.q} грн</p>`).join('')}<p>Разом: <b>${total()} грн</b>, оплата при отриманні</p><p>Забере: <b>${esc(nm)}</b> ${w?esc(w)+' ':''}о <b>${hm(slot.d)}</b></p>${ct?`<p>Звʼязок: ${esc(ct)}</p>`:''}${cm?`<p>Коментар: ${esc(cm)}</p>`:''}<span class="tm">${hm(now)}</span>`;
  show(3);$('#co-ok').focus();
  cart=[];slot=null;$('#f-c').value='';sync();
 });
@@ -561,23 +766,44 @@ $('#co-send').addEventListener('click',()=>{
 const qd=$('#q-d'),qs=$('#q-s'),qm=$('#q-m'),qy=$('#q-y');
 const drinks=Object.values(I).filter(i=>i.k=='d');
 qd.innerHTML=drinks.map(i=>`<option value="${i.id}"${i.id=='cap'?' selected':''}>${i.n}</option>`).join('');
-qm.innerHTML=MILK.map((m,i)=>`<option value="${i}">${m[0].split(' ')[0]}${m[1]?' +'+m[1]:''}</option>`).join('');
-qy.innerHTML=SYR.map((m,i)=>`<option value="${i}">${m[0]}${m[1]?' +'+m[1]:''}</option>`).join('');
+const opt=a=>a.map((m,i)=>`<option value="${i}">${m[2]||m[0]}${m[1]?' +'+m[1]:''}</option>`).join('');
+qm.innerHTML=opt(MILK);qy.innerHTML=opt(SYR);
 let qc=fresh('cap');
+// drink without milk/syrup: show «Без молока», remember the previous choice and restore it later
+const tog=(el,on,ph)=>{if(on){if(el.disabled){el.disabled=false;const o=el.querySelector('[value="-1"]');if(o)o.remove();el.value=el.dataset.keep||0}}else if(!el.disabled){el.dataset.keep=el.value;el.disabled=true;el.insertAdjacentHTML('afterbegin',`<option value="-1">${ph}</option>`);el.value=-1}};
 function qSizes(){const it=I[qc.id];
  qs.innerHTML=it.s?it.s.map((s,i)=>`<label><input type="radio" name="qs" value="${i}"${i==qc.s?' checked':''}><span>${SL[s]}<small>${s} мл</small></span></label>`).join(''):`<label><input type="radio" name="qs" value="0" checked><span>${(it.d.match(/\d+ мл/)||['1 розмір'])[0]}<small>один розмір</small></span></label>`;
- qm.disabled=!has(it,'m');qy.disabled=!has(it,'y');
- if(qm.disabled)qm.value=0;if(qy.disabled)qy.value=0}
-function qUp(){qc.m=+qm.value;qc.y=+qy.value;const r=qs.querySelector('input:checked');qc.s=r?+r.value:0;
- $('#q-p').textContent=price(qc);
- const s=slots(prep([qc]),1)[0];if(!s)return;
- $('#q-k').textContent=s.k==0?'Замовите зараз — буде готово о':'Зараз зачинено. Замовте з вечора й заберіть '+dayw(s)+' о';
- $('#q-t').textContent=hm(s.d);
- $('#q-n').textContent=s.k==0?`Готуємо ≈${prep([qc])} хв. Час можна змінити на наступному кроці.`:`Відкриваємось о ${Math.floor(hrs(s.d)[0]/60)}:${pad(hrs(s.d)[0]%60)}. Кава буде готова першою.`}
-qd.addEventListener('change',()=>{qc=fresh(qd.value);qc.m=+qm.value;qc.y=+qy.value;qSizes();qUp()});
+ tog(qm,has(it,'m'),'Без молока');tog(qy,has(it,'y'),'Без сиропу')}
+function qUp(){qc.m=Math.max(0,+qm.value);qc.y=Math.max(0,+qy.value);const r=qs.querySelector('input:checked');qc.s=r?+r.value:0;
+ $('#q-p').textContent=$('#qb-p').textContent=price(qc);
+ const st=state(),p=prep([qc]),s=firstFree(p);nowUp(st);if(!s)return;
+ const k=dk(s.d),w=dayw(s.d),t=hm(s.d);
+ $('#q-k').textContent=st.open&&!k?'Замовите зараз — забирайте о':st.open?`Сьогодні вже не встигнемо. Заберіть ${w} о`:!k?`Зараз зачинено. Відкриваємось о ${fm(st.o)}, заберете о`:`Зараз зачинено. Замовте з вечора й заберіть ${w} о`;
+ $('#q-t').textContent=t;
+ $('#q-n').textContent=(st.open&&!k?`Готуємо ≈${p} хв. `:'')+'Час можна змінити на наступному кроці.';
+ $('#qb-k').textContent=st.open&&!k?'Буде готово о':'Заберете '+(w?w+' ':'')+'о';$('#qb-t').textContent=t}
+function nowUp(st){$('#now').classList.toggle('off',!st.open);
+ $('#now-t').textContent=st.open?`Відчинено до ${fm(st.c)}, замовлення до ${fm(st.c-10)}`:`Зачинено, відкриємось ${st.before?'':'завтра '}о ${fm(st.before?st.o:st.tmr)}`}
+qd.addEventListener('change',()=>{qc=fresh(qd.value);qSizes();qUp()});
 $('#quick').addEventListener('change',e=>{if(e.target!=qd)qUp()});
-$('#quick').addEventListener('submit',e=>{e.preventDefault();add({...qc,q:1});openCo()});
-qSizes();qUp();setInterval(()=>{qUp();if(count())sync()},30000);
+$('#quick').addEventListener('submit',e=>{e.preventDefault();if(co.open||cz.open)return;qUp();cart=cart.filter(c=>!c.quick);cart.push({...qc,q:1,quick:true});sync(true);openCo()});
+
+/* ---------- phone: compact sticky time + price while the ticket's button is off-screen ---------- */
+function qbarUp(){
+ const t=$('#quick').getBoundingClientRect(),b=$('#quick .tk-bot .btn').getBoundingClientRect(),H=innerHeight;
+ const on=mq.matches&&!count()&&!co.open&&!cz.open&&t.top<H-60&&b.bottom>H;
+ if(on!==qbar.classList.contains('on')){qbar.classList.toggle('on',on);qbar.inert=!on;qbar.setAttribute('aria-hidden',!on)}
+ root.classList.toggle('qb',on)}
+let raf=0;addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(()=>{raf=0;qbarUp()})},{passive:true});
+addEventListener('resize',qbarUp);
+
+/* ---------- demo hints ---------- */
+const toast=$('#toast');let tT=0;
+function say(t){toast.hidden=true;toast.textContent=t;void toast.offsetWidth;toast.hidden=false;clearTimeout(tT);tT=setTimeout(()=>toast.hidden=true,4500)}
+
+menuR();qSizes();qUp();sync();
+setInterval(()=>{qUp();sync()},30000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){qUp();sync()}});
 
 /* ---------- images not yet generated: keep the palette placeholder ---------- */
 $$('.ph img').forEach(i=>{const h=()=>i.style.visibility='hidden';if(i.complete&&!i.naturalWidth)h();i.addEventListener('error',h)});
