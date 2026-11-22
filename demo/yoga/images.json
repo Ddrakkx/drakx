@@ -1,0 +1,23 @@
+[
+  {
+    "file": "img/hero.webp",
+    "prompt": "Sunlit yoga studio on the third floor of an old Austro-Hungarian era building in a western Ukrainian city, tall windows overlooking autumn park trees, warm oak plank floor, natural linen-colored yoga mats laid out in a calm row, folded wool blankets and cork blocks beside each mat, a large green potted plant in the corner, soft morning light with a gentle haze, airy and quiet atmosphere, palette of warm cream, deep spruce green and ochre, no people, photorealistic, shot on 35mm, vertical composition, no text, no logos",
+    "aspect": "4:5",
+    "width": 1080,
+    "alt": "Світлий зал з дерев'яною підлогою, льняними килимками й високими вікнами на осінній парк"
+  },
+  {
+    "file": "img/stretch.webp",
+    "prompt": "A woman seen from behind sitting in a gentle seated forward fold on a linen-colored yoga mat, wearing muted sage green clothing, hair in a low bun, face not visible, soft diffused side light from a large window, light oak floor, lots of negative space, calm natural colors of cream, sage and spruce green, film-like photorealistic look, vertical composition, no text, no logos",
+    "aspect": "4:5",
+    "width": 960,
+    "alt": "Жінка в нахилі сидячи на льняному килимку, вигляд зі спини, мʼяке світло з вікна"
+  },
+  {
+    "file": "img/props.webp",
+    "prompt": "Still life of yoga props on a warm wooden floor: two cork blocks, a rolled cotton strap, a folded hand-woven wool blanket with thin Carpathian-style stripes in ochre and deep green, a round linen bolster, a small hand-painted ceramic cup of herbal tea, low morning sunlight casting soft long shadows, 45-degree overhead angle, calm and tactile, photorealistic, no people, no text, no logos",
+    "aspect": "3:2",
+    "width": 1200,
+    "alt": "Коркові блоки, бавовняний ремінь і вовняний плед з карпатською смужкою на дерев'яній підлозі"
+  }
+]

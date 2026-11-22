@@ -1,0 +1,37 @@
+[
+  {
+    "file": "img/hero.webp",
+    "prompt": "Empty modern barber chair upholstered in black leather with brushed steel base, standing in a dark barbershop with charcoal plaster walls, a single warm amber pendant lamp above casting a pool of light, large frameless mirror reflecting soft bokeh lights, polished dark concrete floor, low-key cinematic lighting, moody and premium, minimal decor, vertical composition, no people, no text, no logos, no skulls, no mustache motifs",
+    "aspect": "4:5",
+    "width": 1000,
+    "alt": "Порожнє барберське крісло з чорної шкіри під теплою лампою в темному залі"
+  },
+  {
+    "file": "img/fade.webp",
+    "prompt": "Back of a man's head with a fresh skin fade haircut, sharp clean neckline and crisp edges, short textured hair on top, a barber's hand holding a matte black hair clipper just out of focus, dark charcoal background, warm amber side light emphasizing the gradient of the fade, close crop from behind, no face visible, no text",
+    "aspect": "3:4",
+    "width": 900,
+    "alt": "Потилиця зі свіжим фейдом і чіткою лінією окантовки"
+  },
+  {
+    "file": "img/beard.webp",
+    "prompt": "Close crop of a man's jaw and neatly groomed dark beard while a barber shapes the cheek line with a straight razor, white shaving cream along the edge, hot towel folded on the shoulder, frame cropped above the mouth so the face is not identifiable, dark moody tones with warm amber highlights, shallow depth of field, no text",
+    "aspect": "3:4",
+    "width": 900,
+    "alt": "Майстер підрівнює контур бороди небезпечною бритвою"
+  },
+  {
+    "file": "img/tools.webp",
+    "prompt": "Barber tools laid out in a precise row on dark walnut wood: matte black cordless hair clipper, steel hair-cutting scissors, folding straight razor, black wide-tooth comb, a neatly folded white towel, top-down view, low-key lighting with warm amber highlights on the metal, dark and premium, no brand marks, no text",
+    "aspect": "3:2",
+    "width": 1200,
+    "alt": "Машинка для стрижки, ножиці й небезпечна бритва на темному горіховому дереві"
+  },
+  {
+    "file": "img/interior.webp",
+    "prompt": "Wide panoramic view of a dark premium barbershop interior with four black leather barber chairs in a row facing large mirrors, warm amber pendant lights over each station, charcoal walls, dark concrete floor, evening atmosphere, clean and orderly, cinematic low-key lighting, no people, no text, no logos, no neon signs",
+    "aspect": "21:9",
+    "width": 1600,
+    "alt": "Зал барбершопу: чотири шкіряні крісла в ряд навпроти дзеркал, теплі лампи"
+  }
+]

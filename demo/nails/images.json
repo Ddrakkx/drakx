@@ -1,0 +1,30 @@
+[
+  {
+    "file": "img/hero.webp",
+    "prompt": "Close-up of a woman's hand resting relaxed on a pale blush-pink travertine slab, medium-length almond-shaped nails in glossy milky-pink gel polish with a clean cuticle line, soft diffused morning window light from the left, gentle shadows, shallow depth of field, a small ceramic dish with a few dried rose petals blurred in the background, palette of milk white, powder pink and a single deep cherry accent, editorial beauty still life, hand only, no face, no jewelry logos",
+    "aspect": "4:5",
+    "width": 1000,
+    "alt": "Рука з мигдалеподібними нігтями в молочно-рожевому гель-лаку на світлому травертині"
+  },
+  {
+    "file": "img/pedicure.webp",
+    "prompt": "Tasteful close crop of two feet resting on a folded white terry towel on a pedicure footrest, toenails in glossy deep cherry-red gel polish, neat and natural, soft warm daylight, pale blush-pink wall and linen textures in the background, calm spa atmosphere, clean and hygienic look, shot from slightly above, no face, no text",
+    "aspect": "4:5",
+    "width": 800,
+    "alt": "Стопи на білому рушнику, нігті в глянцевому вишневому гель-лаку"
+  },
+  {
+    "file": "img/care.webp",
+    "prompt": "Stainless manicure tools (cuticle nippers, pusher, scissors) sealed inside brown kraft sterilization pouches with a color-change indicator strip, neatly laid on a white enamel tray next to a compact dry-heat sterilizer cabinet with its door slightly open, blush-pink tabletop, bright soft clinical yet warm light, top-down three-quarter angle, crisp detail, no readable text or brand marks",
+    "aspect": "4:3",
+    "width": 1200,
+    "alt": "Манікюрні інструменти в запаяних крафт-пакетах з індикатором поруч із сухожаровою шафою"
+  },
+  {
+    "file": "img/studio.webp",
+    "prompt": "Bright small nail studio interior in an old Lviv building with high ceilings, tall arched window with sheer white curtains, two white manicure tables with cushioned blush-pink chairs, polished pale concrete floor, a wall shelf with neat rows of gel polish bottles in nude, pink and cherry tones with labels turned away, a green plant, soft morning light, calm and airy, wide shot, no people, no text, no logos",
+    "aspect": "3:2",
+    "width": 1400,
+    "alt": "Світла студія з арковим вікном, два манікюрні столи й полиця з гель-лаками"
+  }
+]

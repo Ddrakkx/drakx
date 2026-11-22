@@ -1,0 +1,30 @@
+[
+  {
+    "file": "img/hero.webp",
+    "prompt": "Calm, modern dental treatment room in a renovated ground-floor apartment, photographed at eye level from the doorway. A dental chair upholstered in muted sage green leather, light oak cabinetry with matte white handles, a large window onto a quiet courtyard with soft overcast daylight, a potted olive tree in a clay pot by the window, pale mineral-grey walls. No people. Soft natural light, gentle shadows, calm and trustworthy mood, not clinical or sterile-blue. Palette: sage green, warm white, light oak, a touch of terracotta. Photorealistic, 35mm lens, shallow depth of field on the chair, no text, no logos, no visible screens with text.",
+    "aspect": "4:5",
+    "width": 1200,
+    "alt": "Світлий кабінет стоматології: крісло з оббивкою кольору шавлії, велике вікно у двір і рослина на дерев’яній шафі"
+  },
+  {
+    "file": "img/room.webp",
+    "prompt": "Small, quiet waiting area of a neighbourhood dental clinic: two linen armchairs in oatmeal colour, a round light oak side table with a glass carafe of water and two glasses, a tall leafy plant, sage-green painted wall with a simple wooden shelf holding a few books, daylight through a tall window with sheer linen curtain. No people, no reception computer screens, no text or signage. Calm, homely, trustworthy mood. Palette: sage green, warm white, oak, linen. Photorealistic interior photography, wide 24mm lens at chest height, soft morning light.",
+    "aspect": "3:2",
+    "width": 1500,
+    "alt": "Зона очікування: лляні крісла, дубовий стіл і рослини біля вікна"
+  },
+  {
+    "file": "img/sterile.webp",
+    "prompt": "Close-up still life of sealed sterilization pouches containing stainless dental instruments (mirror, probe, tweezers) laid neatly on a matte sage-green tray on a light oak counter. One gloved hand at the edge of the frame peeling open a pouch. Soft side daylight, clean but warm, shallow depth of field. No faces, no text or printed labels readable, no brand marks. Palette: sage green, warm white, brushed steel, light oak. Photorealistic macro product photography.",
+    "aspect": "1:1",
+    "width": 600,
+    "alt": "Запечатані стерилізаційні пакети з інструментами на лотку кольору шавлії"
+  },
+  {
+    "file": "img/xray.webp",
+    "prompt": "Panoramic dental X-ray machine (orthopantomograph) standing in a small bright room with pale sage walls and light oak floor, soft daylight from a side window, a small plant on a shelf. No people, no text, no logos or brand names on the machine, no screens. Calm, tidy, modern but warm mood. Palette: warm white, sage green, light oak. Photorealistic interior photography, 35mm lens, eye level.",
+    "aspect": "1:1",
+    "width": 600,
+    "alt": "Апарат для панорамного знімка в невеликому світлому кабінеті"
+  }
+]

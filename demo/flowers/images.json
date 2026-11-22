@@ -1,0 +1,44 @@
+[
+ {
+  "file": "img/hero.webp",
+  "aspect": "4:5",
+  "width": 1200,
+  "alt": "Букет з персикового ранункулюсу та евкаліпта в матовому папері на столі флориста",
+  "prompt": "Editorial still life photograph of a lush hand-tied bouquet of peach and coral ranunculus with silver dollar eucalyptus, wrapped in matte ivory paper, lying on a pale sage-green linen tablecloth on a florist's worktable, soft morning window light from the left, tiny water droplets on petals, muted greens and blush tones, shallow depth of field, calm fresh mood, no people, no text, no logos"
+ },
+ {
+  "file": "img/bouquet-cream.webp",
+  "aspect": "4:5",
+  "width": 800,
+  "alt": "Дев’ять кремових троянд з евкаліптом у крафтовому папері",
+  "prompt": "Product photo of a small bouquet of nine cream garden roses with eucalyptus sprigs, wrapped in brown kraft paper tied with natural jute twine, standing upright in a clear glass vase on a light sage-green table against a plain off-white wall, soft diffused daylight, fresh and clean, slight shadow to the right, no text, no logos"
+ },
+ {
+  "file": "img/bouquet-coral.webp",
+  "aspect": "4:5",
+  "width": 800,
+  "alt": "Круглий букет з коралового ранункулюсу, еустоми й кущових троянд у молочному папері",
+  "prompt": "Round bouquet of coral ranunculus, peach eustoma and pink spray roses with a few green leaves, wrapped in matte milky-white paper with a dark green velvet ribbon, lying diagonally on pale green paper backdrop, three-quarter top view, soft diffused light, vivid but natural colors, editorial magazine style, no text, no people"
+ },
+ {
+  "file": "img/bouquet-box.webp",
+  "aspect": "4:5",
+  "width": 800,
+  "alt": "Двадцять п’ять бордових троянд куполом у темно-зеленій капелюшній коробці",
+  "prompt": "Twenty-five deep burgundy roses arranged in a tight dome inside a round dark green hat box with a thin kraft-colored band, on a light sage-green surface, soft side light from a window, rich velvety petals, elegant close-up at slight top angle, plain background, no text or logos on the box"
+ },
+ {
+  "file": "img/bouquet-tulips.webp",
+  "aspect": "4:5",
+  "width": 800,
+  "alt": "Двадцять п’ять білих, рожевих і коралових тюльпанів у білому папері",
+  "prompt": "Bouquet of twenty-five mixed tulips in white, soft pink and coral with fresh green leaves, wrapped in white matte paper, lying on a light oak table, soft daylight, fresh spring feeling in late autumn, gentle shadows, natural colors, no text, no people"
+ },
+ {
+  "file": "img/studio.webp",
+  "aspect": "3:2",
+  "width": 1200,
+  "alt": "Майстерня: відра з квітами біля арочного вікна, на столі рулони крафтового паперу",
+  "prompt": "Interior of a small florist workshop in an old Lviv building: zinc buckets with fresh roses, ranunculus and eucalyptus on a worn wooden floor, tall arched window with soft morning daylight, walls painted deep green, wooden worktable with rolls of kraft paper, twine and floral scissors, a florist's hands trimming stems seen from the side (no face visible), calm atmosphere, no text, no signage"
+ }
+]

@@ -62,6 +62,7 @@ p,li{text-wrap:pretty}
 .pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 26px;border-radius:25px;font-size:17px;font-weight:500;white-space:nowrap;transition:translate .35s var(--soft),scale .45s var(--spring),background .3s}
 .pill{position:relative;isolation:isolate;overflow:hidden;translate:var(--tx,0px) var(--ty,0px)}
 .pill:active{scale:.95}
+@media (hover:hover) and (pointer:fine){.pill:hover{scale:1.04}.pill:hover:active{scale:.97}}
 .pill::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;
   background:radial-gradient(90px circle at var(--mx,50%) var(--my,-30%),rgba(255,255,255,.26),transparent 70%)}
 .pill.light::after{background:radial-gradient(90px circle at var(--mx,50%) var(--my,-30%),rgba(0,0,0,.06),transparent 70%)}
@@ -259,9 +260,37 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .nums{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0 14px}
 .num{border-radius:var(--r-in);padding:16px 18px;background:#fff}
 .num b{display:block;font-size:clamp(26px,2.6vw,32px);font-weight:600;letter-spacing:-.03em;line-height:1.1}
-.num span{font-size:14px;color:var(--ink2);line-height:1.35;display:block;margin-top:6px}
+.num>span{font-size:14px;color:var(--ink2);line-height:1.35;display:block;margin-top:6px}
+.num i{font-style:normal}
+.num.wide{grid-column:1/-1}
+/* живі цифри з бота Gold Auto: прокручуються, як одометр */
+.bstats{margin:24px 0 14px}
+.bstats .nums{margin:0}
+.bs-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-bottom:10px}
+.bs-dot{display:none;flex:none;width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.bstats.on .bs-dot{display:block;animation:pulse 1.6s ease-out 8}
+.bs-upd:not(:empty)::before{content:"· ";}
+.num b.od{display:flex}
+.odw{display:inline-flex;align-items:flex-start;font-variant-numeric:tabular-nums}
+.odw>span{display:inline-block;height:1.1em;line-height:1.1em;white-space:pre}
+.odw .dg{overflow:hidden}
+.odw .dg>span{display:block;transform:translateY(calc(var(--v,0) * -1.1em));transition:transform 1.5s cubic-bezier(.2,.9,.25,1);transition-delay:var(--dl,0s)}
+.odw .dg>span>span{display:block;height:1.1em;line-height:1.1em}
+.odw .u{align-self:flex-end;height:auto;line-height:1.6;font-size:.6em;font-weight:500;margin-left:.22em;letter-spacing:0}
 .link{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:500;color:var(--ink);text-decoration:underline;text-decoration-color:rgba(0,0,0,.25);text-underline-offset:4px}
 .link:hover{text-decoration-color:var(--ink)}
+/* демо для ніші (сторінки /beauty/ тощо): два живі сайти-приклади перед реальними кейсами */
+.demos{margin-bottom:clamp(72px,9vw,112px)}
+.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,3.4vw,40px) clamp(20px,3vw,32px)}
+.demo-card .shot{display:block}
+.dview{position:relative;border-radius:var(--r-in);overflow:hidden;aspect-ratio:16/10;background:#e8e8e8}
+.dview img{width:100%;height:100%;object-fit:cover;object-position:top}
+.demo-card .tag{margin-top:20px}
+.demo-card h3{font-size:clamp(26px,2.6vw,32px);letter-spacing:-.025em;line-height:1.12;font-weight:600;margin:6px 0 8px}
+.demo-card p:not(.tag){color:var(--ink2)}
+.demo-card .link{margin-top:4px}
+.cases-h{text-align:center;margin-bottom:clamp(28px,4vw,44px)}
+@media (max-width:700px){.demo-grid{grid-template-columns:1fr}}
 
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
   .svc .card,.prices .plan,.term{transition:opacity .8s var(--soft),transform .9s var(--soft),translate .45s var(--soft),box-shadow .45s;transition-delay:var(--d,0s),var(--d,0s),0s,0s}
@@ -491,7 +520,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
   .ctas .pill{width:100%}
   .phone{width:210px;--ph:290px}
 }
-@media (max-width:360px){.fsteps li{font-size:9.5px;letter-spacing:.02em}.ctas .pill{padding:0 16px;font-size:16px}}
+@media (max-width:360px){.num>span{font-size:13px}.fsteps li{font-size:9.5px;letter-spacing:.02em}.ctas .pill{padding:0 16px;font-size:16px}}
 /* короткі екрани: кнопка й «+31%» мають уміститися на першому екрані (iPhone SE/8, ноутбук 1366×768) */
 @media (min-width:700px) and (max-height:700px){.hero{--sw:min(300px,40vw);padding-top:80px}.island-area{margin-top:12px}.copy{margin-top:14px}.ctas{margin-top:20px}}
 @media (max-width:700px) and (max-height:720px){.hero{--sw:min(260px,62vw);padding-top:74px;padding-bottom:32px}.island-area{margin-top:10px}.copy{margin-top:14px}.copy .eyebrow{margin-bottom:8px}.copy h1{margin-bottom:10px}.ctas{margin-top:18px}.copy .lead{font-size:16px}}
@@ -508,8 +537,8 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .island,.st,.m,.rv,.c-day li,.word,.aura i{transition:none!important;animation:none!important}
-  .live .dot{animation:none!important}.dock{transition:none!important}
-  .pill:active,.island.in:hover{scale:none}
+  .live .dot,.bstats .bs-dot{animation:none!important}.dock{transition:none!important}.odw .dg>span{transition:none!important}
+  .pill:active,.pill:hover,.island.in:hover{scale:none}
   .nav{transition:none}
 }
 </style>
@@ -578,7 +607,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <article class="card c-site rv">
         <h3>Сайти</h3>
         <p>Сторінка, де клієнт бачить ваші послуги й ціни та одразу записується. Швидко відкривається навіть на мобільному інтернеті.</p>
-        <div class="phone" id="phone"><img src="../media/gold-mlong-360.webp" srcset="../media/gold-mlong-360.webp 360w, ../media/gold-mlong-480.webp 480w, ../media/gold-mlong-720.webp 720w" sizes="236px" width="360" height="2400" alt="Сайт Gold Auto на телефоні" loading="lazy" decoding="async"></div>
+        <div class="phone" id="phone"><img src="../media/demo-fitness-m-360.webp" srcset="../media/demo-fitness-m-360.webp 360w, ../media/demo-fitness-m-480.webp 480w, ../media/demo-fitness-m-720.webp 720w" sizes="236px" width="360" height="2400" alt="Демо-сайт «ТЕМП» на телефоні" loading="lazy" decoding="async"></div>
       </article>
       <article class="card c-bot rv" id="c-bot" style="--d:.08s">
         <h3>Telegram&#8209;боти</h3>
@@ -607,6 +636,25 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 <section class="block" id="work" aria-labelledby="work-h">
   <div class="wrap">
     <div class="head rv"><p class="eyebrow">Роботи</p><h2 id="work-h">Живі проєкти</h2><p class="lead" id="work-lead">Сайти й боти, які я зробив для клієнтів.</p></div>
+    <div class="demos"><div class="demo-grid">
+      <article class="demo-card rv">
+        <a class="shot" href="../demo/fitness/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><div class="bar"><i></i><i></i><i></i><u>Демо · ТЕМП</u></div>
+          <div class="dview"><img src="../media/demo-fitness-720.webp" srcset="../media/demo-fitness-720.webp 720w, ../media/demo-fitness-1440.webp 1440w" sizes="(max-width:700px) 92vw, 520px" width="1440" height="900" alt="" loading="lazy" decoding="async"></div></a>
+        <p class="tag">Демо · Групові тренування · Дніпро</p>
+        <h3>ТЕМП</h3>
+        <p>Розклад на тиждень із вільними місцями, фільтрами й записом в один дотик.</p>
+        <a class="link" href="../demo/fitness/" target="_blank" rel="noopener">Відкрити демо <span aria-hidden="true">↗</span><span class="sr"> (відкриється в новій вкладці)</span></a>
+      </article>
+      <article class="demo-card rv" style="--d:.08s">
+        <a class="shot" href="../demo/yoga/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><div class="bar"><i></i><i></i><i></i><u>Демо · Смерека</u></div>
+          <div class="dview"><img src="../media/demo-yoga-720.webp" srcset="../media/demo-yoga-720.webp 720w, ../media/demo-yoga-1440.webp 1440w" sizes="(max-width:700px) 92vw, 520px" width="1440" height="900" alt="" loading="lazy" decoding="async"></div></a>
+        <p class="tag">Демо · Йога й розтяжка · Івано-Франківськ</p>
+        <h3>Смерека</h3>
+        <p>Три питання, і сайт підбере заняття та найближчий вільний клас для новачка.</p>
+        <a class="link" href="../demo/yoga/" target="_blank" rel="noopener">Відкрити демо <span aria-hidden="true">↗</span><span class="sr"> (відкриється в новій вкладці)</span></a>
+      </article>
+    </div></div>
+    <p class="eyebrow cases-h rv">Реальні клієнти: автосервіси</p>
     <p class="hint rv">Наведіть курсор на знімок: лінза покаже каркас сторінки</p>
 
     <article class="case">
@@ -624,7 +672,16 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
         <p>Сайт автосервісу: послуги, сертифікати, клубна програма Gold Club і кнопка запису на кожному екрані.</p>
         <div class="chips"><span>Запис онлайн</span><span>Світла й темна тема</span><span>Зручно на телефоні</span></div>
         <p class="aside">Для цього ж СТО зробив клієнтський Telegram&#8209;бот:</p>
-        <div class="nums"><div class="num"><b>+31%</b><span>закритих нарядів за перший повний місяць із&nbsp;ботом</span></div><div class="num"><b>~140</b><span>клієнтів СТО вже користуються ботом</span></div></div>
+        <div class="bstats" id="bstats">
+          <p class="bs-head"><span class="bs-dot" aria-hidden="true"></span><span id="bs-state">Цифри з бота Gold Auto</span><span class="bs-upd" id="bs-upd"></span></p>
+          <div class="nums">
+            <div class="num"><b>+31%</b><span>закритих нарядів за перший повний місяць із&nbsp;ботом</span></div>
+            <div class="num"><b class="od" data-k="share" data-f="1" data-u="%">35,9%</b><span>закритих нарядів СТО припадає на клієнтів із&nbsp;ботом</span></div>
+            <div class="num"><b class="od" data-k="users">215</b><span><i data-k="users" data-pl="клієнт|клієнти|клієнтів">клієнтів</i> СТО користуються ботом</span></div>
+            <div class="num"><b class="od" data-k="bookings">42</b><span><i data-k="bookings" data-pl="запис|записи|записів">записи</i> через бота, а&nbsp;за&nbsp;запрошенням привели ще <i data-k="referrals">15</i>&nbsp;<i data-k="referrals" data-pl="друга|друзів|друзів">друзів</i></span></div>
+            <div class="num wide"><b class="od" data-k="orders_sum" data-u=" грн">457 215 грн</b><span>сума <i data-k="orders">167</i>&nbsp;<i data-k="orders" data-pl="наряду|нарядів|нарядів">нарядів</i>, які закрили клієнти з&nbsp;ботом, з&nbsp;<i id="bs-since">14&nbsp;серпня</i></span></div>
+          </div>
+        </div>
         <a class="link" href="https://goldauto.online/" target="_blank" rel="noopener">goldauto.online <span aria-hidden="true">↗</span><span class="sr"> (відкриється в новій вкладці)</span></a>
       </div>
     </article>
@@ -788,7 +845,9 @@ if(NV){
     :a.id==='cta'?`Привіт! Хочу безкоштовний прототип. Мій бізнес: ${NV.biz} «…»`
     :`Привіт! Мій бізнес: ${NV.biz} «…». Хочу обговорити сайт або бота.`)});
   /* чесно: кейси поки з автосервісів, тож для інших ніш пропонуємо прототип */
-  $('#work-lead').innerHTML=`Поки що я робив проєкти для автосервісів. Для ${NV.w} покажу прототип безкоштовно, ще до оплати.`;
+  $('#work-lead').innerHTML=$('.demos')
+    ?`Мої клієнти поки що автосервіси, тому для вашої ніші я зробив два демо. Відкрийте їх і спробуйте самі: усе працює. Для ${NV.w} покажу прототип безкоштовно, ще до оплати.`
+    :`Поки що я робив проєкти для автосервісів. Для ${NV.w} покажу прототип безкоштовно, ще до оплати.`;
 }
 
 /* скляний нік: поява, блік пробігає один раз; на комп'ютері блік і нахил за курсором */
@@ -935,6 +994,38 @@ if(fine&&!reduce){
   cta.addEventListener('pointerenter',()=>go(1));cta.addEventListener('pointerleave',()=>go(-1));
   cta.addEventListener('focus',()=>{if(cta.matches(':focus-visible'))go(1)});cta.addEventListener('blur',()=>go(-1));
 }
+/* живий лічильник бота Gold Auto: бот раз на 5 хв рахує цифри й кладе їх на goldauto.online, сторінка забирає їх,
+   коли кейс на екрані, і прокручує цифри, як одометр. Сервер мовчить — лишаються останні відомі цифри з розмітки */
+{const box=$('#bstats');if(box){
+  const API='https://goldauto.online/api/shop/bot-stats',MON=['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'];
+  const pl=(n,f)=>{const [a,b,c]=f.split('|'),d=n%10,h=n%100;return d===1&&h!==11?a:d>=2&&d<=4&&(h<12||h>14)?b:c};
+  const num=(v,f)=>f?(+v).toFixed(f).replace('.',','):Math.round(v).toLocaleString('uk-UA').replace(/\s/g,'\u00a0');
+  const ods=$$('b.od',box);
+  /* розмітка одометра: стрічка 0–9 на кожну цифру; для скринрідера — звичайний текст */
+  const build=(b,txt)=>{
+    const u=b.dataset.u||'',ds=[...txt];
+    b.innerHTML=`<span class="sr">${txt+u}</span><span class="odw" aria-hidden="true">${ds.map((c,i)=>/\d/.test(c)
+      ?`<span class="dg"><span style="--dl:${((ds.length-i)*.07).toFixed(2)}s">${[...'0123456789'].map(d=>`<span>${d}</span>`).join('')}</span></span>`:`<span>${c}</span>`).join('')}${u?`<span class="${/[а-яґєії]/i.test(u)?'u':''}">${u.trim()}</span>`:''}</span>`;
+    b.dataset.len=ds.length};
+  const set=(b,v)=>{const txt=num(v,+b.dataset.f||0);
+    if(b.dataset.len!=[...txt].length){build(b,txt);b.offsetWidth}
+    b.querySelector('.sr').textContent=txt+(b.dataset.u||'');
+    const st=$$('.dg>span',b);[...txt].filter(c=>/\d/.test(c)).forEach((c,i)=>st[i].style.setProperty('--v',c))};
+  const apply=d=>{
+    ods.forEach(b=>{if(d[b.dataset.k]!=null)set(b,d[b.dataset.k])});
+    $$('i[data-k]',box).forEach(i=>{const v=d[i.dataset.k];if(v==null)return;i.textContent=i.dataset.pl?pl(Math.round(v),i.dataset.pl):num(v)});
+    if(d.since){const t=new Date(d.since);if(!isNaN(t))$('#bs-since').textContent=t.getDate()+' '+MON[t.getMonth()]}
+    if(d.updated){const t=new Date(d.updated),now=new Date();if(!isNaN(t))$('#bs-upd').textContent='оновлено '+(t.toDateString()===now.toDateString()
+      ?'о '+t.toTimeString().slice(0,5):t.getDate()+' '+MON[t.getMonth()])}};
+  /* стартові значення — те, що вже вписано в розмітку */
+  const start={};ods.forEach(b=>{start[b.dataset.k]=parseFloat(b.textContent.replace(/[^\d,]/g,'').replace(',','.'))});
+  ods.forEach(b=>build(b,num(0,+b.dataset.f||0).replace(/\d/g,'0')));ods.forEach(b=>set(b,0));
+  const load=async()=>{try{const c=new AbortController(),t=setTimeout(()=>c.abort(),15000);
+    const r=await fetch(API,{signal:c.signal,cache:'no-store'});clearTimeout(t);if(!r.ok)throw 0;
+    const d=await r.json();if(!(d.users>0))throw 0;apply(d);box.classList.add('on');$('#bs-state').textContent='Наживо з бота Gold Auto'}catch(e){}};
+  io([box],(e,o)=>{if(!e.isIntersecting)return;o.unobserve(box);requestAnimationFrame(()=>apply(start));load();
+    setInterval(()=>{if(!document.hidden)load()},300000)},{threshold:.3});
+}}
 /* мікровзаємодії для миші: магнітні кнопки з бліком, нахил скриншотів */
 if(fine&&!reduce){
   $$('.pill').forEach(b=>{

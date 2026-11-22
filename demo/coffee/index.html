@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Демо: кавʼярня «Помол», Дніпро | drakx</title>
+<meta name="description" content="Демо-сайт specialty-кавʼярні: замовлення кави наперед з вибором розміру, молока й сиропу та самовивіз без черги.">
+<meta name="theme-color" content="#1c1411">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c1411'/%3E%3Cg transform='rotate(35 16 16)'%3E%3Cellipse cx='16' cy='16' rx='7.5' ry='11' fill='%23e3aa6c'/%3E%3Cpath d='M16 5c-3 4 3 7 0 11s3 7 0 11' stroke='%231c1411' stroke-width='1.8' fill='none'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1c1411;--bg2:#251a15;--bg3:#30231c;--line:#43322a;--tx:#f4eadf;--mu:#c4b3a2;--cr:#e3aa6c;--cr2:#f1c38f;--paper:#fbf6ee;--paper2:#f1e8dc;--ink:#1c1411;--ink2:#5a483d;--tg:#3e88c7;
+--fd:'Unbounded',system-ui,sans-serif;--fb:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;
+--e:cubic-bezier(.2,.7,.2,1);--t1:.12s;--t2:.22s;--t3:.36s;--r1:10px;--r2:18px;--r3:28px}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.55 var(--fb);overflow-x:hidden}
+body.has-bar{padding-bottom:84px}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+p,ul,ol,dl,dd,figure,fieldset{margin:0;padding:0}
+ul,ol{list-style:none}
+fieldset{border:0;min-width:0}
+h1,h2,h3{margin:0;font-family:var(--fd);font-weight:700;line-height:1.1;letter-spacing:-.015em;text-wrap:balance}
+h3{font-weight:500}
+:focus-visible{outline:2px solid var(--cr2);outline-offset:3px}
+.wrap{width:min(1200px,100%);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.mu{color:var(--mu)}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ph{position:relative;overflow:hidden;background:var(--bg3)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border:0;border-radius:999px;background:var(--cr);color:var(--ink);font:600 16px/1.1 var(--fb);text-decoration:none;cursor:pointer;transition:transform var(--t1) var(--e),background-color var(--t2) var(--e)}
+.btn:hover{background:var(--cr2)}
+.btn:active{transform:scale(.97)}
+.btn-ghost{background:transparent;color:var(--tx);box-shadow:inset 0 0 0 1px var(--line)}
+.btn-ghost:hover{background:var(--bg3)}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:#3a2a21}
+.btn-ink:focus-visible{outline-color:var(--ink)}
+/* demo bar */
+.demo{background:#120d0b;color:#d6c7b7;font-size:12.5px;border-bottom:1px solid #2a1f1a}
+.demo .wrap{display:flex;align-items:center;gap:14px;white-space:nowrap}
+.demo a{display:inline-flex;align-items:center;min-height:44px;color:var(--cr2);font-weight:600;text-decoration:none}
+.demo a:hover{text-decoration:underline}
+.demo .back{margin-left:auto;color:#d6c7b7;font-weight:500}
+/* header */
+.hd{display:flex;align-items:center;gap:24px;min-height:72px}
+.logo{font:700 24px/1 var(--fd);text-decoration:none;letter-spacing:-.03em}
+.logo i{font-style:normal;color:var(--cr)}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:999px;text-decoration:none;color:var(--mu);font-weight:500}
+.nav a:hover{color:var(--tx);background:var(--bg2)}
+.hd .btn{min-height:44px;padding:0 18px;font-size:15px}
+/* hero */
+.hero{padding:clamp(16px,4vw,48px) 0 clamp(48px,7vw,96px)}
+.hero-in{display:grid;gap:28px}
+.meta{color:var(--mu);font-size:15px;margin-bottom:16px}
+.meta b{color:var(--cr2);font-weight:600}
+.hero h1{font-size:clamp(30px,4.6vw,56px)}
+.lead{margin-top:20px;font-size:clamp(16px,1.5vw,19px);color:#e3d6c8;max-width:34em}
+.hours{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:0 20px;font-size:15px;color:var(--mu)}
+.hours a{color:var(--cr2);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.hero-vis{position:relative}
+.hero-ph{border-radius:var(--r3);aspect-ratio:2/1}
+/* ticket */
+.tk{position:relative;z-index:1;margin:-72px 12px 0;color:var(--ink);border-radius:var(--r2);filter:drop-shadow(0 24px 30px rgba(0,0,0,.45));max-width:420px}
+.tk-top{padding:20px 20px 18px;display:grid;gap:12px;border-radius:var(--r2) var(--r2) 0 0;background:radial-gradient(circle at 0 100%,#0000 11px,var(--paper) 11.5px) left/51% 100% no-repeat,radial-gradient(circle at 100% 100%,#0000 11px,var(--paper) 11.5px) right/51% 100% no-repeat}
+.tk-h{font:500 13px/1.2 var(--fd);text-transform:uppercase;letter-spacing:.06em;color:var(--ink2)}
+.fl{display:grid;gap:4px;font-size:13px;font-weight:600;color:var(--ink2)}
+.sel{appearance:none;width:100%;min-height:44px;padding:0 36px 0 12px;border:1px solid #d6c8b7;border-radius:var(--r1);background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231c1411' stroke-width='1.6' fill='none'/%3E%3C/svg%3E") no-repeat right 14px center;color:var(--ink);font:500 16px var(--fb)}
+.sel:disabled{opacity:.55}
+.sel:focus-visible,.tk .seg input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seg{display:flex;gap:6px}
+.seg label{flex:1;position:relative}
+.seg input{position:absolute;opacity:0;inset:0;margin:0}
+.seg span{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;border-radius:var(--r1);border:1px solid #d6c8b7;background:#fff;font-weight:600;font-size:15px;line-height:1.1;cursor:pointer;transition:background-color var(--t2) var(--e),color var(--t2) var(--e)}
+.seg small{font-weight:400;font-size:12px;color:var(--ink2)}
+.seg input:checked+span{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.seg input:checked+span small{color:#d8c9b8}
+.tk-bot{position:relative;padding:18px 20px 20px;display:grid;gap:4px;border-radius:0 0 var(--r2) var(--r2);background:radial-gradient(circle at 0 0,#0000 11px,var(--paper) 11.5px) left/51% 100% no-repeat,radial-gradient(circle at 100% 0,#0000 11px,var(--paper) 11.5px) right/51% 100% no-repeat}
+.tk-bot::before{content:"";position:absolute;left:20px;right:20px;top:-1px;border-top:2px dashed #d9cbb9}
+.tk-k{font-size:14px;color:var(--ink2)}
+.tk-time{font:700 clamp(54px,8vw,72px)/1 var(--fd);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.tk-note{font-size:13px;color:var(--ink2);margin-bottom:12px}
+.tk .btn{width:100%}
+.pop{animation:pop var(--t3) var(--e)}
+@keyframes pop{from{opacity:.2;transform:translateY(6px)}}
+/* timeline */
+.how{padding-block:clamp(40px,6vw,72px);border-top:1px solid var(--line)}
+.how h2{font-size:clamp(22px,2.6vw,30px);max-width:20ch}
+.tl{display:grid;gap:24px;margin-top:32px;counter-reset:t}
+.tl li{display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:baseline}
+.tl time{font:700 22px/1 var(--fd);color:var(--cr);font-variant-numeric:tabular-nums}
+.tl p{color:#e3d6c8}
+/* menu */
+.sec{padding-block:clamp(56px,8vw,104px)}
+.sec-hd{display:grid;gap:12px;margin-bottom:36px}
+.sec-hd h2{font-size:clamp(28px,4vw,46px)}
+.sec-hd p{color:var(--mu);max-width:44em}
+.menu{display:grid;gap:40px}
+.cat h3{font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--cr2);padding-bottom:12px;border-bottom:1px solid var(--line)}
+.cat{container-type:inline-size}
+.it{display:grid;grid-template-columns:1fr 44px;gap:2px 12px;align-items:center;width:100%;min-height:68px;padding:12px 0;border:0;border-bottom:1px solid var(--line);background:none;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:background-color var(--t2) var(--e)}
+.it b{display:block;font-weight:600;font-size:17px}
+.it small{display:block;color:var(--mu);font-size:14px;line-height:1.35;margin-top:2px}
+.it .pr{grid-column:1;grid-row:2;font-variant-numeric:tabular-nums;font-weight:500;white-space:nowrap;color:var(--cr2)}
+@container (min-width:400px){.it{grid-template-columns:1fr auto 44px;gap:12px}.it .pr{grid-column:2;grid-row:1;text-align:right}.it .pl{grid-column:3!important;grid-row:1!important}}
+.it .pl{grid-column:2;grid-row:1/3;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--bg3);color:var(--cr2);transition:background-color var(--t2) var(--e),color var(--t2) var(--e),transform var(--t1) var(--e)}
+.it:hover .pl{background:var(--cr);color:var(--ink)}
+.it:active .pl{transform:scale(.9)}
+.it:focus-visible{outline-offset:-2px;border-radius:8px}
+.it .in{display:inline-block;margin-left:6px;padding:1px 8px;border-radius:999px;background:var(--cr);color:var(--ink);font-size:12px;font-weight:600;vertical-align:2px}
+/* beans */
+.beans{display:grid;gap:28px;align-items:center}
+.beans .ph{border-radius:var(--r3);aspect-ratio:1}
+.notes{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+.notes li{padding:6px 14px;border-radius:999px;border:1px solid var(--line);font-size:15px}
+.beans p+p{margin-top:12px}
+.beans .btn{margin-top:24px}
+/* pickup */
+.pick{display:grid;gap:32px}
+.pick .ph{border-radius:var(--r3);aspect-ratio:4/3}
+.dl{display:grid;gap:0}
+.dl div{padding:18px 0;border-bottom:1px solid var(--line);display:grid;gap:4px}
+.dl dt{font-weight:600;font-size:17px}
+.dl dd{color:var(--mu)}
+/* where */
+.where{display:grid;gap:32px}
+.map{border-radius:var(--r3);overflow:hidden;background:var(--bg2);border:1px solid var(--line)}
+.map svg{display:block;width:100%;height:auto}
+.addr{font:500 clamp(20px,2.4vw,26px)/1.25 var(--fd)}
+.hrs{margin:24px 0;display:grid;gap:8px;max-width:360px}
+.hrs div{display:flex;justify-content:space-between;gap:16px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.hrs dd{font-variant-numeric:tabular-nums}
+.acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.tiny{font-size:13px;color:var(--mu);margin-top:12px}
+.wide{margin-top:clamp(40px,6vw,72px);border-radius:var(--r3);aspect-ratio:16/9}
+@media (min-width:960px){.wide{aspect-ratio:21/9}}
+footer{border-top:1px solid var(--line);padding-block:32px;color:var(--mu);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+/* order bar */
+.bar{visibility:hidden;position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(18,13,11,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform var(--t3) var(--e),visibility 0s var(--t3)}
+.bar.on{transition:transform var(--t3) var(--e)}
+.bar.on{transform:none;visibility:visible}
+.bar .wrap{display:flex;align-items:center;gap:16px;min-height:72px}
+.bar p{flex:1;min-width:0;line-height:1.3}
+.bar p b{font-weight:600}
+.bar p span{display:block;font-size:14px;color:var(--mu)}
+.bump{animation:bump .3s var(--e)}
+@keyframes bump{40%{transform:scale(1.12)}}
+/* dialogs */
+dialog{padding:0;border:0;background:var(--paper);color:var(--ink);width:100%;max-width:560px;max-height:min(92vh,860px);border-radius:var(--r3) var(--r3) 0 0;margin:auto auto 0;overflow:auto;overscroll-behavior:contain}
+dialog::backdrop{background:rgba(10,7,6,.62)}
+dialog[open]{animation:up var(--t3) var(--e)}
+@keyframes up{from{transform:translateY(32px);opacity:0}}
+.dl-in{padding:20px 20px 24px;display:grid;gap:20px}
+.dh{display:flex;gap:12px;align-items:flex-start}
+.dh h2{font-size:22px;flex:1}
+.dh p{font-size:14px;color:var(--ink2);margin-top:6px;font-family:var(--fb)}
+.x{flex:none;display:grid;place-items:center;width:44px;height:44px;margin:-6px -8px 0 0;border:0;border-radius:50%;background:var(--paper2);color:var(--ink);cursor:pointer}
+.x:hover{background:#e6dacb}
+.x:focus-visible,dialog .btn:focus-visible,dialog .chip input:focus-visible+span,dialog .q button:focus-visible,dialog .lnk:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.stk{flex:none;width:132px;padding:10px 12px;border-radius:8px;background:#fff;border:1px solid #e3d7c8;font:500 12px/1.35 var(--fb);color:var(--ink2);box-shadow:0 2px 0 #e3d7c8;transform:rotate(2deg)}
+.stk b{display:block;font:700 13px/1.2 var(--fd);color:var(--ink);text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
+.og legend{font-weight:600;font-size:15px;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0}
+.chip span{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;border-radius:999px;border:1px solid #d6c8b7;background:#fff;font-size:15px;cursor:pointer;transition:background-color var(--t2) var(--e),color var(--t2) var(--e),border-color var(--t2) var(--e)}
+.chip small{font-size:13px;color:var(--ink2)}
+.chip input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.chip input:checked+span small{color:#d8c9b8}
+.chip span:active{transform:scale(.97)}
+.dft{display:flex;gap:12px;align-items:center;position:sticky;bottom:0;margin:0 -20px -24px;padding:14px 20px 18px;background:var(--paper);border-top:1px solid #e6dacb}
+.dft .btn{flex:1}
+.q{display:inline-flex;align-items:center;border-radius:999px;background:var(--paper2)}
+.q button{width:44px;height:44px;border:0;border-radius:50%;background:none;color:var(--ink);font:600 20px/1 var(--fb);cursor:pointer}
+.q button:hover{background:#e6dacb}
+.q output{min-width:22px;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.lines{display:grid}
+.ln{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 0;border-bottom:1px solid #e6dacb;align-items:center}
+.ln b{font-weight:600}
+.ln small{display:block;color:var(--ink2);font-size:14px}
+.ln .q{grid-row:span 2;align-self:center}
+.ln .pr{font-variant-numeric:tabular-nums;font-size:15px}
+.ready{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:16px 18px;border-radius:var(--r2);background:var(--ink);color:var(--paper)}
+.ready span{font-size:14px;color:#d8c9b8}
+.ready b{font:700 40px/1 var(--fd);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.slots .chip span{font-variant-numeric:tabular-nums}
+.fld{display:grid;gap:6px;font-weight:600;font-size:15px}
+.fld input,.fld textarea{width:100%;min-height:48px;padding:12px 14px;border:1px solid #cbbba8;border-radius:var(--r1);background:#fff;color:var(--ink);font:400 16px/1.4 var(--fb)}
+.fld textarea{min-height:76px;resize:vertical}
+.fld input:focus-visible,.fld textarea:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.fld small{font-weight:400;color:var(--ink2);font-size:13px}
+.err{color:#a1261b;font-weight:500;font-size:14px}
+.fld input[aria-invalid=true]{border-color:#a1261b}
+.pay{font-size:14px;color:var(--ink2);padding:12px 14px;border-radius:var(--r1);background:var(--paper2)}
+.lnk{border:0;background:none;color:var(--ink);font:600 15px var(--fb);text-decoration:underline;min-height:44px;padding:0 8px;cursor:pointer}
+.done-tk{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;padding:18px;border-radius:var(--r2);background:var(--ink);color:var(--paper)}
+.done-tk small{display:block;color:#d8c9b8;font-size:13px}
+.done-tk b{font:700 44px/1 var(--fd);letter-spacing:-.03em}
+.done-tk .nm{font:700 18px/1.2 var(--fd);text-align:right}
+.ok{font:700 20px/1.25 var(--fd)}
+.tg{border-radius:var(--r2);background:#dfe9f1;padding:12px;font-size:14px;line-height:1.45}
+.tg-hd{display:flex;align-items:center;gap:10px;margin-bottom:10px;color:#1f3447}
+.tg-av{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--ink);color:var(--cr2);font:700 15px var(--fd)}
+.tg-hd small{display:block;color:#4b6378;font-size:12px}
+.tg-msg{background:#fff;border-radius:14px 14px 14px 4px;padding:10px 12px 6px;color:#152230}
+.tg-msg p+p{margin-top:4px}
+.tg-msg .tm{display:block;text-align:right;font-size:11px;color:#6b7f90}
+.tg-b{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px}
+.tg-b span{display:grid;place-items:center;min-height:36px;border-radius:10px;background:rgba(255,255,255,.7);color:#1f5f99;font-weight:600;font-size:13px}
+@media (min-width:640px){
+ .tk{margin:-96px 0 0 24px}
+ .tl{grid-template-columns:repeat(3,1fr);gap:32px}
+ .tl li{grid-template-columns:1fr;gap:12px}
+ .tl time{font-size:28px}
+ .menu{grid-template-columns:1fr 1fr;gap:48px 56px}
+ dialog{border-radius:var(--r3);margin:auto}
+ .dl-in{padding:28px 28px 28px}
+ .dft{margin:0 -28px -28px;padding:16px 28px 22px}
+}
+@media (max-width:719px){.nav{display:none}.hd .btn{margin-left:auto}}
+@media (max-width:639px){.hours{display:none}.lead{margin-top:14px}.hero-in{gap:24px}}
+@media (max-width:379px){.demo .xs{display:none}.demo .wrap{gap:12px}.stk{width:112px}}
+@media (min-width:960px){
+ .hero-in{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:72px;align-items:start}
+ .hero-txt{padding-top:24px}
+ .hero-ph{aspect-ratio:4/5}
+ .tk{position:absolute;left:-48px;bottom:-40px;margin:0;width:360px}
+ .beans{grid-template-columns:5fr 6fr;gap:72px}
+ .pick{grid-template-columns:6fr 5fr;gap:72px;align-items:center}
+ .where{grid-template-columns:7fr 5fr;gap:56px;align-items:start}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="demo"><div class="wrap"><span>Демо<span class="xs">-сайт</span> від drakx</span><a href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%9F%D0%BE%D0%BC%D0%BE%D0%BB%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий</a><a class="back" href="../../food/">← Інші роботи</a></div></div>
+
+<header class="wrap hd">
+ <a class="logo" href="#top" aria-label="Помол, на початок сторінки">помол<i>.</i></a>
+ <nav class="nav" aria-label="Розділи"><a href="#menu">Меню</a><a href="#pickup">Як забрати</a><a href="#where">Адреса</a></nav>
+ <a class="btn" href="#quick">Замовити наперед</a>
+</header>
+
+<main id="top">
+<section class="hero">
+ <div class="wrap hero-in">
+  <div class="hero-txt">
+   <p class="meta">Specialty-кавʼярня · Дніпро, <b>2 хв від метро «Вокзальна»</b></p>
+   <h1>Замовте каву з&nbsp;дороги. Заберіть без черги.</h1>
+   <p class="lead">Оберіть напій, розмір, молоко й сироп. Бариста почне готувати так, щоб кава була гарячою саме тоді, коли ви заходите, а стакан з вашим імʼям уже стояв на полиці біля входу.</p>
+   <p class="hours"><span>Пн–Пт 7:30–20:00</span><span>Сб–Нд 9:00–20:00</span><a href="#menu">Усе меню й ціни ↓</a></p>
+  </div>
+  <div class="hero-vis">
+   <div class="ph hero-ph"><img src="img/hero.webp" width="1200" height="1500" alt="Бариста наливає спінене молоко у флет вайт на барі кавʼярні" fetchpriority="high"></div>
+   <form class="tk" id="quick" aria-labelledby="qk-h">
+    <div class="tk-top">
+     <p class="tk-h" id="qk-h">Швидке замовлення</p>
+     <label class="fl">Напій<select class="sel" id="q-d"></select></label>
+     <fieldset><legend class="sr">Розмір</legend><div class="seg" id="q-s"></div></fieldset>
+     <div class="row2"><label class="fl">Молоко<select class="sel" id="q-m"></select></label><label class="fl">Сироп<select class="sel" id="q-y"></select></label></div>
+    </div>
+        <div class="tk-bot">
+     <p class="tk-k" id="q-k">Замовите зараз — буде готово о</p>
+     <p class="tk-time" id="q-t" aria-live="polite">—</p>
+     <p class="tk-note" id="q-n"></p>
+     <button class="btn btn-ink" type="submit">Замовити · <span id="q-p">85</span> грн</button>
+    </div>
+   </form>
+  </div>
+ </div>
+</section>
+
+<section class="wrap how" aria-labelledby="how-h">
+ <h2 id="how-h">Як це виглядає о восьмій ранку</h2>
+ <ol class="tl">
+  <li><time>8:35</time><p>Замовили флет вайт на вівсяному, поки їхали в метро.</p></li>
+  <li><time>8:38</time><p>Бариста бачить замовлення і ставить його в чергу на 8:42, а не «на зараз». Молоко не вистигне.</p></li>
+  <li><time>8:42</time><p>Стакан з вашим імʼям на полиці праворуч від входу. Оплачуєте на терміналі поруч і йдете.</p></li>
+ </ol>
+</section>
+
+<section class="wrap sec" id="menu" aria-labelledby="menu-h">
+ <div class="sec-hd">
+  <h2 id="menu-h">Меню</h2>
+  <p>Розміри: S 250 мл, M 350 мл, L 450 мл. Рослинне молоко +15–30 грн, сироп +20 грн, додатковий шот +30 грн. Натисніть на позицію, щоб налаштувати й додати до замовлення.</p>
+ </div>
+ <div class="menu" id="menu-list"></div>
+</section>
+
+<section class="wrap sec" aria-labelledby="bean-h" style="padding-top:0">
+ <div class="beans">
+  <div class="ph"><img src="img/beans.webp" width="900" height="900" loading="lazy" alt="Свіжообсмажене зерно Ефіопія Гуджі в керамічній мисці"></div>
+  <div>
+   <h2 id="bean-h" style="font-size:clamp(26px,3.4vw,40px)">Зерно тижня: Ефіопія Гуджі</h2>
+   <ul class="notes" aria-label="Смакові ноти"><li>полуниця</li><li>какао</li><li>чорний чай</li></ul>
+   <p>Натуральна обробка, світле обсмаження. Його ж наливаємо цього тижня у V60 і батч-брю, тож можна спочатку спробувати в чашці.</p>
+   <p class="mu">Пачка 250 г — 460 грн. Змелемо під еспресо, фільтр чи турку, або віддамо в зернах.</p>
+   <button class="btn" type="button" data-add="bns">Додати пачку до замовлення</button>
+  </div>
+ </div>
+</section>
+
+<section class="wrap sec" id="pickup" aria-labelledby="pick-h" style="padding-top:0">
+ <div class="pick">
+  <div class="ph"><img src="img/shelf.webp" width="1200" height="900" loading="lazy" alt="Полиця самовивозу з підписаними паперовими стаканами біля входу"></div>
+  <div>
+   <h2 id="pick-h" style="font-size:clamp(26px,3.4vw,40px)">Як забрати замовлення</h2>
+   <dl class="dl" style="margin-top:20px">
+    <div><dt>Де стоїть</dt><dd>Полиця праворуч від входу. Стакани підписані імʼям, до каси підходити не треба.</dd></div>
+    <div><dt>Як оплатити</dt><dd>Термінал на полиці: картка, Apple Pay, Google Pay. Готівкою можна баристі.</dd></div>
+    <div><dt>Якщо запізнюєтесь</dt><dd>Тримаємо напій 15 хвилин. Вистиг — переробимо без доплати.</dd></div>
+    <div><dt>Передумали</dt><dd>Напишіть боту «скасувати», поки бариста не почав готувати.</dd></div>
+   </dl>
+  </div>
+ </div>
+</section>
+
+<section class="wrap sec" id="where" aria-labelledby="where-h" style="padding-top:0">
+ <div class="sec-hd"><h2 id="where-h">Як нас знайти</h2></div>
+ <div class="where">
+  <div class="map">
+   <svg viewBox="0 0 560 360" role="img" aria-labelledby="map-t">
+    <title id="map-t">Схема: кавʼярня на проспекті Дмитра Яворницького, 2 хвилини пішки від метро «Вокзальна»</title>
+    <rect width="560" height="360" fill="#251a15"/>
+    <g fill="#30231c"><rect x="24" y="24" width="150" height="92" rx="10"/><rect x="196" y="24" width="84" height="120" rx="10"/><rect x="330" y="24" width="206" height="70" rx="10"/><rect x="24" y="270" width="110" height="66" rx="10"/><rect x="156" y="282" width="120" height="54" rx="10"/></g>
+    <rect x="352" y="262" width="184" height="74" rx="12" fill="#3a2b22"/>
+    <text x="444" y="305" fill="#c4b3a2" font-family="Onest,sans-serif" font-size="16" text-anchor="middle">Залізничний вокзал</text>
+    <path d="M-10 252 L570 122" stroke="#4a382e" stroke-width="34"/>
+    <path d="M300 -10 L316 370" stroke="#4a382e" stroke-width="18"/>
+    <path id="av" d="M0 256 L560 130" fill="none"/>
+    <text fill="#e3d6c8" font-family="Onest,sans-serif" font-size="16"><textPath href="#av" startOffset="59%">просп. Дмитра Яворницького</textPath></text>
+    <path d="M160 214 C200 236 250 244 292 244" stroke="#e3aa6c" stroke-width="3" stroke-dasharray="2 8" stroke-linecap="round" fill="none"/>
+    <text x="176" y="266" fill="#f1c38f" font-family="Onest,sans-serif" font-size="16">2 хв пішки</text>
+    <circle cx="310" cy="244" r="17" fill="#f4eadf"/><text x="310" y="250" text-anchor="middle" font-family="Unbounded,sans-serif" font-weight="700" font-size="15" fill="#1c1411">М</text>
+    <text x="336" y="250" fill="#f4eadf" font-family="Onest,sans-serif" font-size="17" font-weight="600">«Вокзальна»</text>
+    <path d="M150 150c-14 0-24 10-24 24 0 18 24 38 24 38s24-20 24-38c0-14-10-24-24-24z" fill="#e3aa6c"/><circle cx="150" cy="174" r="8" fill="#1c1411"/>
+    <rect x="18" y="132" width="98" height="40" rx="20" fill="#e3aa6c"/><text x="67" y="158" text-anchor="middle" font-family="Unbounded,sans-serif" font-weight="700" font-size="16" fill="#1c1411">помол.</text>
+   </svg>
+  </div>
+  <div>
+   <p class="addr">просп. Дмитра Яворницького, 107, Дніпро</p>
+   <p class="mu" style="margin-top:8px">Вихід з метро «Вокзальна» на проспект, далі 150 метрів у бік центру. Вітрина з барною стійкою вздовж вікна.</p>
+   <dl class="hrs"><div><dt>Понеділок – пʼятниця</dt><dd>7:30–20:00</dd></div><div><dt>Субота, неділя</dt><dd>9:00–20:00</dd></div></dl>
+   <div class="acts"><a class="btn" href="#quick">Замовити наперед</a><a class="btn btn-ghost" id="tg-btn" href="https://t.me/ddrakx" target="_blank" rel="noopener">Написати в Telegram</a></div>
+   <p class="tiny">У демо кнопка Telegram відкриває чат з розробником сайту.</p>
+  </div>
+ </div>
+ <div class="ph wide"><img src="img/interior.webp" width="1600" height="900" loading="lazy" alt="Зал кавʼярні ввечері: барна стійка вздовж вікна й теплі лампи"></div>
+</section>
+</main>
+
+<footer><div class="wrap"><p>Демо-сайт, зроблений drakx для прикладу. Бізнес вигаданий.</p><a href="../../food/">Інші роботи drakx для кавʼярень</a></div></footer>
+
+<div class="bar" id="bar" aria-hidden="true"><div class="wrap"><p><b id="bar-n">1 позиція · 85 грн</b><span id="bar-t">буде готово о 8:42</span></p><button class="btn" type="button" id="bar-go" tabindex="-1">Оформити</button></div></div>
+
+<dialog id="cz" aria-labelledby="cz-h">
+ <div class="dl-in">
+  <div class="dh"><div style="flex:1"><h2 id="cz-h">Капучино</h2><p id="cz-d"></p></div><div class="stk" id="cz-stk" aria-hidden="true"></div><button class="x" type="button" data-close aria-label="Закрити"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
+  <div id="cz-o" style="display:grid;gap:20px"></div>
+  <div class="dft"><div class="q"><button type="button" data-q="-1" aria-label="Менше">−</button><output id="cz-q">1</output><button type="button" data-q="1" aria-label="Більше">+</button></div><button class="btn btn-ink" type="button" id="cz-add">Додати · 85 грн</button></div>
+ </div>
+</dialog>
+
+<dialog id="co" aria-labelledby="co-h">
+ <div class="dl-in" id="co-1">
+  <div class="dh"><h2 id="co-h">Ваше замовлення</h2><button class="x" type="button" data-close aria-label="Закрити"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
+  <div class="lines" id="co-l"></div>
+  <fieldset class="og"><legend>Як забираєте</legend><div class="chips"><label class="chip"><input type="radio" name="how" value="З собою" checked><span>З собою, у стакані</span></label><label class="chip"><input type="radio" name="how" value="На місці"><span>На місці, у чашці</span></label></div></fieldset>
+  <fieldset class="og slots"><legend>Коли заберете</legend><div class="chips" id="co-s"></div></fieldset>
+  <div class="ready" aria-live="polite"><span id="co-rk">Буде готово о</span><b id="co-rt">8:42</b></div>
+  <div class="dft"><button class="btn btn-ink" type="button" id="co-next">Далі · <span id="co-sum">85</span> грн</button></div>
+ </div>
+ <div class="dl-in" id="co-2" hidden>
+  <div class="dh"><h2 tabindex="-1" id="co-2h">Кому підписати стакан</h2><button class="x" type="button" data-close aria-label="Закрити"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
+  <label class="fld">Імʼя<input id="f-n" autocomplete="given-name" maxlength="20" aria-describedby="f-ne" required><span class="err" id="f-ne" hidden>Напишіть імʼя, ним підпишемо стакан.</span></label>
+  <label class="fld">Коментар баристі <small>необовʼязково, наприклад «менше льоду»</small><textarea id="f-c" maxlength="140"></textarea></label>
+  <p class="pay">Оплата при отриманні: термінал на полиці самовивозу або готівкою баристі.</p>
+  <div class="dft"><button class="lnk" type="button" id="co-back">Назад</button><button class="btn btn-ink" type="button" id="co-send">Надіслати · <span id="co-sum2">85</span> грн</button></div>
+ </div>
+ <div class="dl-in" id="co-3" hidden>
+  <div class="dh"><p class="ok" tabindex="-1" id="co-ok" style="flex:1;margin:0;font-family:var(--fd);color:var(--ink);font-size:20px">Готово! Замовлення вже в Telegram у «Помолі»</p><button class="x" type="button" data-close aria-label="Закрити"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2"/></svg></button></div>
+  <div class="done-tk"><div><small id="d-no">Замовлення №47</small><b id="d-t">8:42</b></div><div class="nm" id="d-n">Олена</div></div>
+  <div class="tg" aria-label="Так замовлення бачить бариста в Telegram">
+   <div class="tg-hd"><span class="tg-av" aria-hidden="true">п.</span><div><b>Помол · замовлення</b><small>бот</small></div></div>
+   <div class="tg-msg" id="d-msg"></div>
+   <div class="tg-b" aria-hidden="true"><span>Прийняти</span><span>Написати клієнту</span></div>
+  </div>
+  <p style="font-size:14px;color:var(--ink2)">Це демо: замовлення нікуди не надсилається. На справжньому сайті воно за секунду приходить баристі в Telegram, а вам приходить підтвердження.</p>
+  <div class="dft"><button class="btn btn-ink" type="button" data-close>Зрозуміло</button></div>
+ </div>
+</dialog>
+
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const SL={250:'S',350:'M',450:'L'};
+const MILK=[['Коровʼяче 3,2%',0],['Вівсяне',25],['Мигдальне',30],['Безлактозне',15],['Кокосове',30]];
+const SYR=[['Без сиропу',0],['Ваніль',20],['Солона карамель',20],['Лісовий горіх',20],['Кленовий',20]];
+const GR=['У зернах','Під еспресо','Під фільтр','Під турку'];
+const TEA=['Ассам','Сенча','Чебрець і липа'];
+// [id,name,desc,prices,sizes,opts,kind]  opts: m milk, y syrup, x shot, w warm, g grind, t tea
+const MENU=[
+['Кава на еспресо',[
+['esp','Еспресо','бленд Бразилія + Ефіопія, 30 мл',[55],0,'yx'],
+['ame','Американо','',[60,70,80],[250,350,450],'yx'],
+['cap','Капучино','',[75,85,95],[250,350,450],'myx'],
+['flw','Флет вайт','подвійний ристрето, 220 мл',[95],0,'myx'],
+['lat','Лате','',[80,90,100],[250,350,450],'myx'],
+['raf','Раф ванільний','на вершках 10%',[105,120],[350,450],'x']]],
+['Фільтр і холодне',[
+['v60','V60 із зерна тижня','Ефіопія Гуджі, 300 мл',[95],0,''],
+['bat','Батч-брю','фільтр із термоса, наливаємо одразу',[55,65],[250,350],''],
+['cbt','Колд брю тонік','колд брю 18 год, тонік, апельсин, 400 мл',[115],0,'y'],
+['ice','Айс лате','',[95,110],[350,450],'myx']]],
+['Не кава',[
+['mat','Матча лате','японська матча, 2 г',[110,125],[350,450],'my'],
+['coc','Какао','бельгійський шоколад 54%',[85,95],[250,350],'my'],
+['tea','Чай листовий','чайник 400 мл',[60],0,'t']]],
+['Випічка',[
+['cro','Круасан','на вершковому маслі 82%',[75],0,'w','b'],
+['cin','Булочка з корицею','з вершковим сиром',[70],0,'w','b'],
+['ban','Банановий хліб','шматок, з волоським горіхом',[65],0,'w','b'],
+['cok','Печиво','темний шоколад і морська сіль',[55],0,'','b']]]];
+const I={};
+MENU.forEach(([c,a])=>a.forEach(r=>I[r[0]]={id:r[0],n:r[1],d:r[2],p:r[3],s:r[4],o:r[5],k:r[6]||'d'}));
+I.bns={id:'bns',n:'Зерно тижня, 250 г',d:'Ефіопія Гуджі, натуральна обробка',p:[460],s:0,o:'g',k:'g'};
+const has=(it,f)=>it.o.includes(f);
+const price=c=>{const it=I[c.id];let v=it.p[c.s||0];if(has(it,'m'))v+=MILK[c.m][1];if(has(it,'y'))v+=SYR[c.y][1];if(c.x)v+=30;return v};
+const szl=(it,i)=>SL[it.s[i]]+' '+it.s[i]+' мл';
+function parts(c){const it=I[c.id],a=[];
+ if(it.s)a.push(szl(it,c.s));
+ if(has(it,'m'))a.push(MILK[c.m][0].toLowerCase()+' молоко');
+ if(has(it,'y')&&c.y)a.push(SYR[c.y][0].toLowerCase());
+ if(c.x)a.push('+ шот');
+ if(has(it,'w'))a.push(c.w?'підігріти':'не гріти');
+ if(has(it,'g'))a.push(GR[c.g].toLowerCase());
+ if(has(it,'t'))a.push(TEA[c.t].toLowerCase());
+ return a}
+const fresh=id=>({id,s:I[id].s&&I[id].s.length>2?1:0,m:0,y:0,x:false,w:true,g:0,t:0,q:1});
+const plural=(n,f)=>f[n%10==1&&n%100!=11?0:n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?1:2];
+const pad=n=>String(n).padStart(2,'0');
+const hm=d=>d.getHours()+':'+pad(d.getMinutes());
+let cart=[];
+
+/* ---------- time ---------- */
+const hrs=d=>{const w=d.getDay();return w==0||w==6?[540,1200]:[450,1200]};
+function prep(list){let d=0,b=0;list.forEach(c=>{const k=I[c.id].k;if(k=='d')d+=c.q;else if(k=='b')b+=c.q});return Math.min(4+2*Math.max(d,1)+(b?1:0),20)}
+function slots(p,n){const now=new Date(),out=[];
+ for(let k=0;k<4&&out.length<n;k++){
+  const y=now.getFullYear(),mo=now.getMonth(),da=now.getDate()+k,[o,c]=hrs(new Date(y,mo,da));
+  let f=new Date(y,mo,da,0,o+p),last=new Date(y,mo,da,0,c-10);
+  if(k==0){const e=new Date(now.getTime()+p*60000);if(e>f){f=e;if(f.getSeconds()||f.getMilliseconds()){f.setSeconds(0,0);f=new Date(f.getTime()+60000)}}}
+  if(f>last)continue;
+  out.push({d:f,k});
+  let m=Math.ceil((f.getHours()*60+f.getMinutes()+5)/5)*5;
+  for(let t=new Date(y,mo,da,0,m);t<=last&&out.length<n;t=new Date(t.getTime()+300000))out.push({d:t,k});
+ }return out}
+const DAYS=['неділю','понеділок','вівторок','середу','четвер','пʼятницю','суботу'];
+const dayw=s=>s.k==0?'':s.k==1?'завтра':'у '+DAYS[s.d.getDay()];
+
+/* ---------- menu ---------- */
+const ml=$('#menu-list');
+ml.innerHTML=MENU.map(([c,a])=>`<div class="cat"><h3>${c}</h3><ul>${a.map(r=>{const it=I[r[0]];return `<li><button class="it" type="button" data-add="${it.id}"><span><b>${it.n}<span class="in" data-in="${it.id}" hidden></span></b>${it.d?`<small>${it.d}</small>`:it.s?`<small>${it.s.map(s=>SL[s]).join(' / ')}</small>`:''}</span><span class="pr">${it.p.join(' / ')} грн</span><span class="pl" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2"/></svg></span></button></li>`}).join('')}</ul></div>`).join('');
+$$('.it').forEach(b=>b.setAttribute('aria-label',b.querySelector('b').textContent+', '+b.querySelector('.pr').textContent+'. Налаштувати й додати'));
+
+/* ---------- customizer ---------- */
+const cz=$('#cz');let cur=null;
+const chip=(name,label,i,chk,type='radio')=>`<label class="chip"><input type="${type}" name="${name}" value="${i}"${chk?' checked':''}><span>${label}</span></label>`;
+const grp=(leg,inner)=>`<fieldset class="og"><legend>${leg}</legend><div class="chips">${inner}</div></fieldset>`;
+function openCz(id,opener){
+ const it=I[id];cur=fresh(id);
+ $('#cz-h').textContent=it.n;$('#cz-d').textContent=it.d||'';
+ let h='';
+ if(it.s)h+=grp('Розмір',it.s.map((s,i)=>chip('s',`${SL[s]} ${s} мл <small>${it.p[i]} грн</small>`,i,i==cur.s)).join(''));
+ if(has(it,'m'))h+=grp('Молоко',MILK.map((m,i)=>chip('m',m[0]+(m[1]?` <small>+${m[1]}</small>`:''),i,!i)).join(''));
+ if(has(it,'y'))h+=grp('Сироп',SYR.map((m,i)=>chip('y',m[0]+(m[1]?` <small>+${m[1]}</small>`:''),i,!i)).join(''));
+ if(has(it,'t'))h+=grp('Чай',TEA.map((m,i)=>chip('t',m,i,!i)).join(''));
+ if(has(it,'g'))h+=grp('Помел',GR.map((m,i)=>chip('g',m,i,!i)).join(''));
+ let ex='';
+ if(has(it,'x'))ex+=chip('x','Додатковий шот <small>+30</small>',1,0,'checkbox');
+ if(has(it,'w'))ex+=chip('w','Підігріти',1,1,'checkbox');
+ if(ex)h+=grp(has(it,'w')?'Подача':'Додатково',ex);
+ $('#cz-o').innerHTML=h;
+ cz.dataset.op=opener||'';
+ czUp();cz.showModal();
+}
+function czUp(){const it=I[cur.id],f=$('#cz-o');
+ ['s','m','y','t','g'].forEach(k=>{const r=f.querySelector(`input[name=${k}]:checked`);if(r)cur[k]=+r.value});
+ const x=f.querySelector('input[name=x]');cur.x=!!(x&&x.checked);
+ const w=f.querySelector('input[name=w]');cur.w=w?w.checked:true;
+ $('#cz-q').value=cur.q;
+ $('#cz-add').textContent='Додати · '+price(cur)*cur.q+' грн';
+ $('#cz-stk').innerHTML=`<b>${esc(it.n)}</b>${parts(cur).map(esc).join('<br>')||'без змін'}`;
+}
+$('#cz-o').addEventListener('change',czUp);
+cz.addEventListener('click',e=>{const q=e.target.closest('[data-q]');if(q){cur.q=Math.max(1,Math.min(9,cur.q+ +q.dataset.q));czUp()}});
+$('#cz-add').addEventListener('click',()=>{add(cur);cz.close()});
+
+/* ---------- cart ---------- */
+const keyOf=c=>[c.id,c.s,c.m,c.y,c.x,c.w,c.g,c.t].join('|');
+function add(c){const k=keyOf(c),f=cart.find(e=>keyOf(e)==k);if(f)f.q=Math.min(9,f.q+c.q);else cart.push({...c});sync(true)}
+const total=()=>cart.reduce((s,c)=>s+price(c)*c.q,0);
+const count=()=>cart.reduce((s,c)=>s+c.q,0);
+const bar=$('#bar'),go=$('#bar-go');
+function sync(bump){
+ const n=count();
+ bar.classList.toggle('on',n>0);bar.setAttribute('aria-hidden',n?'false':'true');go.tabIndex=n?0:-1;
+ document.body.classList.toggle('has-bar',n>0);
+ if(n){const s=slots(prep(cart),1)[0];
+  $('#bar-n').textContent=`${n} ${plural(n,['позиція','позиції','позицій'])} · ${total()} грн`;
+  $('#bar-t').textContent=s?`буде готово ${dayw(s)?dayw(s)+' ':''}о ${hm(s.d)}`:'';
+  if(bump){const b=$('#bar-n');b.classList.remove('bump');void b.offsetWidth;b.classList.add('bump')}}
+ $$('[data-in]').forEach(el=>{const q=cart.filter(c=>c.id==el.dataset.in).reduce((s,c)=>s+c.q,0);el.hidden=!q;el.textContent=q?'× '+q:''});
+ if(co.open&&!$('#co-1').hidden)coRender();
+}
+document.addEventListener('click',e=>{const a=e.target.closest('[data-add]');if(a)openCz(a.dataset.add)});
+$$('dialog').forEach(d=>{d.addEventListener('click',e=>{if(e.target.closest('[data-close]')||e.target==d)d.close()})});
+
+/* ---------- checkout ---------- */
+const co=$('#co');let slot=null,step=1,orderNo=0;
+function show(n){step=n;[1,2,3].forEach(i=>$('#co-'+i).hidden=i!=n);co.scrollTop=0}
+function coRender(){
+ if(!cart.length){co.close();return}
+ $('#co-l').innerHTML=cart.map((c,i)=>`<div class="ln"><div><b>${esc(I[c.id].n)}</b><small>${esc(parts(c).join(', '))}</small></div><div class="q" aria-label="Кількість"><button type="button" data-ci="${i}" data-d="-1" aria-label="Менше: ${esc(I[c.id].n)}">−</button><output>${c.q}</output><button type="button" data-ci="${i}" data-d="1" aria-label="Більше: ${esc(I[c.id].n)}">+</button></div><span class="pr">${price(c)*c.q} грн</span></div>`).join('');
+ const sl=slots(prep(cart),9);
+ if(!slot||!sl.some(s=>+s.d==+slot.d))slot=sl[0];
+ $('#co-s').innerHTML=sl.map((s,i)=>chip('slot',(i==0&&s.k==0?'Якнайшвидше · ':dayw(s)?dayw(s)+' ':'')+hm(s.d),i,+s.d==+slot.d)).join('');
+ $('#co-s').sl=sl;
+ readyUp();$('#co-sum').textContent=$('#co-sum2').textContent=total();
+}
+function readyUp(){if(!slot)return;$('#co-rk').textContent='Буде готово '+(dayw(slot)?dayw(slot)+' ':'')+'о';const t=$('#co-rt');t.textContent=hm(slot.d);t.classList.remove('pop');void t.offsetWidth;t.classList.add('pop')}
+$('#co-s').addEventListener('change',e=>{slot=$('#co-s').sl[+e.target.value];readyUp()});
+$('#co-l').addEventListener('click',e=>{const b=e.target.closest('[data-ci]');if(!b)return;const c=cart[+b.dataset.ci];c.q+= +b.dataset.d;if(c.q<1)cart.splice(+b.dataset.ci,1);if(c.q>9)c.q=9;sync();});
+function openCo(){slot=null;show(1);coRender();co.showModal()}
+go.addEventListener('click',openCo);
+$('#co-next').addEventListener('click',()=>{show(2);$('#f-n').focus()});
+$('#co-back').addEventListener('click',()=>{show(1);coRender()});
+$('#f-n').addEventListener('input',e=>{if(e.target.value.trim()){e.target.removeAttribute('aria-invalid');$('#f-ne').hidden=true}});
+$('#co-send').addEventListener('click',()=>{
+ const nm=$('#f-n').value.trim();
+ if(!nm){$('#f-n').setAttribute('aria-invalid','true');$('#f-ne').hidden=false;$('#f-n').focus();return}
+ const how=$('input[name=how]:checked').value,cm=$('#f-c').value.trim(),now=new Date();
+ orderNo=orderNo?orderNo+1:12+Math.floor(Math.random()*70);
+ $('#d-no').textContent='Замовлення №'+orderNo+(dayw(slot)?', '+dayw(slot):'');
+ $('#d-t').textContent=hm(slot.d);$('#d-n').textContent=nm;
+ $('#d-msg').innerHTML=`<p><b>Нове замовлення №${orderNo}</b> · ${how.toLowerCase()}</p>${cart.map(c=>`<p>${c.q}× ${esc(I[c.id].n)}${parts(c).length?', '+esc(parts(c).join(', ')):''} — ${price(c)*c.q} грн</p>`).join('')}<p>Разом: <b>${total()} грн</b>, оплата при отриманні</p><p>Забере: <b>${esc(nm)}</b> ${dayw(slot)?esc(dayw(slot))+' ':''}о <b>${hm(slot.d)}</b></p>${cm?`<p>Коментар: ${esc(cm)}</p>`:''}<span class="tm">${hm(now)}</span>`;
+ show(3);$('#co-ok').focus();
+ cart=[];slot=null;$('#f-c').value='';sync();
+});
+
+/* ---------- quick ticket ---------- */
+const qd=$('#q-d'),qs=$('#q-s'),qm=$('#q-m'),qy=$('#q-y');
+const drinks=Object.values(I).filter(i=>i.k=='d');
+qd.innerHTML=drinks.map(i=>`<option value="${i.id}"${i.id=='cap'?' selected':''}>${i.n}</option>`).join('');
+qm.innerHTML=MILK.map((m,i)=>`<option value="${i}">${m[0].split(' ')[0]}${m[1]?' +'+m[1]:''}</option>`).join('');
+qy.innerHTML=SYR.map((m,i)=>`<option value="${i}">${m[0]}${m[1]?' +'+m[1]:''}</option>`).join('');
+let qc=fresh('cap');
+function qSizes(){const it=I[qc.id];
+ qs.innerHTML=it.s?it.s.map((s,i)=>`<label><input type="radio" name="qs" value="${i}"${i==qc.s?' checked':''}><span>${SL[s]}<small>${s} мл</small></span></label>`).join(''):`<label><input type="radio" name="qs" value="0" checked><span>${(it.d.match(/\d+ мл/)||['1 розмір'])[0]}<small>один розмір</small></span></label>`;
+ qm.disabled=!has(it,'m');qy.disabled=!has(it,'y');
+ if(qm.disabled)qm.value=0;if(qy.disabled)qy.value=0}
+function qUp(){qc.m=+qm.value;qc.y=+qy.value;const r=qs.querySelector('input:checked');qc.s=r?+r.value:0;
+ $('#q-p').textContent=price(qc);
+ const s=slots(prep([qc]),1)[0];if(!s)return;
+ $('#q-k').textContent=s.k==0?'Замовите зараз — буде готово о':'Зараз зачинено. Замовте з вечора й заберіть '+dayw(s)+' о';
+ $('#q-t').textContent=hm(s.d);
+ $('#q-n').textContent=s.k==0?`Готуємо ≈${prep([qc])} хв. Час можна змінити на наступному кроці.`:`Відкриваємось о ${Math.floor(hrs(s.d)[0]/60)}:${pad(hrs(s.d)[0]%60)}. Кава буде готова першою.`}
+qd.addEventListener('change',()=>{qc=fresh(qd.value);qc.m=+qm.value;qc.y=+qy.value;qSizes();qUp()});
+$('#quick').addEventListener('change',e=>{if(e.target!=qd)qUp()});
+$('#quick').addEventListener('submit',e=>{e.preventDefault();add({...qc,q:1});openCo()});
+qSizes();qUp();setInterval(()=>{qUp();if(count())sync()},30000);
+
+/* ---------- images not yet generated: keep the palette placeholder ---------- */
+$$('.ph img').forEach(i=>{const h=()=>i.style.visibility='hidden';if(i.complete&&!i.naturalWidth)h();i.addEventListener('error',h)});
+})();
+</script>
+</body>
+</html>

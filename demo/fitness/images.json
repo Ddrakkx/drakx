@@ -1,0 +1,30 @@
+[
+  {
+    "file": "img/hero.webp",
+    "prompt": "Interior of a modern boutique group-training studio in a converted industrial building, black speckled rubber floor, a neat row of black kettlebells and black-and-orange medicine balls in the foreground, a steel pull-up rig, warm white painted brick wall, tall factory windows with low evening sun creating long hard shadows, two people training in the background seen from behind and slightly motion-blurred, no faces visible, high contrast, deep blacks with a few saturated orange accents, shot on 35mm at eye level, vertical composition, photorealistic, no text, no logos",
+    "aspect": "4:5",
+    "width": 1080,
+    "alt": "Зал функціонального тренінгу: гирі й медболи в ряд на чорній гумовій підлозі"
+  },
+  {
+    "file": "img/cycle.webp",
+    "prompt": "Indoor cycling studio with fourteen black stationary bikes arranged in tiered rows, dark room lit by warm orange LED strips along the floor and one cool white spotlight on the instructor bike, light haze in the air, empty bikes, wide-angle view from the back corner, moody high-contrast photograph, black walls, glossy floor reflections, photorealistic, no people, no screens, no text, no logos",
+    "aspect": "3:2",
+    "width": 1200,
+    "alt": "Сайкл-студія: ряди чорних велотренажерів у теплому помаранчевому світлі"
+  },
+  {
+    "file": "img/pilates.webp",
+    "prompt": "Bright small pilates room, light oak floor, black exercise mats laid out in neat rows, a pilates ring, a small soft ball and a foam roller placed on each mat, warm white walls, morning daylight from large windows, crisp clean shadows, calm but energetic, eye-level photograph with slight perspective, photorealistic, no people, no text, no logos",
+    "aspect": "3:2",
+    "width": 1200,
+    "alt": "Світлий зал для пілатесу з килимками, кільцями й роликами"
+  },
+  {
+    "file": "img/box.webp",
+    "prompt": "Boxing fitness corner of a gym: three black heavy bags hanging on steel chains, a pair of orange boxing gloves and rolled black hand wraps on a wooden bench in the foreground, black rubber floor, strong side light from a window creating dramatic shadows and visible texture of leather, shallow depth of field, gritty and energetic mood, photorealistic, no people, no text, no logos",
+    "aspect": "3:2",
+    "width": 1200,
+    "alt": "Боксерські мішки й помаранчеві рукавички на лаві"
+  }
+]

@@ -1,0 +1,30 @@
+[
+ {
+  "file": "img/hero.webp",
+  "aspect": "4:3",
+  "width": 1200,
+  "alt": "Склад магазину: сірі стелажі з підписаними коробками запчастин",
+  "prompt": "Clean, well-organized auto parts store warehouse aisle, light gray steel shelving with neatly stacked plain white and kraft cardboard boxes with blank white labels, a few blank bright yellow tags on shelf edges, bright even LED lighting, polished light concrete floor, cool neutral gray palette, slightly low eye-level perspective down the aisle, sharp and orderly, no people, no readable text, no logos"
+ },
+ {
+  "file": "img/winter.webp",
+  "aspect": "4:3",
+  "width": 1200,
+  "alt": "Акумулятор, пара щіток склоочисника й каністра зимового омивача на сірому фоні",
+  "prompt": "Studio product photograph of a new car battery, a pair of frameless wiper blades and a plain translucent jug of blue winter washer fluid arranged on a light gray seamless background, soft even studio lighting, crisp shadows, cool neutral tones, clean catalog style, no brand labels, no text, no logos"
+ },
+ {
+  "file": "img/store.webp",
+  "aspect": "3:2",
+  "width": 1200,
+  "alt": "Вхід у магазин зі скляною вітриною та парковкою перед ним",
+  "prompt": "Facade of a small modern auto parts store in a Ukrainian city: glass storefront with dark gray composite panels, small parking area with two parked cars in front, overcast late autumn day, wet asphalt reflections, bare trees, calm and tidy, eye-level view, no readable signage, no text, no logos, no people close up"
+ },
+ {
+  "file": "img/counter.webp",
+  "aspect": "3:2",
+  "width": 1200,
+  "alt": "Стійка видачі замовлень у магазині, на ній коробка з гальмівними колодками",
+  "prompt": "Modern auto parts store pickup counter with light gray surfaces, a plain cardboard box with brake pads and an oil filter on the counter next to a card payment terminal, shelves with boxes softly blurred in background, bright clean interior lighting, cool neutral palette with a small yellow accent tag, no faces, no readable text, no logos"
+ }
+]

@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Демо: квітковий магазин «Стебло», Львів | drakx</title>
+<meta name="description" content="Демо-сайт квіткового магазину: конструктор букета з ціною й часом доставки, замовлення без дзвінків через Telegram.">
+<meta name="theme-color" content="#F6F7F0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2323502E'/%3E%3Cpath d='M16 28V15' stroke='%23F6F7F0' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M16 21c3-1 5-3 5-6-3 0-5 2-5 6z' fill='%23A9C79A'/%3E%3Ccircle cx='16' cy='10' r='5.5' fill='%23F2B6C1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700;800&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<script>addEventListener('error',function(e){var t=e.target;if(t&&t.tagName==='IMG')t.classList.add('x')},true)</script>
+<style>
+:root{--bg:#F6F7F0;--sf:#fff;--leaf:#E3EBD9;--leaf2:#D2DFC4;--ink:#17251B;--mut:#4D5C50;--line:#CFD8C4;--g:#23502E;--g2:#1A3D23;--blush:#F7DDE3;--cor:#B03A20;--f1:'Alegreya',Georgia,serif;--f2:'Alegreya Sans',system-ui,sans-serif;--ease:cubic-bezier(.2,0,0,1);--wrap:1240px}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 18px/1.5 var(--f2)}
+img{display:block;max-width:100%;height:auto}
+img.x{visibility:hidden}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--cor);outline-offset:3px;border-radius:6px}
+.dk :focus-visible{outline-color:#F2B6C1}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.ph{background:var(--leaf2);overflow:hidden;position:relative}
+.ph img{width:100%;height:100%;object-fit:cover}
+.tn{font-variant-numeric:tabular-nums lining-nums}
+/* demo bar */
+.demo{background:var(--ink);color:#EEF2E8;font-size:14px}
+.demo-in{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:40px}
+.demo p{display:flex;gap:10px;align-items:center;white-space:nowrap}
+.demo a{display:inline-flex;align-items:center;min-height:40px;text-underline-offset:3px}
+.demo a:hover{color:#F2B6C1}
+.demo .s{display:none}
+@media(max-width:420px){.demo .l{display:none}.demo .s{display:inline}}
+/* header */
+.hdr{display:flex;align-items:center;gap:24px;padding-block:14px}
+.logo{display:flex;align-items:baseline;gap:10px;text-decoration:none;font:800 32px/1 var(--f1);letter-spacing:-.01em;color:var(--g2)}
+.logo span{font:500 14px/1 var(--f2);color:var(--mut);letter-spacing:.02em}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{padding:12px 12px;text-decoration:none;font-weight:500;border-radius:999px;transition:background-color .15s}
+.nav a:hover{background:var(--leaf)}
+.cartbtn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 8px 0 18px;border:1.5px solid var(--ink);border-radius:999px;background:transparent;font-weight:700;cursor:pointer;transition:transform .1s var(--ease),background-color .15s}
+.cartbtn:hover{background:var(--sf)}
+.cartbtn:active{transform:scale(.96)}
+.cnt{display:inline-grid;place-items:center;min-width:30px;height:30px;padding:0 8px;border-radius:999px;background:var(--g);color:#fff;font-size:15px}
+.cnt.bump{animation:bump .4s var(--ease)}
+@keyframes bump{40%{transform:scale(1.25)}}
+@media(max-width:899px){.nav{display:none}.cartbtn{margin-left:auto}}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 26px;border-radius:999px;border:1.5px solid transparent;font:700 17px/1.1 var(--f2);text-decoration:none;cursor:pointer;transition:transform .1s var(--ease),background-color .18s,border-color .18s;text-align:center}
+.btn:active{transform:scale(.97)}
+.pri{background:var(--g);color:#fff}
+.pri:hover{background:var(--g2)}
+.sec{border-color:var(--ink);background:transparent;color:var(--ink)}
+.sec:hover{background:var(--sf)}
+.btn.sm{min-height:44px;padding:0 18px;font-size:16px}
+/* hero */
+.hero{display:grid;gap:28px;padding-block:20px 56px}
+.live{display:flex;align-items:flex-start;gap:10px;line-height:1.35;font-weight:500;color:var(--g2)}
+.dot.late{background:#B07A1E}
+.dot{width:10px;height:10px;border-radius:50%;background:#3E8A4C;flex:none;margin-top:.4em}
+h1{font:800 clamp(44px,5.4vw,76px)/.95 var(--f1);letter-spacing:-.025em;margin:18px 0 22px}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--mut);max-width:34em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 0;margin-top:32px;padding-top:20px;border-top:1px solid var(--line);font-size:16px;color:var(--mut)}
+.facts li{padding-right:16px;margin-right:16px;border-right:1px solid var(--line)}
+.facts li:last-child{border:0;margin:0;padding:0}
+.hero-f .ph{aspect-ratio:4/5;border-radius:4px 4px 160px 4px}
+.hero-f figcaption{margin-top:12px;font-size:15px;color:var(--mut)}
+@media(max-width:899px){.hero-f .ph{aspect-ratio:4/3;border-radius:4px 4px 96px 4px}.facts li{border:0;padding:0;margin-right:0;flex-basis:100%}.facts li::before{content:"— "}}
+@media(min-width:900px){.hero{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end;padding-block:40px 96px}}
+/* sections */
+.sec-h{display:grid;gap:14px;margin-bottom:36px}
+h2{font:800 clamp(34px,4.4vw,58px)/1 var(--f1);letter-spacing:-.02em}
+.sec-h p{color:var(--mut);max-width:36em}
+@media(min-width:900px){.sec-h{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:end;gap:56px}}
+/* builder */
+.build{background:var(--leaf);padding-block:64px 80px}
+.bgrid{display:grid;gap:28px;align-items:start}
+@media(min-width:900px){.bgrid{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:56px}}
+.pv{position:sticky;top:0;z-index:4;background:var(--leaf);margin-inline:calc(-1*clamp(16px,4vw,40px));padding:10px clamp(16px,4vw,40px);border-bottom:1px solid var(--leaf2)}
+.pv-in{display:grid;grid-template-columns:44% 1fr;align-items:center;gap:14px}
+.pv svg{width:100%;height:auto;max-height:210px;display:block}
+.pv-name{font-weight:500;font-size:15px;line-height:1.3;color:var(--mut)}
+.pv-price{font:800 34px/1 var(--f1);margin:6px 0 8px}
+.pv-del{font-size:15px;line-height:1.3;color:var(--g2);font-weight:500}
+.pv-note{display:none;font-size:15px;color:var(--mut);margin-top:12px}
+@media(min-width:900px){.pv{top:24px;margin:0;padding:0;border:0;background:none}.pv-in{display:block;background:#EEF3E7;border-radius:4px 4px 200px 4px;padding:24px 24px 8px}.pv svg{max-height:none}.pv-txt{display:none}.pv-note{display:block}}
+.step{border:0;margin:0;padding:0 0 28px;min-width:0}
+.step+.step{padding-top:24px;border-top:1px solid var(--leaf2)}
+.step legend{display:flex;align-items:baseline;gap:12px;padding:0;margin-bottom:14px;font:700 24px/1.1 var(--f1)}
+.step legend span{font:500 15px/1 var(--f2);color:var(--mut);font-variant-numeric:tabular-nums}
+.opts{display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.opt{position:relative;display:block;cursor:pointer}
+.opt input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.ob{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:center;min-height:64px;height:100%;padding:12px 14px;background:#F4F7EF;border:1.5px solid transparent;border-radius:14px;transition:background-color .15s,border-color .15s,transform .1s var(--ease)}
+.opt:hover .ob{background:#fff}
+.opt input:checked+.ob{background:#fff;border-color:var(--g)}
+.opt input:focus-visible+.ob{outline:3px solid var(--cor);outline-offset:2px}
+.opt input:active+.ob{transform:scale(.98)}
+.ob svg{grid-row:span 2;width:40px;height:40px}
+.ob b{font-weight:700;line-height:1.2}
+.ob small{font-size:15px;color:var(--mut);line-height:1.25}
+.ob em{font-style:normal;font-variant-numeric:tabular-nums;color:var(--g2);font-weight:500}
+.sizes{grid-template-columns:repeat(4,minmax(0,1fr))}
+.sizes .ob{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px}
+.sizes b{font:800 26px/1 var(--f1)}
+.cols{display:flex;flex-wrap:wrap;gap:8px}
+.cols .ob{display:flex;gap:10px;min-height:48px;padding:6px 16px 6px 8px;border-radius:999px}
+.sw{width:30px;height:30px;border-radius:50%;flex:none;box-shadow:inset 0 0 0 1px rgba(23,37,27,.18)}
+.pk .ob{grid-template-columns:1fr auto}
+.pk .ob small{grid-column:1/-1}
+.card-f label{display:block;font-weight:700;margin-bottom:6px}
+.inp{width:100%;min-height:48px;padding:10px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;transition:border-color .15s}
+.inp:hover{border-color:#A9B79C}
+.inp:focus{border-color:var(--g);outline:none;box-shadow:0 0 0 3px rgba(35,80,46,.18)}
+.hint{font-size:15px;color:var(--mut);margin-top:6px}
+.sum{margin-top:28px;padding:22px;background:#fff;border-radius:18px}
+.sum ul{display:grid;gap:6px;font-size:16px;color:var(--mut)}
+.sum li{display:flex;justify-content:space-between;gap:12px}
+.sum li span:last-child{white-space:nowrap}
+.tot{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.tot b{font:800 40px/1 var(--f1)}
+.when{margin-top:10px;font-weight:500;color:var(--g2)}
+.sum .btn{width:100%;margin-top:18px}
+@media(max-width:899px){#bf input{scroll-margin-top:240px}}
+@media(max-width:560px){.sizes{grid-template-columns:repeat(2,minmax(0,1fr))}.opts:not(.sizes){grid-template-columns:1fr}}
+/* bouquet anim */
+.hd{transform-box:fill-box;transform-origin:center;animation:pop .32s var(--ease) both}
+@keyframes pop{from{transform:scale(.7);opacity:0}}
+/* ready */
+.ready{padding-block:80px}
+.prods{display:grid;gap:36px 24px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.prod{display:flex;flex-direction:column}
+.prod .ph{aspect-ratio:4/5;border-radius:4px;margin-bottom:16px}
+.prod:nth-child(odd) .ph{border-radius:4px 4px 80px 4px}
+.prod h3{font:700 26px/1.1 var(--f1)}
+.prod p{font-size:16px;color:var(--mut);margin:8px 0 14px;flex:1}
+.pr{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pr b{font:800 26px/1 var(--f1)}
+@media(max-width:1000px){.prods{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.prods{grid-template-columns:1fr;gap:28px}.prod{display:grid;grid-template-columns:38% 1fr;gap:0 16px}.prod .ph{grid-row:span 3;margin:0;aspect-ratio:4/5}.prod p{margin:6px 0 10px}.pr{flex-wrap:wrap}.prod h3{font-size:22px}.pr b{font-size:22px}}
+/* stems */
+.stems{padding-block:72px;border-top:1px solid var(--line)}
+.sgrid{display:grid;gap:28px}
+@media(min-width:900px){.sgrid{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px}}
+.sgrid .side p{color:var(--mut);margin-top:16px;max-width:28em}
+.pl{columns:2 280px;column-gap:48px}
+.pl li{display:flex;align-items:baseline;gap:8px;padding:11px 0;border-bottom:1px solid var(--line);break-inside:avoid}
+.pl .d{flex:1;border-bottom:2px dotted var(--line);transform:translateY(-5px);min-width:16px}
+.pl small{color:var(--mut);font-size:15px}
+.pl b{font-weight:700;white-space:nowrap}
+/* delivery */
+.deliv{background:var(--g2);color:#EEF2E8;padding-block:72px 80px}
+.deliv h2{color:#fff}
+.dgrid{display:grid;gap:40px}
+@media(min-width:900px){.dgrid{grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:56px}}
+.dl{display:grid;gap:0;margin-top:28px}
+.dl div{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:14px 0;border-top:1px solid rgba(238,242,232,.18)}
+.dl dt{color:#B9C9B4;font-size:16px}
+.dl dd{margin:0}
+@media(max-width:560px){.dl div{grid-template-columns:1fr;gap:2px}}
+.deliv .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.deliv .pri{background:#F2B6C1;color:var(--ink)}
+.deliv .pri:hover{background:#F7CCD4}
+.deliv .sec{border-color:#EEF2E8;color:#EEF2E8}
+.deliv .sec:hover{background:rgba(255,255,255,.08)}
+.map{border-radius:4px 4px 160px 4px;overflow:hidden;background:#2D5136}
+.map svg{display:block;width:100%;height:auto}
+.studio{margin-top:16px}
+.studio .ph{aspect-ratio:3/2;border-radius:4px;background:#2D5136}
+/* footer */
+.ft{padding-block:40px 120px;font-size:16px;color:var(--mut)}
+.ft-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;align-items:baseline}
+.ft .logo{font-size:26px}
+/* cart bar */
+.cbar{position:fixed;left:50%;bottom:12px;z-index:20;display:flex;align-items:center;gap:16px;width:min(560px,calc(100% - 24px));padding:10px 10px 10px 20px;background:var(--ink);color:#fff;border-radius:999px;box-shadow:0 10px 30px rgba(23,37,27,.25);transform:translate(-50%,160%);visibility:hidden;transition:transform .3s var(--ease),visibility 0s .3s}
+.cbar.on{transform:translate(-50%,0);visibility:visible;transition:transform .3s var(--ease)}
+.cbar p{flex:1;min-width:0;font-size:16px;line-height:1.25}
+.cbar b{font-variant-numeric:tabular-nums}
+.cbar .btn{background:#F2B6C1;color:var(--ink);min-height:48px;padding:0 20px}
+.cbar .btn:hover{background:#F7CCD4}
+/* dialog */
+dialog{padding:0;border:0;color:var(--ink);background:var(--bg)}
+dialog::backdrop{background:rgba(23,37,27,.5)}
+.ck{width:min(580px,100%);max-height:min(92vh,820px);border-radius:24px;flex-direction:column}
+.ck[open]{display:flex;animation:up .28s var(--ease)}
+@keyframes up{from{transform:translateY(24px);opacity:0}}
+@media(max-width:600px){.ck{margin:auto 0 0;max-width:100%;max-height:94vh;border-radius:24px 24px 0 0}}
+.ck-h{display:flex;align-items:center;gap:12px;padding:18px 20px 12px}
+.ck-h h2{font-size:28px;flex:1}
+.ck-h p{font-size:15px;color:var(--mut)}
+.x{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:0;background:var(--leaf);cursor:pointer;transition:transform .1s var(--ease)}
+.x:active{transform:scale(.92)}
+.bar4{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:0 20px}
+.bar4 i{height:4px;border-radius:2px;background:var(--line);transition:background-color .25s}
+.bar4 i.on{background:var(--g)}
+.ck-b{padding:20px;overflow:auto;flex:1}
+.ck-f{display:flex;gap:10px;padding:14px 20px 20px;border-top:1px solid var(--line)}
+.ck-f .btn{flex:1}
+.ck-f .sec{flex:0 0 auto}
+.li{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.li p{flex:1;font-size:16px;line-height:1.3}
+.li b{white-space:nowrap;font-variant-numeric:tabular-nums}
+.rm{border:0;background:none;min-width:44px;min-height:44px;border-radius:50%;cursor:pointer;color:var(--mut);font-size:22px}
+.rm:hover{background:var(--leaf)}
+.fld{margin-top:16px}
+.fld label,.lbl{display:block;font-weight:700;margin-bottom:6px}
+.err{color:var(--cor);font-size:15px;margin-top:6px;font-weight:500}
+.inp[aria-invalid=true]{border-color:var(--cor)}
+.seg{display:grid;gap:10px}
+.seg .ob{grid-template-columns:1fr auto}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips .ob{display:flex;min-height:44px;padding:0 16px;border-radius:999px;font-variant-numeric:tabular-nums}
+.chips .opt input:disabled+.ob{opacity:.4;cursor:not-allowed}
+.ck .ob{background:#fff;border-color:#B9C5B2}
+.grp+.grp{margin-top:20px}
+.chk{display:flex;gap:10px;align-items:center;min-height:44px;margin-top:10px;cursor:pointer}
+.chk input{width:22px;height:22px;accent-color:var(--g)}
+.tot2{display:flex;justify-content:space-between;margin-top:14px;font-weight:700}
+.done h3{font:800 30px/1.05 var(--f1);margin-bottom:10px}
+.done>p{color:var(--mut)}
+.tg{margin-top:20px;border-radius:18px;background:#DCE6D2;padding:14px}
+.tg-h{display:flex;gap:10px;align-items:center;margin-bottom:12px;font-size:15px}
+.tg-h i{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--g);color:#fff;font:800 18px/1 var(--f1);font-style:normal}
+.tg-h small{display:block;color:var(--mut)}
+.tg-m{position:relative;background:#fff;border-radius:16px 16px 16px 4px;padding:12px 14px 22px;font-size:15px;line-height:1.45;max-width:440px}
+.tg-m p+p{margin-top:8px}
+.tg-t{position:absolute;right:12px;bottom:6px;font-size:13px;color:var(--mut)}
+.note{width:min(440px,calc(100% - 32px));border-radius:20px;padding:24px}
+.note h2{font-size:28px;margin-bottom:10px}
+.note p{color:var(--mut)}
+.note .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="demo dk">
+  <div class="wrap demo-in">
+    <p><span class="l">Демо-сайт від drakx</span><span class="s">Демо від drakx</span><a href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%A1%D1%82%D0%B5%D0%B1%D0%BB%D0%BE%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий</a></p>
+    <a href="../../shop/">← Інші роботи</a>
+  </div>
+</div>
+
+<header class="hdr wrap">
+  <a class="logo" href="#top" aria-label="Стебло, на початок сторінки">стебло<span>квіти · Львів</span></a>
+  <nav class="nav" aria-label="Розділи">
+    <a href="#build">Конструктор</a><a href="#ready">Готові букети</a><a href="#stems">Поштучно</a><a href="#delivery">Доставка</a>
+  </nav>
+  <button class="cartbtn" type="button" data-cart aria-label="Кошик, букетів: 0">Кошик <span class="cnt tn" id="cnt">0</span></button>
+</header>
+
+<main id="top">
+<section class="hero wrap">
+  <div>
+    <p class="live"><span class="dot" aria-hidden="true"></span><span id="live">Замовите зараз — привеземо сьогодні</span></p>
+    <h1>Букети по Львову<br> за&nbsp;дві години</h1>
+    <p class="lead">Зберіть букет у конструкторі або візьміть готовий з ранкової поставки. Ціну й час доставки видно одразу, а замовлення йде флористу в Telegram без дзвінків.</p>
+    <div class="cta">
+      <a class="btn pri" href="#build">Зібрати букет</a>
+      <a class="btn sec" href="#ready">Готові від 1&nbsp;190&nbsp;грн</a>
+    </div>
+    <ul class="facts">
+      <li>Безкоштовна доставка від 2&nbsp;500&nbsp;грн</li>
+      <li>Фото букета до відправки</li>
+      <li>Щодня 8:00–21:00</li>
+    </ul>
+  </div>
+  <figure class="hero-f">
+    <div class="ph"><img src="img/hero.webp" width="1200" height="1500" fetchpriority="high" alt="Букет з персикового ранункулюсу та евкаліпта в матовому папері на столі флориста"></div>
+    <figcaption>Ранункулюс з Італії й евкаліпт. Ранункулюс — 125&nbsp;грн за стебло.</figcaption>
+  </figure>
+</section>
+
+<section class="build" id="build" aria-labelledby="bT">
+  <div class="wrap">
+    <div class="sec-h">
+      <h2 id="bT">Зберіть свій букет</h2>
+      <p>Ціна вже включає зелень, збирання й пакування. Час доставки рахуємо від поточного часу.</p>
+    </div>
+    <div class="bgrid">
+      <div class="pv">
+        <div class="pv-in">
+          <svg id="bq" viewBox="0 0 400 440" role="img" aria-labelledby="bqT"><title id="bqT">Схема букета</title><g id="bqG"></g></svg>
+          <div class="pv-txt" aria-hidden="true">
+            <p class="pv-name" id="pvName"></p>
+            <p class="pv-price tn" id="pvPrice"></p>
+            <p class="pv-del" id="pvDel"></p>
+          </div>
+        </div>
+        <p class="pv-note">Це схема, не фото. Справжній букет сфотографуємо й надішлемо вам перед відправкою.</p>
+      </div>
+
+      <form id="bf" onsubmit="return false">
+        <fieldset class="step">
+          <legend><span>01</span>Основна квітка</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="fl" value="rose" checked><span class="ob"><svg data-ic="rose" viewBox="-1.15 -1.15 2.3 2.3" aria-hidden="true"></svg><b>Троянда</b><small>Кенія, 50 см · <em>75 грн</em></small></span></label>
+            <label class="opt"><input type="radio" name="fl" value="ran"><span class="ob"><svg data-ic="ran" viewBox="-1.15 -1.15 2.3 2.3" aria-hidden="true"></svg><b>Ранункулюс</b><small>Італія · <em>125 грн</em></small></span></label>
+            <label class="opt"><input type="radio" name="fl" value="tul"><span class="ob"><svg data-ic="tul" viewBox="-1.15 -1.15 2.3 2.3" aria-hidden="true"></svg><b>Тюльпан</b><small>Нідерланди · <em>68 грн</em></small></span></label>
+            <label class="opt"><input type="radio" name="fl" value="eus"><span class="ob"><svg data-ic="eus" viewBox="-1.15 -1.15 2.3 2.3" aria-hidden="true"></svg><b>Еустома</b><small>Кенія, гілка · <em>140 грн</em></small></span></label>
+          </div>
+          <p class="hint">Ціна за стебло.</p>
+        </fieldset>
+
+        <fieldset class="step">
+          <legend><span>02</span>Розмір</legend>
+          <div class="opts sizes">
+            <label class="opt"><input type="radio" name="sz" value="S"><span class="ob"><b>S</b><small>9 стебел<br>Ø 25 см</small></span></label>
+            <label class="opt"><input type="radio" name="sz" value="M" checked><span class="ob"><b>M</b><small>15 стебел<br>Ø 35 см</small></span></label>
+            <label class="opt"><input type="radio" name="sz" value="L"><span class="ob"><b>L</b><small>25 стебел<br>Ø 45 см</small></span></label>
+            <label class="opt"><input type="radio" name="sz" value="XL"><span class="ob"><b>XL</b><small>41 стебло<br>Ø 55 см</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="step">
+          <legend><span>03</span>Колір</legend>
+          <div class="cols">
+            <label class="opt"><input type="radio" name="col" value="white"><span class="ob"><i class="sw" style="background:#F7F4EC"></i>Білий</span></label>
+            <label class="opt"><input type="radio" name="col" value="powder" checked><span class="ob"><i class="sw" style="background:#F1C3CC"></i>Пудровий</span></label>
+            <label class="opt"><input type="radio" name="col" value="coral"><span class="ob"><i class="sw" style="background:#F2876A"></i>Кораловий</span></label>
+            <label class="opt"><input type="radio" name="col" value="bord"><span class="ob"><i class="sw" style="background:#7C1E36"></i>Бордо</span></label>
+            <label class="opt"><input type="radio" name="col" value="mix"><span class="ob"><i class="sw" style="background:conic-gradient(#F7F4EC 0 33%,#F1C3CC 0 66%,#F2876A 0)"></i>Мікс</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="step">
+          <legend><span>04</span>Пакування</legend>
+          <div class="opts pk">
+            <label class="opt"><input type="radio" name="pk" value="kraft" checked><span class="ob"><b>Крафт</b><em>+90 грн</em><small>Коричневий папір і джутова стрічка</small></span></label>
+            <label class="opt"><input type="radio" name="pk" value="paper"><span class="ob"><b>Матовий папір</b><em>+140 грн</em><small>Молочний, зелена оксамитова стрічка</small></span></label>
+            <label class="opt"><input type="radio" name="pk" value="box"><span class="ob"><b>Капелюшна коробка</b><em id="boxP">+550 грн</em><small>Квіти у флористичній губці, стоять 7–10 днів</small></span></label>
+            <label class="opt"><input type="radio" name="pk" value="ribbon"><span class="ob"><b>Лише стрічка</b><em>0 грн</em><small>Лляна стрічка, стебла видно</small></span></label>
+          </div>
+        </fieldset>
+
+        <div class="card-f">
+          <label for="cardTxt">Листівка, безкоштовно</label>
+          <input class="inp" id="cardTxt" maxlength="120" autocomplete="off" placeholder="Напр.: З днем народження, Олю!">
+          <p class="hint">Напишемо від руки, до 120 символів.</p>
+        </div>
+
+        <div class="sum" aria-live="polite">
+          <ul id="sumList" class="tn"></ul>
+          <div class="tot"><span>Разом</span><b class="tn" id="sumTot"></b></div>
+          <p class="when" id="sumWhen"></p>
+          <button class="btn pri" type="button" id="addB">Додати в кошик</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="ready wrap" id="ready" aria-labelledby="rT">
+  <div class="sec-h">
+    <h2 id="rT">Готові букети на сьогодні</h2>
+    <p>Збираємо о 9:00 з ранкової поставки. Колір стрічки або листівку можна вказати в коментарі до замовлення.</p>
+  </div>
+  <ul class="prods">
+    <li class="prod"><div class="ph"><img src="img/bouquet-cream.webp" width="800" height="1000" loading="lazy" alt="Дев’ять кремових троянд з евкаліптом у крафтовому папері"></div><h3>Перша кава</h3><p>9 кремових троянд (Кенія, 50 см), евкаліпт, крафт. Ø 25 см.</p><div class="pr"><b class="tn">1&nbsp;190&nbsp;грн</b><button class="btn sec sm" type="button" data-add="«Перша кава», 9 кремових троянд|1190">У кошик</button></div></li>
+    <li class="prod"><div class="ph"><img src="img/bouquet-coral.webp" width="800" height="1000" loading="lazy" alt="Круглий букет з коралового ранункулюсу, еустоми й кущових троянд у молочному папері"></div><h3>Площа Ринок</h3><p>Ранункулюс, еустома й кущова троянда в коралових тонах, матовий папір. Ø 35 см.</p><div class="pr"><b class="tn">2&nbsp;380&nbsp;грн</b><button class="btn sec sm" type="button" data-add="«Площа Ринок», ранункулюс і еустома|2380">У кошик</button></div></li>
+    <li class="prod"><div class="ph"><img src="img/bouquet-box.webp" width="800" height="1000" loading="lazy" alt="Двадцять п’ять бордових троянд куполом у темно-зеленій капелюшній коробці"></div><h3>Бордо в коробці</h3><p>25 троянд бордо (Еквадор, 60 см) у капелюшній коробці з губкою. Стоять до 10 днів.</p><div class="pr"><b class="tn">4&nbsp;190&nbsp;грн</b><button class="btn sec sm" type="button" data-add="«Бордо в коробці», 25 троянд|4190">У кошик</button></div></li>
+    <li class="prod"><div class="ph"><img src="img/bouquet-tulips.webp" width="800" height="1000" loading="lazy" alt="Двадцять п’ять білих, рожевих і коралових тюльпанів у білому папері"></div><h3>Голландські тюльпани</h3><p>25 тюльпанів мікс: білі, рожеві, коралові. Білий матовий папір.</p><div class="pr"><b class="tn">1&nbsp;990&nbsp;грн</b><button class="btn sec sm" type="button" data-add="«Голландські тюльпани», 25 шт|1990">У кошик</button></div></li>
+  </ul>
+</section>
+
+<section class="stems wrap" id="stems" aria-labelledby="sT">
+  <div class="sgrid">
+    <div class="side">
+      <h2 id="sT">Квіти поштучно</h2>
+      <p>Ціни на <span id="today">сьогодні</span>. Оберіть квіти в магазині або напишіть у коментарі до замовлення, і ми зберемо з них букет: збирання 150&nbsp;грн, пакування від 90&nbsp;грн.</p>
+    </div>
+    <ul class="pl tn">
+      <li>Троянда <small>Кенія, 40 см</small><span class="d"></span><b>55 грн</b></li>
+      <li>Троянда <small>Кенія, 50 см</small><span class="d"></span><b>75 грн</b></li>
+      <li>Троянда <small>Еквадор, 60 см</small><span class="d"></span><b>125 грн</b></li>
+      <li>Троянда кущова<span class="d"></span><b>95 грн</b></li>
+      <li>Ранункулюс <small>Італія</small><span class="d"></span><b>125 грн</b></li>
+      <li>Тюльпан <small>Нідерланди</small><span class="d"></span><b>68 грн</b></li>
+      <li>Еустома<span class="d"></span><b>140 грн</b></li>
+      <li>Хризантема кущова<span class="d"></span><b>85 грн</b></li>
+      <li>Діантус<span class="d"></span><b>60 грн</b></li>
+      <li>Гіпсофіла <small>гілка</small><span class="d"></span><b>110 грн</b></li>
+      <li>Евкаліпт <small>гілка</small><span class="d"></span><b>70 грн</b></li>
+      <li>Капелюшна коробка<span class="d"></span><b>від 450 грн</b></li>
+    </ul>
+  </div>
+</section>
+
+<section class="deliv dk" id="delivery" aria-labelledby="dT">
+  <div class="wrap dgrid">
+    <div>
+      <h2 id="dT">Доставка і самовивіз</h2>
+      <dl class="dl">
+        <div><dt>По Львову</dt><dd>150 грн, від 2&nbsp;500 грн безкоштовно. Винники, Брюховичі, Сокільники — 250 грн.</dd></div>
+        <div><dt>Коли</dt><dd>Щодня 9:00–21:00, вікно доставки — 1 година. Замовлення до 18:00 привеземо сьогодні.</dd></div>
+        <div><dt>Самовивіз</dt><dd>вул. Князя Романа, 9. Букет буде готовий за 40 хвилин.</dd></div>
+        <div><dt>Оплата</dt><dd>Карткою за посиланням, коли погодите фото букета. Або на місці.</dd></div>
+        <div><dt>Майстерня</dt><dd>Щодня 8:00–21:00</dd></div>
+      </dl>
+      <div class="btns">
+        <a class="btn pri" href="#build">Зібрати букет</a>
+        <button class="btn sec" type="button" data-tg>Написати в Telegram</button>
+      </div>
+    </div>
+    <div>
+      <div class="map">
+        <svg viewBox="0 0 600 400" role="img" aria-label="Схема: майстерня «Стебло» на вулиці Князя Романа, поруч з проспектом Свободи і площею Ринок">
+          <rect width="600" height="400" fill="#2D5136"/>
+          <path d="M-20 300C120 280 240 230 330 150S520 40 640 30" fill="none" stroke="#3F6B49" stroke-width="44"/>
+          <g fill="none" stroke="#5D8466" stroke-linecap="round">
+            <path d="M40 -10L120 410" stroke-width="16"/><path d="M-10 90L620 170" stroke-width="10"/><path d="M220 -10L260 410" stroke-width="22"/>
+            <path d="M-10 250L620 330" stroke-width="10"/><path d="M420 -10L380 410" stroke-width="10"/><path d="M520 -10L560 410" stroke-width="8"/>
+          </g>
+          <rect x="300" y="190" width="70" height="60" fill="#3F6B49" transform="rotate(7 335 220)"/>
+          <g font-family="Alegreya Sans,system-ui,sans-serif" font-size="15" fill="#CFE0C9">
+            <text x="236" y="250" transform="rotate(84 236 250)">просп. Свободи</text>
+            <text x="306" y="186">пл. Ринок</text>
+            <text x="40" y="118" transform="rotate(7 40 118)">вул. Князя Романа</text>
+          </g>
+          <g transform="translate(178 128)">
+            <path d="M0 0C-16-18-22-28-22-38a22 22 0 0 1 44 0c0 10-6 20-22 38Z" fill="#F2B6C1"/>
+            <circle cy="-38" r="8" fill="#1A3D23"/>
+          </g>
+          <text x="206" y="98" font-family="Alegreya,Georgia,serif" font-weight="800" font-size="24" fill="#fff">стебло</text>
+        </svg>
+      </div>
+      <figure class="studio"><div class="ph"><img src="img/studio.webp" width="1200" height="800" loading="lazy" alt="Майстерня: відра з квітами біля арочного вікна, на столі рулони крафтового паперу"></div></figure>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="ft wrap">
+  <div class="ft-in">
+    <a class="logo" href="#top">стебло</a>
+    <p>Львів, вул. Князя Романа, 9 · щодня 8:00–21:00</p>
+    <p>Демо-сайт, зроблений drakx для прикладу. Бізнес вигаданий.</p>
+  </div>
+</footer>
+
+<div class="cbar" id="cbar" aria-hidden="true">
+  <p id="cbarT"></p>
+  <button class="btn" type="button" data-cart tabindex="-1">Оформити</button>
+</div>
+
+<dialog class="ck" id="ck" aria-labelledby="ckT">
+  <div class="ck-h">
+    <div style="flex:1"><p id="ckS">Крок 1 з 4</p><h2 id="ckT" tabindex="-1">Кошик</h2></div>
+    <button class="x" type="button" data-close aria-label="Закрити"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 3l12 12M15 3L3 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="bar4" id="ckBar" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="ck-b" id="ckB"></div>
+  <div class="ck-f" id="ckF">
+    <button class="btn sec" type="button" id="ckBack">Назад</button>
+    <button class="btn pri" type="button" id="ckNext">Далі</button>
+  </div>
+</dialog>
+
+<dialog class="note" id="tgN" aria-labelledby="tgNT">
+  <h2 id="tgNT">Тут буде ваш Telegram</h2>
+  <p>Це демо-сайт. На справжньому ця кнопка відкриває чат магазину в Telegram, а замовлення з сайту приходять туди ж, з усіма деталями.</p>
+  <div class="btns">
+    <a class="btn pri sm" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%A1%D1%82%D0%B5%D0%B1%D0%BB%D0%BE%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий сайт</a>
+    <button class="btn sec sm" type="button" data-close>Закрити</button>
+  </div>
+</dialog>
+
+<script>
+(function(){
+'use strict';
+var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var sp=function(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ')},uah=function(n){return sp(n)+' грн'};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var f=function(x){return Math.round(x*10)/10};
+
+/* ---------- data ---------- */
+var FL={rose:{n:'Троянда',g:'троянд',p:75},ran:{n:'Ранункулюс',g:'ранункулюсів',p:125},tul:{n:'Тюльпан',g:'тюльпанів',p:68},eus:{n:'Еустома',g:'гілок еустоми',p:140}};
+var SZ={S:{n:9,s:.78,h:7,w:180,b:450},M:{n:15,s:.9,h:11,w:260,b:550},L:{n:25,s:1,h:16,w:380,b:690},XL:{n:41,s:1.1,h:23,w:520,b:850}};
+var COL={white:{n:'білий',c:['#F7F4EC','#C9C2B1','#FFFFFF']},powder:{n:'пудровий',c:['#F1C3CC','#C98292','#FBE3E8']},coral:{n:'кораловий',c:['#F2876A','#B9553B','#F9B7A3']},bord:{n:'бордо',c:['#7C1E36','#4A0F1F','#A23E58']}};
+COL.mix={n:'мікс'};
+var PK={kraft:{n:'крафт',p:90,w:['#C9A27C','#A27A55','#DEBF9D'],r:'#7A5A3C'},paper:{n:'матовий папір',p:140,w:['#ECE8E1','#C6C0B5','#F8F6F1'],r:'#23502E'},box:{n:'капелюшна коробка'},ribbon:{n:'лише стрічка',p:0,r:'#E6D7C1'}};
+var st={fl:'rose',sz:'M',col:'powder',pk:'kraft'};
+
+/* ---------- time ---------- */
+var pad=function(n){return(n<10?'0':'')+n},hm=function(d){return d.getHours()+':'+pad(d.getMinutes())};
+function ceilTo(d,m){var t=new Date(d);t.setSeconds(0,0);var r=t.getMinutes()%m;if(r)t.setMinutes(t.getMinutes()+m-r);return t}
+function sameDay(a,b){return a.toDateString()===b.toDateString()}
+function dayWord(t){var n=new Date();if(sameDay(t,n))return'сьогодні';n.setDate(n.getDate()+1);return sameDay(t,n)?'завтра':t.toLocaleDateString('uk-UA',{day:'numeric',month:'long'})}
+function firstDelivery(){var t=ceilTo(new Date(Date.now()+120*6e4),30),m=t.getHours()*60+t.getMinutes();if(m<540)t.setHours(9,0,0,0);else if(m>1200){t.setDate(t.getDate()+1);t.setHours(9,0,0,0)}return t}
+function plus(d,min){return new Date(d.getTime()+min*6e4)}
+
+/* ---------- bouquet drawing ---------- */
+var LEAF='M0 0C.4-.22.44-.74 0-1.04-.44-.74-.4-.22 0 0Z';
+function head(t,c){
+  var B=c[0],S=c[1],L=c[2],o='';
+  if(t==='rose'){
+    o='<circle r="1" fill="'+B+'" stroke="'+S+'" stroke-width=".05"/><path d="M-.96.18C-.8.9.8.9.96.18C.62.62-.62.62-.96.18Z" fill="'+S+'" opacity=".35"/><path d="M-.82-.5C-.5-.98.5-.98.82-.5C.45-.68-.45-.68-.82-.5Z" fill="'+L+'"/><circle cy="-.04" r=".6" fill="'+L+'" stroke="'+S+'" stroke-width=".05"/><path d="M-.58.02C-.5.5.5.5.58.02" fill="none" stroke="'+S+'" stroke-width=".07"/><path d="M.02-.1a.12.12 0 1 0 .1.13.27.27 0 1 0-.34-.28.44.44 0 1 0 .6.45" fill="none" stroke="'+S+'" stroke-width=".08" stroke-linecap="round"/>';
+  }else if(t==='ran'){
+    o='<circle r="1" fill="'+B+'" stroke="'+S+'" stroke-width=".05"/><circle cy="-.07" r=".8" fill="'+L+'" stroke="'+S+'" stroke-width=".05"/><circle cy="-.13" r=".6" fill="'+B+'" stroke="'+S+'" stroke-width=".05"/><circle cy="-.18" r=".4" fill="'+L+'" stroke="'+S+'" stroke-width=".05"/><circle cy="-.22" r=".19" fill="#5F7A35"/>';
+  }else if(t==='tul'){
+    o='<path d="M0-1C.52-.6.62.32 0 .96-.62.32-.52-.6 0-1Z" fill="'+S+'"/><path d="M-.66-.82C-.98-.1-.72.86.06.96-.06.44-.16-.36-.66-.82Z" fill="'+B+'" stroke="'+S+'" stroke-width=".05"/><path d="M.66-.82C.98-.1.72.86-.06.96.06.44.16-.36.66-.82Z" fill="'+L+'" stroke="'+S+'" stroke-width=".05"/>';
+  }else{
+    for(var k=0;k<5;k++)o+='<ellipse cy="-.47" rx=".5" ry=".56" fill="'+(k%2?B:L)+'" stroke="'+S+'" stroke-width=".05" transform="rotate('+(k*72)+')"/>';
+    o+='<circle r=".34" fill="'+L+'" stroke="'+S+'" stroke-width=".04"/><circle r=".13" fill="#6E8240"/>';
+  }
+  return o;
+}
+function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function colorFor(i){if(st.col!=='mix')return COL[st.col].c;return[COL.white,COL.powder,COL.coral][i%3].c}
+function bow(x,y,c){return'<g transform="translate('+f(x)+' '+f(y)+')"><path d="M-3 3L-15 34M3 3L13 36" stroke="'+c+'" stroke-width="5" stroke-linecap="round"/><path d="M0 0C-24-20-36 4-5 5ZM0 0C24-20 36 4 5 5Z" fill="'+c+'" stroke="rgba(0,0,0,.18)" stroke-width="1"/><circle r="5" fill="'+c+'" stroke="rgba(0,0,0,.18)"/></g>'}
+
+function draw(){
+  var z=SZ[st.sz],R=118*z.s,n=z.h,hr=R*1.06/Math.sqrt(n),box=st.pk==='box',rib=st.pk==='ribbon',cx=200,cy=box?214-R*.22:176,
+      r=rng(n*97+st.fl.charCodeAt(0)),W=PK[st.pk].w,s='',i,b=Math.min(398,cy+R*1.45+72);
+  // back paper
+  if(W)s+='<path d="M'+f(cx-R-50)+' '+f(cy-R*.28)+'Q'+f(cx-R*.55)+' '+f(cy-R*1.08)+' '+cx+' '+f(cy-R*.8)+'Q'+f(cx+R*.55)+' '+f(cy-R*1.08)+' '+f(cx+R+50)+' '+f(cy-R*.28)+'L'+(cx+14)+' '+f(b)+'H'+(cx-14)+'Z" fill="'+W[1]+'"/>';
+  // stems
+  if(rib){for(i=0;i<9;i++){var sx=cx+(i-4)*R*.11;s+='<path d="M'+f(sx)+' '+f(cy+R*.3)+'Q'+f(cx+(i-4)*5)+' '+f(cy+R*.3+110)+' '+f(cx+(i-4)*7)+' 432" fill="none" stroke="'+(i%2?'#4C7A48':'#5E8A55')+'" stroke-width="5" stroke-linecap="round"/>'}}
+  else if(!box){s+='<path d="M'+(cx-11)+' '+f(b-6)+'v34M'+(cx-3)+' '+f(b-6)+'v38M'+(cx+5)+' '+f(b-6)+'v35M'+(cx+12)+' '+f(b-6)+'v31" stroke="#4C7A48" stroke-width="5" stroke-linecap="round"/>'}
+  // box rim (inside)
+  var bt=cy+R*.36,bw=R+16;
+  if(box)s+='<ellipse cx="'+cx+'" cy="'+f(bt)+'" rx="'+f(bw)+'" ry="'+f(R*.2)+'" fill="#13291A"/>';
+  // leaves
+  if(!box){var LN=8+Math.round(n/2),LC=['#3E6B43','#5A8752','#8EA79A'];
+    for(i=0;i<LN;i++){var a=Math.PI*(.9+1.2*i/(LN-1)),lx=cx+Math.cos(a)*R*.9,ly=cy+Math.sin(a)*R*.64,d=a*180/Math.PI+90+(r()-.5)*24,k=hr*(1.45+r()*.5);
+      s+='<path d="'+LEAF+'" fill="'+LC[i%3]+'" transform="translate('+f(lx)+' '+f(ly)+') rotate('+f(d)+') scale('+f(k)+')"/>'}}
+  else{for(i=0;i<6;i++){var a2=Math.PI*(.95+1.1*i/5);s+='<path d="'+LEAF+'" fill="'+(i%2?'#5A8752':'#8EA79A')+'" transform="translate('+f(cx+Math.cos(a2)*R*.92)+' '+f(cy+Math.sin(a2)*R*.5)+') rotate('+f(a2*180/Math.PI+90)+') scale('+f(hr*1.2)+')"/>'}}
+  // heads
+  var P=[];for(i=0;i<n;i++){var an=i*2.39996+1,dd=Math.sqrt((i+.5)/n)*R*.86;P.push([cx+Math.cos(an)*dd,cy+Math.sin(an)*dd*.66,i])}
+  P.sort(function(p,q){return p[1]-q[1]});
+  P.forEach(function(p,o){var k=hr*(.9+r()*.18)*(.9+.12*(p[1]-cy+R)/(2*R)),rot=st.fl==='tul'?(p[0]-cx)/R*24:r()*360;
+    s+='<g transform="translate('+f(p[0])+' '+f(p[1])+') rotate('+f(rot)+') scale('+f(k)+')"><g class="hd" style="animation-delay:'+Math.min(o*14,240)+'ms">'+head(st.fl,colorFor(p[2]))+'</g></g>'});
+  // gypsophila
+  if(!box&&st.col!=='white'){for(i=0;i<Math.round(n*.7);i++){var ga=Math.PI*(1+r()*1)+(r()<.3?Math.PI:0),gd=R*(.8+r()*.2),gx=cx+Math.cos(ga)*gd,gy=cy+Math.sin(ga)*gd*.66;
+    s+='<g fill="#fff" stroke="#BFC6B3" stroke-width=".8"><circle cx="'+f(gx)+'" cy="'+f(gy)+'" r="3.2"/><circle cx="'+f(gx+6)+'" cy="'+f(gy-4)+'" r="2.6"/><circle cx="'+f(gx-5)+'" cy="'+f(gy-6)+'" r="2.4"/></g>'}}
+  // front
+  if(W){var t=cy+R*.1;
+    s+='<path d="M'+f(cx-R-46)+' '+f(t)+'L'+(cx-8)+' '+f(b)+'H'+(cx+34)+'Q'+f(cx+R*.25)+' '+f(cy+R*.82)+' '+f(cx-R*.15)+' '+f(cy+R*.64)+'Q'+f(cx-R*.72)+' '+f(cy+R*.46)+' '+f(cx-R-46)+' '+f(t)+'Z" fill="'+W[0]+'"/>';
+    s+='<path d="M'+f(cx+R+46)+' '+f(t)+'L'+(cx+8)+' '+f(b)+'H'+(cx-30)+'Q'+f(cx-R*.2)+' '+f(cy+R*.88)+' '+f(cx+R*.2)+' '+f(cy+R*.68)+'Q'+f(cx+R*.72)+' '+f(cy+R*.46)+' '+f(cx+R+46)+' '+f(t)+'Z" fill="'+W[2]+'"/>';
+    s+='<path d="M'+f(cx+R*.2)+' '+f(cy+R*.68)+'L'+(cx-2)+' '+f(b)+'" stroke="'+W[1]+'" stroke-width="1.5" opacity=".7"/>';
+    s+=bow(cx+2,cy+R*.68+(b-cy-R*.68)*.5,PK[st.pk].r);
+  }
+  if(box){var bb=bt+R*.95;
+    s+='<path d="M'+f(cx-bw)+' '+f(bt)+'A'+f(bw)+' '+f(R*.2)+' 0 0 0 '+f(cx+bw)+' '+f(bt)+'V'+f(bb)+'A'+f(bw)+' '+f(R*.2)+' 0 0 1 '+f(cx-bw)+' '+f(bb)+'Z" fill="#23402C"/>';
+    s+='<path d="M'+f(cx-bw)+' '+f(bt)+'A'+f(bw)+' '+f(R*.2)+' 0 0 0 '+f(cx+bw)+' '+f(bt)+'" fill="none" stroke="#3A6346" stroke-width="5"/>';
+    s+='<path d="M'+f(cx-bw)+' '+f(bt+R*.42)+'A'+f(bw)+' '+f(R*.2)+' 0 0 0 '+f(cx+bw)+' '+f(bt+R*.42)+'" fill="none" stroke="#C9A27C" stroke-width="6"/>';
+  }
+  if(rib)s+=bow(cx,cy+R*.3+92,PK.ribbon.r);
+  $('#bqG').innerHTML=s;
+}
+function icons(){$$('[data-ic]').forEach(function(el){el.innerHTML=head(el.getAttribute('data-ic'),st.col==='mix'?COL.coral.c:COL[st.col].c)})}
+
+/* ---------- price ---------- */
+function pkPrice(){return st.pk==='box'?SZ[st.sz].b:PK[st.pk].p}
+function calc(){var z=SZ[st.sz],fl=FL[st.fl],stems=z.n*fl.p;return{stems:stems,work:z.w,pack:pkPrice(),total:Math.round((stems+z.w+pkPrice())/10)*10}}
+function title(){var z=SZ[st.sz];return FL[st.fl].n+', '+st.sz+' ('+z.n+' шт), '+COL[st.col].n+', '+PK[st.pk].n}
+function delText(total){var t=firstDelivery(),fee=total>=2500?'безкоштовно':'150 грн';return'Доставка '+dayWord(t)+' з '+hm(t)+' до '+hm(plus(t,60))+' · '+fee}
+function update(quiet){
+  var c=calc(),z=SZ[st.sz],fl=FL[st.fl];
+  $('#sumList').innerHTML='<li><span>'+z.n+' × '+fl.n.toLowerCase()+', '+fl.p+' грн</span><span>'+uah(c.stems)+'</span></li><li><span>Зелень, евкаліпт, збирання</span><span>'+uah(c.work)+'</span></li><li><span>Пакування: '+PK[st.pk].n+'</span><span>'+uah(c.pack)+'</span></li>';
+  $('#sumTot').textContent=uah(c.total);
+  $('#sumWhen').textContent=delText(c.total);
+  $('#pvName').textContent=fl.n+' · '+st.sz+' · '+COL[st.col].n;
+  $('#pvPrice').textContent=uah(c.total);
+  var t=firstDelivery();$('#pvDel').textContent='Привеземо '+dayWord(t)+' з '+hm(t);
+  $('#bqT').textContent='Схема букета: '+z.n+' '+fl.g+', '+COL[st.col].n+', '+PK[st.pk].n;
+  $('#boxP').textContent='+'+SZ[st.sz].b+' грн';
+  $('#addB').textContent='Додати в кошик · '+uah(c.total);
+  if(!quiet)draw();
+}
+$('#bf').addEventListener('change',function(e){var t=e.target;if(t.name&&st[t.name]!==undefined){st[t.name]=t.value;if(t.name==='col')icons();update()}});
+
+/* ---------- live line ---------- */
+function live(){var t=firstDelivery(),n=new Date();$('.live .dot').classList.toggle('late',!sameDay(t,n));
+  $('#live').textContent=sameDay(t,n)?'Замовите зараз — привеземо сьогодні з '+hm(t):'Сьогоднішні доставки розписані. Привеземо завтра з 9:00';
+  $('#today').textContent=n.toLocaleDateString('uk-UA',{day:'numeric',month:'long'});
+}
+
+/* ---------- cart ---------- */
+var cart=[],uid=0;
+function itemsTotal(){return cart.reduce(function(s,i){return s+i.price},0)}
+function plural(n){var m=n%10,h=n%100;return m===1&&h!==11?'букет':m>=2&&m<=4&&(h<12||h>14)?'букети':'букетів'}
+function refresh(bump){
+  var n=cart.length,c=$('#cnt');c.textContent=n;$('[data-cart].cartbtn').setAttribute('aria-label','Кошик, букетів: '+n);
+  if(bump){c.classList.remove('bump');void c.offsetWidth;c.classList.add('bump')}
+  var bar=$('#cbar');bar.classList.toggle('on',n>0);bar.setAttribute('aria-hidden',n?'false':'true');$('.btn',bar).tabIndex=n?0:-1;
+  $('#cbarT').innerHTML='У кошику '+n+' '+plural(n)+' · <b>'+uah(itemsTotal())+'</b>';
+}
+function add(title,price,btn,extra){
+  cart.push({id:++uid,title:title,price:price,card:extra||''});refresh(true);
+  if(btn){var o=btn.textContent;btn.textContent='Додано в кошик ✓';btn.disabled=true;setTimeout(function(){btn.textContent=o;btn.disabled=false},1400)}
+}
+$('#addB').addEventListener('click',function(){var c=calc();add(title(),c.total,this,$('#cardTxt').value.trim())});
+$$('[data-add]').forEach(function(b){b.addEventListener('click',function(){var p=b.getAttribute('data-add').split('|');add(p[0],+p[1],b)})});
+
+/* ---------- checkout ---------- */
+var dlg=$('#ck'),B=$('#ckB'),next=$('#ckNext'),back=$('#ckBack');
+var ck={step:0,mode:'del',addr:'',rcp:'',anon:false,day:'',slot:'',name:'',contact:'',note:''};
+var STEPS=['Кошик','Отримання','Час','Контакти'];
+function fee(){return ck.mode==='del'&&itemsTotal()<2500?150:0}
+function slots(day){
+  var out=[],now=new Date(),d=new Date();d.setDate(d.getDate()+day);
+  if(ck.mode==='del'){var s=new Date(d);s.setHours(9,0,0,0);if(day===0){var fd=firstDelivery();if(!sameDay(fd,now))return out;s=fd}
+    for(;s.getHours()*60+s.getMinutes()<=1200;s=plus(s,60))out.push(hm(s)+'–'+hm(plus(s,60)))}
+  else{var p=new Date(d);p.setHours(8,30,0,0);if(day===0){p=ceilTo(plus(now,40),15);if(p.getHours()<8||(p.getHours()===8&&p.getMinutes()<30))p.setHours(8,30,0,0)}
+    for(;sameDay(p,d)&&p.getHours()*60+p.getMinutes()<=1245;p=plus(p,60))out.push(hm(p))}
+  return out;
+}
+function opt(name,val,label,checked,extra,dis){return'<label class="opt"><input type="radio" name="'+name+'" value="'+esc(val)+'"'+(checked?' checked':'')+(dis?' disabled':'')+'><span class="ob">'+label+(extra||'')+'</span></label>'}
+function render(){
+  var s=ck.step,html='';
+  $('#ckS').textContent=s<4?'Крок '+(s+1)+' з 4':'Замовлення надіслано';
+  $('#ckT').textContent=s<4?STEPS[s]:'Готово!';
+  $$('#ckBar i').forEach(function(i,k){i.classList.toggle('on',k<=s)});
+  $('#ckF').hidden=false;back.hidden=s===0||s===4;
+  if(s===0){
+    if(!cart.length)html='<p>Кошик порожній. Зберіть букет у конструкторі або оберіть готовий.</p>';
+    else{html=cart.map(function(i){return'<div class="li"><p>'+esc(i.title)+(i.card?'<br><small>Листівка: «'+esc(i.card)+'»</small>':'')+'</p><b>'+uah(i.price)+'</b><button class="rm" type="button" data-rm="'+i.id+'" aria-label="Прибрати: '+esc(i.title)+'">×</button></div>'}).join('');
+      html+='<div class="tot2"><span>Разом</span><span class="tn">'+uah(itemsTotal())+'</span></div>'}
+    next.textContent=cart.length?'Далі: отримання':'До конструктора';
+  }else if(s===1){
+    html='<div class="seg" role="radiogroup" aria-label="Спосіб отримання">'+
+      opt('mode','del','<b>Доставка по Львову</b>',ck.mode==='del','<em class="tn">'+(itemsTotal()>=2500?'безкоштовно':'150 грн')+'</em><small>Вікно 1 година, 9:00–21:00</small>')+
+      opt('mode','pick','<b>Самовивіз</b>',ck.mode==='pick','<em>0 грн</em><small>вул. Князя Романа, 9 · готовий за 40 хв</small>')+'</div>';
+    if(ck.mode==='del')html+='<div class="fld"><label for="f-addr">Адреса доставки</label><input class="inp" id="f-addr" name="addr" autocomplete="street-address" value="'+esc(ck.addr)+'" placeholder="Вулиця, будинок, квартира"></div>'+
+      '<div class="fld"><label for="f-rcp">Ім’я отримувача</label><input class="inp" id="f-rcp" name="rcp" autocomplete="off" value="'+esc(ck.rcp)+'"><p class="hint">Кур’єр зателефонує отримувачу за 15 хвилин до приїзду.</p></div>'+
+      '<label class="chk"><input type="checkbox" name="anon"'+(ck.anon?' checked':'')+'> Не казати, від кого букет</label>';
+    next.textContent='Далі: час';
+  }else if(s===2){
+    var t0=slots(0),t1=slots(1);if(!ck.day)ck.day=t0.length?'0':'1';
+    var list=ck.day==='0'?t0:t1;if(list.indexOf(ck.slot)<0)ck.slot='';
+    html='<div class="grp"><p class="lbl" id="l-day">День</p><div class="chips" role="radiogroup" aria-labelledby="l-day">'+
+      opt('day','0','Сьогодні',ck.day==='0','',!t0.length)+opt('day','1','Завтра',ck.day==='1')+'</div></div>'+
+      '<div class="grp"><p class="lbl" id="l-slot">'+(ck.mode==='del'?'Вікно доставки':'Коли заберете')+'</p><div class="chips" id="slotBox" role="radiogroup" aria-labelledby="l-slot">'+
+      list.map(function(v){return opt('slot',v,v,ck.slot===v)}).join('')+'</div></div>';
+    if(!t0.length)html+='<p class="hint">На сьогодні вільних вікон уже немає.</p>';
+    next.textContent='Далі: контакти';
+  }else if(s===3){
+    html='<div class="fld" style="margin-top:0"><label for="f-name">Ваше ім’я</label><input class="inp" id="f-name" name="name" autocomplete="given-name" value="'+esc(ck.name)+'"></div>'+
+      '<div class="fld"><label for="f-contact">Телефон або нік у Telegram</label><input class="inp" id="f-contact" name="contact" autocomplete="tel" value="'+esc(ck.contact)+'" placeholder="+380… або @нік"><p class="hint">Сюди надішлемо фото букета й посилання на оплату.</p></div>'+
+      '<div class="fld"><label for="f-note">Коментар</label><textarea class="inp" id="f-note" name="note" rows="2">'+esc(ck.note)+'</textarea></div>'+
+      '<div class="li"><p>Букети</p><b>'+uah(itemsTotal())+'</b></div><div class="li"><p>'+(ck.mode==='del'?'Доставка':'Самовивіз')+'</p><b>'+(fee()?uah(fee()):'0 грн')+'</b></div>'+
+      '<div class="tot2"><span>До оплати після фото</span><span class="tn">'+uah(itemsTotal()+fee())+'</span></div>';
+    next.textContent='Надіслати замовлення';
+  }else{
+    var num=1400+Math.floor(Math.random()*90),when=(ck.day==='0'?'сьогодні':'завтра')+', '+ck.slot;
+    html='<div class="done"><h3>Замовлення вже в Telegram у флористів «Стебла»</h3><p>Флорист напише вам протягом 10 хвилин і надішле фото букета перед '+(ck.mode==='del'?'відправкою':'видачею')+'.</p>'+
+      '<div class="tg" aria-label="Повідомлення, яке отримав магазин"><div class="tg-h"><i>с</i><div><b>Стебло · замовлення</b><small>бот</small></div></div><div class="tg-m">'+
+      '<p><b>Нове замовлення №'+num+'</b></p><p>'+cart.map(function(i){return esc(i.title)+' — '+uah(i.price)+(i.card?'<br>Листівка: «'+esc(i.card)+'»':'')}).join('<br>')+'</p>'+
+      '<p>'+(ck.mode==='del'?'Доставка: '+when+'<br>'+esc(ck.addr)+(ck.rcp?'<br>Отримувач: '+esc(ck.rcp):'')+(ck.anon?' (анонімно)':''):'Самовивіз: '+when)+'</p>'+
+      '<p>Клієнт: '+esc(ck.name)+', '+esc(ck.contact)+(ck.note?'<br>Коментар: '+esc(ck.note):'')+'</p><p><b>Разом: '+uah(itemsTotal()+fee())+'</b></p><span class="tg-t">'+hm(new Date())+'</span></div></div></div>';
+    next.textContent='Закрити';
+  }
+  B.innerHTML=html;
+}
+function err(id,msg){var el=$('#'+id);el.setAttribute('aria-invalid','true');el.setAttribute('aria-describedby',id+'-e');var p=document.createElement('p');p.className='err';p.id=id+'-e';p.textContent=msg;el.insertAdjacentElement('afterend',p);return el}
+function valid(){
+  $$('.err',B).forEach(function(e){e.remove()});var bad=null;
+  if(ck.step===1&&ck.mode==='del'&&ck.addr.trim().length<5)bad=err('f-addr','Вкажіть вулицю й номер будинку.');
+  if(ck.step===2&&!ck.slot){var p=document.createElement('p');p.className='err';p.id='slot-e';p.textContent='Оберіть '+(ck.mode==='del'?'вікно доставки.':'час.');$('#slotBox').insertAdjacentElement('afterend',p);bad=$('#slotBox input');}
+  if(ck.step===3){if(ck.contact.trim().length<5)bad=err('f-contact','Потрібен телефон або нік, щоб надіслати фото букета.');if(ck.name.trim().length<2)bad=err('f-name','Як до вас звертатися?')}
+  if(bad){bad.focus();return false}return true;
+}
+function go(s){ck.step=s;render();$('#ckT').focus()}
+next.addEventListener('click',function(){
+  if(ck.step===0&&!cart.length){dlg.close();location.hash='build';return}
+  if(ck.step===4){dlg.close();return}
+  if(!valid())return;
+  if(ck.step===3){go(4);cart=[];var keep=ck;refresh();ck=keep;return}
+  go(ck.step+1);
+});
+back.addEventListener('click',function(){go(ck.step-1)});
+B.addEventListener('click',function(e){var b=e.target.closest('[data-rm]');if(b){cart=cart.filter(function(i){return i.id!==+b.getAttribute('data-rm')});refresh();render();next.focus()}});
+B.addEventListener('input',function(e){var t=e.target;if(t.name&&t.type!=='radio'&&t.type!=='checkbox')ck[t.name]=t.value});
+B.addEventListener('change',function(e){var t=e.target;if(t.type==='checkbox'){ck[t.name]=t.checked;return}
+  if(t.type==='radio'){ck[t.name]=t.value;if(t.name==='mode'){ck.day='';ck.slot='';render();$('input[name=mode]:checked',B).focus()}
+    else if(t.name==='day'){ck.slot='';render();$('input[name=day]:checked',B).focus()}}});
+function openCk(){if(ck.step===4){ck={step:0,mode:'del',addr:'',rcp:'',anon:false,day:'',slot:'',name:'',contact:'',note:''}}ck.step=0;render();dlg.showModal();$('#ckT').focus()}
+$$('[data-cart]').forEach(function(b){b.addEventListener('click',openCk)});
+$$('[data-tg]').forEach(function(b){b.addEventListener('click',function(){$('#tgN').showModal()})});
+$$('dialog').forEach(function(d){d.addEventListener('click',function(e){if(e.target===d||e.target.closest('[data-close]'))d.close()})});
+
+icons();update();live();refresh();setInterval(function(){live();update(1)},60000);
+})();
+</script>
+</body>
+</html>

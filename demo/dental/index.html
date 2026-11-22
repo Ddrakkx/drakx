@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Демо: стоматологія «Ясна», Вінниця | drakx</title>
+<meta name="description" content="Демо-сайт стоматології: орієнтовний план лікування з цінами й запис на консультацію без дзвінків.">
+<meta name="theme-color" content="#F1F4F0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232C5B4B'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' text-anchor='middle' fill='%23F1F4F0'%3E%D0%AF%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F4F0;--paper:#fff;--ink:#17261F;--ink2:#4A5A52;--line:#D3DDD6;--pine:#2C5B4B;--pine2:#1F4538;--deep:#1E3D33;--sage:#DFE9E2;--sage2:#C6D8CC;--clay:#9C4A2D;--r1:10px;--r2:16px;--r3:24px;--f:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;--fs:'Literata',Georgia,serif;--ease:cubic-bezier(.2,0,0,1);--in:cubic-bezier(0,0,0,1)}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--f);overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:500;line-height:1.12}
+h1,h2{font-family:var(--fs);letter-spacing:-.012em}
+h3{font-family:var(--f);font-weight:600;font-size:19px;line-height:1.3}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #2C7A5F;outline-offset:3px;border-radius:6px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.num{font-variant-numeric:tabular-nums}
+.no{visibility:hidden}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* demo bar */
+.demo{background:var(--ink);color:#E6EEE9;font-size:13px;line-height:1}
+.demo .wrap{display:flex;align-items:center;gap:14px;min-height:36px;white-space:nowrap}
+.demo span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;opacity:.85}
+.demo a{text-decoration:none;padding:11px 0}
+.demo a:hover{text-decoration:underline}
+.demo .want{font-weight:600;color:#BFE3D2}
+/* header */
+.hd{position:sticky;top:0;z-index:20;background:rgba(241,244,240,.93);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.hd.s{border-color:var(--line)}
+.hd .wrap{display:flex;align-items:center;gap:28px;height:64px}
+.logo{display:flex;align-items:baseline;gap:8px;text-decoration:none;margin-right:auto}
+.logo b{font:500 27px/1 var(--fs);letter-spacing:-.02em;color:var(--pine)}
+.logo small{font-size:13px;color:var(--ink2)}
+.nav{display:flex;gap:24px;font-size:15px}
+.nav a{text-decoration:none;color:var(--ink2);padding:10px 0}
+.nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:var(--r1);border:1px solid var(--pine);background:var(--pine);color:#fff;font-weight:500;font-size:16px;text-decoration:none;cursor:pointer;transition:background .15s,transform .1s var(--ease)}
+.btn:hover{background:var(--pine2)}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:var(--pine)}
+.btn.ghost:hover{background:var(--sage)}
+.btn.sm{min-height:44px;padding:0 18px;font-size:15px}
+.btn svg{width:18px;height:18px;flex:none}
+/* hero */
+.hero{padding:56px 0 88px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.hero h1{font-size:clamp(2.15rem,1.2rem + 3.4vw,4.1rem)}
+.lead{margin-top:22px;font-size:clamp(17px,16px + .3vw,19px);color:var(--ink2);max-width:34em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;margin:36px 0 0;padding:0;list-style:none;font-size:15px;color:var(--ink2)}
+.facts li{display:flex;align-items:center;gap:8px}
+.facts svg{width:18px;height:18px;color:var(--pine);flex:none}
+.hphoto{position:relative;padding-bottom:40px}
+.ph{margin:0;border-radius:var(--r3);overflow:hidden;background:linear-gradient(160deg,var(--sage),var(--sage2))}
+.ph img{width:100%;height:100%;object-fit:cover}
+.hphoto .ph{aspect-ratio:4/5;margin-left:56px}
+.mini{position:absolute;left:0;bottom:0;width:min(330px,88%);background:var(--paper);border-radius:var(--r2);padding:18px 20px;box-shadow:0 20px 44px -18px rgba(23,38,31,.35);font-size:14px}
+.mini h2{font:600 13px/1.2 var(--f);color:var(--ink2);letter-spacing:.02em;margin-bottom:8px}
+.mini ul{list-style:none;margin:0;padding:0}
+.mini li,.mini .t{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--line)}
+.mini .t{font-weight:600;font-size:15px;border-top:1px solid var(--ink)}
+.mini a{display:inline-block;margin-top:10px;color:var(--pine);font-weight:500;text-underline-offset:3px;padding:6px 0}
+/* sections */
+.sec{padding:96px 0}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:24px 64px;align-items:end;margin-bottom:48px}
+.sh h2,.h2{font-size:clamp(1.85rem,1.3rem + 2vw,2.9rem)}
+.sh p{color:var(--ink2);max-width:34em}
+/* visit steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink)}
+.steps li{padding:28px 32px 8px 0;display:grid;gap:10px;align-content:start}
+.steps li+li{padding-left:32px;border-left:1px solid var(--line)}
+.steps .n{font:500 44px/1 var(--fs);color:var(--pine)}
+.steps .m{font-size:14px;color:var(--clay);font-weight:500}
+.steps p{color:var(--ink2)}
+.paynote{margin-top:40px;padding:20px 24px;background:var(--sage);border-radius:var(--r2);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.paynote p{max-width:44em}
+/* plan */
+.plan{background:var(--deep);color:#E8F0EB}
+.plan .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start}
+.plan .h2{color:#fff}
+.plan .intro{margin-top:18px;color:#C3D4CA}
+.pre{margin-top:36px}
+.pre h3{font-size:15px;color:#C3D4CA;font-weight:500;margin-bottom:12px}
+.pre div{display:flex;flex-wrap:wrap;gap:10px}
+.chip{min-height:44px;padding:10px 16px;border-radius:999px;border:1px solid rgba(232,240,235,.35);background:transparent;color:#F3F7F4;font-size:15px;line-height:1.3;cursor:pointer;text-align:left;transition:background .15s,border-color .15s,transform .1s var(--ease)}
+.chip:hover{border-color:#E8F0EB}
+.chip:active{transform:scale(.97)}
+.chip[aria-pressed=true]{background:#E8F0EB;color:var(--deep);border-color:#E8F0EB}
+.plan .warn{margin-top:28px;font-size:15px;color:#C3D4CA;border-left:2px solid #7FA894;padding-left:14px}
+.sheet{background:var(--paper);color:var(--ink);border-radius:var(--r2);padding:28px 32px 32px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.shh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px;padding-bottom:14px}
+.shh h3{font:500 24px/1.2 var(--fs);white-space:nowrap}
+.shh span{font-size:14px;color:var(--ink2)}
+.rows{list-style:none;margin:0;padding:0}
+.row{display:grid;grid-template-columns:1fr auto 8.6rem;gap:6px 18px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.rn b{display:block;font-weight:600;font-size:16px;line-height:1.3}
+.rn span{font-size:14px;color:var(--ink2)}
+.row.off .rn b{font-weight:500;color:var(--ink2)}
+.rs{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.row.off .rs{color:#66756D;font-weight:400}
+.fixq{font-size:13px;color:var(--ink2);text-align:center;min-width:132px}
+.st{display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;min-width:132px;justify-content:space-between}
+.st button{width:44px;height:44px;border:0;background:none;border-radius:50%;font-size:22px;line-height:1;color:var(--pine);cursor:pointer;transition:background .12s,transform .1s var(--ease)}
+.st button:hover{background:var(--sage)}
+.st button:active{transform:scale(.88)}
+.st button:disabled{color:#AFBDB5;background:none;cursor:default}
+.st output{min-width:1.6em;text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.tot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;border-top:2px solid var(--ink);margin-top:4px;padding-top:18px}
+.tot span{display:block;font-size:14px;color:var(--ink2)}
+.tot strong{display:block;font:500 clamp(28px,22px + 1.4vw,36px)/1.1 var(--fs);font-variant-numeric:tabular-nums;margin-top:4px}
+.tot .v{text-align:right}
+.tot .v b{font-size:20px;font-variant-numeric:tabular-nums}
+.bump{animation:bump .32s var(--in)}
+@keyframes bump{from{opacity:.35;transform:translateY(5px)}}
+.imp{margin-top:14px;font-size:15px;color:var(--clay)}
+.sheet .btn{width:100%;margin-top:22px}
+/* prices */
+.pr{columns:2;column-gap:64px}
+.grp{break-inside:avoid;margin-bottom:40px}
+.grp h3{font:500 22px/1.2 var(--fs);padding-bottom:10px;border-bottom:1px solid var(--ink)}
+.grp ul{list-style:none;margin:0;padding:0}
+.grp li{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:12px 0;border-bottom:1px solid var(--line)}
+.grp li span{color:var(--ink)}
+.grp li small{display:block;color:var(--ink2);font-size:14px}
+.grp li b{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.prnote{color:var(--ink2);font-size:15px;max-width:44em}
+/* about */
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+.about .big{aspect-ratio:3/2}
+.feat{list-style:none;margin:0;padding:0;display:grid;gap:28px}
+.feat li{display:grid;grid-template-columns:132px 1fr;gap:20px;align-items:start}
+.feat .ph{aspect-ratio:1;border-radius:var(--r1)}
+.feat li.nt{grid-template-columns:1fr}
+.feat p{color:var(--ink2);margin-top:6px}
+/* faq */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}
+.qa details{border-top:1px solid var(--line)}
+.qa details:last-child{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;font-weight:600;font-size:18px;min-height:44px}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"";width:12px;height:12px;flex:none;border-right:2px solid var(--pine);border-bottom:2px solid var(--pine);transform:translateY(-3px) rotate(45deg);transition:transform .2s var(--ease)}
+.qa details[open] summary::after{transform:translateY(3px) rotate(225deg)}
+.qa details p{padding:0 0 22px;color:var(--ink2);max-width:40em}
+/* contacts */
+.ct{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:stretch}
+.ct dl{margin:28px 0 0;display:grid;gap:18px}
+.ct dt{font-size:14px;color:var(--ink2)}
+.ct dd{margin:2px 0 0;font-size:18px}
+.ct .cta{margin-top:32px}
+.tgnote{margin-top:14px;font-size:15px;color:var(--ink2);background:var(--sage);padding:12px 16px;border-radius:var(--r1)}
+.map{border-radius:var(--r3);overflow:hidden;background:#E3EBE5;min-height:320px}
+.map svg{display:block;width:100%;height:100%}
+/* footer */
+.ft{border-top:1px solid var(--line);padding:32px 0 40px;font-size:14px;color:var(--ink2)}
+.ft .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+/* dialog */
+dialog{border:0;padding:0;border-radius:var(--r3);width:min(580px,100% - 32px);max-height:min(860px,100dvh - 32px);background:var(--paper);color:var(--ink);box-shadow:0 30px 80px -20px rgba(10,25,18,.5);overflow:hidden}
+dialog::backdrop{background:rgba(20,35,28,.55)}
+dialog[open]{animation:din .26s var(--in)}
+@keyframes din{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.bk{display:flex;flex-direction:column;max-height:inherit}
+.bkh{display:flex;align-items:center;gap:12px;padding:18px 20px 14px 28px;border-bottom:1px solid var(--line)}
+.bkh div{flex:1}
+.bkh h2{font:500 22px/1.2 var(--fs)}
+.bkh p{font-size:14px;color:var(--ink2);margin-top:2px}
+.x{width:44px;height:44px;border:0;background:none;border-radius:50%;cursor:pointer;font-size:26px;line-height:1;color:var(--ink2)}
+.x:hover{background:var(--sage)}
+.bar{height:3px;background:var(--sage)}
+.bar i{display:block;height:100%;width:33%;background:var(--pine);transition:width .3s var(--ease)}
+.bkb{padding:22px 28px;overflow-y:auto;flex:1}
+.bkb fieldset{border:0;margin:0;padding:0;min-width:0}
+.bkb legend{font-weight:600;font-size:18px;padding:0;margin-bottom:14px}
+.step{animation:sin .24s var(--in)}
+@keyframes sin{from{opacity:0;transform:translateX(12px)}}
+.opt{display:block;position:relative;margin-bottom:10px;cursor:pointer}
+.opt input,.dch input,.tch input{position:absolute;opacity:0;width:1px;height:1px}
+.opt>span{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r1);transition:border-color .15s,background .15s}
+.opt b{font-weight:600}
+.opt small{grid-column:1;color:var(--ink2);font-size:14px}
+.opt em{font-style:normal;font-weight:600;grid-row:1/3;grid-column:2;align-self:center;white-space:nowrap;font-variant-numeric:tabular-nums}
+.opt .alert{grid-column:1/-1;margin-top:8px;font-size:14px;color:#8A2B1A}
+.opt input:checked+span,.dch input:checked+span,.tch input:checked+span{border-color:var(--pine);background:var(--sage);box-shadow:inset 0 0 0 1px var(--pine)}
+.opt input:focus-visible+span,.dch input:focus-visible+span,.tch input:focus-visible+span{outline:3px solid #2C7A5F;outline-offset:2px}
+.attach{margin:0 0 14px;padding:12px 14px;border-radius:var(--r1);background:#F6F1EA;font-size:14px;color:var(--ink)}
+.lbl{font-size:14px;color:var(--ink2);margin:20px 0 10px;font-weight:500}
+.lbl:first-of-type{margin-top:0}
+.dates{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.dch,.tch{position:relative;cursor:pointer}
+.dch span{display:grid;justify-items:center;padding:8px 2px;border:1px solid var(--line);border-radius:var(--r1);line-height:1.2;min-height:64px;align-content:center}
+.dch small{font-size:12px;color:var(--ink2)}
+.dch b{font-size:19px;font-variant-numeric:tabular-nums}
+.times{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+.tch span{display:flex;align-items:center;justify-content:center;min-height:46px;border:1px solid var(--line);border-radius:var(--r1);font-variant-numeric:tabular-nums;font-weight:500}
+.tch input:disabled+span{color:#7E8C84;text-decoration:line-through;background:#F5F7F5;cursor:not-allowed;border-style:dashed}
+.empty{color:var(--ink2);font-size:15px;grid-column:1/-1}
+.fld{display:grid;gap:6px;margin-bottom:16px}
+.fld label{font-weight:500;font-size:15px}
+.fld input,.fld textarea{font:inherit;font-size:16px;padding:12px 14px;border:1px solid #AEBDB4;border-radius:var(--r1);background:#fff;color:var(--ink);min-height:48px;width:100%}
+.fld textarea{min-height:84px;resize:vertical}
+.fld input:focus,.fld textarea:focus{outline:2px solid var(--pine);outline-offset:0;border-color:var(--pine)}
+.fld small{font-size:13px;color:var(--ink2)}
+.fld [aria-invalid=true]{border-color:#A3321E}
+.err{color:#A3321E;font-size:14px;margin-top:12px;font-weight:500}
+.sum{font-size:14px;color:var(--ink2);margin-bottom:18px;padding-bottom:16px;border-bottom:1px dashed var(--line)}
+.sum b{color:var(--ink)}
+.bkf{display:flex;justify-content:space-between;gap:12px;padding:14px 28px 20px;border-top:1px solid var(--line)}
+.bkf .btn{flex:1}
+.bkf .ghost{flex:0 0 auto}
+.done h3{font:500 24px/1.25 var(--fs);outline:none}
+.done>p{color:var(--ink2);margin-top:8px}
+.tg{margin-top:20px;background:#DCE6EE;border-radius:var(--r2);padding:14px}
+.tgh{display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px}
+.ava{width:34px;height:34px;border-radius:50%;background:var(--pine);color:#fff;display:grid;place-items:center;font:500 17px/1 var(--fs)}
+.tgh small{color:#4F6070}
+.msg{background:#fff;border-radius:4px 14px 14px 14px;padding:12px 14px;font-size:14px;line-height:1.5;white-space:pre-line;max-width:94%;animation:sin .4s .15s var(--in) backwards}
+.msg i{display:block;text-align:right;font-style:normal;font-size:12px;color:#6B7B88;margin-top:4px}
+.dnote{margin-top:16px;font-size:13px;color:var(--ink2)}
+@media (max-width:980px){
+.nav{display:none}
+.hero .wrap,.plan .wrap,.about,.faq,.ct{grid-template-columns:1fr;gap:40px}
+.hphoto{max-width:560px}
+.sh{grid-template-columns:1fr}
+.map{aspect-ratio:560/380;min-height:0}
+}
+@media (max-width:720px){
+.hero{padding:32px 0 64px}
+.sec{padding:68px 0}
+.steps{grid-template-columns:1fr}
+.steps li,.steps li+li{padding:22px 0;border-left:0;border-bottom:1px solid var(--line)}
+.pr{columns:1}
+.hphoto .ph{margin-left:28px}
+.feat li{grid-template-columns:96px 1fr;gap:16px}
+.sheet{padding:20px 16px 24px}
+.row{grid-template-columns:1fr auto;gap:2px 12px}
+.rn{grid-column:1;grid-row:1}
+.st,.fixq{grid-column:2;grid-row:1/3;align-self:center}
+.st{min-width:118px}.st output{min-width:1.2em}
+.fixq{min-width:118px;font-size:12px}
+.rs{grid-column:1;grid-row:2;text-align:left}
+.row.off .rs{display:none}
+.tot .v{text-align:left}
+.hphoto .ph{aspect-ratio:1}
+}
+@media (max-width:420px){
+.wrap{width:calc(100% - 32px)}
+.logo small{display:none}
+.hd .btn{padding:0 14px}
+.cta .btn{width:100%}
+.mini{width:92%}
+.dates{gap:6px}
+.bkb{padding:18px 16px}.bkh{padding:14px 10px 12px 16px}.bkf{padding:12px 16px 16px}
+.demo .wrap{gap:10px;font-size:12px}
+}
+@media (max-width:640px){dialog{width:100%;max-width:100%;max-height:94dvh;margin:auto 0 0;border-radius:var(--r3) var(--r3) 0 0}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+<symbol id="i-scan" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10"/></symbol>
+<symbol id="i-tg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21 4 3 11.2l6.2 2.3L19 7l-7.6 8.2L18 20z"/></symbol>
+</svg>
+
+<div class="demo"><div class="wrap"><span>Демо-сайт від drakx</span><a href="../../clinic/">← Інші роботи</a><a class="want" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%AF%D1%81%D0%BD%D0%B0%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий</a></div></div>
+
+<header class="hd" id="hd"><div class="wrap">
+<a class="logo" href="#top" aria-label="Ясна, стоматологія. На початок сторінки"><b>Ясна</b><small>стоматологія · Вінниця</small></a>
+<nav class="nav" aria-label="Розділи"><a href="#visit">Перший візит</a><a href="#plan">Вартість лікування</a><a href="#prices">Ціни</a><a href="#contacts">Контакти</a></nav>
+<button class="btn sm" type="button" data-book>Записатися</button>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+<div>
+<h1>Спершу план і&nbsp;ціна. Потім лікування.</h1>
+<p class="lead">Стоматологія у&nbsp;Вінниці на&nbsp;Пирогова. За&nbsp;40&nbsp;хвилин лікар огляне всі зуби, зробить знімок і&nbsp;дасть письмовий план із&nbsp;цінами. Консультація коштує 400&nbsp;грн, і&nbsp;ця сума віднімається від лікування.</p>
+<div class="cta"><button class="btn" type="button" data-book>Записатися на консультацію</button><a class="btn ghost" href="#plan">Порахувати вартість</a></div>
+<ul class="facts">
+<li><svg aria-hidden="true"><use href="#i-clock"/></svg>Пн–Пт 8:00–20:00, Сб 9:00–15:00</li>
+<li><svg aria-hidden="true"><use href="#i-check"/></svg>Анестезія входить у ціну</li>
+<li><svg aria-hidden="true"><use href="#i-scan"/></svg>Знімок і 3D на місці</li>
+</ul>
+</div>
+<div class="hphoto">
+<figure class="ph"><img src="img/hero.webp" width="1200" height="1500" alt="Світлий кабінет стоматології: крісло з оббивкою кольору шавлії, велике вікно у двір і рослина на дерев’яній шафі" fetchpriority="high"></figure>
+<aside class="mini" aria-labelledby="mini-t">
+<h2 id="mini-t">ПЛАН ЛІКУВАННЯ · ПРИКЛАД</h2>
+<ul class="num">
+<li><span>Огляд і план</span><span>400</span></li>
+<li><span>Професійна гігієна</span><span>1 900–2 300</span></li>
+<li><span>Пломба × 2</span><span>3 400–5 200</span></li>
+</ul>
+<div class="t num"><span>Разом</span><span>5 700–7 900 грн</span></div>
+<a href="#plan">Скласти свій план</a>
+</aside>
+</div>
+</div></section>
+
+<section class="sec" id="visit" style="padding-top:24px"><div class="wrap">
+<div class="sh"><h2>Що буде на першому візиті</h2><p>Лікар дивиться не лише зуб, що болить, а всі зуби та ясна. Ви йдете додому з планом на папері й копією в Telegram.</p></div>
+<ol class="steps">
+<li><span class="n">1</span><span class="m">10–15 хвилин</span><h3>Розповідаєте, що турбує</h3><p>Лікар оглядає зуби, ясна і прикус та пояснює, що бачить, звичайними словами.</p></li>
+<li><span class="n">2</span><span class="m">5 хвилин</span><h3>Знімок, якщо потрібен</h3><p>Панорамний або 3D-знімок роблять у&nbsp;сусідньому кабінеті. Нікуди не треба їхати окремо.</p></li>
+<li><span class="n">3</span><span class="m">15 хвилин</span><h3>План із цінами на руки</h3><p>Що лікувати першим, що можна відкласти і скільки коштує кожен етап. Ціни в плані фіксуються на 3&nbsp;місяці.</p></li>
+</ol>
+<div class="paynote"><p><b>Консультація з планом: 400&nbsp;грн.</b> Якщо лікуєтеся в нас, ці гроші віднімаються від першого рахунку.</p><button class="btn sm" type="button" data-book="plan">Записатися</button></div>
+</div></section>
+
+<section class="sec plan" id="plan" aria-labelledby="plan-t"><div class="wrap">
+<div>
+<h2 class="h2" id="plan-t">Скільки коштуватиме лікування</h2>
+<p class="intro">Додайте те, що вам потрібно, або почніть із типової ситуації. Суму з&nbsp;калькулятора можна взяти з&nbsp;собою на консультацію.</p>
+<div class="pre"><h3 id="pre-t">Типові ситуації</h3>
+<div role="group" aria-labelledby="pre-t">
+<button class="chip" type="button" data-pre="check" aria-pressed="false">Давно не був(-ла) у стоматолога</button>
+<button class="chip" type="button" data-pre="spot" aria-pressed="false">Темна пляма, застрягає їжа</button>
+<button class="chip" type="button" data-pre="gap" aria-pressed="false">Немає зуба</button>
+<button class="chip" type="button" data-pre="white" aria-pressed="false">Хочу світліші зуби</button>
+</div></div>
+<p class="warn">Це орієнтир, а не діагноз. Що саме потрібно, лікар скаже після огляду і знімка: план може бути коротшим або довшим.</p>
+</div>
+<div class="sheet">
+<div class="shh"><h3>Ваш план</h3><span id="today">орієнтовно</span></div>
+<ul class="rows" id="rows"></ul>
+<div class="tot"><div><span>Разом орієнтовно</span><strong id="tot" aria-live="polite">400 грн</strong></div><div class="v"><span>Візитів</span><b id="vis">1</b></div></div>
+<p class="imp" id="imp" hidden>Між імплантом і коронкою минає 3–6 місяців: імплант має прижитися. Платите за кожен етап окремо.</p>
+<button class="btn" type="button" id="planbook">Записатися з цим планом</button>
+</div>
+</div></section>
+
+<section class="sec" id="prices"><div class="wrap">
+<div class="sh"><h2>Ціни</h2><p class="prnote">Ціни у гривнях, з анестезією і матеріалами. Якщо під час лікування план змінюється, лікар спершу пояснює чому й називає нову суму.</p></div>
+<div class="pr">
+<div class="grp"><h3>Діагностика</h3><ul>
+<li><span>Консультація, огляд і план лікування<small>40 хв · віднімається від лікування</small></span><b>400</b></li>
+<li><span>Панорамний знімок<small>5 хв</small></span><b>550</b></li>
+<li><span>3D-знімок (КТ) однієї щелепи<small>10 хв</small></span><b>1 400</b></li>
+<li><span>Прицільний знімок одного зуба</span><b>200</b></li>
+</ul></div>
+<div class="grp"><h3>Гігієна та естетика</h3><ul>
+<li><span>Професійна гігієна<small>ультразвук, Air Flow, полірування · 60 хв</small></span><b>1 900–2 300</b></li>
+<li><span>Гігієна для дітей до 14 років<small>40 хв</small></span><b>1 200</b></li>
+<li><span>Відбілювання в кабінеті<small>90 хв, після гігієни</small></span><b>6 500</b></li>
+</ul></div>
+<div class="grp"><h3>Лікування зубів</h3><ul>
+<li><span>Пломба при поверхневому карієсі<small>40–60 хв</small></span><b>1 700</b></li>
+<li><span>Пломба при глибокому карієсі<small>60–90 хв</small></span><b>2 600</b></li>
+<li><span>Відновлення переднього зуба<small>90 хв</small></span><b>3 200</b></li>
+<li><span>Лікування каналів: 1 канал<small>1–2 візити</small></span><b>2 800</b></li>
+<li><span>Лікування каналів: 3 канали<small>2 візити</small></span><b>5 200</b></li>
+</ul></div>
+<div class="grp"><h3>Хірургія та імплантація</h3><ul>
+<li><span>Видалення простого зуба</span><b>1 100</b></li>
+<li><span>Видалення зуба мудрості</span><b>2 800</b></li>
+<li><span>Імплант корейської системи з установкою</span><b>16 500</b></li>
+<li><span>Коронка на імпланті з абатментом, цирконій</span><b>15 000</b></li>
+<li><span>Цирконієва коронка на власний зуб</span><b>11 500</b></li>
+</ul></div>
+<div class="grp"><h3>Дитячий прийом</h3><ul>
+<li><span>Знайомство з лікарем<small>30 хв, без лікування</small></span><b>300</b></li>
+<li><span>Пломба на молочний зуб</span><b>1 100</b></li>
+</ul></div>
+</div>
+</div></section>
+
+<section class="sec" id="about" style="padding-top:0"><div class="wrap">
+<div class="sh"><h2>Як у нас</h2><p>Перший поверх житлового будинку, вхід із двору. Три кабінети, рентген і окремий дитячий кабінет.</p></div>
+<div class="about">
+<figure class="ph big"><img src="img/room.webp" width="1500" height="1000" loading="lazy" alt="Зона очікування: лляні крісла, дубовий стіл і рослини біля вікна"></figure>
+<ul class="feat">
+<li><figure class="ph"><img src="img/sterile.webp" width="600" height="600" loading="lazy" alt="Запечатані стерилізаційні пакети з інструментами на лотку кольору шавлії"></figure><div><h3>Інструменти відкривають при вас</h3><p>Після автоклава кожен набір лежить у запечатаному пакеті. Пакет розкривають перед прийомом, на ваших очах.</p></div></li>
+<li><figure class="ph"><img src="img/xray.webp" width="600" height="600" loading="lazy" alt="Апарат для панорамного знімка в невеликому світлому кабінеті"></figure><div><h3>Рентген поруч із кабінетом</h3><p>Панорамний знімок і 3D. Лікар бачить результат одразу й показує вам на екрані.</p></div></li>
+<li class="nt"><div><h3>Можна платити поетапно</h3><p>За кожен візит окремо. Імплантацію ділимо на етапи: спершу імплант, через кілька місяців коронка.</p></div></li>
+</ul>
+</div>
+</div></section>
+
+<section class="sec" id="faq" style="padding-top:0"><div class="wrap faq">
+<h2 class="h2">Що зазвичай питають</h2>
+<div class="qa">
+<details><summary>Чи буде боляче?</summary><p>Лікування й видалення роблять під місцевою анестезією, вона входить у вартість. Якщо хвилюєтеся, скажіть про це на початку: лікар пояснюватиме кожен крок і зупиниться, щойно ви піднімете руку.</p></details>
+<details><summary>Скільки коштуватиме саме моє лікування?</summary><p>Точну суму лікар назве після огляду і знімка та запише в план. Ціни в плані фіксуються на 3 місяці, навіть якщо прайс зміниться.</p></details>
+<details><summary>Що робити, якщо зуб болить просто зараз?</summary><p>Оберіть «Гострий біль» у записі: для цього щодня тримаємо вільні вікна. Якщо щока швидко набрякає, піднялася температура, важко ковтати чи дихати, не чекайте запису й телефонуйте 103.</p></details>
+<details><summary>Що взяти з собою?</summary><p>Документи не потрібні. Якщо є старі знімки чи виписки, візьміть їх. І скажіть лікарю, які ліки ви приймаєте постійно.</p></details>
+<details><summary>З якого віку приймаєте дітей?</summary><p>З трьох років. Перший візит дитини — знайомство: крісло, інструменти, огляд без лікування. Триває 30 хвилин і коштує 300 грн.</p></details>
+</div>
+</div></section>
+
+<section class="sec" id="contacts" style="padding-top:0"><div class="wrap ct">
+<div>
+<h2 class="h2">Як нас знайти</h2>
+<dl>
+<div><dt>Адреса</dt><dd>Вінниця, вул. Пирогова, 47<br>вхід із двору, перший поверх</dd></div>
+<div><dt>Години роботи</dt><dd class="num">Пн–Пт 8:00–20:00<br>Сб 9:00–15:00, Нд вихідний</dd></div>
+<div><dt>Паркування</dt><dd>4 місця для пацієнтів у дворі</dd></div>
+</dl>
+<div class="cta"><button class="btn" type="button" data-book>Записатися онлайн</button><button class="btn ghost" type="button" id="tgbtn" aria-expanded="false" aria-controls="tgnote"><svg aria-hidden="true"><use href="#i-tg"/></svg>Написати в Telegram</button></div>
+<p class="tgnote" id="tgnote" hidden>Це демо, тож справжнього чату немає. На сайті клініки ця кнопка відкриває її Telegram, де адміністратор відповідає в робочі години.</p>
+</div>
+<div class="map" role="img" aria-label="Схема: клініка на вулиці Пирогова, вхід із двору, поруч паркування і зупинка тролейбуса">
+<svg viewBox="0 0 560 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true" font-family="Onest,system-ui,sans-serif">
+<rect width="560" height="380" fill="#E3EBE5"/>
+<g fill="#D2DED6"><rect x="30" y="30" width="150" height="110" rx="6"/><rect x="210" y="30" width="130" height="110" rx="6"/><rect x="370" y="30" width="170" height="110" rx="6"/><rect x="30" y="230" width="210" height="130" rx="6"/><rect x="390" y="230" width="150" height="130" rx="6"/></g>
+<path d="M-10 185H570" stroke="#fff" stroke-width="34"/>
+<path d="M195 -10V400M355 -10V170" stroke="#fff" stroke-width="18"/>
+<rect x="262" y="226" width="110" height="104" rx="8" fill="#2C5B4B"/>
+<rect x="268" y="232" width="98" height="92" rx="5" fill="none" stroke="#fff" stroke-opacity=".25"/>
+<path d="M317 226v-24" stroke="#2C5B4B" stroke-width="3" stroke-dasharray="4 4"/>
+<circle cx="317" cy="202" r="6" fill="#9C4A2D"/>
+<text x="317" y="282" text-anchor="middle" fill="#fff" font-size="21" font-family="Literata,Georgia,serif">Ясна</text>
+<text x="317" y="304" text-anchor="middle" fill="#DFE9E2" font-size="12">вхід із двору</text>
+<rect x="404" y="244" width="40" height="40" rx="6" fill="#fff"/><text x="424" y="271" text-anchor="middle" fill="#2C5B4B" font-size="20" font-weight="600">P</text>
+<text x="454" y="269" fill="#17261F" font-size="13">4 місця</text>
+<text x="40" y="180" fill="#17261F" font-size="14" font-weight="600">вул. Пирогова</text>
+<rect x="455" y="160" width="12" height="12" rx="2" fill="#17261F"/><text x="473" y="171" fill="#17261F" font-size="12">тролейбус</text>
+</svg>
+</div>
+</div></section>
+</main>
+
+<footer class="ft"><div class="wrap"><p>Демо-сайт, зроблений drakx для прикладу. Бізнес вигаданий.</p><p>«Ясна», стоматологія · Вінниця</p></div></footer>
+
+<dialog id="book" aria-labelledby="bk-t">
+<form class="bk" id="bk" novalidate>
+<div class="bkh"><div><h2 id="bk-t">Запис на консультацію</h2><p id="bk-s">Крок 1 з 3</p></div><button class="x" type="button" id="bk-x" aria-label="Закрити">×</button></div>
+<div class="bar" aria-hidden="true"><i id="bk-bar"></i></div>
+<div class="bkb">
+<fieldset class="step" data-s="1"><legend tabindex="-1">З чим приходите?</legend>
+<p class="attach" id="attach" hidden></p>
+<label class="opt"><input type="radio" name="r" value="plan" data-t="Огляд і план лікування"><span><b>Огляд і план лікування</b><small>40 хв · знімок за потреби</small><em>400 грн</em></span></label>
+<label class="opt"><input type="radio" name="r" value="pain" data-t="Гострий біль"><span><b>Гострий біль</b><small>30 хв · найближчий вільний час</small><em>від 400 грн</em><span class="alert">Щока швидко набрякає, температура, важко ковтати чи дихати? Це невідкладний стан: телефонуйте 103.</span></span></label>
+<label class="opt"><input type="radio" name="r" value="hyg" data-t="Професійна гігієна"><span><b>Професійна гігієна</b><small>60 хв</small><em>1 900–2 300 грн</em></span></label>
+<label class="opt"><input type="radio" name="r" value="imp" data-t="Консультація з імплантації"><span><b>Консультація з імплантації</b><small>40 хв · з 3D-знімком +1 400 грн</small><em>400 грн</em></span></label>
+<label class="opt"><input type="radio" name="r" value="kid" data-t="Дитячий прийом: знайомство"><span><b>Дитячий прийом: знайомство</b><small>30 хв · з 3 років, без лікування</small><em>300 грн</em></span></label>
+</fieldset>
+<fieldset class="step" data-s="2" hidden><legend tabindex="-1">Коли вам зручно?</legend>
+<p class="lbl" id="d-l">День</p><div class="dates" id="dates" role="radiogroup" aria-labelledby="d-l"></div>
+<p class="lbl" id="t-l">Вільний час</p><div class="times" id="times" role="radiogroup" aria-labelledby="t-l"></div>
+</fieldset>
+<fieldset class="step" data-s="3" hidden><legend tabindex="-1">Як до вас звертатися?</legend>
+<p class="sum" id="sum"></p>
+<div class="fld"><label for="f-n">Ім’я</label><input id="f-n" name="n" autocomplete="given-name" required></div>
+<div class="fld"><label for="f-c">Телефон або нік у Telegram</label><input id="f-c" name="c" autocomplete="tel" inputmode="text" required aria-describedby="f-ch"><small id="f-ch">Наприклад, +380 67 123 45 67 або @olena_v</small></div>
+<div class="fld"><label for="f-m">Коментар <span style="font-weight:400;color:var(--ink2)">(необов’язково)</span></label><textarea id="f-m" name="m" placeholder="Що турбує, які ліки приймаєте"></textarea></div>
+</fieldset>
+<div class="step done" data-s="4" hidden>
+<h3 tabindex="-1" id="done-t">Готово! Заявка вже в Telegram у «Ясній»</h3>
+<p>Адміністратор підтвердить запис повідомленням, у робочі години зазвичай за 15 хвилин.</p>
+<div class="tg"><div class="tgh"><span class="ava" aria-hidden="true">Я</span><div><b>Ясна · запис</b><br><small>бот</small></div></div><div class="msg" id="msg"></div></div>
+<p class="dnote">Це демо: заявка нікуди не надсилалася. На справжньому сайті вона приходить адміністратору за секунду.</p>
+</div>
+<p class="err" id="err" role="alert"></p>
+</div>
+<div class="bkf"><button class="btn ghost" type="button" id="bk-back">Назад</button><button class="btn" type="submit" id="bk-next">Далі</button></div>
+</form>
+</dialog>
+
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const fmt=n=>n.toLocaleString('uk-UA'),rng=(a,b)=>a==b?fmt(a):fmt(a)+'–'+fmt(b);
+$$('img').forEach(i=>{if(i.complete&&!i.naturalWidth)i.classList.add('no');i.addEventListener('error',()=>i.classList.add('no'))});
+const hd=$('#hd');addEventListener('scroll',()=>hd.classList.toggle('s',scrollY>40),{passive:true});
+$('#tgbtn').addEventListener('click',e=>{const n=$('#tgnote'),o=n.hidden;n.hidden=!o;e.currentTarget.setAttribute('aria-expanded',o)});
+
+/* plan calculator */
+const P=[
+{id:'c',n:'Консультація, огляд і план',a:400,b:400,fix:1,d:'віднімається від лікування'},
+{id:'x',n:'Панорамний знімок',a:550,b:550,m:1},
+{id:'ct',n:'3D-знімок (КТ) щелепи',a:1400,b:1400,m:2},
+{id:'h',n:'Професійна гігієна',a:1900,b:2300,m:1},
+{id:'f',n:'Пломба при карієсі',a:1700,b:2600,m:8,u:'зуб'},
+{id:'e',n:'Лікування каналів',a:2800,b:5200,m:6,u:'зуб, 1–3 канали'},
+{id:'r',n:'Видалення зуба',a:1100,b:2800,m:6,u:'зуб'},
+{id:'i',n:'Імплант з установкою',a:16500,b:16500,m:6},
+{id:'k',n:'Коронка на імпланті, цирконій',a:15000,b:15000,m:6},
+{id:'z',n:'Коронка на власний зуб, цирконій',a:11500,b:11500,m:6},
+{id:'w',n:'Відбілювання в кабінеті',a:6500,b:6500,m:1}];
+const PRE={check:{x:1,h:1},spot:{x:1,f:1},gap:{ct:1,i:1,k:1},white:{h:1,w:1}};
+const q={};P.forEach(p=>q[p.id]=p.fix?1:0);
+$('#rows').innerHTML=P.map(p=>`<li class="row" data-id="${p.id}"><div class="rn"><b>${p.n}</b><span class="num">${rng(p.a,p.b)} грн${p.u?' за '+p.u:''}${p.d?' · '+p.d:''}</span></div>${p.fix?'<span class="fixq">входить завжди</span>':`<div class="st" role="group" aria-label="${p.n}, кількість"><button type="button" data-d="-1" aria-label="Прибрати: ${p.n}">−</button><output>0</output><button type="button" data-d="1" aria-label="Додати: ${p.n}">+</button></div>`}<span class="rs"></span></li>`).join('');
+let total=[400,400],lastT='';
+function calc(){
+let a=0,b=0;
+P.forEach(p=>{const n=q[p.id],li=$(`.row[data-id="${p.id}"]`);a+=p.a*n;b+=p.b*n;li.classList.toggle('off',!n);$('.rs',li).textContent=n?rng(p.a*n,p.b*n):'—';const o=$('output',li);if(o){o.textContent=n;$('[data-d="-1"]',li).disabled=!n;$('[data-d="1"]',li).disabled=n>=p.m}});
+total=[a,b];
+const t=rng(a,b)+' грн',el=$('#tot');
+if(t!==lastT){el.textContent=t;el.classList.remove('bump');void el.offsetWidth;el.classList.add('bump');lastT=t}
+const crowns=q.k+q.z,lo=1+q.h+Math.ceil(q.f/3)+q.e+(q.r?1:0)+(q.i?1:0)+(crowns?2:0)+q.w,hi=1+q.h+Math.ceil(q.f/2)+2*q.e+q.r+(q.i?2:0)+(crowns?3:0)+q.w;
+$('#vis').textContent=lo==hi?lo:lo+'–'+hi;
+$('#imp').hidden=!q.i;
+}
+$('#rows').addEventListener('click',e=>{const b=e.target.closest('button[data-d]');if(!b)return;const id=b.closest('.row').dataset.id,p=P.find(x=>x.id==id);q[id]=Math.max(0,Math.min(p.m,q[id]+ +b.dataset.d));$$('[data-pre]').forEach(c=>c.setAttribute('aria-pressed','false'));calc()});
+$$('[data-pre]').forEach(c=>c.addEventListener('click',()=>{const on=c.getAttribute('aria-pressed')!='true';P.forEach(p=>q[p.id]=p.fix?1:0);if(on)Object.assign(q,PRE[c.dataset.pre]);$$('[data-pre]').forEach(x=>x.setAttribute('aria-pressed',x==c&&on?'true':'false'));calc()}));
+$('#today').textContent='орієнтовно · '+new Date().toLocaleDateString('uk-UA',{day:'numeric',month:'long'});
+calc();
+const planText=()=>P.filter(p=>q[p.id]&&!p.fix).map(p=>p.n[0].toLowerCase()+p.n.slice(1)+(q[p.id]>1?' ×'+q[p.id]:'')).join(', ');
+
+/* booking */
+const dlg=$('#book'),form=$('#bk'),err=$('#err'),next=$('#bk-next'),back=$('#bk-back');
+let step=1,plan='',days=[],sel={};
+const SL=['08:00','09:00','10:00','11:00','12:00','13:30','14:30','15:30','16:30','17:30','18:30'],SA=['09:00','10:00','11:00','12:00','13:00','14:00'];
+function mkDays(){days=[];const d=new Date();d.setHours(0,0,0,0);for(let i=0;days.length<10;i++){const x=new Date(d);x.setDate(d.getDate()+i);if(x.getDay())days.push(x)}}
+function slots(x){const now=new Date(),L=x.getDay()==6?SA:SL;return L.map((t,i)=>{const[h,m]=t.split(':'),dt=new Date(x);dt.setHours(h,m);return{t,busy:dt-now<36e5||(x.getDate()*7+i*13+x.getMonth()*3)%10<4}})}
+function renderDays(){
+$('#dates').innerHTML=days.map((x,i)=>{const free=slots(x).some(s=>!s.busy);return`<label class="dch"><input type="radio" name="d" value="${i}"${free?'':' disabled'}><span${free?'':' style="opacity:.45"'}><small>${x.toLocaleDateString('uk-UA',{weekday:'short'})}</small><b>${x.getDate()}</b><small>${x.toLocaleDateString('uk-UA',{month:'short'})}</small></span></label>`}).join('');
+const first=$('#dates input:not(:disabled)');if(first){first.checked=true;renderTimes(+first.value)}
+}
+function renderTimes(i){const s=slots(days[i]);$('#times').innerHTML=s.some(x=>!x.busy)?s.map(x=>`<label class="tch"><input type="radio" name="t" value="${x.t}"${x.busy?' disabled':''}><span>${x.t}<span class="sr">${x.busy?', зайнято':''}</span></span></label>`).join(''):'<p class="empty">На цей день вільного часу немає.</p>'}
+$('#dates').addEventListener('change',e=>{renderTimes(+e.target.value);err.textContent=''});
+function show(n){
+step=n;$$('[data-s]',form).forEach(f=>f.hidden=+f.dataset.s!==n);err.textContent='';
+$('#bk-s').textContent=n<4?`Крок ${n} з 3`:'Заявку надіслано';$('#bk-bar').style.width=(n<4?n*33.4:100)+'%';
+back.hidden=n==1||n==4;next.textContent=n==3?'Надіслати заявку':n==4?'Закрити':'Далі';
+if(n==2&&!$('#dates').children.length){mkDays();renderDays()}
+if(n==3){const d=days[$('#dates input:checked').value];$('#sum').innerHTML=`<b>${sel.r}</b><br>${d.toLocaleDateString('uk-UA',{weekday:'long',day:'numeric',month:'long'})}, ${$('#times input:checked').value}`}
+const h=$(`[data-s="${n}"] legend, [data-s="${n}"] h3`,form);h&&h.focus({preventScroll:true});
+}
+function open(r,p){form.reset();plan=p||'';$('#dates').innerHTML='';$$('[aria-invalid]').forEach(x=>x.removeAttribute('aria-invalid'));
+const at=$('#attach');at.hidden=!plan;if(plan)at.innerHTML=`<b>До заявки додано ваш план:</b> ${plan}`;
+if(r){const i=$(`input[name=r][value="${r}"]`,form);i&&(i.checked=true)}
+dlg.showModal();show(1)}
+$$('[data-book]').forEach(b=>b.addEventListener('click',()=>open(b.dataset.book)));
+$('#planbook').addEventListener('click',()=>{const t=planText();open(q.i?'imp':'plan',t?t+' · '+rng(total[0],total[1])+' грн':'')});
+$('#bk-x').addEventListener('click',()=>dlg.close());
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+back.addEventListener('click',()=>show(step-1));
+form.addEventListener('submit',e=>{e.preventDefault();
+if(step==1){const r=$('input[name=r]:checked',form);if(!r){err.textContent='Оберіть, з чим приходите.';return}sel.r=r.dataset.t;show(2)}
+else if(step==2){if(!$('#times input:checked')){err.textContent='Оберіть вільний час. Закреслений час уже зайнятий.';return}show(3)}
+else if(step==3){const n=$('#f-n'),c=$('#f-c'),cv=c.value.trim(),okN=n.value.trim().length>1,okC=/^\+?[\d\s()-]{10,}$/.test(cv)||/^@?[A-Za-z][\w]{4,}$/.test(cv);
+n.setAttribute('aria-invalid',!okN);c.setAttribute('aria-invalid',!okC);
+if(!okN||!okC){err.textContent=!okN?'Напишіть, як до вас звертатися.':'Перевірте контакт: потрібен телефон або нік у Telegram.';(okN?c:n).focus();return}
+const d=days[$('#dates input:checked').value],m=$('#f-m').value.trim();
+$('#msg').innerHTML=`<b>Новий запис із сайту</b>\n${sel.r}\n${d.toLocaleDateString('uk-UA',{weekday:'short',day:'numeric',month:'long'})}, ${$('#times input:checked').value}\n${esc(n.value.trim())} · ${esc(cv)}${plan?'\nПлан із калькулятора: '+plan:''}${m?'\nКоментар: '+esc(m):''}<i>${new Date().toTimeString().slice(0,5)}</i>`;
+show(4)}
+else dlg.close()});
+form.addEventListener('input',e=>{e.target.removeAttribute('aria-invalid');err.textContent=''});
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+})();
+</script>
+</body>
+</html>

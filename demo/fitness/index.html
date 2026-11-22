@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Демо: ТЕМП, студія групових тренувань у Дніпрі | drakx</title>
+<meta name="description" content="Функціонал, сайкл, пілатес, бокс-фітнес, HIIT і стретчинг у групах до 14 людей. Розклад із вільними місцями й запис без дзвінків.">
+<meta name="theme-color" content="#111110">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23111110'/%3E%3Cpath d='M7 24h4v-7H7zm7 0h4V12h-4zm7 0h4V7h-4z' fill='%23ff5a1f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@700;800&family=Golos+Text:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#111110;--ink2:#1c1b19;--ink3:#2c2b27;--chalk:#f1efe9;--paper:#fbfaf7;--line:#d6d2c8;--lined:#3a3832;--mute:#5a564e;--muted:#aaa69c;--sig:#ff5a1f;--sigh:#ff7442;--sigi:#b83a0c;--focus:#111110;--fd:"Fira Sans Extra Condensed","Arial Narrow",sans-serif;--f:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;--e:cubic-bezier(.2,.7,.2,1);--pad:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:72px}
+body{font:400 17px/1.5 var(--f);color:var(--ink);background:var(--chalk)}
+img{display:block;max-width:100%}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.dk{background:var(--ink);color:var(--chalk);--focus:var(--sig)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+[hidden]{display:none!important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ph{position:relative;overflow:hidden;background:var(--ink3)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* demo bar */
+.demo{background:#2c2b27;color:#d9d5cc;font-size:13px;line-height:1}
+.demo .wrap{display:flex;align-items:center;gap:16px;height:36px;white-space:nowrap}
+.demo span{overflow:hidden;text-overflow:ellipsis;min-width:0}
+.demo a{text-underline-offset:3px;padding:10px 0}
+.demo a:first-of-type{margin-left:auto;color:var(--sigh);font-weight:700}
+/* header */
+.hd{position:sticky;top:0;z-index:20;background:rgba(17,17,16,.94);color:var(--chalk);border-bottom:1px solid var(--lined);--focus:var(--sig)}
+.hd .wrap{display:flex;align-items:center;gap:24px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;font:800 30px/1 var(--fd);letter-spacing:.04em}
+.logo svg{flex:none}
+.nav{display:none;gap:28px;margin-left:auto;font-weight:500;font-size:16px}
+.nav a{text-decoration:none;padding:12px 0}
+.nav a:hover{color:var(--sigh)}
+.hd .b1{margin-left:auto}
+/* buttons */
+.b1,.b2{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:6px;font-weight:700;font-size:16px;text-decoration:none;transition:transform .12s var(--e),background-color .15s,color .15s,border-color .15s;white-space:nowrap}
+.b1{background:var(--sig);color:var(--ink)}
+.b1:hover{background:var(--sigh)}
+.b2{border:1.5px solid currentColor}
+.b2:hover{background:var(--ink);color:var(--chalk);border-color:var(--ink)}
+.dk .b2:hover,.mine .b2:hover{background:var(--chalk);color:var(--ink);border-color:var(--chalk)}
+.b1:active,.b2:active,.chip:active,.dy:active{transform:scale(.96)}
+.sm{min-height:44px;padding:0 16px;font-size:15px}
+.b1[disabled]{background:var(--line);color:var(--mute);cursor:not-allowed}
+/* hero */
+.hero{padding:40px 0 56px;overflow:hidden}
+.hero .wrap{display:grid;gap:32px}
+.kick{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+h1{font:800 clamp(52px,14vw,116px)/.88 var(--fd);text-transform:uppercase;letter-spacing:-.005em}
+h1 em{font-style:normal;color:var(--sig);display:block}
+.lead{max-width:34em;margin-top:24px;color:#d9d5cc;font-size:18px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hv{position:relative}
+.hv .ph{aspect-ratio:4/3;border-radius:4px;background:linear-gradient(160deg,#2c2b27,#1c1b19)}
+.next{background:var(--chalk);color:var(--ink);border-radius:6px;padding:18px 18px 16px;margin-top:-56px;position:relative;width:calc(100% - 24px);margin-left:12px;--focus:var(--ink);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.next .lb{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);display:flex;justify-content:space-between;gap:8px}
+.next .big{font:800 44px/1 var(--fd);margin:8px 0 2px}
+.next .row{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-top:8px}
+/* sections */
+.sec{padding:clamp(56px,9vw,104px) 0}
+h2{font:800 clamp(44px,9vw,84px)/.9 var(--fd);text-transform:uppercase}
+.sh{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 24px;margin-bottom:28px}
+.sh p{color:var(--mute);max-width:30em;font-size:16px}
+.dk .sh p{color:var(--muted)}
+/* filters */
+.flt{display:grid;gap:12px;margin-bottom:20px}
+.fr{display:flex;align-items:center;gap:8px;overflow-x:auto;margin:0 calc(-1*var(--pad));padding:2px var(--pad);scrollbar-width:none}
+.fr::-webkit-scrollbar{display:none}
+.fr>b{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);flex:none;width:72px}
+.chip{flex:none;min-height:44px;padding:0 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--paper);font-size:15px;font-weight:500;transition:transform .12s var(--e),background-color .15s,border-color .15s}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--chalk);border-color:var(--ink)}
+.tg1{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:15px;font-weight:500;cursor:pointer;flex:none}
+.tg1 input{appearance:none;width:40px;height:24px;border-radius:12px;background:var(--line);position:relative;cursor:pointer;transition:background-color .15s}
+.tg1 input::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .18s var(--e)}
+.tg1 input:checked{background:var(--ink)}
+.tg1 input:checked::after{transform:translateX(16px)}
+/* day strip */
+.strip{display:flex;gap:6px;overflow-x:auto;margin:0 calc(-1*var(--pad)) 16px;padding:2px var(--pad);scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.dy{flex:1 0 50px;min-height:64px;border-radius:6px;border:1.5px solid var(--line);background:var(--paper);display:grid;place-items:center;align-content:center;gap:2px;line-height:1;transition:transform .12s var(--e),background-color .15s}
+.dy small{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.04em}
+.dy b{font:800 24px/1 var(--fd)}
+.dy span{font-size:11px;color:var(--mute)}
+.dy[aria-pressed=true]{background:var(--ink);color:var(--chalk);border-color:var(--ink)}
+.dy[aria-pressed=true] small,.dy[aria-pressed=true] span{color:var(--muted)}
+/* board */
+.week .day{display:none}
+.week .day.on{display:grid;gap:8px}
+.dh{display:none}
+.cl{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"tm in in" "sx sx bt";gap:10px 14px;align-items:center;padding:14px;background:var(--paper);border:1px solid var(--line);border-radius:6px;transition:background-color .2s,color .2s}
+.cl .tm{font:800 34px/1 var(--fd);grid-area:tm}.cl .in{grid-area:in}.cl .sx{grid-area:sx}.cl>button{grid-area:bt}
+.cl h4{font-size:17px;line-height:1.2}
+.cl .mt{font-size:14px;color:var(--mute);line-height:1.35}
+.st{display:flex;flex-wrap:wrap;gap:2px;margin:0 0 5px;max-width:140px}
+.st i{width:7px;height:7px;border:1px solid #8d887d;border-radius:1px}
+.st i.f{background:#8d887d}
+.st i.m{background:var(--sig);border-color:var(--sig)}
+.lf{font-size:14px;font-weight:700}
+.hot .lf{color:var(--sigi)}
+.full .lf{color:var(--mute)}
+.cl.past{opacity:.55}
+.cl.past .lf{font-weight:500;color:var(--mute)}
+.mine{background:var(--ink);color:var(--chalk);border-color:var(--ink);--focus:var(--sig)}
+.mine .mt{color:var(--muted)}
+.mine .lf{color:var(--sigh)}
+.mine .st i{border-color:#77736a}
+.mine .st i.f{background:#77736a}
+.none{padding:28px 16px;border:1.5px dashed var(--line);border-radius:6px;color:var(--mute);font-size:15px}
+.none button{margin-top:12px}
+.note{margin-top:20px;font-size:15px;color:var(--mute);max-width:44em}
+/* directions */
+.dir{border-top:1px solid var(--lined)}
+.dr{display:grid;gap:6px 24px;padding:22px 0;border-bottom:1px solid var(--lined);grid-template-columns:minmax(0,1fr) auto}
+.dr h3{font:800 36px/1 var(--fd);text-transform:uppercase;overflow-wrap:anywhere}
+.dr p{grid-column:1/-1;color:#d9d5cc;font-size:16px;max-width:38em}
+.dr .sp{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;font-size:14px;color:var(--muted)}
+.dr .go{grid-row:1;grid-column:2}
+.int{display:inline-flex;gap:3px;vertical-align:middle;margin-left:6px}
+.int i{width:6px;height:14px;background:#4a4842;border-radius:1px}
+.int i.f{background:var(--sig)}
+.pics{display:flex;gap:12px;overflow-x:auto;margin:40px calc(-1*var(--pad)) 0;padding:0 var(--pad);scroll-snap-type:x mandatory;scroll-padding:0 var(--pad);scrollbar-width:none}
+.pics::-webkit-scrollbar{display:none}
+.pics figure{flex:0 0 82%;scroll-snap-align:start}
+.pics .ph{aspect-ratio:3/2;border-radius:4px}
+.pics figcaption{font-size:14px;color:var(--muted);margin-top:10px}
+/* prices */
+.pr{display:grid;gap:24px}
+.first{background:var(--ink);color:var(--chalk);border-radius:8px;padding:28px 22px;--focus:var(--sig)}
+.first .pv{font:800 88px/.9 var(--fd);color:var(--sig);margin:10px 0 4px}
+.first .pv small{font-size:32px;margin-left:6px}
+.first h3{font:800 32px/1 var(--fd);text-transform:uppercase}
+.first ol{list-style:none;counter-reset:s;margin:20px 0 24px;display:grid;gap:12px;font-size:16px;color:#d9d5cc}
+.first li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px}
+.first li::before{content:counter(s);font:800 22px/1.1 var(--fd);color:var(--sig)}
+.tbl{border-top:2px solid var(--ink)}
+.trow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.trow h3{font-size:18px;line-height:1.2}
+.trow p{font-size:14px;color:var(--mute)}
+.trow .pv{color:var(--ink);font:800 34px/1 var(--fd);text-align:right;white-space:nowrap}
+.trow .pv small{font-size:18px;margin-left:3px}
+.rules{margin-top:24px;display:grid;gap:8px;font-size:15px;color:var(--mute);list-style:none}
+.rules li{padding-left:18px;position:relative}
+.rules li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--ink)}
+/* contacts */
+.ct{display:grid;gap:32px}
+.ct dl{display:grid;gap:18px;margin:24px 0 28px}
+.ct dt{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
+.ct dd{font-size:17px}
+.map{border-radius:6px;overflow:hidden;background:#1a1917;aspect-ratio:6/5}
+.map svg{width:100%;height:100%;display:block}
+.tgn{margin-top:14px;font-size:14px;color:var(--muted);min-height:1.5em}
+footer{background:var(--ink);color:var(--muted);font-size:14px;border-top:1px solid var(--lined)}
+footer .wrap{padding:24px var(--pad) 32px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+/* dialog */
+dialog{border:0;padding:0;background:var(--chalk);color:var(--ink);width:100%;max-width:100%;max-height:92vh;margin:auto 0 0;border-radius:14px 14px 0 0;overscroll-behavior:contain}
+dialog::backdrop{background:rgba(10,10,9,.62)}
+dialog[open]{animation:up .28s var(--e)}
+@keyframes up{from{transform:translateY(24px);opacity:0}}
+.mh{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--chalk);z-index:1}
+.mh h2{font-size:34px}
+.x{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:26px;line-height:1}
+.x:hover{background:var(--line)}
+.mb{padding:8px 20px 24px}
+.stp{border:0;padding:16px 0;border-bottom:1px solid var(--line)}
+.stp legend,.stp .lg{font:800 22px/1 var(--fd);text-transform:uppercase;margin-bottom:12px;float:left;width:100%}
+.stp legend span,.stp .lg span{color:var(--mute)}
+.wr{display:flex;flex-wrap:wrap;gap:8px;clear:both}
+.wr .chip{min-width:0}
+.sl{display:grid;gap:8px;clear:both}
+.slot{display:grid;grid-template-columns:54px 1fr auto;gap:12px;align-items:center;text-align:left;min-height:52px;padding:8px 14px;border:1.5px solid var(--line);border-radius:6px;background:var(--paper);transition:transform .12s var(--e),background-color .15s}
+.slot b{font:800 24px/1 var(--fd)}
+.slot small{font-size:14px;color:var(--mute)}
+.slot:hover{border-color:var(--ink)}
+.slot[aria-pressed=true]{background:var(--ink);color:var(--chalk);border-color:var(--ink)}
+.slot[aria-pressed=true] small{color:var(--muted)}
+.slot[disabled]{opacity:.5;cursor:not-allowed}
+.fld{display:grid;gap:6px;margin-bottom:14px;clear:both}
+.fld label{font-size:15px;font-weight:700}
+.fld input,.fld select{min-height:48px;padding:0 14px;border:1.5px solid var(--line);border-radius:6px;background:var(--paper);width:100%}
+.fld input:focus,.fld select:focus{border-color:var(--ink)}
+.fld [aria-invalid=true]{border-color:var(--sigi)}
+.err{font-size:14px;color:var(--sigi);font-weight:500}
+.sum{font-size:15px;color:var(--mute);margin:4px 0 14px}
+.done{padding:24px 20px 28px}
+.done h3{font:800 38px/.95 var(--fd);text-transform:uppercase;margin:16px 0 8px}
+.done p{color:var(--mute);font-size:16px}
+.ok{width:56px;height:56px;border-radius:50%;background:var(--sig);display:grid;place-items:center}
+.tgm{margin:20px 0;background:#dfe6ec;border-radius:12px;padding:12px;font-size:15px;line-height:1.45}
+.tgm .th{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:14px}
+.tgm .av{width:32px;height:32px;border-radius:50%;background:var(--ink);color:var(--sig);display:grid;place-items:center;font:800 18px/1 var(--fd)}
+.tgm .th small{color:#5b6670;margin-left:auto}
+.bub{background:#fff;border-radius:4px 12px 12px 12px;padding:10px 12px;max-width:340px}
+.bub+.bub{margin-top:6px}
+.kb{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px;max-width:340px}
+.kb span{background:rgba(255,255,255,.7);border-radius:6px;padding:8px;text-align:center;font-size:14px;color:#2a5885}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+/* toast */
+.toast{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;background:var(--ink);color:var(--chalk);border-radius:8px;padding:14px 16px;display:flex;gap:12px;align-items:center;box-shadow:0 12px 32px rgba(0,0,0,.35);transform:translateY(140%);visibility:hidden;transition:transform .28s var(--e),visibility 0s .28s;--focus:var(--sig)}
+.toast.on{transform:none;visibility:visible;transition:transform .28s var(--e)}
+.cl .b1{background:var(--ink);color:var(--chalk)}.cl .b1:hover{background:#3a3832}.cl.hot .b1{background:var(--sig);color:var(--ink)}.cl.hot .b1:hover{background:var(--sigh)}
+.toast p{font-size:15px;flex:1;min-width:0}
+.toast p b{display:block;color:var(--sigh)}
+@media (min-width:640px){
+ :root{--pad:28px}
+ .pics figure{flex-basis:46%}
+ dialog{max-width:600px;margin:auto;border-radius:12px;max-height:88vh}
+ .toast{left:auto;right:24px;bottom:24px;width:400px}
+ .next{position:absolute;left:-28px;bottom:-28px;width:340px;margin:0}
+ .hv .ph{aspect-ratio:4/5}
+ .hero .wrap{grid-template-columns:1.1fr .9fr;align-items:center}
+ .hv{margin-bottom:28px}
+}
+@media (min-width:900px){
+ .nav{display:flex}.hd .b1{margin-left:0}
+ .hero{padding:56px 0 88px}
+ .pr{grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+ .ct{grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+ .dr{grid-template-columns:220px 1fr auto;align-items:center}
+ .dr p,.dr .sp{grid-column:2}
+ .dr .go{grid-column:3;grid-row:1/3}
+ .pics{overflow:visible;margin:48px 0 0;padding:0}
+ .pics figure{flex:1}
+ .flt{grid-template-columns:auto 1fr;align-items:center}
+ .fr{margin:0;padding:2px;flex-wrap:wrap;overflow:visible}
+ .fr.lvl{grid-column:1/-1}
+}
+@media (min-width:1100px){
+ :root{--pad:40px}
+ .strip{display:none}
+ .week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;align-items:start}
+ .week .day,.week .day.on{display:grid;gap:8px;align-content:start}
+ .dh{display:flex;align-items:baseline;gap:6px;font:800 26px/1 var(--fd);text-transform:uppercase;padding:0 2px 10px;border-bottom:2px solid var(--ink);margin-bottom:4px}
+ .dh span{font:500 13px/1 var(--f);text-transform:none;color:var(--sigi);margin-left:auto}
+ .cl{grid-template-columns:1fr;grid-template-areas:"tm" "in" "sx" "bt";gap:6px;padding:12px}
+ .cl .tm{font-size:28px}
+ .cl h4{font-size:16px}
+ .cl .mt{font-size:13px}
+ .cl .b1,.cl .b2{width:100%;margin-top:4px;padding:4px 8px;white-space:normal;line-height:1.15}
+ .week .day{min-width:0}
+ .none{padding:16px 12px;font-size:14px}
+ .hero .wrap{grid-template-columns:1.15fr .85fr;gap:56px}
+ .next{left:-64px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="demo"><div class="wrap"><span>Демо-сайт від drakx</span><a href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%A2%D0%95%D0%9C%D0%9F%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий</a><a href="../../fitness/">← Інші роботи</a></div></div>
+
+<header class="hd"><div class="wrap">
+ <a class="logo" href="#top" aria-label="ТЕМП, на початок сторінки"><svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M2 24h5v-8H2zm8 0h5V10h-5zm8 0h5V3h-5z" fill="#ff5a1f"/></svg>ТЕМП</a>
+ <nav class="nav" aria-label="Розділи"><a href="#rozklad">Розклад</a><a href="#napriamy">Напрями</a><a href="#ciny">Ціни</a><a href="#kontakty">Як дістатися</a></nav>
+ <button class="b1 sm" type="button" data-open>Записатися</button>
+</div></header>
+
+<main id="top">
+<section class="hero dk"><div class="wrap">
+ <div>
+  <p class="kick">Студія групових тренувань · Дніпро</p>
+  <h1>Тренування в&nbsp;групі <em>до&nbsp;14&nbsp;людей</em></h1>
+  <p class="lead">Функціонал, сайкл, пілатес, бокс-фітнес, HIIT і&nbsp;стретчинг. <span id="cnt">45</span> тренувань на тиждень з&nbsp;07:00 до&nbsp;21:30. У&nbsp;розкладі видно вільні місця, записуєтесь без дзвінків.</p>
+  <div class="cta"><a class="b1" href="#rozklad">Обрати тренування</a><button class="b2" type="button" data-open data-pay="first">Перше тренування за 150 грн</button></div>
+ </div>
+ <div class="hv">
+  <div class="ph"><img src="img/hero.webp" width="1080" height="1350" alt="Зал функціонального тренінгу: гирі й медболи в ряд на чорній гумовій підлозі" onerror="this.hidden=true" fetchpriority="high"></div>
+  <div class="next" id="next" aria-live="polite"></div>
+ </div>
+</div></section>
+
+<section class="sec" id="rozklad" aria-labelledby="rzT"><div class="wrap">
+ <div class="sh"><h2 id="rzT">Розклад на тиждень</h2><p>Перший запис: імʼя і телефон. Далі записуєтесь в&nbsp;один дотик, а&nbsp;бот нагадає за&nbsp;2&nbsp;години.</p></div>
+ <div class="flt">
+  <div class="fr" role="group" aria-label="Напрям" id="fType"><b>Напрям</b></div>
+  <div class="fr lvl" role="group" aria-label="Рівень" id="fLvl"><b>Рівень</b></div>
+ </div>
+ <div class="strip" id="strip" role="group" aria-label="День"></div>
+ <div class="week" id="week" aria-live="polite"></div>
+ <p class="note">Скасувати запис без списання можна за&nbsp;3&nbsp;години до&nbsp;початку: кнопкою тут або в&nbsp;боті. Коли місць немає, ставайте в&nbsp;лист очікування: бот напише, щойно хтось скасує.</p>
+</div></section>
+
+<section class="sec dk" id="napriamy" aria-labelledby="nT"><div class="wrap">
+ <div class="sh"><h2 id="nT">Напрями</h2><p>Кожне тренування веде тренер, який підбирає легший або складніший варіант вправи під вас.</p></div>
+ <div class="dir" id="dir"></div>
+ <div class="pics">
+  <figure><div class="ph"><img src="img/cycle.webp" width="1200" height="800" loading="lazy" alt="Сайкл-студія: ряди чорних велотренажерів у теплому помаранчевому світлі" onerror="this.hidden=true"></div><figcaption>Сайкл-студія: 14 велотренажерів</figcaption></figure>
+  <figure><div class="ph"><img src="img/pilates.webp" width="1200" height="800" loading="lazy" alt="Світлий зал для пілатесу з килимками, кільцями й роликами" onerror="this.hidden=true"></div><figcaption>Малий зал: пілатес і стретчинг</figcaption></figure>
+  <figure><div class="ph"><img src="img/box.webp" width="1200" height="800" loading="lazy" alt="Боксерські мішки й помаранчеві рукавички на лаві" onerror="this.hidden=true"></div><figcaption>Бокс-фітнес: рукавички й бинти даємо</figcaption></figure>
+ </div>
+</div></section>
+
+<section class="sec" id="ciny" aria-labelledby="cT"><div class="wrap">
+ <div class="sh"><h2 id="cT">Ціни</h2><p>Абонемент діє на&nbsp;всі напрями. Оплата карткою або готівкою на&nbsp;рецепції.</p></div>
+ <div class="pr">
+  <div class="first">
+   <h3>Перше тренування</h3>
+   <p class="pv">150<small>грн</small></p>
+   <p>Будь-який напрям, один раз на людину.</p>
+   <ol>
+    <li>Приходьте за 15 хвилин: покажемо роздягальню й видамо рушник.</li>
+    <li>Тренер питає про травми й підбирає вам легший варіант вправ.</li>
+    <li>Після тренування підкажемо, який напрям і абонемент підійдуть.</li>
+   </ol>
+   <button class="b1" type="button" data-open data-pay="first">Записатися на перше</button>
+  </div>
+  <div>
+   <div class="tbl" id="tbl"></div>
+   <ul class="rules">
+    <li>Абонемент діє 30 днів від першого тренування.</li>
+    <li>Заморозка до 14 днів, один раз за абонемент.</li>
+    <li>Скасування без списання не пізніше ніж за 3 години.</li>
+   </ul>
+  </div>
+ </div>
+</div></section>
+
+<section class="sec dk" id="kontakty" aria-labelledby="kT"><div class="wrap ct">
+ <div>
+  <h2 id="kT">Як дістатися</h2>
+  <dl>
+   <div><dt>Адреса</dt><dd>Дніпро, вул. Старокозацька, 51, 2&nbsp;поверх. Вхід з&nbsp;двору через арку, велопарковка біля дверей.</dd></div>
+   <div><dt>Години</dt><dd>Пн–Пт 06:30–22:00<br>Сб–Нд 09:30–18:00</dd></div>
+   <div><dt>Що взяти</dt><dd>Змінні кросівки й воду. Рушник, шафка з&nbsp;замком і&nbsp;душ у&nbsp;нас.</dd></div>
+  </dl>
+  <div class="btns"><button class="b1" type="button" data-open>Записатися</button><button class="b2" type="button" id="tgBtn">Написати в Telegram</button></div>
+  <p class="tgn" id="tgNote" aria-live="polite"></p>
+ </div>
+ <div class="map"><svg viewBox="0 0 600 500" role="img" aria-label="Схема: студія ТЕМП на вулиці Старокозацькій, за кілька кварталів від набережної Дніпра">
+  <path d="M0 0h600v500H0z" fill="#1a1917"/>
+  <path d="M330 0C380 90 470 130 600 150V0z" fill="#1d2a33"/>
+  <text x="470" y="70" fill="#6f8796" font-size="18" font-family="Golos Text,sans-serif" font-style="italic">р. Дніпро</text>
+  <path d="M300 0C350 95 450 150 600 175" stroke="#33312b" stroke-width="14" fill="none"/>
+  <g stroke="#2e2c27" stroke-width="10" fill="none"><path d="M40 0l90 500M220 40l60 460M0 260l600-60M0 400l600-70M440 170l40 330"/></g>
+  <path d="M0 150l600-70" stroke="#4a473f" stroke-width="16" fill="none"/>
+  <path d="M120 340h110v60H120zm190-90h90v50h-90zm-160-90h70v60h-70z" fill="#22211e"/>
+  <path d="M455 352c55-16 110-8 145 18v130H468z" fill="#1d2620"/>
+  <text x="30" y="130" fill="#8d887d" font-size="17" font-family="Golos Text,sans-serif" transform="rotate(-6.6 30 130)">вул. Старокозацька</text>
+  <g transform="translate(300 118)"><path d="M0 0c-14-22-26-34-26-50a26 26 0 0152 0c0 16-12 28-26 50z" fill="#ff5a1f"/><circle cy="-50" r="9" fill="#111110"/></g>
+  <rect x="334" y="58" width="86" height="34" rx="4" fill="#f1efe9"/><text x="377" y="81" text-anchor="middle" fill="#111110" font-size="20" font-weight="800" font-family="Fira Sans Extra Condensed,sans-serif">ТЕМП</text>
+ </svg></div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><p>Демо-сайт, зроблений drakx для прикладу. Бізнес вигаданий.</p><p>ТЕМП · Дніпро</p></div></footer>
+
+<dialog id="bk" aria-labelledby="bkT">
+ <div class="mh"><h2 id="bkT">Запис</h2><button class="x" type="button" data-close aria-label="Закрити">×</button></div>
+ <div id="bkF">
+  <div class="mb">
+   <fieldset class="stp"><legend>1. Напрям</legend><div class="wr" id="s1"></div></fieldset>
+   <fieldset class="stp"><legend>2. День</legend><div class="wr" id="s2"></div></fieldset>
+   <fieldset class="stp"><legend>3. Час</legend><div class="sl" id="s3"></div></fieldset>
+   <form class="stp" id="f4" novalidate>
+    <p class="lg">4. Контакти</p>
+    <div class="fld"><label for="nm">Імʼя</label><input id="nm" name="nm" autocomplete="given-name" aria-describedby="nmE"><span class="err" id="nmE"></span></div>
+    <div class="fld"><label for="ph">Телефон</label><input id="ph" name="ph" type="tel" inputmode="tel" autocomplete="tel" placeholder="+380" aria-describedby="phE"><span class="err" id="phE"></span></div>
+    <div class="fld"><label for="pay">Оплата</label><select id="pay"></select></div>
+    <p class="sum" id="sum"></p>
+    <span class="err" id="slE" role="alert"></span>
+    <button class="b1" type="submit" id="go" style="width:100%">Записатися</button>
+   </form>
+  </div>
+ </div>
+ <div class="done" id="bkD" hidden tabindex="-1"></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><p id="toastT"></p><button class="b2 sm" type="button" id="toastU">Скасувати</button></div>
+
+<script>
+(()=>{
+const T={F:['Функціонал',55,14,'Великий зал','Гирі, TRX, медболи й власна вага. Коло з 6–8 вправ, кожну можна полегшити.',4],C:['Сайкл',45,14,'Сайкл-студія','Інтервали на велотренажері під музику. Багато поту без ударного навантаження на коліна.',4],H:['HIIT',40,14,'Великий зал','Раунди 20 секунд роботи й 10 відпочинку: присідання, випади, стрибки. Коротко й дуже інтенсивно.',5],B:['Бокс-фітнес',55,10,'Великий зал','Удари по лапах і мішках, робота ніг. Без спарингів, рукавички й бинти видаємо.',4],P:['Пілатес',55,10,'Малий зал','На килимку з кільцями й роликами: глибокі мʼязи спини й преса, постава.',2],S:['Стретчинг',50,12,'Малий зал','Розтяжка спини, стегон і плечей. Добре після робочого дня або силового тренування.',1]};
+const LV=['','З нуля','Середній','Просунутий'];
+const WK=['10:00C1 11:00P1 12:00F2 17:00S1','07:00F2 08:00C1 10:00P1 18:00F1 18:30C2 19:00P2 19:30B2 20:30S1','07:00C2 09:00S1 18:00H2 18:30P1 19:00F3 19:30C1 20:30S1','07:00F2 08:00C1 10:00P1 18:00F1 18:30C3 19:00P2 19:30B1 20:30S1','07:00C2 09:00P1 18:00H3 18:30P2 19:00F2 19:30C1 20:30S1','07:00F2 08:00C2 18:00F1 18:30C2 19:00B2 20:00S1','10:00F1 10:00C2 11:30P1 12:00H2 13:00S1'];
+const MO=['січня','лютого','березня','квітня','травня','червня','липня','серпня','вересня','жовтня','листопада','грудня'];
+const DS=['Нд','Пн','Вт','Ср','Чт','Пт','Сб'],DF=['неділя','понеділок','вівторок','середа','четвер','пʼятниця','субота'];
+const PAY={first:['Перше тренування',150],one:['Разове',320],a4:['Абонемент 4 тренування',1120,'280 грн за тренування'],a8:['Абонемент 8 тренувань',1920,'240 грн за тренування · 2 рази на тиждень'],a12:['Абонемент 12 тренувань',2520,'210 грн за тренування · 3 рази на тиждень'],unl:['Безліміт',3300,'усі напрями, скільки завгодно'],mor:['Ранковий безліміт',2200,'будь-які тренування до 12:00'],have:['Вже маю абонемент',0]};
+const $=s=>document.querySelector(s),pl=(n,a,b,c)=>{const m=n%10,h=n%100;return m==1&&h!=11?a:m>=2&&m<=4&&(h<10||h>=20)?b:c},pm=n=>pl(n,'місце','місця','місць');
+const hs=s=>{let h=2166136261;for(const c of s)h=Math.imul(h^c.charCodeAt(0),16777619);return h>>>0};
+const now=new Date(),t0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+const days=[],ALL={};
+for(let i=0;i<7;i++){const d=new Date(t0);d.setDate(d.getDate()+i);
+ days.push({i,d,list:WK[d.getDay()].split(' ').map(s=>{const tm=s.slice(0,5),k=s[5],[nm,dur,cap,room]=T[k],at=new Date(d);at.setHours(+tm.slice(0,2),+tm.slice(3));
+  let free=[0,1,3,4,5,6,8,10,7,4,9,5,2,6,11,5][hs(d.toDateString()+tm+k)%16];if(at.getHours()<12)free+=3;
+  const c={id:i+tm+k,i,k,lv:+s[6],tm,at,nm,dur,cap,room,free:Math.min(free,cap),me:0};ALL[c.id]=c;return c})})}
+$('#cnt').textContent=WK.reduce((a,s)=>a+s.split(' ').length,0);
+const dayW=D=>D.i==0?'сьогодні':D.i==1?'завтра':DF[D.d.getDay()],dDate=d=>d.getDate()+' '+MO[d.getMonth()];
+const when=c=>{const D=days[c.i];return (c.i<2?dayW(D)+', ':DS[D.d.getDay()].toLowerCase()+', ')+dDate(D.d)+', '+c.tm};
+const fmt=n=>n.toLocaleString('uk-UA').replace(/\s/g,' ');
+const F={t:new Set(),lv:0,free:false,day:0};
+const past=c=>c.at<now;
+const match=c=>(!F.t.size||F.t.has(c.k))&&(!F.lv||c.lv==F.lv)&&(!F.free||c.free>0||c.me);
+let me=null;F.day=(days.find(D=>D.list.some(c=>!past(c)))||days[0]).i;
+/* filters */
+const ft=$('#fType'),fl=$('#fLvl');
+ft.insertAdjacentHTML('beforeend','<button class="chip" type="button" aria-pressed="true" data-t="">Усі</button>'+Object.keys(T).map(k=>`<button class="chip" type="button" aria-pressed="false" data-t="${k}">${T[k][0]}</button>`).join(''));
+fl.insertAdjacentHTML('beforeend',LV.map((l,i)=>`<button class="chip" type="button" aria-pressed="${!i}" data-l="${i}">${l||'Будь-який'}</button>`).join('')+'<label class="tg1"><input type="checkbox" id="fFree"> Лише з вільними місцями</label>');
+ft.onclick=e=>{const b=e.target.closest('[data-t]');if(!b)return;const k=b.dataset.t;if(!k)F.t.clear();else F.t.has(k)?F.t.delete(k):F.t.add(k);syncF();render()};
+fl.onclick=e=>{const b=e.target.closest('[data-l]');if(!b)return;F.lv=+b.dataset.l;syncF();render()};
+$('#fFree').onchange=e=>{F.free=e.target.checked;render()};
+function syncF(){ft.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t?F.t.has(b.dataset.t):!F.t.size));fl.querySelectorAll('[data-l]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.l==F.lv))}
+/* board */
+function seats(c){let s='',tk=c.cap-c.free-(c.me==1);for(let j=0;j<c.cap;j++)s+=`<i${j<tk?' class="f"':j<tk+(c.me==1)?' class="m"':''}></i>`;return `<div class="st" aria-hidden="true">${s}</div>`}
+function card(c){const p=past(c),f=c.free,lab=`${c.nm}, ${when(c)}`;let st,btn='',cls='cl';
+ if(p){st=now-c.at>c.dur*6e4?'Завершено':'Вже почалося';cls+=' past'}
+ else if(c.me==1){st='Ви записані';cls+=' mine';btn=`<button class="b2 sm" type="button" data-x="${c.id}" aria-label="Скасувати запис: ${lab}">Скасувати</button>`}
+ else if(c.me==2){st='Ви в листі очікування';cls+=' mine';btn=`<button class="b2 sm" type="button" data-x="${c.id}" aria-label="Вийти з листа очікування: ${lab}">Вийти</button>`}
+ else if(!f){st='Місць немає';cls+=' full';btn=`<button class="b2 sm" type="button" data-b="${c.id}" aria-label="У лист очікування: ${lab}">У лист очікування</button>`}
+ else{st=(f<=3?'Залишилось ':'Вільно ')+f+' '+pm(f);if(f<=3)cls+=' hot';btn=`<button class="b1 sm" type="button" data-b="${c.id}" aria-label="Записатися: ${lab}">Записатися</button>`}
+ return `<article class="${cls}" data-id="${c.id}"><div class="tm">${c.tm}</div><div class="in"><h4>${c.nm}</h4><p class="mt">${c.dur} хв · ${LV[c.lv]}</p></div><div class="sx">${seats(c)}<p class="lf">${st}${!p&&f&&!c.me?'<span class="sr"> з '+c.cap+'</span>':''}</p></div>${btn}</article>`}
+function nearest(){for(const D of days)for(const c of D.list)if(match(c)&&!past(c))return c}
+function render(){
+ $('#strip').innerHTML=days.map(D=>{const n=D.list.filter(c=>match(c)&&!past(c)).length;return `<button class="dy" type="button" aria-pressed="${D.i==F.day}" data-d="${D.i}" aria-label="${dayW(D)}, ${dDate(D.d)}: ${n} ${pl(n,'тренування','тренування','тренувань')}"><small>${D.i==0?'Сьог.':DS[D.d.getDay()]}</small><b>${D.d.getDate()}</b><span>${n}</span></button>`}).join('');
+ $('#week').innerHTML=days.map(D=>{const ls=D.list.filter(match);let empty='';
+  if(!ls.length){const nx=nearest();empty=`<p class="none">За цими фільтрами в цей день нічого.${nx&&nx.i!=D.i?` <br><button class="b2 sm" type="button" data-jump="${nx.i}">Найближче: ${DS[days[nx.i].d.getDay()]} ${nx.tm}</button>`:''}</p>`}
+  return `<section class="day${D.i==F.day?' on':''}" aria-label="${dayW(D)}, ${dDate(D.d)}"><h3 class="dh">${DS[D.d.getDay()]} ${D.d.getDate()}${D.i<2?`<span>${dayW(D)}</span>`:''}</h3>${ls.map(card).join('')||empty}</section>`}).join('');
+ hero()}
+$('#strip').onclick=e=>{const b=e.target.closest('[data-d]');if(b){F.day=+b.dataset.d;render();$('#strip [data-d="'+F.day+'"]').focus()}};
+$('#week').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.jump){F.day=+b.dataset.jump;render();return}
+ const c=ALL[b.dataset.b||b.dataset.x];if(!c)return;
+ if(b.dataset.x){unbook(c);refocus(c);return}
+ tap(c)};
+function refocus(c){const b=document.querySelector(`[data-id="${c.id}"] button`);b&&b.focus()}
+function tap(c,from){if(me){book(c);refocus(c);if(from)hero()}else openBk({k:c.k,i:c.i,c:c.id,focus:'#nm'})}
+function book(c,pay){if(c.free>0){c.free--;c.me=1}else c.me=2;render();toast(c,pay)}
+function unbook(c){if(c.me==1)c.free++;c.me=0;render();toastHide()}
+/* hero next class */
+function hero(){let c=null;for(const D of days){for(const x of D.list)if(!past(x)&&(x.free>0||x.me)){c=x;break}if(c)break}
+ const el=$('#next');if(!c){el.hidden=true;return}
+ const f=c.free;el.innerHTML=`<p class="lb">Найближче тренування</p><p class="big">${dayW(days[c.i])[0].toUpperCase()+dayW(days[c.i]).slice(1)}, ${c.tm}</p><p>${c.nm} · ${c.dur} хв · ${LV[c.lv]}</p><div class="row"><div>${seats(c)}<p class="lf" style="color:${c.me?'inherit':f<=3?'var(--sigi)':'inherit'}">${c.me?'Ви записані':(f<=3?'Залишилось ':'Вільно ')+f+' '+pm(f)}</p></div>${c.me?'<a class="b2 sm" href="#rozklad">Розклад</a>':`<button class="b1 sm" type="button" id="nextB" aria-label="Записатися: ${c.nm}, ${when(c)}">Записатися</button>`}</div>`;
+ const b=$('#nextB');if(b)b.onclick=()=>{tap(c,1);const nb=$('#next a');nb&&nb.focus()}}
+/* directions */
+$('#dir').innerHTML=Object.keys(T).map(k=>{const [nm,dur,cap,room,ds,it]=T[k];let m='';for(let j=0;j<5;j++)m+=`<i${j<it?' class="f"':''}></i>`;
+ return `<div class="dr"><h3>${nm}</h3><p>${ds}</p><p class="sp"><span>${dur} хв</span><span>до ${cap} людей</span><span>${room}</span><span>Інтенсивність<span class="int" role="img" aria-label="${it} з 5">${m}</span></span></p><button class="b2 sm go" type="button" data-go="${k}">Розклад<span class="sr">: ${nm}</span></button></div>`}).join('');
+$('#dir').onclick=e=>{const b=e.target.closest('[data-go]');if(!b)return;F.t=new Set([b.dataset.go]);F.lv=0;syncF();const n=days.find(D=>D.list.some(c=>match(c)&&!past(c)));F.day=n?n.i:0;render();$('#rozklad').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});$('#fType [aria-pressed=true]').focus({preventScroll:true})};
+/* prices */
+$('#tbl').innerHTML=['one','a4','a8','a12','unl','mor'].map(k=>{const [n,p,d]=PAY[k];return `<div class="trow"><div><h3>${n}</h3><p>${d||'будь-який напрям'}${k!='one'?' · 30 днів':''}</p></div><p class="pv">${fmt(p)}<small>грн</small></p></div>`}).join('');
+/* booking dialog */
+const dlg=$('#bk'),B={k:'',i:0,c:''};
+$('#pay').innerHTML=Object.keys(PAY).map(k=>`<option value="${k}">${PAY[k][0]}${PAY[k][1]?' — '+fmt(PAY[k][1])+' грн':''}${k[0]=='a'||k=='unl'||k=='mor'?', оплата на рецепції':''}</option>`).join('');
+function openBk(o={}){B.k=o.k||'';B.i=o.i??0;B.c=o.c||'';if(o.pay)$('#pay').value=o.pay;else if(!me)$('#pay').value='first';
+ $('#bkF').hidden=false;$('#bkD').hidden=true;$('#bkT').textContent='Запис';s1();s2();s3();errs();
+ if(!dlg.open)dlg.showModal();const f=o.focus&&$(o.focus);(f||$('#s1 [aria-pressed=true]')).focus()}
+function s1(){$('#s1').innerHTML=`<button class="chip" type="button" data-k="" aria-pressed="${!B.k}">Будь-який</button>`+Object.keys(T).map(k=>`<button class="chip" type="button" data-k="${k}" aria-pressed="${B.k==k}">${T[k][0]}</button>`).join('')}
+const okC=c=>(!B.k||c.k==B.k)&&!past(c);
+function s2(){$('#s2').innerHTML=days.map(D=>{const n=D.list.filter(c=>okC(c)&&c.free>0).length;return `<button class="chip" type="button" data-i="${D.i}" aria-pressed="${D.i==B.i}"${n?'':' disabled style="opacity:.45"'}>${D.i<2?dayW(D)[0].toUpperCase()+dayW(D).slice(1):DS[D.d.getDay()]+' '+D.d.getDate()}</button>`}).join('')}
+function s3(){const ls=days[B.i].list.filter(okC);
+ $('#s3').innerHTML=ls.length?ls.map(c=>`<button class="slot" type="button" data-c="${c.id}" aria-pressed="${B.c==c.id}"${c.free?'':' disabled'}><b>${c.tm}</b><span>${c.nm}<br><small>${c.dur} хв · ${LV[c.lv]}</small></span><small>${c.free?(c.free<=3?'лишилось ':'вільно ')+c.free+' '+pm(c.free):'немає місць'}</small></button>`).join(''):'<p class="sum">У цей день немає вільних тренувань цього напряму. Оберіть інший день.</p>';sum()}
+function sum(){const c=ALL[B.c];$('#sum').textContent=c?`${c.nm}, ${when(c)}, ${c.dur} хв. ${c.room}.`:'Оберіть час, щоб завершити запис.';$('#go').textContent=c?'Записатися на '+c.tm:'Записатися'}
+$('#s1').onclick=e=>{const b=e.target.closest('[data-k]');if(!b)return;B.k=b.dataset.k;B.c='';const D=days.find(D=>D.list.some(c=>okC(c)&&c.free>0));if(!days[B.i].list.some(c=>okC(c)&&c.free>0)&&D)B.i=D.i;$('#s1').querySelectorAll('[data-k]').forEach(x=>x.setAttribute('aria-pressed',x==b));s2();s3()};
+$('#s2').onclick=e=>{const b=e.target.closest('[data-i]');if(!b)return;B.i=+b.dataset.i;B.c='';$('#s2').querySelectorAll('[data-i]').forEach(x=>x.setAttribute('aria-pressed',x==b));s3()};
+$('#s3').onclick=e=>{const b=e.target.closest('[data-c]');if(!b)return;B.c=b.dataset.c;$('#s3').querySelectorAll('[data-c]').forEach(x=>x.setAttribute('aria-pressed',x==b));sum();$('#slE').textContent=''};
+function errs(n='',p='',s=''){$('#nmE').textContent=n;$('#phE').textContent=p;$('#slE').textContent=s;$('#nm').setAttribute('aria-invalid',!!n);$('#ph').setAttribute('aria-invalid',!!p)}
+$('#f4').onsubmit=e=>{e.preventDefault();const nm=$('#nm').value.trim(),ph=$('#ph').value.trim(),dg=ph.replace(/\D/g,'');
+ const en=nm?'':'Вкажіть імʼя.',ep=dg.length>=10&&dg.length<=12?'':'Перевірте номер: потрібно 10 цифр, наприклад 067 123 45 67.',es=B.c?'':'Оберіть час тренування в кроці 3.';
+ errs(en,ep,es);if(en){$('#nm').focus();return}if(ep){$('#ph').focus();return}if(es){($('#s3 button:not([disabled])')||$('#s2 button')).focus();return}
+ me={nm,ph};const c=ALL[B.c],pay=$('#pay').value;c.free--;c.me=1;render();done(c,pay)};
+function msg(c,pay){const p=PAY[pay||'one'];return `<b>Новий запис: ${c.nm}</b><br>${when(c)}, ${c.dur} хв<br>${me.nm}, ${me.ph}<br>${p[0]}${p[1]?', '+fmt(p[1])+' грн':''}<br>Вільних місць: ${c.free} з ${c.cap}`}
+function done(c,pay){const dlS=String(c.at.getHours()-3).padStart(2,'0')+':'+c.tm.slice(3);
+ $('#bkF').hidden=true;const d=$('#bkD');d.hidden=false;
+ d.innerHTML=`<div class="ok"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" stroke="#111110" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Готово! Заявка вже в&nbsp;Telegram у&nbsp;ТЕМП</h3><p>Бот нагадає за 2 години до початку. Скасувати без списання можна до ${dlS} у день тренування.</p><div class="tgm" aria-label="Повідомлення, яке отримала студія"><div class="th"><span class="av">Т</span><b>ТЕМП · бот запису</b><small>щойно</small></div><div class="bub">${msg(c,pay)}</div></div><p style="margin-bottom:16px">Наступного разу записуйтесь з розкладу в&nbsp;один дотик: імʼя ми вже знаємо.</p><div class="btns"><button class="b1" type="button" data-close>Готово</button><button class="b2" type="button" id="more">Записатися ще</button></div>`;
+ d.focus();$('#more').onclick=()=>openBk({k:B.k,i:B.i})}
+dlg.addEventListener('click',e=>{if(e.target==dlg||e.target.closest('[data-close]'))dlg.close()});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-open]');if(b)openBk({pay:b.dataset.pay})});
+/* toast */
+const tE=$('#toast');let tT,tC;
+function toast(c,pay){tC=c;$('#toastT').innerHTML=c.me==2?`<b>Ви в листі очікування</b>${c.nm}, ${when(c)}. Бот напише, щойно звільниться місце.`:`<b>Готово! Заявка вже в Telegram у ТЕМП</b>${c.nm}, ${when(c)}`;tE.classList.add('on');clearTimeout(tT);tT=setTimeout(toastHide,7000)}
+function toastHide(){tE.classList.remove('on')}
+tE.onmouseenter=tE.onfocusin=()=>clearTimeout(tT);tE.onmouseleave=()=>{tT=setTimeout(toastHide,4000)};
+$('#toastU').onclick=()=>{if(tC){unbook(tC);refocus(tC)}};
+/* telegram demo */
+$('#tgBtn').onclick=()=>{$('#tgNote').textContent='У демо кнопка нікуди не веде. На справжньому сайті тут відкривається Telegram-бот студії: розклад, запис і заморозка абонемента.'};
+render();
+})();
+</script>
+</body>
+</html>

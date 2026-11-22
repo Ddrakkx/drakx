@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Демо: ветклініка «Тепла лапа», Полтава | drakx</title>
+<meta name="description" content="Демо-сайт ветклініки: помічник «що сталося з улюбленцем» і запис на прийом без дзвінків.">
+<meta name="theme-color" content="#A63E26">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23A63E26'/%3E%3Cg fill='%23FFF1E2'%3E%3Ccircle cx='8.5' cy='13' r='2.9'/%3E%3Ccircle cx='13.3' cy='8.4' r='2.9'/%3E%3Ccircle cx='18.7' cy='8.4' r='2.9'/%3E%3Ccircle cx='23.5' cy='13' r='2.9'/%3E%3Cpath d='M16 15.5c-3.6 0-7 4.4-7 7.6 0 2.4 2.3 3.2 4.2 2.4l2.8-1 2.8 1c1.9.8 4.2 0 4.2-2.4 0-3.2-3.4-7.6-7-7.6z'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF7EF;--paper:#fff;--ink:#2B1B12;--ink2:#644C3E;--line:#EBDACB;--terra:#A63E26;--terra2:#8A3220;--cream:#FFF1E2;--must:#F3B748;--must2:#E8A52A;--teal:#1F5A54;--r1:14px;--r2:22px;--r3:32px;--f:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;--ease:cubic-bezier(.2,0,0,1);--in:cubic-bezier(0,0,0,1);--red:#A3251B;--redb:#FCE5E0;--amb:#7A4B00;--ambb:#FFEFC8;--grn:#25633A;--grnb:#E1F1E3}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 17px/1.55 var(--f);overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{margin:0;line-height:1.1;font-weight:900;letter-spacing:-.015em}
+h3{font-weight:800;font-size:19px;line-height:1.3;letter-spacing:0}
+p{margin:0}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid #1F5A54;outline-offset:3px;border-radius:8px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+.no{visibility:hidden}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.num{font-variant-numeric:tabular-nums}
+.ico{width:20px;height:20px;flex:none}
+.demo{background:var(--ink);color:#F5E6D8;font-size:13px;line-height:1}
+.demo .wrap{display:flex;align-items:center;gap:14px;min-height:36px;white-space:nowrap}
+.demo span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;opacity:.85}
+.demo a{text-decoration:none;padding:11px 0}
+.demo a:hover{text-decoration:underline}
+.demo .want{font-weight:800;color:var(--must)}
+.hd{position:sticky;top:0;z-index:20;background:var(--terra);color:var(--cream);transition:box-shadow .2s}
+.hd.s{box-shadow:0 6px 20px -10px rgba(43,27,18,.5)}
+.hd .wrap{display:flex;align-items:center;gap:28px;height:66px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;font-weight:900;font-size:22px;letter-spacing:-.01em}
+.logo svg{width:34px;height:34px}
+.nav{display:flex;gap:24px;font-weight:700;font-size:15px}
+.nav a{text-decoration:none;padding:10px 0;opacity:.9}
+.nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:999px;border:2px solid transparent;background:var(--terra);color:#fff;font-weight:800;font-size:16px;text-decoration:none;cursor:pointer;transition:background .15s,transform .1s var(--ease)}
+.btn:hover{background:var(--terra2)}
+.btn:active{transform:scale(.96)}
+.btn.y{background:var(--must);color:var(--ink)}
+.btn.y:hover{background:var(--must2)}
+.btn.o{background:transparent;border-color:currentColor;color:inherit}
+.btn.o:hover{background:rgba(255,241,226,.12)}
+.btn.sm{min-height:44px;padding:0 18px;font-size:15px}
+.btn.l{background:transparent;border-color:var(--ink);color:var(--ink)}
+.btn.l:hover{background:var(--cream)}
+.hero{background:var(--terra);color:var(--cream);padding:40px 0 0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end}
+.hero .txt{padding-bottom:80px}
+.hero h1{font-size:clamp(2.2rem,1.3rem + 3.4vw,4.2rem);color:#fff}
+.lead{margin-top:22px;font-size:clamp(17px,16px + .35vw,20px);max-width:32em;color:var(--cream)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 26px;list-style:none;margin:30px 0 0;padding:0;font-size:15px;font-weight:700}
+.facts li{display:flex;align-items:center;gap:8px}
+.facts svg{color:var(--must)}
+.hph{position:relative;align-self:end}
+.ph{margin:0;overflow:hidden;background:linear-gradient(150deg,#E9C9A8,#D9A982)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.hph .ph{aspect-ratio:4/5;border-radius:var(--r3) var(--r3) 0 0;background:linear-gradient(160deg,#C6684B,#8F3A24)}
+.tag{position:absolute;left:-28px;top:44px;background:var(--must);color:var(--ink);border-radius:var(--r2);padding:16px 20px;transform:rotate(-3deg);box-shadow:0 14px 30px -14px rgba(43,27,18,.55);line-height:1.25}
+.tag b{display:block;font-size:26px;font-weight:900}
+.tag span{font-size:14px;font-weight:700}
+.sec{padding:96px 0}
+.sh{max-width:720px;margin-bottom:44px}
+.sh h2,.h2{font-size:clamp(1.9rem,1.35rem + 2vw,3rem)}
+.sh p{margin-top:14px;color:var(--ink2);font-size:18px}
+/* helper */
+.help{display:grid;grid-template-columns:1.25fr .75fr;gap:32px;align-items:start}
+.panel{background:var(--paper);border-radius:var(--r3);padding:32px}
+.q{border:0;margin:0 0 28px;padding:0;min-width:0}
+.q legend{font-weight:900;font-size:20px;padding:0;margin-bottom:14px;display:flex;gap:10px;align-items:center}
+.q legend i{font-style:normal;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--cream);font-size:15px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.pill{position:relative;cursor:pointer}
+.pill input{position:absolute;opacity:0;width:1px;height:1px}
+.pill span{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:10px 18px;border-radius:999px;border:2px solid var(--line);background:#fff;font-weight:700;font-size:15px;line-height:1.25;transition:background .15s,border-color .15s,color .15s,transform .1s var(--ease)}
+.pill:hover span{border-color:#C9AE97}
+.pill:active span{transform:scale(.96)}
+.pill input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--cream)}
+.pill input:focus-visible+span{outline:3px solid var(--teal);outline-offset:2px}
+.chips .pill span{padding-left:14px}
+.chips .pill span::before{content:"";width:16px;height:16px;border-radius:5px;border:2px solid #B89A84;flex:none;transition:background .12s,border-color .12s}
+.chips .pill input:checked+span::before{background:var(--must) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m3.5 8.5 3 3 6-7' fill='none' stroke='%232B1B12' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat;border-color:var(--must)}
+.grp+.grp{margin-top:18px}
+.grp h3{font-size:14px;font-weight:800;color:var(--ink2);margin-bottom:10px;letter-spacing:.01em}
+.clr{margin-top:20px;background:none;border:0;padding:10px 0;font-weight:700;color:var(--ink2);text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:44px}
+.res{position:sticky;top:90px;border-radius:var(--r3);padding:28px;background:var(--cream);transition:background .25s}
+.res[data-l=urgent]{background:var(--redb)}
+.res[data-l=soon]{background:var(--ambb)}
+.res[data-l=plan]{background:var(--grnb)}
+.lv{display:inline-flex;align-items:center;gap:8px;font-weight:900;font-size:14px;letter-spacing:.04em;text-transform:uppercase;padding:6px 12px 6px 10px;border-radius:999px;background:var(--ink);color:#fff}
+.res[data-l=urgent] .lv{background:var(--red)}
+.res[data-l=soon] .lv{background:var(--amb)}
+.res[data-l=plan] .lv{background:var(--grn)}
+.res h3{font-size:clamp(24px,20px + .8vw,30px);font-weight:900;line-height:1.15;margin-top:14px;letter-spacing:-.01em}
+.res>p{margin-top:12px}
+.res ul{margin:14px 0 0;padding-left:20px}
+.res li{margin-top:6px}
+.who{margin-top:18px;padding-top:16px;border-top:2px dashed rgba(43,27,18,.18)}
+.who small{display:block;font-size:13px;font-weight:800;color:var(--ink2);text-transform:uppercase;letter-spacing:.05em}
+.who b{font-size:18px;font-weight:900}
+.res .btn{margin-top:20px;width:100%}
+.disc{margin-top:18px;font-size:14px;color:var(--ink2)}
+.swap{animation:sw .3s var(--in)}
+@keyframes sw{from{opacity:.2;transform:translateY(8px)}}
+.mbar{display:none}
+/* prices */
+.prices{columns:3;column-gap:24px}
+.pg{break-inside:avoid;background:var(--paper);border-radius:var(--r2);padding:24px 24px 12px;margin-bottom:24px}
+.pg h3{font-size:21px;font-weight:900;margin-bottom:6px}
+.pg ul{list-style:none;margin:0;padding:0}
+.pg li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-top:1px solid var(--line)}
+.pg li:first-child{border-top:0}
+.pg small{display:block;font-size:14px;color:var(--ink2)}
+.pg b{font-weight:900;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pnote{color:var(--ink2);font-size:15px;margin-top:4px}
+/* place */
+.place{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+.place .a{grid-column:1/6;aspect-ratio:4/5;border-radius:var(--r3)}
+.place .b{grid-column:6/13;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.place .b .ph{grid-column:1/-1;aspect-ratio:16/9;border-radius:var(--r3)}
+.fact h3{font-size:20px;font-weight:900}
+.fact p{color:var(--ink2);margin-top:6px}
+.fact{border-top:3px solid var(--must);padding-top:14px}
+/* faq */
+.faq{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+.qa details{background:var(--paper);border-radius:var(--r2);margin-bottom:12px}
+.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 24px;font-weight:800;font-size:18px;min-height:44px}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";flex:none;width:32px;height:32px;border-radius:50%;background:var(--cream);display:grid;place-items:center;font-weight:900;font-size:22px;line-height:1;transition:transform .2s var(--ease)}
+.qa details[open] summary::after{transform:rotate(45deg)}
+.qa details p{padding:0 24px 22px;color:var(--ink2)}
+/* contacts */
+.ct{background:var(--teal);color:#F1EBE3;border-radius:var(--r3);padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.ct .h2{color:#fff}
+.ct dl{margin:24px 0 0;display:grid;gap:16px}
+.ct dt{font-size:14px;font-weight:800;opacity:.85}
+.ct dd{margin:2px 0 0;font-size:18px;font-weight:700}
+.ct .btn.o:hover{background:rgba(255,255,255,.1)}
+.tgnote{margin-top:14px;font-size:15px;background:rgba(255,255,255,.12);padding:12px 16px;border-radius:var(--r1)}
+.map{border-radius:var(--r2);overflow:hidden;background:#2A6D66;aspect-ratio:560/400}
+.map svg{display:block;width:100%;height:100%}
+.ft{padding:36px 0 44px;font-size:14px;color:var(--ink2)}
+.ft .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+/* dialog */
+dialog{border:0;padding:0;border-radius:var(--r3);width:min(580px,100% - 32px);max-height:min(860px,100dvh - 32px);background:var(--bg);color:var(--ink);box-shadow:0 30px 80px -20px rgba(43,27,18,.55);overflow:hidden}
+dialog::backdrop{background:rgba(43,27,18,.55)}
+dialog[open]{animation:din .26s var(--in)}
+@keyframes din{from{opacity:0;transform:translateY(18px) scale(.98)}}
+.bk{display:flex;flex-direction:column;max-height:inherit}
+.bkh{display:flex;align-items:center;gap:12px;padding:18px 20px 14px 28px;background:var(--terra);color:var(--cream)}
+.bkh div{flex:1}
+.bkh h2{font-size:22px;color:#fff;letter-spacing:-.01em}
+.bkh p{font-size:14px;font-weight:700;margin-top:2px}
+.x{width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.14);cursor:pointer;font-size:26px;line-height:1;color:#fff}
+.x:hover{background:rgba(255,255,255,.26)}
+.bar{height:4px;background:#E7CDBE}
+.bar i{display:block;height:100%;width:33%;background:var(--must2);transition:width .3s var(--ease)}
+.bkb{padding:22px 28px;overflow-y:auto;flex:1}
+.bkb fieldset{border:0;margin:0;padding:0;min-width:0}
+.bkb legend{font-weight:900;font-size:19px;padding:0;margin-bottom:12px}
+.step{animation:sin .24s var(--in)}
+@keyframes sin{from{opacity:0;transform:translateX(12px)}}
+.lbl{font-size:14px;font-weight:800;color:var(--ink2);margin:20px 0 10px}
+.lbl.f{margin-top:0}
+.opt{display:block;position:relative;margin-bottom:8px;cursor:pointer}
+.opt input,.dch input,.tch input{position:absolute;opacity:0;width:1px;height:1px}
+.opt>span{display:grid;grid-template-columns:1fr auto;gap:0 16px;padding:12px 16px;border:2px solid var(--line);border-radius:var(--r1);background:#fff;transition:border-color .15s,background .15s}
+.opt b{font-weight:800}
+.opt small{grid-column:1;color:var(--ink2);font-size:14px}
+.opt em{font-style:normal;font-weight:900;grid-row:1/3;grid-column:2;align-self:center;white-space:nowrap}
+.opt input:checked+span,.dch input:checked+span,.tch input:checked+span{border-color:var(--ink);background:var(--cream)}
+.opt input:focus-visible+span,.dch input:focus-visible+span,.tch input:focus-visible+span{outline:3px solid var(--teal);outline-offset:2px}
+.note{margin:0 0 14px;padding:12px 14px;border-radius:var(--r1);background:var(--ambb);font-size:14px;font-weight:700}
+.dates{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.dch,.tch{position:relative;cursor:pointer}
+.dch span{display:grid;justify-items:center;padding:8px 2px;border:2px solid var(--line);border-radius:var(--r1);background:#fff;line-height:1.2;min-height:64px;align-content:center}
+.dch small{font-size:12px;color:var(--ink2);font-weight:700}
+.dch b{font-size:19px;font-weight:900}
+.times{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:8px}
+.tch span{display:flex;align-items:center;justify-content:center;min-height:46px;border:2px solid var(--line);border-radius:var(--r1);background:#fff;font-weight:800;font-variant-numeric:tabular-nums}
+.tch input:disabled+span{color:#8E7768;text-decoration:line-through;background:transparent;border-style:dashed;cursor:not-allowed}
+.empty{color:var(--ink2);font-size:15px;grid-column:1/-1}
+.fld{display:grid;gap:6px;margin-bottom:14px}
+.fld label{font-weight:800;font-size:15px}
+.fld input,.fld textarea{font-size:16px;padding:12px 14px;border:2px solid #D6BFAD;border-radius:var(--r1);background:#fff;min-height:50px;width:100%}
+.fld textarea{min-height:80px;resize:vertical}
+.fld input:focus,.fld textarea:focus{outline:0;border-color:var(--ink)}
+.fld small{font-size:13px;color:var(--ink2)}
+.fld [aria-invalid=true]{border-color:var(--red)}
+.err{color:var(--red);font-size:14px;margin-top:12px;font-weight:800}
+.sum{font-size:15px;margin-bottom:16px;padding:12px 14px;border-radius:var(--r1);background:var(--cream)}
+.bkf{display:flex;gap:12px;padding:14px 28px 20px;border-top:1px solid var(--line)}
+.bkf .btn{flex:1}
+.bkf .l{flex:0 0 auto}
+.done h3{font-size:24px;font-weight:900;outline:none;line-height:1.2}
+.done>p{color:var(--ink2);margin-top:8px}
+.tg{margin-top:18px;background:#D7E3EC;border-radius:var(--r2);padding:14px}
+.tgh{display:flex;align-items:center;gap:10px;font-size:14px;margin-bottom:10px}
+.ava{width:36px;height:36px;border-radius:50%;background:var(--terra);display:grid;place-items:center}
+.ava svg{width:24px;height:24px}
+.tgh small{color:#4F6070}
+.msg{background:#fff;border-radius:4px 16px 16px 16px;padding:12px 14px;font-size:14px;line-height:1.5;white-space:pre-line;max-width:94%;animation:sin .4s .15s var(--in) backwards}
+.msg i{display:block;text-align:right;font-style:normal;font-size:12px;color:#6B7B88;margin-top:4px}
+.dnote{margin-top:14px;font-size:13px;color:var(--ink2)}
+@media (max-width:980px){
+.nav{display:none}
+.hero .wrap{grid-template-columns:1fr;gap:8px}
+.hero .txt{padding-bottom:40px}
+.hph{max-width:520px;width:100%;margin-left:auto}
+.hph .ph{aspect-ratio:4/3}
+.help,.faq,.ct{grid-template-columns:1fr}
+.res{position:static}
+.mbar{display:flex;position:sticky;bottom:12px;z-index:5;margin-top:20px;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 18px;border-radius:999px;background:var(--ink);color:#fff;font-weight:800;font-size:15px;box-shadow:0 10px 24px -10px rgba(43,27,18,.6);text-decoration:none;min-height:54px}
+.mbar[data-l=urgent]{background:var(--red)}
+.mbar[data-l=soon]{background:var(--amb)}
+.mbar[data-l=plan]{background:var(--grn)}
+.mbar em{font-style:normal;background:rgba(255,255,255,.18);border-radius:999px;padding:8px 14px;white-space:nowrap}
+.prices{columns:2}
+.place .a,.place .b{grid-column:1/-1}
+.place .a{aspect-ratio:3/2}
+.ct{padding:32px 24px}
+}
+@media (max-width:680px){
+.sec{padding:64px 0}
+.panel{padding:22px 16px;border-radius:var(--r2)}
+.res{padding:22px 18px;border-radius:var(--r2)}
+.prices{columns:1}
+.place .b{grid-template-columns:1fr}
+.tag{left:12px;top:auto;bottom:16px}
+.cta .btn{width:100%}
+}
+@media (max-width:420px){
+.wrap{width:calc(100% - 32px)}
+.demo .wrap{gap:10px;font-size:12px}
+.logo{font-size:19px}
+.hd .btn{padding:0 14px}
+.pill span{padding:8px 14px;font-size:14px}
+.bkb{padding:18px 16px}.bkh{padding:14px 10px 12px 16px}.bkf{padding:12px 16px 16px}
+.dates{gap:6px}
+}
+@media (max-width:640px){dialog{width:100%;max-width:100%;max-height:94dvh;margin:auto 0 0;border-radius:var(--r3) var(--r3) 0 0}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="paw" viewBox="0 0 32 32"><g fill="currentColor"><circle cx="8.5" cy="13" r="2.9"/><circle cx="13.3" cy="8.4" r="2.9"/><circle cx="18.7" cy="8.4" r="2.9"/><circle cx="23.5" cy="13" r="2.9"/><path d="M16 15.5c-3.6 0-7 4.4-7 7.6 0 2.4 2.3 3.2 4.2 2.4l2.8-1 2.8 1c1.9.8 4.2 0 4.2-2.4 0-3.2-3.4-7.6-7-7.6z"/></g></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></symbol>
+<symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></symbol>
+<symbol id="i-warn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2.8 19.5h18.4z"/><path d="M12 10v4.5M12 17.3v.2"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></symbol>
+<symbol id="i-tg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M21 4 3 11.2l6.2 2.3L19 7l-7.6 8.2L18 20z"/></symbol>
+</svg>
+
+<div class="demo"><div class="wrap"><span>Демо-сайт від drakx</span><a href="../../clinic/">← Інші роботи</a><a class="want" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82!%20%D0%91%D0%B0%D1%87%D0%B8%D0%B2%20%D0%B4%D0%B5%D0%BC%D0%BE%20%C2%AB%D0%A2%D0%B5%D0%BF%D0%BB%D0%B0%20%D0%BB%D0%B0%D0%BF%D0%B0%C2%BB.%20%D0%A5%D0%BE%D1%87%D1%83%20%D1%82%D0%B0%D0%BA%D0%B8%D0%B9%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B4%D0%BB%D1%8F%20%D1%81%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%D1%83%3A%20%E2%80%A6" target="_blank" rel="noopener">Хочу такий</a></div></div>
+
+<header class="hd" id="hd"><div class="wrap">
+<a class="logo" href="#top" aria-label="Тепла лапа, ветклініка. На початок сторінки"><svg aria-hidden="true"><use href="#paw"/></svg>Тепла лапа</a>
+<nav class="nav" aria-label="Розділи"><a href="#help">Що сталося?</a><a href="#prices">Ціни</a><a href="#place">Клініка</a><a href="#contacts">Контакти</a></nav>
+<button class="btn y sm" type="button" data-book>Записатися</button>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+<div class="txt">
+<h1>Лікуємо котів, собак і всіх, хто вміщається в переноску</h1>
+<p class="lead">Ветклініка в Полтаві, щодня з 8:00 до 21:00. На прийом записуйтеся онлайн за хвилину, а з невідкладним випадком приїжджайте без запису.</p>
+<div class="cta"><button class="btn y" type="button" data-book>Записатися на прийом</button><a class="btn o" href="#help">Чи це терміново? Підкажемо</a></div>
+<ul class="facts">
+<li><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>Щодня 8:00–21:00</li>
+<li><svg class="ico" aria-hidden="true"><use href="#i-bolt"/></svg>Невідкладні без черги</li>
+<li><svg class="ico" aria-hidden="true"><use href="#i-drop"/></svg>Аналіз крові за 30 хв</li>
+</ul>
+</div>
+<div class="hph">
+<figure class="ph"><img src="img/hero.webp" width="1200" height="1500" alt="Рудий пес сидить на оглядовому столі, руки ветеринара в рукавичках обережно оглядають йому вухо" fetchpriority="high"></figure>
+<p class="tag"><span>Прийом терапевта, 30 хв</span><b class="num">450 грн</b></p>
+</div>
+</div></section>
+
+<section class="sec" id="help" aria-labelledby="help-t"><div class="wrap">
+<div class="sh"><h2 id="help-t">Що сталося з улюбленцем?</h2><p>Позначте, що помітили. Підкажемо, чи треба їхати зараз, чи можна записатися на зручний день, і до якого лікаря.</p></div>
+<div class="help">
+<div class="panel" id="hform">
+<fieldset class="q"><legend><i aria-hidden="true">1</i>Хто захворів?</legend>
+<div class="seg">
+<label class="pill"><input type="radio" name="an" value="cat" checked><span>Кіт</span></label>
+<label class="pill"><input type="radio" name="an" value="dog"><span>Собака</span></label>
+<label class="pill"><input type="radio" name="an" value="rab"><span>Кролик</span></label>
+<label class="pill"><input type="radio" name="an" value="oth"><span>Тхір чи гризун</span></label>
+</div></fieldset>
+<fieldset class="q"><legend><i aria-hidden="true">2</i>Скільки років?</legend>
+<div class="seg">
+<label class="pill"><input type="radio" name="ag" value="y"><span>До 6 місяців</span></label>
+<label class="pill"><input type="radio" name="ag" value="a" checked><span>Дорослий</span></label>
+<label class="pill"><input type="radio" name="ag" value="o"><span>Старше 8 років</span></label>
+</div></fieldset>
+<fieldset class="q" style="margin:0"><legend><i aria-hidden="true">3</i>Що помітили?</legend>
+<div class="chips" id="chips"></div>
+<button class="clr" type="button" id="clr">Зняти всі позначки</button>
+</fieldset>
+<a class="mbar" id="mbar" href="#res" data-l="none"><span id="mbar-t">Позначте, що помітили</span><em>Підказка ↓</em></a>
+</div>
+<div class="res" id="res" data-l="none" tabindex="-1">
+<div id="res-in" aria-live="polite"></div>
+<p class="disc">Помічник не ставить діагноз і не замінює огляд. Сумніваєтеся, обирайте швидший варіант.</p>
+</div>
+</div>
+</div></section>
+
+<section class="sec" id="prices" style="padding-top:0"><div class="wrap">
+<div class="sh"><h2>Ціни</h2><p>Вакцини, наркоз і шовний матеріал уже в ціні. Якщо на прийомі потрібне щось додаткове, лікар спершу називає суму.</p></div>
+<div class="prices">
+<div class="pg"><h3>Прийом</h3><ul>
+<li><span>Прийом терапевта<small>огляд, зважування, рекомендації · 30 хв</small></span><b>450</b></li>
+<li><span>Повторний прийом<small>протягом 10 днів</small></span><b>250</b></li>
+<li><span>Дерматолог<small>40 хв</small></span><b>600</b></li>
+<li><span>Консультація хірурга</span><b>500</b></li>
+<li><span>Невідкладний огляд<small>без черги</small></span><b>від 600</b></li>
+</ul></div>
+<div class="pg"><h3>Щеплення й документи</h3><ul>
+<li><span>Комплексне щеплення кота<small>з вакциною</small></span><b>750</b></li>
+<li><span>Комплексне щеплення собаки<small>з вакциною</small></span><b>850</b></li>
+<li><span>Щеплення від сказу</span><b>350</b></li>
+<li><span>Чипування<small>з внесенням у базу</small></span><b>550</b></li>
+<li><span>Ветпаспорт</span><b>150</b></li>
+</ul></div>
+<div class="pg"><h3>Аналізи й діагностика</h3><ul>
+<li><span>Загальний аналіз крові<small>результат за 30 хв</small></span><b>350</b></li>
+<li><span>Біохімія крові<small>12 показників</small></span><b>950</b></li>
+<li><span>УЗД черевної порожнини</span><b>750</b></li>
+<li><span>Рентген<small>1 проєкція</small></span><b>500</b></li>
+</ul></div>
+<div class="pg"><h3>Операції</h3><ul>
+<li><span>Кастрація кота</span><b>1 700</b></li>
+<li><span>Стерилізація кішки</span><b>3 200</b></li>
+<li><span>Кастрація пса<small>залежить від ваги</small></span><b>від 2 800</b></li>
+<li><span>Стерилізація собаки<small>залежить від ваги</small></span><b>від 4 500</b></li>
+<li><span>Ультразвукова чистка зубів<small>під седацією</small></span><b>від 2 400</b></li>
+</ul></div>
+<div class="pg"><h3>Догляд і стаціонар</h3><ul>
+<li><span>Стрижка кігтів</span><b>150</b></li>
+<li><span>Чистка вух</span><b>200</b></li>
+<li><span>Стаціонар, доба<small>з доглядом і крапельницями</small></span><b>650</b></li>
+</ul></div>
+</div>
+</div></section>
+
+<section class="sec" id="place" style="padding-top:0"><div class="wrap">
+<div class="sh"><h2>Як у нас</h2><p>Перший поверх із власним входом і пандусом. Два кабінети, операційна, лабораторія і стаціонар на шість місць.</p></div>
+<div class="place">
+<figure class="ph a"><img src="img/cats.webp" width="1200" height="1500" loading="lazy" alt="Тиха кімната очікування для котів: дерев’яні полиці на рівні очей, на них стоять переноски"></figure>
+<div class="b">
+<figure class="ph"><img src="img/room.webp" width="1600" height="900" loading="lazy" alt="Оглядовий кабінет із теракотовою стіною, столом із м’яким килимком і полицями з дерева"></figure>
+<div class="fact"><h3>Коти чекають окремо</h3><p>У тихій кімнаті з полицями для переносок, подалі від собак. Собаки мають свою залу.</p></div>
+<div class="fact"><h3>Зважування безкоштовно</h3><p>Ваги стоять біля входу: зважуйте улюбленця, коли проходите повз, навіть без запису.</p></div>
+<div class="fact"><h3>Своя лабораторія</h3><p>Загальний аналіз крові готовий ще під час прийому, не треба приходити вдруге.</p></div>
+<div class="fact"><h3>Можна бути поруч</h3><p>Під час огляду ви поруч і тримаєте улюбленця, якщо лікар не попросить інакше.</p></div>
+</div>
+</div>
+</div></section>
+
+<section class="sec" id="faq" style="padding-top:0"><div class="wrap faq">
+<h2 class="h2">Що зазвичай питають</h2>
+<div class="qa">
+<details><summary>Що взяти на перший прийом?</summary><p>Ветпаспорт, якщо є, і результати попередніх аналізів. Кота везіть у переносці, собаку на повідку. Якщо тварина дуже нервує, скажіть адміністратору, і вас проведуть одразу в кабінет.</p></details>
+<details><summary>Чи можна прийти без запису?</summary><p>З невідкладним випадком так, без черги. На планові прийоми краще записатися: тоді не доведеться чекати.</p></details>
+<details><summary>Що робити, якщо щось сталося вночі?</summary><p>Ми працюємо до 21:00. Вночі їдьте до найближчої цілодобової ветклініки. Знайдіть її адресу заздалегідь, поки все добре.</p></details>
+<details><summary>Кого ви лікуєте?</summary><p>Котів, собак, кроликів, тхорів і гризунів. Плазунів і птахів не приймаємо, але підкажемо, куди звернутися.</p></details>
+<details><summary>Як підготуватися до операції?</summary><p>На консультації хірург дасть письмову пам’ятку: коли востаннє годувати й поїти, що взяти з собою і як забирати улюбленця додому.</p></details>
+</div>
+</div></section>
+
+<section class="sec" id="contacts" style="padding-top:0"><div class="wrap">
+<div class="ct">
+<div>
+<h2 class="h2">Як нас знайти</h2>
+<dl>
+<div><dt>Адреса</dt><dd>Полтава, вул. Соборності, 61<br>вхід із торця будинку, є пандус</dd></div>
+<div><dt>Години роботи</dt><dd>Щодня 8:00–21:00, без вихідних</dd></div>
+<div><dt>Паркування</dt><dd>Біля входу, 5 місць</dd></div>
+</dl>
+<div class="cta"><button class="btn y" type="button" data-book>Записатися онлайн</button><button class="btn o" type="button" id="tgbtn" aria-expanded="false" aria-controls="tgnote"><svg class="ico" aria-hidden="true"><use href="#i-tg"/></svg>Написати в Telegram</button></div>
+<p class="tgnote" id="tgnote" hidden>Це демо, тож справжнього чату немає. На сайті клініки ця кнопка відкриває її Telegram.</p>
+</div>
+<div class="map" role="img" aria-label="Схема: клініка на вулиці Соборності, вхід із торця будинку, поруч паркування і сквер">
+<svg viewBox="0 0 560 400" aria-hidden="true" font-family="Nunito,system-ui,sans-serif" font-weight="800">
+<rect width="560" height="400" fill="#2A6D66"/>
+<g fill="#337A72"><rect x="24" y="24" width="140" height="120" rx="14"/><rect x="196" y="24" width="340" height="120" rx="14"/><rect x="24" y="250" width="140" height="126" rx="14"/></g>
+<rect x="396" y="250" width="140" height="126" rx="14" fill="#3E8A6A"/><circle cx="430" cy="290" r="14" fill="#4E9B77"/><circle cx="490" cy="330" r="18" fill="#4E9B77"/><circle cx="455" cy="345" r="10" fill="#4E9B77"/>
+<path d="M-10 196H570" stroke="#F1EBE3" stroke-width="40"/>
+<path d="M180 -10V420" stroke="#F1EBE3" stroke-opacity=".8" stroke-width="20"/>
+<rect x="196" y="250" width="176" height="126" rx="14" fill="#A63E26"/>
+<g transform="translate(210 286)" fill="#FFF1E2"><use href="#paw" width="34" height="34"/></g>
+<text x="250" y="301" fill="#fff" font-size="17" font-weight="900">Тепла лапа</text>
+<text x="250" y="321" fill="#FFE2CC" font-size="13">вхід із торця</text>
+<path d="M372 300h14" stroke="#F3B748" stroke-width="4" stroke-linecap="round"/>
+<rect x="300" y="226" width="56" height="18" rx="4" fill="#F3B748"/><text x="328" y="239.5" text-anchor="middle" fill="#2B1B12" font-size="11.5">P · 5</text>
+<text x="206" y="202" fill="#1F5A54" font-size="15" font-weight="900">вул. Соборності</text>
+<text x="466" y="392" text-anchor="middle" fill="#E6F2EA" font-size="12">сквер</text>
+</svg>
+</div>
+</div>
+</div></section>
+</main>
+
+<footer class="ft"><div class="wrap"><p>Демо-сайт, зроблений drakx для прикладу. Бізнес вигаданий.</p><p>«Тепла лапа», ветклініка · Полтава</p></div></footer>
+
+<dialog id="book" aria-labelledby="bk-t">
+<form class="bk" id="bk" novalidate>
+<div class="bkh"><div><h2 id="bk-t">Запис на прийом</h2><p id="bk-s">Крок 1 з 3</p></div><button class="x" type="button" id="bk-x" aria-label="Закрити">×</button></div>
+<div class="bar" aria-hidden="true"><i id="bk-bar"></i></div>
+<div class="bkb">
+<fieldset class="step" data-s="1"><legend tabindex="-1">Хто прийде і навіщо?</legend>
+<p class="note" id="bnote" hidden></p>
+<div class="seg" role="radiogroup" aria-label="Тварина">
+<label class="pill"><input type="radio" name="ba" value="Кіт" checked><span>Кіт</span></label>
+<label class="pill"><input type="radio" name="ba" value="Собака"><span>Собака</span></label>
+<label class="pill"><input type="radio" name="ba" value="Кролик"><span>Кролик</span></label>
+<label class="pill"><input type="radio" name="ba" value="Тхір чи гризун"><span>Тхір чи гризун</span></label>
+</div>
+<p class="lbl">Послуга</p>
+<div id="svc"></div>
+</fieldset>
+<fieldset class="step" data-s="2" hidden><legend tabindex="-1">Коли вам зручно?</legend>
+<p class="lbl f" id="d-l">День</p><div class="dates" id="dates" role="radiogroup" aria-labelledby="d-l"></div>
+<p class="lbl" id="t-l">Вільний час</p><div class="times" id="times" role="radiogroup" aria-labelledby="t-l"></div>
+</fieldset>
+<fieldset class="step" data-s="3" hidden><legend tabindex="-1">Ваші контакти</legend>
+<p class="sum" id="sum"></p>
+<div class="fld"><label for="f-p">Кличка <span style="font-weight:500;color:var(--ink2)">(необов’язково)</span></label><input id="f-p" name="p" autocomplete="off"></div>
+<div class="fld"><label for="f-n">Ваше ім’я</label><input id="f-n" name="n" autocomplete="given-name" required></div>
+<div class="fld"><label for="f-c">Телефон або нік у Telegram</label><input id="f-c" name="c" autocomplete="tel" required aria-describedby="f-ch"><small id="f-ch">Наприклад, +380 50 123 45 67 або @andrii_pl</small></div>
+<div class="fld"><label for="f-m">Що турбує <span style="font-weight:500;color:var(--ink2)">(необов’язково)</span></label><textarea id="f-m" name="m"></textarea></div>
+</fieldset>
+<div class="step done" data-s="4" hidden>
+<h3 tabindex="-1">Готово! Заявка вже в Telegram у «Теплій лапі»</h3>
+<p>Адміністратор підтвердить запис повідомленням, зазвичай за 10 хвилин.</p>
+<div class="tg"><div class="tgh"><span class="ava" aria-hidden="true"><svg style="color:#FFF1E2"><use href="#paw"/></svg></span><div><b>Тепла лапа · запис</b><br><small>бот</small></div></div><div class="msg" id="msg"></div></div>
+<p class="dnote">Це демо: заявка нікуди не надсилалася. На справжньому сайті вона приходить адміністратору за секунду.</p>
+</div>
+<p class="err" id="err" role="alert"></p>
+</div>
+<div class="bkf"><button class="btn l" type="button" id="bk-back">Назад</button><button class="btn" type="submit" id="bk-next">Далі</button></div>
+</form>
+</dialog>
+
+<script>
+(()=>{
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+$$('img').forEach(i=>{if(i.complete&&!i.naturalWidth)i.classList.add('no');i.addEventListener('error',()=>i.classList.add('no'))});
+const hd=$('#hd');addEventListener('scroll',()=>hd.classList.toggle('s',scrollY>40),{passive:true});
+$('#tgbtn').addEventListener('click',e=>{const n=$('#tgnote'),o=n.hidden;n.hidden=!o;e.currentTarget.setAttribute('aria-expanded',o)});
+
+/* helper: R = їхати зараз, S = сьогодні-завтра, P = планово */
+const G=[
+['Дихання і стан',[['br','Важко дихає або дихає ротом','R'],['sz','Судоми або втрата свідомості','R'],['gm','Бліді, білі чи сині ясна','R'],['le','Млявий, ховається, не такий, як завжди','S'],['ea','Не їсть понад добу','S']]],
+['Живіт і туалет',[['bl','Здутий твердий живіт, марні позиви до блювання','R'],['ur','Не може помочитися, марно сидить у лотку','R'],['vo','Блювання або пронос кілька разів за добу','S'],['fr','Часто бігає в туалет, сеча потроху','S'],['bd','Кров у сечі чи калі','S']]],
+['Травми й отруєння',[['tr','Впав із висоти, збила машина, сильна кровотеча','R'],['po','Міг з’їсти отруту, ліки чи щось небезпечне','R'],['bi','Важкі пологи: потуги без результату','R'],['lm','Кульгає','S'],['wd','Невелика рана чи укус','S']]],
+['Шкіра, вуха, очі, зуби',[['ey','Око червоне, сльозиться або примружене','S'],['it','Свербить, лупа, випадає шерсть','P'],['er','Чухає вухо, трусить головою','P'],['tt','Запах із пасті, зубний камінь','P'],['lu','Помітили шишку під шкірою','P']]],
+['Планові справи',[['va','Щеплення, чип чи ветпаспорт','P'],['ca','Кастрація або стерилізація','P'],['ck','Просто профогляд','P']]]];
+const LV={},LB={};G.forEach(g=>g[1].forEach(c=>{LV[c[0]]=c[2];LB[c[0]]=c[1]}));
+$('#chips').innerHTML=G.map((g,i)=>`<div class="grp" role="group" aria-labelledby="g${i}"><h3 id="g${i}">${g[0]}</h3><div class="seg">${g[1].map(c=>`<label class="pill"><input type="checkbox" value="${c[0]}"><span>${c[1]}</span></label>`).join('')}</div></div>`).join('');
+/* services for helper result -> booking */
+const SV={ter:['Прийом терапевта','30 хв','450 грн'],der:['Дерматолог','40 хв','600 грн'],sur:['Консультація хірурга','30 хв','500 грн'],vac:['Щеплення','20 хв, вакцина в ціні','від 750 грн'],usd:['УЗД черевної порожнини','30 хв','750 грн'],chk:['Профогляд','30 хв','450 грн']};
+const WHO={lm:['sur','Хірург'],wd:['sur','Хірург'],ey:['ter','Терапевт, за потреби офтальмолог'],it:['der','Дерматолог'],er:['ter','Терапевт'],tt:['ter','Терапевт: огляд перед чисткою зубів'],lu:['sur','Хірург: огляд утворення'],va:['vac','Щеплення і документи'],ca:['sur','Хірург: консультація перед операцією'],ck:['chk','Терапевт: профогляд']};
+const RED='<ul><li>важко дихає або дихає ротом</li><li>судоми, втрата свідомості</li><li>здутий твердий живіт, марні позиви до блювання</li><li>не може помочитися</li><li>травма, сильна кровотеча, можливе отруєння</li><li>бліді чи сині ясна</li></ul>';
+let help={};
+function evalHelp(){
+const an=$('input[name=an]:checked').value,ag=$('input[name=ag]:checked').value,on=$$('#chips input:checked').map(i=>i.value);
+const has=k=>on.includes(k);let l='none',why='';
+if(on.length){
+l=on.some(k=>LV[k]=='R')?'urgent':on.some(k=>LV[k]=='S')?'soon':'plan';
+if(l!='urgent'){
+if(an=='cat'&&has('fr')){l='urgent';why='У котів часті марні походи в лоток бувають невідкладним станом.'}
+else if(an=='rab'&&has('ea')){l='urgent';why='Для кролика відмова від їжі небезпечна вже за кілька годин.'}
+else if(ag=='y'&&(has('vo')||has('ea')||has('le'))){l='urgent';why='Малюки до 6 місяців швидко втрачають сили, тож не чекайте.'}
+else if(ag=='o'&&l=='plan'&&on.some(k=>['lu','tt'].includes(k)))why='Для тварин старше 8 років краще не відкладати надовго.'}}
+const res=$('#res'),inn=$('#res-in'),mb=$('#mbar');res.dataset.l=mb.dataset.l=l;
+let h='',mt='',svc='';
+if(l=='none'){h=`<span class="lv">Підказка</span><h3>Позначте, що помітили</h3><p>Тут з’явиться, наскільки швидко варто показати улюбленця лікарю і до кого записатися.</p><p style="margin-top:16px;font-weight:800">Без запису, одразу їдьте до лікаря, якщо тварина:</p>${RED}`;mt='Позначте, що помітили'}
+else if(l=='urgent'){
+const reds=on.filter(k=>LV[k]=='R').map(k=>LB[k].toLowerCase());
+h=`<span class="lv"><svg class="ico" aria-hidden="true"><use href="#i-warn"/></svg>Терміново</span><h3>Їдьте до клініки зараз</h3><p>${why||'Такий стан може швидко погіршитися.'} Не чекайте вільного часу в записі: невідкладних приймаємо без черги з 8:00 до 21:00.</p><ul><li>Ми зачинені? Їдьте до найближчої цілодобової ветклініки.</li><li>Не давайте ліків із домашньої аптечки без лікаря.</li>${has('po')?'<li>Візьміть упаковку чи залишки того, що тварина могла з’їсти.</li>':''}${has('tr')?'<li>Везіть кота в переносці, а собаку на рівній підстилці, без зайвих рухів.</li>':''}</ul><div class="who"><small>Куди</small><b>Невідкладний огляд, без черги</b></div><a class="btn" href="#contacts">Як доїхати</a>`;
+mt='Терміново: їдьте зараз';help={}}
+else{
+const w=on.map(k=>WHO[k]).filter(Boolean),first=w[0]||['ter','Терапевт'],names=[...new Set((w.length?w:[first]).map(x=>x[1]))];
+svc=first[0];help={svc,soon:l=='soon',why:on.map(k=>LB[k].toLowerCase()).join(', ')};
+if(l=='soon'){h=`<span class="lv"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>Сьогодні або завтра</span><h3>Покажіть лікарю найближчим часом</h3><p>${why||'Схоже, це не невідкладний стан, але відкладати на тиждень не варто.'} Якщо з’явиться щось із цього, їдьте одразу:</p>${RED}`;mt='Сьогодні або завтра'}
+else{h=`<span class="lv"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg>Планово</span><h3>Можна записатися на зручний день</h3><p>${why||'Оберіть день цього чи наступного тижня.'} Якщо стан зміниться, не чекайте запису.</p>`;mt='Можна планово'}
+h+=`<div class="who"><small>До кого</small><b>${names.join('; ')}</b></div><button class="btn" type="button" id="hbook">${l=='soon'?'Записатися на найближчий час':'Записатися: '+SV[svc][0].toLowerCase()}</button>`}
+inn.innerHTML=h;inn.classList.remove('swap');void inn.offsetWidth;inn.classList.add('swap');
+$('#mbar-t').textContent=mt;$('#mbar em').textContent=l=='urgent'?'Що робити ↓':'Підказка ↓';
+const hb=$('#hbook');hb&&hb.addEventListener('click',()=>open(help));
+}
+$('#hform').addEventListener('change',evalHelp);
+$('#clr').addEventListener('click',()=>{$$('#chips input').forEach(i=>i.checked=false);evalHelp()});
+evalHelp();
+
+/* booking */
+const dlg=$('#book'),form=$('#bk'),err=$('#err'),next=$('#bk-next'),back=$('#bk-back');
+$('#svc').innerHTML=Object.entries(SV).map(([k,v])=>`<label class="opt"><input type="radio" name="s" value="${k}"><span><b>${v[0]}</b><small>${v[1]}</small><em>${v[2]}</em></span></label>`).join('');
+const SL=['08:30','09:30','10:30','11:00','12:00','13:00','14:30','15:30','16:30','17:30','18:00','19:00','20:00'];
+let step=1,days=[],ctx={};
+function mkDays(){days=[];const d=new Date();d.setHours(0,0,0,0);for(let i=0;i<10;i++){const x=new Date(d);x.setDate(d.getDate()+i);days.push(x)}}
+function slots(x){const now=new Date();return SL.map((t,i)=>{const[h,m]=t.split(':'),dt=new Date(x);dt.setHours(h,m);return{t,busy:dt-now<18e5||(x.getDate()*5+i*11+x.getMonth())%10<4}})}
+function renderDays(){
+$('#dates').innerHTML=days.map((x,i)=>{const free=slots(x).some(s=>!s.busy);return`<label class="dch"><input type="radio" name="d" value="${i}"${free?'':' disabled'}><span${free?'':' style="opacity:.45"'}><small>${i==0?'сьогодні':i==1?'завтра':x.toLocaleDateString('uk-UA',{weekday:'short'})}</small><b>${x.getDate()}</b><small>${x.toLocaleDateString('uk-UA',{month:'short'})}</small></span></label>`}).join('');
+const first=$('#dates input:not(:disabled)');if(first){first.checked=true;renderTimes(+first.value)}}
+function renderTimes(i){const s=slots(days[i]);$('#times').innerHTML=s.some(x=>!x.busy)?s.map(x=>`<label class="tch"><input type="radio" name="t" value="${x.t}"${x.busy?' disabled':''}><span>${x.t}<span class="sr">${x.busy?', зайнято':''}</span></span></label>`).join(''):'<p class="empty">На цей день вільного часу немає.</p>'}
+$('#dates').addEventListener('change',e=>{renderTimes(+e.target.value);err.textContent=''});
+const dayTxt=(d,o)=>d.toLocaleDateString('uk-UA',o);
+function show(n){
+step=n;$$('[data-s]',form).forEach(f=>f.hidden=+f.dataset.s!==n);err.textContent='';
+$('#bk-s').textContent=n<4?`Крок ${n} з 3`:'Заявку надіслано';$('#bk-bar').style.width=(n<4?n*33.4:100)+'%';
+back.hidden=n==1||n==4;next.textContent=n==3?'Надіслати заявку':n==4?'Закрити':'Далі';
+if(n==2&&!$('#dates').children.length){mkDays();renderDays()}
+if(n==3){const d=days[$('#dates input:checked').value];$('#sum').innerHTML=`<b>${SV[ctx.s][0]}</b> · ${ctx.a.toLowerCase()}<br>${dayTxt(d,{weekday:'long',day:'numeric',month:'long'})}, ${$('#times input:checked').value}`}
+const h=$(`[data-s="${n}"] legend, [data-s="${n}"] h3`,form);h&&h.focus({preventScroll:true})}
+function open(o={}){form.reset();$('#dates').innerHTML='';ctx={};$$('[aria-invalid]').forEach(x=>x.removeAttribute('aria-invalid'));
+const an=$('input[name=an]:checked').value,map={cat:'Кіт',dog:'Собака',rab:'Кролик',oth:'Тхір чи гризун'};
+if(o.svc){$(`input[name=ba][value="${map[an]}"]`,form).checked=true;$(`input[name=s][value="${o.svc}"]`,form).checked=true}
+const nt=$('#bnote');nt.hidden=!o.why;if(o.why)nt.textContent='З помічника: '+o.why+'.'+(o.soon?' Покажемо найближчий вільний час.':'');
+ctx.why=o.why||'';dlg.showModal();show(1)}
+$$('[data-book]').forEach(b=>b.addEventListener('click',()=>open()));
+$('#bk-x').addEventListener('click',()=>dlg.close());
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+back.addEventListener('click',()=>show(step-1));
+form.addEventListener('input',e=>{e.target.removeAttribute('aria-invalid');err.textContent=''});
+form.addEventListener('submit',e=>{e.preventDefault();
+if(step==1){const s=$('input[name=s]:checked',form);if(!s){err.textContent='Оберіть послугу.';return}ctx.s=s.value;ctx.a=$('input[name=ba]:checked',form).value;show(2)}
+else if(step==2){if(!$('#times input:checked')){err.textContent='Оберіть вільний час. Закреслений час уже зайнятий.';return}show(3)}
+else if(step==3){const n=$('#f-n'),c=$('#f-c'),cv=c.value.trim(),okN=n.value.trim().length>1,okC=/^\+?[\d\s()-]{10,}$/.test(cv)||/^@?[A-Za-z][\w]{4,}$/.test(cv);
+n.setAttribute('aria-invalid',!okN);c.setAttribute('aria-invalid',!okC);
+if(!okN||!okC){err.textContent=!okN?'Напишіть, як до вас звертатися.':'Перевірте контакт: потрібен телефон або нік у Telegram.';(okN?c:n).focus();return}
+const d=days[$('#dates input:checked').value],p=$('#f-p').value.trim(),m=$('#f-m').value.trim();
+$('#msg').innerHTML=`<b>Новий запис із сайту</b>\n${SV[ctx.s][0]}\n${ctx.a}${p?' '+esc(p):''}\n${dayTxt(d,{weekday:'short',day:'numeric',month:'long'})}, ${$('#times input:checked').value}\n${esc(n.value.trim())} · ${esc(cv)}${ctx.why?'\nЗ помічника: '+ctx.why:''}${m?'\nЩо турбує: '+esc(m):''}<i>${new Date().toTimeString().slice(0,5)}</i>`;
+show(4)}
+else dlg.close()});
+})();
+</script>
+</body>
+</html>

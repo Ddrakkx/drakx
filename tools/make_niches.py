@@ -32,6 +32,25 @@ def meta(s, attr, key, val):
     return re.sub(pat, lambda m: m[1] + html.escape(val, quote=True) + m[2], s)
 
 
+# демо-сайти для ніш: tools/demos.json (назва, вид бізнесу, місто, що можна спробувати, висота мобільного знімка)
+import json
+DEMOS = json.loads((ROOT / 'tools' / 'demos.json').read_text(encoding='utf-8')) if (ROOT / 'tools' / 'demos.json').exists() else {}
+
+
+def demo_block(items):
+    e = lambda t: html.escape(t, quote=True)
+    cards = ''.join(f"""
+      <article class="demo-card rv"{' style="--d:.08s"' if i else ''}>
+        <a class="shot" href="demo/{d['slug']}/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><div class="bar"><i></i><i></i><i></i><u>Демо · {e(d['name'])}</u></div>
+          <div class="dview"><img src="media/demo-{d['slug']}-720.webp" srcset="media/demo-{d['slug']}-720.webp 720w, media/demo-{d['slug']}-1440.webp 1440w" sizes="(max-width:700px) 92vw, 520px" width="1440" height="900" alt="" loading="lazy" decoding="async"></div></a>
+        <p class="tag">Демо · {e(d['kind'])} · {e(d['city'])}</p>
+        <h3>{e(d['name'])}</h3>
+        <p>{e(d['wow'])}</p>
+        <a class="link" href="demo/{d['slug']}/" target="_blank" rel="noopener">Відкрити демо <span aria-hidden="true">↗</span><span class="sr"> (відкриється в новій вкладці)</span></a>
+      </article>""" for i, d in enumerate(items))
+    return f'<div class="demos"><div class="demo-grid">{cards}\n    </div></div>\n    <p class="eyebrow cases-h rv">Реальні клієнти: автосервіси</p>'
+
+
 urls = [SITE]
 for n, (title, who) in META.items():
     k, h1 = niche_js[n]
@@ -56,8 +75,16 @@ for n, (title, who) in META.items():
     # без JS теж видно свою нішу: заголовок і надзаголовок вписуємо прямо в розмітку
     s = re.sub(r'(<p class="eyebrow" id="kicker">)[^<]*(</p>)', lambda m: m[1] + k + m[2], s, count=1)
     s = re.sub(r'(<h1 id="h1">).*?(</h1>)', lambda m: m[1] + h1 + m[2], s, count=1)
+    # демо для ніші: два живі сайти перед реальними кейсами, а телефон у картці «Сайти» гортає перше демо
+    if DEMOS.get(n):
+        s = s.replace('<!--demos-->', demo_block(DEMOS[n]), 1)
+        d0 = DEMOS[n][0]
+        s, k = re.subn(r'(<div class="phone" id="phone"><img) src="[^"]*" srcset="[^"]*"(.*?) height="\d+" alt="[^"]*"',
+                       lambda m: f'{m[1]} src="media/demo-{d0["slug"]}-m-360.webp" srcset="' + ', '.join(f'media/demo-{d0["slug"]}-m-{w}.webp {w}w' for w in (360, 480, 720))
+                       + f'"{m[2]} height="{d0["mh"]}" alt="Демо-сайт «{html.escape(d0["name"])}» на телефоні"', s, count=1)
+        assert k == 1
     # сторінка лежить на рівень глибше: відносні шляхи до файлів через ../
-    s = re.sub(r'(?<=["(, ])(fonts/|media/|favicon\.svg|favicon-48\.png|apple-touch-icon\.png)', r'../\1', s)
+    s = re.sub(r'(?<=["(, ])(fonts/|media/|demo/|favicon\.svg|favicon-48\.png|apple-touch-icon\.png)', r'../\1', s)
     out = ROOT / n / 'index.html'
     out.parent.mkdir(exist_ok=True)
     out.write_text(s, encoding='utf-8')

@@ -1,0 +1,23 @@
+[
+  {
+    "file": "img/hero.webp",
+    "prompt": "Friendly ginger mixed-breed dog sitting calmly on a veterinary examination table covered with a soft mustard-yellow mat, a veterinarian's gloved hands gently lifting one ear to check it; only hands and forearms in frame, no human face. Warm terracotta painted wall behind, warm wood shelf, soft evening window light from the side. Warm, kind, reassuring mood, not clinical. Palette: terracotta, mustard yellow, warm cream, deep teal accent. Photorealistic, 50mm lens, eye level with the dog, shallow depth of field, no text, no logos.",
+    "aspect": "4:5",
+    "width": 1200,
+    "alt": "Рудий пес сидить на оглядовому столі, руки ветеринара в рукавичках обережно оглядають йому вухо"
+  },
+  {
+    "file": "img/cats.webp",
+    "prompt": "Quiet cat-only waiting room in a small veterinary clinic: wall-mounted light wooden shelves at eye height with three pet carriers resting on them, one tabby cat peeking out of an open carrier door, a soft cream-colored wall, a terracotta cushion on a bench below, warm diffused daylight. No people, no text, no signage, no logos. Calm, cosy, warm mood. Palette: warm cream, terracotta, light wood, mustard accent. Photorealistic interior photography, 35mm lens.",
+    "aspect": "4:5",
+    "width": 1200,
+    "alt": "Тиха кімната очікування для котів: дерев’яні полиці на рівні очей, на них стоять переноски"
+  },
+  {
+    "file": "img/room.webp",
+    "prompt": "Veterinary examination room with a warm terracotta accent wall, stainless examination table topped with a soft mustard-yellow non-slip mat, light wooden shelves with neatly arranged supplies in plain unlabeled containers, a large window with warm afternoon light, a small potted plant. No people, no animals, no readable text or logos. Clean but homely and warm. Palette: terracotta, mustard, cream, light wood, a touch of deep teal. Photorealistic interior photography, wide 24mm lens, eye level.",
+    "aspect": "16:9",
+    "width": 1600,
+    "alt": "Оглядовий кабінет із теракотовою стіною, столом із м’яким килимком і полицями з дерева"
+  }
+]
