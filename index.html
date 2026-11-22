@@ -286,8 +286,10 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .dview{position:relative;border-radius:var(--r-in);overflow:hidden;aspect-ratio:16/10;background:#e8e8e8}
 .dview img{width:100%;height:100%;object-fit:cover;object-position:top}
 /* знімок демо спершу складається із символів коду, потім «компілюється» в справжній сайт */
-.js .dview.pre img{opacity:0}
-.dview .ascii{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.js .pre>img{opacity:0}
+.view .ascii,.dview .ascii{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+/* поки знімок вантажиться, під ним видно розмите превʼю, вшите в сторінку (--lq вписує tools/make_niches.py) */
+img[style*="--lq"]{background:var(--lq) 50% 0/cover no-repeat}
 .demo-card .tag{margin-top:20px}
 .demo-card h3{font-size:clamp(26px,2.6vw,32px);letter-spacing:-.025em;line-height:1.12;font-weight:600;margin:6px 0 8px}
 .demo-card p:not(.tag){color:var(--ink2)}
@@ -610,7 +612,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <article class="card c-site rv">
         <h3>Сайти</h3>
         <p>Сторінка, де клієнт бачить ваші послуги й ціни та одразу записується. Швидко відкривається навіть на мобільному інтернеті.</p>
-        <div class="phone" id="phone"><img src="media/gold-mlong-360.webp" srcset="media/gold-mlong-360.webp 360w, media/gold-mlong-480.webp 480w, media/gold-mlong-720.webp 720w" sizes="236px" width="360" height="2400" alt="Сайт Gold Auto на телефоні" loading="lazy" decoding="async"></div>
+        <div class="phone" id="phone"><img src="media/gold-mlong-360.webp" srcset="media/gold-mlong-360.webp 360w, media/gold-mlong-480.webp 480w, media/gold-mlong-720.webp 720w" sizes="236px" width="360" height="2400" alt="Сайт Gold Auto на телефоні" loading="lazy" decoding="async" style="--lq:url(data:image/webp;base64,UklGRsgEAABXRUJQVlA4ILwEAADwFwCdASokAPAAPtFcp0+oJKMiKJK7oQAaCWMA0WWze0eez0wDeY69w/OeIaAMej+X8GdKzjL5fIL0qOkNMBVOWSUofR9SYptjyk6gliZ5O7UgYo+AqbTaCPYfUGoWeANl3obL4J8bNmmFFezrple6q8vNzlUIxKtgvkS9mH2ziqPv+VIBJUWyawdzM901YlW9nX3ioewWYegitp1Dfm/hwX0qrEiMI5rp28orfMjfkydLZIgQX1eFMK4hsG65SAHM7LM+q5Vo4AD+93mZtH1AR2I5p+/aGod57X3v3qWmOE0XCNAKCB8hJydqYhc1vdiJeus8KppJaaJw03oxJdMI2/tJQS+xtxpoG00TXUsakI1yOzydlE/6EzPI5cu9/y2t0H8PTKgL7CgSmEU9Ae/6mEzty9WndorqKQrEdYzhEUyAO2ewek//htsC5oviElC3O8YZCP6Ce8Ij5h3UiIU3BRMMV2dOc9xFnsPYrI4HqXOp0HwxX9BLvbuVtL2B2dpzAxgg0fFZOepKr1EOYaTc0OfZqbq3Wd6NwT1bHBX8tGShmh+xF1gdwjomdz0F5LJu0H9/XmXe6P/lEKo/EEiLU9j77vW6SusF8yN/BTxN6O9azE7xzBBHUAVAVRb358d8xU9PJzaIsvp6DxO5THmLYU50QdZ777i9kkwiQ/9z/9i3tv5OxSHT9QpICti3/I+REepmE3lNUAMpN5nlnBG/ZfyrK5DoMbFsjFFkyUxNfz1Bc9JKBKe5oCwrlhzke64UjdbrUsIpShnU/Kn7rbrw2YKwyWA5Xz6aY9aAcptWJRmMUGHRHbxSiabVigIQHq6Q5kToAu15Cybh9DPxCkhfqPt+ZrV8sdUvDsb/DiWDtOVSaTBQ6g1BkfxhTbasGuvyD/Fc2FWL5sE4usOW3JfxWs9qwiNdYO2DIcFrazQzzqU+jBjBR64H6tHwKRMCnZj2+id5/Fv0eyZGSK87bzQj08LkBjsQQ5uWIssxo8za5OP0pPdIajec0YFZzxkHN6DiVBltMXQusuwyIvy9xu94MJWQ6+7NSaAc+YzHo7ov9YWvw3v1idrKWXhBW918LWWyJdSv4Bff1DUW+Dz0Xt4eSnSF263ERCNWqAb95DBDXP0O1UaOCEMNeJGqjv+ke4V1vPhsY5c46jbiuBgw50sljaCvRPeADZwiR241b8hyaW1X5p9SY+bdd6uOKx+c4o+ntnSyP35U5M8vxajeyrVvCBuhIWdh4h6nY2ReInXTCSboz/mATpiRZjs+gU2lCQfWe1vv4T74Tr9PbOaTIdhKRx9AIaF4oJF7bm+5cesIuAX4r664LiDk/sqBsB2kkb3z1EYRiH60Y1q6YGcesOTSGyUoHvk9OFz1LnwtfH9zz3kQ0EMHcD6tB7ODDOIwFpVu0dqdtRZXOAxSao1+HRrzgHQNdVX5GxHsPzgBz/PR3NYbMuU0RxFWUg6HuQ9rHfeuqg7/wfvORNkKs3pHm3+2AJJzjADksjg1dGGl85H5SuE7QyJbE5PqL5Dw1sJzRSrU1QKv7F+Lfz6nuOpf6QV2pthkxD7wL+K18inr7doJXl21cnHYj8pMenacXerCnq7jxBnMVqe/Of+ryAA=)"></div>
       </article>
       <article class="card c-bot rv" id="c-bot" style="--d:.08s">
         <h3>Telegram&#8209;боти</h3>
@@ -646,7 +648,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <figure class="shot rv">
         <div class="bar"><i></i><i></i><i></i><u>goldauto.online</u></div>
         <div class="view">
-          <img src="media/gold-720.webp" srcset="media/gold-720.webp 720w, media/gold-1440.webp 1440w" sizes="(max-width:900px) 92vw, 580px" width="1440" height="900" alt="Головна сторінка сайту автосервісу Gold Auto" loading="lazy" decoding="async">
+          <img src="media/gold-720.webp" srcset="media/gold-720.webp 720w, media/gold-1440.webp 1440w" sizes="(max-width:900px) 92vw, 580px" width="1440" height="900" alt="Головна сторінка сайту автосервісу Gold Auto" loading="lazy" decoding="async" style="--lq:url(data:image/webp;base64,UklGRuABAABXRUJQVlA4INQBAAAwDACdASpQADIAPtFcp0yoJSOiLncaMQAaCUAZ/b/88OO5pMItF+j/6gSeOJGE5kCi6JfGaOKn72Dk1g3ynAOBYORCZEIy5+jhUuqJj3cE795PuZfuL5qahwbAJ1nqhmo6tLZHU2ewr3pqAP7xulrObUzZYIDk0cype1arp4zrIcsbnQlMBWN14MNE6NPY8RSUvn0cQqhSyV9U9J7ne/D5XKaRy+HfRkHpiRgYk/4tczuta2eC1Juq7owLjCYvzoSTlRkcE9+23/u14nWGyEq0UjMek1ZPJr4Srlv7f63o+t18q/Y1xyuCc01V/2ihzx+7XOLip8p4yDALVtoP7BEeg9bkQnfdPen7Js+AixI3tRxBEl8jRmPvkTiQwv9plwF5i0YiObPWK1g53kXc7f8LR8RCLOxTwaUq3QUt/q9mysbvCat2+RrxOeBIJJI0+OxNmoHW7Tt792S1OOjUb4IlbZ3DFBEgSXT6h/+ranyWdaOczRVP/kb91l/Qr+/313AMmAHL51MBi3JDLCwxOxv7CqhhyqN529hTjUiwh3JyB8POd8omq1rurkcBjjEXwCGITnUkcZ3cSleck8wrVrVyfrSvQazWG/tF4SZbInbogAAAAAA=)">
           <div class="xclip" aria-hidden="true"><img data-src="media/gold-x-720.webp" data-srcset="media/gold-x-720.webp 720w, media/gold-x-1440.webp 1440w" sizes="(max-width:900px) 120vw, 760px" width="1440" height="900" alt=""></div>
           <div class="lens" aria-hidden="true"></div>
         </div>
@@ -675,7 +677,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <figure class="shot rv">
         <div class="bar"><i></i><i></i><i></i><u>Volt Master</u></div>
         <div class="view">
-          <img src="media/volt-720.webp" srcset="media/volt-720.webp 720w, media/volt-1440.webp 1440w" sizes="(max-width:900px) 92vw, 580px" width="1440" height="900" alt="Головна сторінка сайту Volt Master з живими ліхтарями BMW" loading="lazy" decoding="async">
+          <img src="media/volt-720.webp" srcset="media/volt-720.webp 720w, media/volt-1440.webp 1440w" sizes="(max-width:900px) 92vw, 580px" width="1440" height="900" alt="Головна сторінка сайту Volt Master з живими ліхтарями BMW" loading="lazy" decoding="async" style="--lq:url(data:image/webp;base64,UklGRpoCAABXRUJQVlA4II4CAACQDQCdASpQADIAPs1Wp0unpKQhsBM8APAZiUAZ7r/88HZd/CLTANHnv6gNe2HinOoyHOTh8FznskeoxgwF8oT8RsT6VDgG0g6gwUeuMVqLzjJXXNxBEO+RDpHB6YCvDqpXFNIGZLeHBcZnE4/YfexWDZI7UrAA/vpfoOsbxUzd+1q/sV+8yg87V5FgtbM7vJ4qtCkMw6KdzSkfEJbewEMDFb5aYWgl7cbwXZbee+hdgeEsdpq3yilLNW/9j4oQvtqg95GSlkT4xPUc2zNb9HabsjkeVL5Q/j6CuPj/Hk640JTzmz8phJj0Ps4ydw5VK10GeWaCz6OEEngoKAh/epfU0lWtFXK7DnoGv2IHlbAgZycZcvx8GvmnYW4qXT4fg+PLf69p9K2fSvaLCSdZSzblKP2waFufog2ZSU6UFRTH4YnUCPz2AjPk4XdT/RdcXS7vN3kV/oXpBfODJgepwSoY5PSOU/AJo5sWruy3qcKfUMZJA5n3y/ZyuZLCDyadJtEebtAhKthl2i7n1sjBqRc0GQx+uIXN56JuoiFo0QvwEuREHsAesXORFCFrNDMl4uMtzZlT7MMGlsuy0PbyyvXf6WRDhc33k2EvQIK+xxOaqyqNvCRB3SQwkijag+sSJ1wBtGsqi2cSgs8hvFKrjoMiPReDpKOg6PPGVEyJSdyNywkfrT68dsRfeSOysjmIsjXZyAgYDeQyaT1ZmtAmrEwNXmfhsDJa+PhzsA4+g0Jxhh1yaJ5fhh565iqRI30O4GZfXy67O/mRo1iKeiUEoSwMLfZo+09R6TwiLNeGkMgSO2qtHVrwGj0XI7/SFKNoUCRL97IYdIXat0d3eBbTP70RuXwYSXHBEps1bIAAAAA=)">
           <div class="xclip" aria-hidden="true"><img data-src="media/volt-x-720.webp" data-srcset="media/volt-x-720.webp 720w, media/volt-x-1440.webp 1440w" sizes="(max-width:900px) 120vw, 760px" width="1440" height="900" alt=""></div>
           <div class="lens" aria-hidden="true"></div>
         </div>
@@ -1019,40 +1021,51 @@ if(fine&&!reduce){
     requestAnimationFrame(()=>{apply(last||start);if(last){box.classList.add('on');$('#bs-state').textContent='Наживо з бота Gold Auto'}});
     if(!last)load()},{threshold:.3});
 }}
-/* демо на сторінках ніш «збираються з коду»: коли картка доходить до екрана, знімок спершу виникає із символів,
-   що перебираються, як код, потім символи стають схемою сторінки, і вона плавно перетікає в справжній знімок. Один раз на картку */
-{const views=$$('.demo-card .dview');
+/* знімки робіт «збираються з коду»: коли знімок доходить до екрана, він спершу виникає із символів, що перебираються, як код,
+   потім символи стають схемою сторінки, і вона перетікає в справжній знімок. Схему рахуємо з крихітного превʼю, вшитого
+   в сторінку (--lq), тож анімація стартує одразу й не чекає мережі; якщо знімок ще в дорозі, код «доскладається», поки він не прийде.
+   Один раз на знімок; хто вимкнув анімації в системі, бачить знімок одразу */
+{const views=$$('.view,.dview').filter(v=>v.querySelector(':scope>img'));
   if(views.length&&!reduce&&'IntersectionObserver' in window){
     const RAMP=' .,:;-=+*<>/(){}[]#%@',CODE='{}()[]<>/=+*;:#%&$01',
-      pick=s=>s[(Math.random()*s.length)|0];
+      pick=s=>s[(Math.random()*s.length)|0],main=v=>v.querySelector(':scope>img');
     views.forEach(v=>v.classList.add('pre'));
-    const show=v=>{v.classList.remove('pre');const i=$('img',v);if(i)i.style.opacity=''};
-    const run=v=>{const img=$('img',v);if(!img)return show(v);
-      const go=()=>{const W=v.clientWidth,H=v.clientHeight;if(!W||!H||!img.naturalWidth)return show(v);
-        const dpr=Math.min(2,devicePixelRatio||1),cw=W<500?7:8,chh=Math.round(cw*1.55),cols=Math.floor(W/cw),rows=Math.floor(H/chh);
-        /* яскравість кожної клітинки з самого знімка (картинка з того ж сайту, тож читати пікселі можна) */
-        const sm=document.createElement('canvas');sm.width=cols;sm.height=rows;
-        const sx=sm.getContext('2d',{willReadFrequently:true}),sc=Math.max(cols/img.naturalWidth,rows/img.naturalHeight);
-        sx.drawImage(img,0,0,img.naturalWidth*sc,img.naturalHeight*sc);
-        const px=sx.getImageData(0,0,cols,rows).data,N=cols*rows,L=new Float32Array(N),D=new Float32Array(N);
-        for(let k=0;k<N;k++){L[k]=(.2126*px[k*4]+.7152*px[k*4+1]+.0722*px[k*4+2])/255;
-          const q=k%cols,r=(k/cols)|0;D[k]=(q/cols*.72+r/rows*.28)*620+Math.random()*140}
-        /* темний сайт — світлі символи на темному тлі; яскравість розтягуємо на власний діапазон знімка, щоб було видно структуру */
-        const srt=Float32Array.from(L).sort(),lo=srt[(N*.04)|0],hi=srt[(N*.96)|0],mean=srt[N>>1],dark=mean<.42;
-        for(let k=0;k<N;k++){const n=Math.min(1,Math.max(0,(L[k]-lo)/Math.max(.08,hi-lo)));L[k]=dark?1-n:n}
-        const BG=dark?'#121212':'#e8e8e8',INK=dark?'236,236,236':'11,11,11';
-        const c=document.createElement('canvas');c.className='ascii';c.width=W*dpr;c.height=H*dpr;v.append(c);
-        const x=c.getContext('2d');x.scale(dpr,dpr);x.textBaseline='top';x.font=`600 ${Math.round(chh*.82)}px ui-monospace,"SF Mono",Menlo,Consolas,monospace`;
-        const T0=performance.now(),SET=260,HOLD=1150,FADE=520;
-        const f=t=>{const e=t-T0;x.fillStyle=BG;x.fillRect(0,0,W,H);
-          for(let k=0;k<N;k++){const d=D[k];if(e<d)continue;const l=L[k],ch=e<d+SET?pick(CODE):RAMP[Math.min(RAMP.length-1,((1-l)*RAMP.length)|0)];
-            if(ch===' ')continue;x.fillStyle=`rgba(${INK},${(.22+.78*(1-l)).toFixed(2)})`;x.fillText(ch,(k%cols)*cw,((k/cols)|0)*chh)}
-          if(e>HOLD){const a=Math.min(1,(e-HOLD)/FADE);c.style.opacity=1-a;img.style.opacity=a;if(a>=1){c.remove();show(v);return}}
-          requestAnimationFrame(f)};
+    const show=v=>{v.classList.remove('pre');main(v).style.opacity=''};
+    /* з чого малювати символи: вшите превʼю, а якщо його нема — сам знімок, коли довантажиться */
+    const thumb=img=>new Promise((ok,no)=>{const m=/url\(["']?(data:[^"')]+)/.exec(img.style.getPropertyValue('--lq'));
+      if(!m&&img.complete&&img.naturalWidth)return ok(img);
+      const t=m?new Image():img;t.addEventListener('load',()=>ok(t),{once:true});t.addEventListener('error',no,{once:true});if(m)t.src=m[1]});
+    const play=(v,img,src)=>{const W=v.clientWidth,H=v.clientHeight,sw=src.naturalWidth,sh=src.naturalHeight;if(!W||!H||!sw||!sh)return show(v);
+      const dpr=Math.min(2,devicePixelRatio||1),cw=W<500?7:8,chh=Math.round(cw*1.55),cols=Math.floor(W/cw),rows=Math.floor(H/chh);
+      const sm=document.createElement('canvas');sm.width=cols;sm.height=rows;
+      const sx=sm.getContext('2d',{willReadFrequently:true}),sc=Math.max(cols/sw,rows/sh);
+      sx.drawImage(src,0,0,sw*sc,sh*sc);
+      const px=sx.getImageData(0,0,cols,rows).data,N=cols*rows,L=new Float32Array(N),D=new Float32Array(N),G=new Float32Array(N);
+      for(let k=0;k<N;k++){L[k]=(.2126*px[k*4]+.7152*px[k*4+1]+.0722*px[k*4+2])/255;
+        const q=k%cols,r=(k/cols)|0;D[k]=(q/cols*.72+r/rows*.28)*700+Math.random()*160}
+      /* темний сайт — світлі символи на темному тлі; яскравість розтягуємо на власний діапазон знімка, щоб було видно структуру */
+      const srt=Float32Array.from(L).sort(),lo=srt[(N*.04)|0],hi=srt[(N*.96)|0],dark=srt[N>>1]<.42;
+      for(let k=0;k<N;k++){const n=Math.min(1,Math.max(0,(L[k]-lo)/Math.max(.08,hi-lo)));L[k]=dark?1-n:n}
+      const BG=dark?'#121212':'#e8e8e8',INK=dark?'236,236,236':'11,11,11';
+      const c=document.createElement('canvas');c.className='ascii';c.width=W*dpr;c.height=H*dpr;v.append(c);
+      const x=c.getContext('2d');x.scale(dpr,dpr);x.textBaseline='top';x.font=`600 ${Math.round(chh*.82)}px ui-monospace,"SF Mono",Menlo,Consolas,monospace`;
+      const T0=performance.now(),SET=380,HOLD=1500,FADE=560,WAIT=15000;let out=0;
+      const f=t=>{const e=t-T0;
+        if(!out&&e>HOLD&&(img.complete||e>WAIT))out=e;
+        if(e>HOLD&&!out)for(let j=N/260;j>0;j--)G[(Math.random()*N)|0]=e+180;
+        x.fillStyle=BG;x.fillRect(0,0,W,H);
+        for(let k=0;k<N;k++){const d=D[k];if(e<d)continue;const l=L[k],ch=e<d+SET||e<G[k]?pick(CODE):RAMP[Math.min(RAMP.length-1,((1-l)*RAMP.length)|0)];
+          if(ch===' ')continue;x.fillStyle=`rgba(${INK},${(.22+.78*(1-l)).toFixed(2)})`;x.fillText(ch,(k%cols)*cw,((k/cols)|0)*chh)}
+        if(out){const a=Math.min(1,(e-out)/FADE);c.style.opacity=1-a;img.style.opacity=a;if(a>=1){c.remove();show(v);return}}
         requestAnimationFrame(f)};
-      (img.complete&&img.naturalWidth?Promise.resolve():img.decode()).then(go,()=>show(v))};
-    io(views,(e,o)=>{if(e.isIntersecting){o.unobserve(e.target);run(e.target)}},{threshold:.3});
+      requestAnimationFrame(f)};
+    const run=v=>{const img=main(v);img.loading='eager';
+      thumb(img).then(src=>{try{play(v,img,src)}catch(_){show(v)}},()=>show(v))};
+    io(views,(e,o)=>{if(e.isIntersecting){o.unobserve(e.target);run(e.target)}},{threshold:.45});
   }}
+/* на повільному інтернеті Safari береться за lazy-знімки аж біля екрана, і вони встигають постояти порожніми.
+   Тому, щойно сторінка завантажилась, тихо довантажуємо їх заздалегідь */
+addEventListener('load',()=>setTimeout(()=>$$('img[loading=lazy]').forEach(i=>i.loading='eager'),1500),{once:true});
 /* мікровзаємодії для миші: магнітні кнопки з бліком, нахил скриншотів */
 if(fine&&!reduce){
   $$('.pill').forEach(b=>{

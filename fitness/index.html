@@ -286,8 +286,10 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .dview{position:relative;border-radius:var(--r-in);overflow:hidden;aspect-ratio:16/10;background:#e8e8e8}
 .dview img{width:100%;height:100%;object-fit:cover;object-position:top}
 /* знімок демо спершу складається із символів коду, потім «компілюється» в справжній сайт */
-.js .dview.pre img{opacity:0}
-.dview .ascii{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.js .pre>img{opacity:0}
+.view .ascii,.dview .ascii{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+/* поки знімок вантажиться, під ним видно розмите превʼю, вшите в сторінку (--lq вписує tools/make_niches.py) */
+img[style*="--lq"]{background:var(--lq) 50% 0/cover no-repeat}
 .demo-card .tag{margin-top:20px}
 .demo-card h3{font-size:clamp(26px,2.6vw,32px);letter-spacing:-.025em;line-height:1.12;font-weight:600;margin:6px 0 8px}
 .demo-card p:not(.tag){color:var(--ink2)}
@@ -610,7 +612,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <article class="card c-site rv">
         <h3>Сайти</h3>
         <p>Сторінка, де клієнт бачить ваші послуги й ціни та одразу записується. Швидко відкривається навіть на мобільному інтернеті.</p>
-        <div class="phone" id="phone"><img src="../media/demo-fitness-m-360.webp" srcset="../media/demo-fitness-m-360.webp 360w, ../media/demo-fitness-m-480.webp 480w, ../media/demo-fitness-m-720.webp 720w" sizes="236px" width="360" height="2400" alt="Демо-сайт «ТЕМП» на телефоні" loading="lazy" decoding="async"></div>
+        <div class="phone" id="phone"><img src="../media/demo-fitness-m-360.webp" srcset="../media/demo-fitness-m-360.webp 360w, ../media/demo-fitness-m-480.webp 480w, ../media/demo-fitness-m-720.webp 720w" sizes="236px" width="360" height="2400" alt="Демо-сайт «ТЕМП» на телефоні" loading="lazy" decoding="async" style="--lq:url(data:image/webp;base64,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)"></div>
       </article>
       <article class="card c-bot rv" id="c-bot" style="--d:.08s">
         <h3>Telegram&#8209;боти</h3>
@@ -642,7 +644,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
     <div class="demos"><div class="demo-grid">
       <article class="demo-card rv">
         <a class="shot" href="../demo/fitness/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><div class="bar"><i></i><i></i><i></i><u>Демо · ТЕМП</u></div>
-          <div class="dview"><img src="../media/demo-fitness-720.webp" srcset="../media/demo-fitness-720.webp 720w, ../media/demo-fitness-1440.webp 1440w" sizes="(max-width:700px) 92vw, 520px" width="1440" height="900" alt="" loading="lazy" decoding="async"></div></a>
+          <div class="dview"><img src="../media/demo-fitness-720.webp" srcset="../media/demo-fitness-720.webp 720w, ../media/demo-fitness-1440.webp 1440w" sizes="(max-width:700px) 92vw, 520px" width="1440" height="900" alt="" loading="lazy" decoding="async" style="--lq:url(data:image/webp;base64,UklGRmYDAABXRUJQVlA4IFoDAAAQEACdASpQADIAPtFYpk8oJKMiKbgKSQAaCUAZfzSm2o8Ss5a/gUpfORJGH+k8LyDBzPc0Nig0GMtQOhm5GRcGguYa7CXmwyR0hadzbZUoWmad5iY4AHp7dNpejxEr93xhGQVI4rdTx+6bmOGLM6E+01ucg1pDtJDs1h5oGyXEVruMiTJi2lCQAAD++mofHTrLQX2lBrD/xiJ+27xWap/EldyR2aypKAAvpPzZHn/yPR0gz+d9FgFmtAseqX8bLU1HhFh1KayMKrNgDZ388y/tm3Di3tbFszMABl33hWKHFIgnl3lE4bNerGfDabeChNSuHQzZ3FPBS503fUg+CvbYdxIUk3zYP80YFifZUP2v2a9I2hdM7VxD6hCKTvLNAY213izQsChbocjRMS/FeiVI1Kqq66/xKv9CW4jY5AotHea7ca4HXPv93+r7OpZ/S/Llsi5XYo3fdoFq+uwlCPMSuzaSxfW9C9P3tW39L53B0AEZQUmdnoS7WeXdumne8W2TVEdQ1e2icflyrEMiK/wNGlPi3trCKP3Z7SLzf3oFwaNB09vISOKEjy5yyvWjZ+qW+tnoJ3T1mqg419vtRfogOnT46nQLMrTCAsTX068Kef8LgjvwmxhhM/ud3zE3RysPPeD4yj6gy6OHtne0JCdmEYqWAyjYIHqeZqvGOzUDgdkwRYKwsbDPHQeS6cKDvMm6yuoxJdS5WpOaSVd++RvCAJWOUTsKJA08Z3iTpnslyxUqPnaZkrJhyHB4uuj5S0A7Llrth52/Aqvqk+HQ3RdT6DZNXaAkxZZ/UDEEqRumzJCVeF7CGntCLkzfV+lMtwnfGI7KMbl4tqRyDlu8OjLEqhhaBOHWPFP/r8NArophWnCxS3jflS1/JGUG1dFr3Lm3ugvlstkM9+h8HJiUF4oSb+IWpqBWdu/A+peNYDB84FIfDqdEVmjJjBSrG/vA4sLpyGXw0P/hWnWsfIiIoeofzyo9i6jb/ca7V7PFldGg3xgx53skyfeVeudxwCF/ZSz60Z7D5YlNy7gCYjMCfICjsvA4d3IpyHhrNoM9G0pYpd0Dp9UzrOkYoNy3be5dlI6UJx6HQYQYxhViNNK9PghKxWeZ72iQHOWiW/0M99POVcfRgBIFxKiAAAA=)"></div></a>
         <p class="tag">Демо · Групові тренування · Дніпро</p>
         <h3>ТЕМП</h3>
         <p>Розклад на тиждень із вільними місцями, фільтрами й записом в один дотик.</p>
@@ -650,7 +652,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       </article>
       <article class="demo-card rv" style="--d:.08s">
         <a class="shot" href="../demo/yoga/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><div class="bar"><i></i><i></i><i></i><u>Демо · Смерека</u></div>
-          <div class="dview"><img src="../media/demo-yoga-720.webp" srcset="../media/demo-yoga-720.webp 720w, ../media/demo-yoga-1440.webp 1440w" sizes="(max-width:700px) 92vw, 520px" width="1440" height="900" alt="" loading="lazy" decoding="async"></div></a>
+          <div class="dview"><img src="../media/demo-yoga-720.webp" srcset="../media/demo-yoga-720.webp 720w, ../media/demo-yoga-1440.webp 1440w" sizes="(max-width:700px) 92vw, 520px" width="1440" height="900" alt="" loading="lazy" decoding="async" style="--lq:url(data:image/webp;base64,UklGRkoCAABXRUJQVlA4ID4CAAAQDACdASpQADIAPtFYpkwoJSOiLNQMqQAaCWUAzNW71tEaQOMD08OstDtrSAEy4rnV+j/DVz0cgFuvFt6azX7xgg3W1btsjcNbdG+bh+B0WK7ClebNqW8sAGk2JK6kUkoYY4b91DalJQAA+p/9ru4vV1FE7/Xb+HwTRqHOiYaiynhnc+VZBQsI38rnztUTtT/au3LXXEk46toDOROZsCHSb74lakWMnTQirNNkHme6OdoaEoyCUkmugxIn8EWrKC+DjjnS8fT8Z1XxClR9Pnw8MMxBhVLhtUhCAS8uR9Cx3+DC5we4c6mD/5ayNG3UOqnfFUBiGKkx6W4e/h1N1GK9yv0FpA/AjJNF6O3Hqh7Y3v9aA+NUUKPf009cJUgJ1Rspr/WUeAtdF04zRO1I8H6ga0RG2q5cQtFPgdtj82f8nJFBizql3594kEdEU6LHuuQwfluI+gVo999FkyLKPWYOrUFrrMJiD3HF1Q/sKwi/YHdSwnSHEvfEbyn9URrx+9lNUMuE9mQfBnH1322aA5Bj9JkU6divOM4pJrGhvjFtRZkFjXehFMbr+OUDsrdrKcLbpYoMUfTFnXnwS7Jd/Wgh7vffzYQp76Mt8KOD7bkByNcrkNgaOsYo8QC0hRtR5WqxMNdpphdb/m+oq+9HEfzJnN/A4lihixCSZAzvhmtM10oKpzF6xqCv/7e1Wx9a97uY/agm1jp/otChOyt/VMaA457kgiypPf/0zbSqukPGOAha1kcFxGyiGwAAAAAA)"></div></a>
         <p class="tag">Демо · Йога й розтяжка · Івано-Франківськ</p>
         <h3>Смерека</h3>
         <p>Три питання, і сайт підбере заняття та найближчий вільний клас для новачка.</p>
@@ -664,7 +666,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <figure class="shot rv">
         <div class="bar"><i></i><i></i><i></i><u>goldauto.online</u></div>
         <div class="view">
-          <img src="../media/gold-720.webp" srcset="../media/gold-720.webp 720w, ../media/gold-1440.webp 1440w" sizes="(max-width:900px) 92vw, 580px" width="1440" height="900" alt="Головна сторінка сайту автосервісу Gold Auto" loading="lazy" decoding="async">
+          <img src="../media/gold-720.webp" srcset="../media/gold-720.webp 720w, ../media/gold-1440.webp 1440w" sizes="(max-width:900px) 92vw, 580px" width="1440" height="900" alt="Головна сторінка сайту автосервісу Gold Auto" loading="lazy" decoding="async" style="--lq:url(data:image/webp;base64,UklGRuABAABXRUJQVlA4INQBAAAwDACdASpQADIAPtFcp0yoJSOiLncaMQAaCUAZ/b/88OO5pMItF+j/6gSeOJGE5kCi6JfGaOKn72Dk1g3ynAOBYORCZEIy5+jhUuqJj3cE795PuZfuL5qahwbAJ1nqhmo6tLZHU2ewr3pqAP7xulrObUzZYIDk0cype1arp4zrIcsbnQlMBWN14MNE6NPY8RSUvn0cQqhSyV9U9J7ne/D5XKaRy+HfRkHpiRgYk/4tczuta2eC1Juq7owLjCYvzoSTlRkcE9+23/u14nWGyEq0UjMek1ZPJr4Srlv7f63o+t18q/Y1xyuCc01V/2ihzx+7XOLip8p4yDALVtoP7BEeg9bkQnfdPen7Js+AixI3tRxBEl8jRmPvkTiQwv9plwF5i0YiObPWK1g53kXc7f8LR8RCLOxTwaUq3QUt/q9mysbvCat2+RrxOeBIJJI0+OxNmoHW7Tt792S1OOjUb4IlbZ3DFBEgSXT6h/+ranyWdaOczRVP/kb91l/Qr+/313AMmAHL51MBi3JDLCwxOxv7CqhhyqN529hTjUiwh3JyB8POd8omq1rurkcBjjEXwCGITnUkcZ3cSleck8wrVrVyfrSvQazWG/tF4SZbInbogAAAAAA=)">
           <div class="xclip" aria-hidden="true"><img data-src="../media/gold-x-720.webp" data-srcset="../media/gold-x-720.webp 720w, ../media/gold-x-1440.webp 1440w" sizes="(max-width:900px) 120vw, 760px" width="1440" height="900" alt=""></div>
           <div class="lens" aria-hidden="true"></div>
         </div>
@@ -693,7 +695,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <figure class="shot rv">
         <div class="bar"><i></i><i></i><i></i><u>Volt Master</u></div>
         <div class="view">
-          <img src="../media/volt-720.webp" srcset="../media/volt-720.webp 720w, ../media/volt-1440.webp 1440w" sizes="(max-width:900px) 92vw, 580px" width="1440" height="900" alt="Головна сторінка сайту Volt Master з живими ліхтарями BMW" loading="lazy" decoding="async">
+          <img src="../media/volt-720.webp" srcset="../media/volt-720.webp 720w, ../media/volt-1440.webp 1440w" sizes="(max-width:900px) 92vw, 580px" width="1440" height="900" alt="Головна сторінка сайту Volt Master з живими ліхтарями BMW" loading="lazy" decoding="async" style="--lq:url(data:image/webp;base64,UklGRpoCAABXRUJQVlA4II4CAACQDQCdASpQADIAPs1Wp0unpKQhsBM8APAZiUAZ7r/88HZd/CLTANHnv6gNe2HinOoyHOTh8FznskeoxgwF8oT8RsT6VDgG0g6gwUeuMVqLzjJXXNxBEO+RDpHB6YCvDqpXFNIGZLeHBcZnE4/YfexWDZI7UrAA/vpfoOsbxUzd+1q/sV+8yg87V5FgtbM7vJ4qtCkMw6KdzSkfEJbewEMDFb5aYWgl7cbwXZbee+hdgeEsdpq3yilLNW/9j4oQvtqg95GSlkT4xPUc2zNb9HabsjkeVL5Q/j6CuPj/Hk640JTzmz8phJj0Ps4ydw5VK10GeWaCz6OEEngoKAh/epfU0lWtFXK7DnoGv2IHlbAgZycZcvx8GvmnYW4qXT4fg+PLf69p9K2fSvaLCSdZSzblKP2waFufog2ZSU6UFRTH4YnUCPz2AjPk4XdT/RdcXS7vN3kV/oXpBfODJgepwSoY5PSOU/AJo5sWruy3qcKfUMZJA5n3y/ZyuZLCDyadJtEebtAhKthl2i7n1sjBqRc0GQx+uIXN56JuoiFo0QvwEuREHsAesXORFCFrNDMl4uMtzZlT7MMGlsuy0PbyyvXf6WRDhc33k2EvQIK+xxOaqyqNvCRB3SQwkijag+sSJ1wBtGsqi2cSgs8hvFKrjoMiPReDpKOg6PPGVEyJSdyNywkfrT68dsRfeSOysjmIsjXZyAgYDeQyaT1ZmtAmrEwNXmfhsDJa+PhzsA4+g0Jxhh1yaJ5fhh565iqRI30O4GZfXy67O/mRo1iKeiUEoSwMLfZo+09R6TwiLNeGkMgSO2qtHVrwGj0XI7/SFKNoUCRL97IYdIXat0d3eBbTP70RuXwYSXHBEps1bIAAAAA=)">
           <div class="xclip" aria-hidden="true"><img data-src="../media/volt-x-720.webp" data-srcset="../media/volt-x-720.webp 720w, ../media/volt-x-1440.webp 1440w" sizes="(max-width:900px) 120vw, 760px" width="1440" height="900" alt=""></div>
           <div class="lens" aria-hidden="true"></div>
         </div>
@@ -1037,40 +1039,51 @@ if(fine&&!reduce){
     requestAnimationFrame(()=>{apply(last||start);if(last){box.classList.add('on');$('#bs-state').textContent='Наживо з бота Gold Auto'}});
     if(!last)load()},{threshold:.3});
 }}
-/* демо на сторінках ніш «збираються з коду»: коли картка доходить до екрана, знімок спершу виникає із символів,
-   що перебираються, як код, потім символи стають схемою сторінки, і вона плавно перетікає в справжній знімок. Один раз на картку */
-{const views=$$('.demo-card .dview');
+/* знімки робіт «збираються з коду»: коли знімок доходить до екрана, він спершу виникає із символів, що перебираються, як код,
+   потім символи стають схемою сторінки, і вона перетікає в справжній знімок. Схему рахуємо з крихітного превʼю, вшитого
+   в сторінку (--lq), тож анімація стартує одразу й не чекає мережі; якщо знімок ще в дорозі, код «доскладається», поки він не прийде.
+   Один раз на знімок; хто вимкнув анімації в системі, бачить знімок одразу */
+{const views=$$('.view,.dview').filter(v=>v.querySelector(':scope>img'));
   if(views.length&&!reduce&&'IntersectionObserver' in window){
     const RAMP=' .,:;-=+*<>/(){}[]#%@',CODE='{}()[]<>/=+*;:#%&$01',
-      pick=s=>s[(Math.random()*s.length)|0];
+      pick=s=>s[(Math.random()*s.length)|0],main=v=>v.querySelector(':scope>img');
     views.forEach(v=>v.classList.add('pre'));
-    const show=v=>{v.classList.remove('pre');const i=$('img',v);if(i)i.style.opacity=''};
-    const run=v=>{const img=$('img',v);if(!img)return show(v);
-      const go=()=>{const W=v.clientWidth,H=v.clientHeight;if(!W||!H||!img.naturalWidth)return show(v);
-        const dpr=Math.min(2,devicePixelRatio||1),cw=W<500?7:8,chh=Math.round(cw*1.55),cols=Math.floor(W/cw),rows=Math.floor(H/chh);
-        /* яскравість кожної клітинки з самого знімка (картинка з того ж сайту, тож читати пікселі можна) */
-        const sm=document.createElement('canvas');sm.width=cols;sm.height=rows;
-        const sx=sm.getContext('2d',{willReadFrequently:true}),sc=Math.max(cols/img.naturalWidth,rows/img.naturalHeight);
-        sx.drawImage(img,0,0,img.naturalWidth*sc,img.naturalHeight*sc);
-        const px=sx.getImageData(0,0,cols,rows).data,N=cols*rows,L=new Float32Array(N),D=new Float32Array(N);
-        for(let k=0;k<N;k++){L[k]=(.2126*px[k*4]+.7152*px[k*4+1]+.0722*px[k*4+2])/255;
-          const q=k%cols,r=(k/cols)|0;D[k]=(q/cols*.72+r/rows*.28)*620+Math.random()*140}
-        /* темний сайт — світлі символи на темному тлі; яскравість розтягуємо на власний діапазон знімка, щоб було видно структуру */
-        const srt=Float32Array.from(L).sort(),lo=srt[(N*.04)|0],hi=srt[(N*.96)|0],mean=srt[N>>1],dark=mean<.42;
-        for(let k=0;k<N;k++){const n=Math.min(1,Math.max(0,(L[k]-lo)/Math.max(.08,hi-lo)));L[k]=dark?1-n:n}
-        const BG=dark?'#121212':'#e8e8e8',INK=dark?'236,236,236':'11,11,11';
-        const c=document.createElement('canvas');c.className='ascii';c.width=W*dpr;c.height=H*dpr;v.append(c);
-        const x=c.getContext('2d');x.scale(dpr,dpr);x.textBaseline='top';x.font=`600 ${Math.round(chh*.82)}px ui-monospace,"SF Mono",Menlo,Consolas,monospace`;
-        const T0=performance.now(),SET=260,HOLD=1150,FADE=520;
-        const f=t=>{const e=t-T0;x.fillStyle=BG;x.fillRect(0,0,W,H);
-          for(let k=0;k<N;k++){const d=D[k];if(e<d)continue;const l=L[k],ch=e<d+SET?pick(CODE):RAMP[Math.min(RAMP.length-1,((1-l)*RAMP.length)|0)];
-            if(ch===' ')continue;x.fillStyle=`rgba(${INK},${(.22+.78*(1-l)).toFixed(2)})`;x.fillText(ch,(k%cols)*cw,((k/cols)|0)*chh)}
-          if(e>HOLD){const a=Math.min(1,(e-HOLD)/FADE);c.style.opacity=1-a;img.style.opacity=a;if(a>=1){c.remove();show(v);return}}
-          requestAnimationFrame(f)};
+    const show=v=>{v.classList.remove('pre');main(v).style.opacity=''};
+    /* з чого малювати символи: вшите превʼю, а якщо його нема — сам знімок, коли довантажиться */
+    const thumb=img=>new Promise((ok,no)=>{const m=/url\(["']?(data:[^"')]+)/.exec(img.style.getPropertyValue('--lq'));
+      if(!m&&img.complete&&img.naturalWidth)return ok(img);
+      const t=m?new Image():img;t.addEventListener('load',()=>ok(t),{once:true});t.addEventListener('error',no,{once:true});if(m)t.src=m[1]});
+    const play=(v,img,src)=>{const W=v.clientWidth,H=v.clientHeight,sw=src.naturalWidth,sh=src.naturalHeight;if(!W||!H||!sw||!sh)return show(v);
+      const dpr=Math.min(2,devicePixelRatio||1),cw=W<500?7:8,chh=Math.round(cw*1.55),cols=Math.floor(W/cw),rows=Math.floor(H/chh);
+      const sm=document.createElement('canvas');sm.width=cols;sm.height=rows;
+      const sx=sm.getContext('2d',{willReadFrequently:true}),sc=Math.max(cols/sw,rows/sh);
+      sx.drawImage(src,0,0,sw*sc,sh*sc);
+      const px=sx.getImageData(0,0,cols,rows).data,N=cols*rows,L=new Float32Array(N),D=new Float32Array(N),G=new Float32Array(N);
+      for(let k=0;k<N;k++){L[k]=(.2126*px[k*4]+.7152*px[k*4+1]+.0722*px[k*4+2])/255;
+        const q=k%cols,r=(k/cols)|0;D[k]=(q/cols*.72+r/rows*.28)*700+Math.random()*160}
+      /* темний сайт — світлі символи на темному тлі; яскравість розтягуємо на власний діапазон знімка, щоб було видно структуру */
+      const srt=Float32Array.from(L).sort(),lo=srt[(N*.04)|0],hi=srt[(N*.96)|0],dark=srt[N>>1]<.42;
+      for(let k=0;k<N;k++){const n=Math.min(1,Math.max(0,(L[k]-lo)/Math.max(.08,hi-lo)));L[k]=dark?1-n:n}
+      const BG=dark?'#121212':'#e8e8e8',INK=dark?'236,236,236':'11,11,11';
+      const c=document.createElement('canvas');c.className='ascii';c.width=W*dpr;c.height=H*dpr;v.append(c);
+      const x=c.getContext('2d');x.scale(dpr,dpr);x.textBaseline='top';x.font=`600 ${Math.round(chh*.82)}px ui-monospace,"SF Mono",Menlo,Consolas,monospace`;
+      const T0=performance.now(),SET=380,HOLD=1500,FADE=560,WAIT=15000;let out=0;
+      const f=t=>{const e=t-T0;
+        if(!out&&e>HOLD&&(img.complete||e>WAIT))out=e;
+        if(e>HOLD&&!out)for(let j=N/260;j>0;j--)G[(Math.random()*N)|0]=e+180;
+        x.fillStyle=BG;x.fillRect(0,0,W,H);
+        for(let k=0;k<N;k++){const d=D[k];if(e<d)continue;const l=L[k],ch=e<d+SET||e<G[k]?pick(CODE):RAMP[Math.min(RAMP.length-1,((1-l)*RAMP.length)|0)];
+          if(ch===' ')continue;x.fillStyle=`rgba(${INK},${(.22+.78*(1-l)).toFixed(2)})`;x.fillText(ch,(k%cols)*cw,((k/cols)|0)*chh)}
+        if(out){const a=Math.min(1,(e-out)/FADE);c.style.opacity=1-a;img.style.opacity=a;if(a>=1){c.remove();show(v);return}}
         requestAnimationFrame(f)};
-      (img.complete&&img.naturalWidth?Promise.resolve():img.decode()).then(go,()=>show(v))};
-    io(views,(e,o)=>{if(e.isIntersecting){o.unobserve(e.target);run(e.target)}},{threshold:.3});
+      requestAnimationFrame(f)};
+    const run=v=>{const img=main(v);img.loading='eager';
+      thumb(img).then(src=>{try{play(v,img,src)}catch(_){show(v)}},()=>show(v))};
+    io(views,(e,o)=>{if(e.isIntersecting){o.unobserve(e.target);run(e.target)}},{threshold:.45});
   }}
+/* на повільному інтернеті Safari береться за lazy-знімки аж біля екрана, і вони встигають постояти порожніми.
+   Тому, щойно сторінка завантажилась, тихо довантажуємо їх заздалегідь */
+addEventListener('load',()=>setTimeout(()=>$$('img[loading=lazy]').forEach(i=>i.loading='eager'),1500),{once:true});
 /* мікровзаємодії для миші: магнітні кнопки з бліком, нахил скриншотів */
 if(fine&&!reduce){
   $$('.pill').forEach(b=>{

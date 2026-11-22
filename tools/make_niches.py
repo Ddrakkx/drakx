@@ -51,6 +51,41 @@ def demo_block(items):
     return f'<div class="demos"><div class="demo-grid">{cards}\n    </div></div>\n    <p class="eyebrow cases-h rv">Реальні клієнти: автосервіси</p>'
 
 
+# крихітне превʼю кожного lazy-знімка вшиваємо прямо в сторінку (style="--lq:url(data:…)", ~0,5–1,5 КБ):
+# поки знімок вантажиться, під ним видно розмиту версію, а анімація «з коду» малює символи з нього, не чекаючи мережі
+import base64, io
+from PIL import Image
+_LQ = {}
+
+
+def lqip(rel):
+    if rel not in _LQ:
+        im = Image.open(ROOT / rel).convert('RGB')
+        w = 80 if im.height < im.width * 2 else 36
+        im = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
+        b = io.BytesIO()
+        im.save(b, 'WEBP', quality=50, method=6)
+        _LQ[rel] = 'data:image/webp;base64,' + base64.b64encode(b.getvalue()).decode()
+    return _LQ[rel]
+
+
+def add_lq(s):
+    def f(m):
+        tag = re.sub(r' style="--lq:[^"]*"', '', m[0])
+        src = re.search(r' src="(media/[^"]+)"', tag)
+        if not src or 'loading="lazy"' not in tag:
+            return m[0]
+        return tag[:-1] + f' style="--lq:url({lqip(src[1])})">'
+    return re.sub(r'<img [^>]*>', f, s)
+
+
+# головна теж отримує превʼю (переписуємо index.html лише якщо щось змінилось)
+lq_src = add_lq(src)
+if lq_src != src:
+    (ROOT / 'index.html').write_text(lq_src, encoding='utf-8', newline='\n')
+    src = lq_src
+    print('ok index.html (lqip)')
+
 urls = [SITE]
 for n, (title, who) in META.items():
     k, h1 = niche_js[n]
@@ -83,6 +118,7 @@ for n, (title, who) in META.items():
                        lambda m: f'{m[1]} src="media/demo-{d0["slug"]}-m-360.webp" srcset="' + ', '.join(f'media/demo-{d0["slug"]}-m-{w}.webp {w}w' for w in (360, 480, 720))
                        + f'"{m[2]} height="{d0["mh"]}" alt="Демо-сайт «{html.escape(d0["name"])}» на телефоні"', s, count=1)
         assert k == 1
+        s = add_lq(s)
     # сторінка лежить на рівень глибше: відносні шляхи до файлів через ../
     s = re.sub(r'(?<=["(, ])(fonts/|media/|demo/|favicon\.svg|favicon-48\.png|apple-touch-icon\.png)', r'../\1', s)
     out = ROOT / n / 'index.html'

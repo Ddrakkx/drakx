@@ -46,7 +46,7 @@ python3 tools/make_niches.py
 
 | Скрипт | Що робить | Потрібно |
 |---|---|---|
-| `tools/make_niches.py` | сторінки ніш + sitemap/robots | лише Python |
+| `tools/make_niches.py` | сторінки ніш + sitemap/robots; вшиває в усі lazy-знімки (і на головній) крихітне превʼю `--lq` | Python + Pillow |
 | `tools/make_og.py` | превʼю посилань 1200×630: `media/og.jpg` і `media/og-<ніша>.jpg` з шаблону `tools/og.html` | `pip install playwright pillow` і `playwright install chromium` |
 | `tools/make_media.py` | новий кейс: скриншот → `media/<назва>-720/1440.webp` + сірий каркас для лінзи | `pip install pillow` |
 | `tools/make_fonts.py` | обрізає Inter (повні файли — в історії git, команда в самому скрипті) | `pip install fonttools brotli` |
