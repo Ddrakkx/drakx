@@ -285,6 +285,9 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .demo-card .shot{display:block}
 .dview{position:relative;border-radius:var(--r-in);overflow:hidden;aspect-ratio:16/10;background:#e8e8e8}
 .dview img{width:100%;height:100%;object-fit:cover;object-position:top}
+/* знімок демо спершу складається із символів коду, потім «компілюється» в справжній сайт */
+.js .dview.pre img{opacity:0}
+.dview .ascii{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .demo-card .tag{margin-top:20px}
 .demo-card h3{font-size:clamp(26px,2.6vw,32px);letter-spacing:-.025em;line-height:1.12;font-weight:600;margin:6px 0 8px}
 .demo-card p:not(.tag){color:var(--ink2)}
@@ -1016,6 +1019,40 @@ if(fine&&!reduce){
     requestAnimationFrame(()=>{apply(last||start);if(last){box.classList.add('on');$('#bs-state').textContent='Наживо з бота Gold Auto'}});
     if(!last)load()},{threshold:.3});
 }}
+/* демо на сторінках ніш «збираються з коду»: коли картка доходить до екрана, знімок спершу виникає із символів,
+   що перебираються, як код, потім символи стають схемою сторінки, і вона плавно перетікає в справжній знімок. Один раз на картку */
+{const views=$$('.demo-card .dview');
+  if(views.length&&!reduce&&'IntersectionObserver' in window){
+    const RAMP=' .,:;-=+*<>/(){}[]#%@',CODE='{}()[]<>/=+*;:#%&$01',
+      pick=s=>s[(Math.random()*s.length)|0];
+    views.forEach(v=>v.classList.add('pre'));
+    const show=v=>{v.classList.remove('pre');const i=$('img',v);if(i)i.style.opacity=''};
+    const run=v=>{const img=$('img',v);if(!img)return show(v);
+      const go=()=>{const W=v.clientWidth,H=v.clientHeight;if(!W||!H||!img.naturalWidth)return show(v);
+        const dpr=Math.min(2,devicePixelRatio||1),cw=W<500?7:8,chh=Math.round(cw*1.55),cols=Math.floor(W/cw),rows=Math.floor(H/chh);
+        /* яскравість кожної клітинки з самого знімка (картинка з того ж сайту, тож читати пікселі можна) */
+        const sm=document.createElement('canvas');sm.width=cols;sm.height=rows;
+        const sx=sm.getContext('2d',{willReadFrequently:true}),sc=Math.max(cols/img.naturalWidth,rows/img.naturalHeight);
+        sx.drawImage(img,0,0,img.naturalWidth*sc,img.naturalHeight*sc);
+        const px=sx.getImageData(0,0,cols,rows).data,N=cols*rows,L=new Float32Array(N),D=new Float32Array(N);
+        for(let k=0;k<N;k++){L[k]=(.2126*px[k*4]+.7152*px[k*4+1]+.0722*px[k*4+2])/255;
+          const q=k%cols,r=(k/cols)|0;D[k]=(q/cols*.72+r/rows*.28)*620+Math.random()*140}
+        /* темний сайт — світлі символи на темному тлі; яскравість розтягуємо на власний діапазон знімка, щоб було видно структуру */
+        const srt=Float32Array.from(L).sort(),lo=srt[(N*.04)|0],hi=srt[(N*.96)|0],mean=srt[N>>1],dark=mean<.42;
+        for(let k=0;k<N;k++){const n=Math.min(1,Math.max(0,(L[k]-lo)/Math.max(.08,hi-lo)));L[k]=dark?1-n:n}
+        const BG=dark?'#121212':'#e8e8e8',INK=dark?'236,236,236':'11,11,11';
+        const c=document.createElement('canvas');c.className='ascii';c.width=W*dpr;c.height=H*dpr;v.append(c);
+        const x=c.getContext('2d');x.scale(dpr,dpr);x.textBaseline='top';x.font=`600 ${Math.round(chh*.82)}px ui-monospace,"SF Mono",Menlo,Consolas,monospace`;
+        const T0=performance.now(),SET=260,HOLD=1150,FADE=520;
+        const f=t=>{const e=t-T0;x.fillStyle=BG;x.fillRect(0,0,W,H);
+          for(let k=0;k<N;k++){const d=D[k];if(e<d)continue;const l=L[k],ch=e<d+SET?pick(CODE):RAMP[Math.min(RAMP.length-1,((1-l)*RAMP.length)|0)];
+            if(ch===' ')continue;x.fillStyle=`rgba(${INK},${(.22+.78*(1-l)).toFixed(2)})`;x.fillText(ch,(k%cols)*cw,((k/cols)|0)*chh)}
+          if(e>HOLD){const a=Math.min(1,(e-HOLD)/FADE);c.style.opacity=1-a;img.style.opacity=a;if(a>=1){c.remove();show(v);return}}
+          requestAnimationFrame(f)};
+        requestAnimationFrame(f)};
+      (img.complete&&img.naturalWidth?Promise.resolve():img.decode()).then(go,()=>show(v))};
+    io(views,(e,o)=>{if(e.isIntersecting){o.unobserve(e.target);run(e.target)}},{threshold:.3});
+  }}
 /* мікровзаємодії для миші: магнітні кнопки з бліком, нахил скриншотів */
 if(fine&&!reduce){
   $$('.pill').forEach(b=>{

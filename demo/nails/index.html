@@ -90,8 +90,12 @@ h2{font-size:clamp(32px,4.2vw,52px);font-weight:300}
 .stage{position:relative;background:#EAD8D3;border-radius:28px;overflow:hidden;height:min(600px,calc(100vh - 140px));min-height:420px}
 .stage svg{position:absolute;inset:0;width:100%;height:100%;display:block}
 .nail{cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
-.nail:hover .n-o{stroke-opacity:.45}
-.nail:focus-visible .n-o{stroke:#9C2C4C;stroke-opacity:1;stroke-width:1.6}
+.p-c path,.p-f path{transition:fill .3s,stroke .3s,opacity .3s}.p-l,.p-h,.p-g,.p-s{transition:opacity .3s}
+.shp{position:absolute;left:12px;bottom:12px;display:flex;align-items:center;gap:8px;padding:8px 12px 8px 8px;border-radius:16px;background:rgba(255,250,249,.9);box-shadow:0 6px 18px -10px rgba(74,40,50,.4);font-size:13px;line-height:1.25;color:#2B1C22}
+.shp svg{position:static;inset:auto;width:30px;height:56px;display:block;flex:none}.shp small{display:block;font-size:11px;color:#7a6168}.shp b{font-weight:600}
+@media (max-width:860px){.shp{left:8px;top:8px;bottom:auto;padding:5px 9px 5px 5px;font-size:12px}.shp svg{width:22px;height:40px}.shp small{display:none}}
+.nail:hover .n-o{stroke-opacity:.35}
+.nail:focus-visible .n-o{stroke-opacity:1}
 .cap{font-size:14px;color:var(--ink2);margin-top:12px}
 .cap-m{display:none}
 fieldset{border:0;min-width:0}
@@ -296,8 +300,8 @@ dialog[open]{animation:dlg .32s var(--ease)}
 <p class="sub">Оберіть колір, форму й довжину — ціна й час рахуються одразу, а записатися можна в один клік.</p>
 <div class="try-g">
 <div class="stage-w">
-<div class="stage"><svg id="hand" preserveAspectRatio="xMidYMid slice" role="group" aria-label="Примірка на фото руки"></svg></div>
-<p class="cap">Відтінок на екрані орієнтовний — у студії покажемо його вживу на пробному нігті.</p>
+<div class="stage"><svg id="hand" preserveAspectRatio="xMidYMid slice" role="group" aria-label="Примірка на фото руки"></svg><div class="shp" aria-hidden="true"><svg viewBox="-20 -66 40 74"><path d="M-14 8V-22Q-14 -36 0 -36Q14 -36 14 -22V8Z" fill="#E9C6B6"/><clipPath id="shp-c"><path id="shp-cp"/></clipPath><path id="shp-n"/><path id="shp-f" clip-path="url(#shp-c)"/></svg><span><small>Форма й довжина</small><b id="shp-t"></b></span></div></div>
+<p class="cap">На фото — колір і покриття на справжніх нігтях; форму й довжину показує схема. Відтінок орієнтовний: у студії покажемо його вживу.</p>
 </div>
 <form class="ctl" id="try" onsubmit="return false">
 <fieldset><legend><span id="l-col">Колір</span> <b id="o-col"></b></legend><div class="sw" id="sw"></div><p class="hint-s cap-m">Відтінок на екрані орієнтовний — у студії покажемо його вживу на пробному нігті.</p></fieldset>
@@ -453,35 +457,53 @@ const fr=`M${F(-R-3)} ${F(-L-3)}H${F(R+3)}V${F(yS+dp)}C${F(R)} ${F(yS+dp*.1)} ${
 const gx=-R*.12,gw=w*.095,y0=-(k+L*.06),y1=-(L-Math.max(hs*.55,w*.2));
 const g1=`M${F(gx-gw)} ${F(y0)}L${F(gx-gw*.7)} ${F(y1)}A${F(gw*.7)} ${F(gw*.7)} 0 0 1 ${F(gx+gw*.7)} ${F(y1)}L${F(gx+gw)} ${F(y0)}A${F(gw)} ${F(gw)} 0 0 1 ${F(gx-gw)} ${F(y0)}Z`;
 return{d,fr,g1,L,R}}
+/* Примірка перефарбовує СПРАВЖНІ нігті на фото: колір лягає по масці нігтя з мʼякими краями,
+   а світло, тіні й блики беруться з самого фото (soft-light і screen). Тому лак виглядає як на фото, а не наліпкою.
+   Форму й довжину на фото не домальовуємо (довгий намальований ніготь завжди виглядає приклеєним) — їх показує схема в кутку. */
+const NAT={sh:SHP.sv,ext:0};
+const trf=n=>`translate(${n.x} ${n.y}) rotate(${n.a})${n.s?` skewY(${n.s})`:''}`;
+const ct=(sl,ic)=>['R','G','B'].map(c=>`<feFunc${c} type="linear" slope="${sl}" intercept="${ic}"/>`).join('');
 function build(svg,p,live){
-let h=`<defs><linearGradient id="${p}vx"><stop offset="0" stop-color="#3a1820" stop-opacity=".3"/><stop offset=".16" stop-color="#3a1820" stop-opacity=".06"/><stop offset=".36" stop-color="#fff" stop-opacity=".06"/><stop offset=".56" stop-color="#fff" stop-opacity="0"/><stop offset=".84" stop-color="#3a1820" stop-opacity=".12"/><stop offset="1" stop-color="#3a1820" stop-opacity=".34"/></linearGradient>
-<linearGradient id="${p}vy" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#3a1820" stop-opacity=".26"/><stop offset=".08" stop-color="#3a1820" stop-opacity=".05"/><stop offset=".2" stop-color="#3a1820" stop-opacity="0"/><stop offset=".78" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient>
-<linearGradient id="${p}hg" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".2" stop-color="#fff" stop-opacity=".7"/><stop offset=".6" stop-color="#fff" stop-opacity=".62"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-<radialGradient id="${p}ch" cx=".32" cy=".3" r=".95"><stop offset="0"/><stop offset=".3"/><stop offset=".62"/><stop offset="1"/></radialGradient>
+const nat=NL.map(n=>geo(n,NAT)),each=f=>NL.map((n,i)=>f(nat[i],n,i)).join('');
+const gem=(x,y,r)=>`<circle cx="${f2(x+.3)}" cy="${f2(y+.6)}" r="${f2(r)}" fill="#3a1820" opacity=".35"/><circle cx="${f2(x)}" cy="${f2(y)}" r="${f2(r)}" fill="url(#${p}gm)" stroke="#fff" stroke-opacity=".85" stroke-width=".3"/><circle cx="${f2(x-r*.35)}" cy="${f2(y-r*.38)}" r="${f2(r*.26)}" fill="#fff"/>`;
+svg.innerHTML=`<defs>
+<filter id="${p}fe" x="-2%" y="-2%" width="104%" height="104%"><feGaussianBlur stdDeviation=".9"/></filter>
+<filter id="${p}lum" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/><feComponentTransfer>${ct(2.4,-1.42)}</feComponentTransfer></filter>
+<filter id="${p}hi" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB"><feColorMatrix type="saturate" values="0"/><feComponentTransfer>${ct(6,-4.95)}</feComponentTransfer><feGaussianBlur stdDeviation=".4"/></filter>
+<radialGradient id="${p}sn" cx=".36" cy=".34" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".45" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+<linearGradient id="${p}gl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".3" stop-color="#fff" stop-opacity=".55"/><stop offset=".75" stop-color="#fff" stop-opacity=".4"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
 <radialGradient id="${p}gm" cx=".38" cy=".32" r=".72"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#EEEAF3"/><stop offset="1" stop-color="#8C8598"/></radialGradient>
-<filter id="${p}b1" x="-60%" y="-30%" width="220%" height="160%"><feGaussianBlur stdDeviation="1.1"/></filter><filter id="${p}b0" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation=".45"/></filter>
-<filter id="${p}b3" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
-<filter id="${p}sh" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
-<filter id="${p}sf" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation=".35"/></filter>
-<filter id="${p}gr" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 .25 0 0 0 0 .14 0 0 0 0 .16 0 0 0 1.6 -.62"/><feComposite in2="SourceGraphic" operator="in"/></filter>`;
-NL.forEach((n,i)=>h+=`<clipPath id="${p}c${i}"><path/></clipPath><clipPath id="${p}s${i}"><rect x="-60" y="-220" width="120" height="${f2(220-n.n*.88)}"/></clipPath>`);
-h+=`</defs><image href="img/hand.webp" width="${IW}" height="${IH}"/>`;
-NL.forEach((n,i)=>{const w=n.w,gem=(x,y,r)=>`<circle cx="${f2(x+.3)}" cy="${f2(y+.6)}" r="${f2(r)}" fill="#3a1820" opacity=".35"/><circle cx="${f2(x)}" cy="${f2(y)}" r="${f2(r)}" fill="url(#${p}gm)" stroke="#fff" stroke-opacity=".85" stroke-width=".3"/><circle cx="${f2(x-r*.35)}" cy="${f2(y-r*.38)}" r="${f2(r*.26)}" fill="#fff"/>`;
-h+=`<g class="nail" transform="translate(${n.x} ${n.y}) rotate(${n.a})${n.s?` skewY(${n.s})`:''}"${live?` data-i="${i}" role="button" tabindex="0" aria-pressed="false" aria-label="Дизайн на ${n.nm} пальці"`:''}><g clip-path="url(#${p}s${i})"><path class="n-sh" fill="#4a2028" filter="url(#${p}sh)" transform="translate(1 3.5)"/></g><g filter="url(#${p}sf)"><path class="n-b"/><path class="n-ch" fill="url(#${p}ch)"/><g clip-path="url(#${p}c${i})"><path class="n-fr"/><g class="n-sn" filter="url(#${p}b3)"><ellipse fill="#fff"/></g></g><path class="n-vx" fill="url(#${p}vx)"/><path class="n-vy" fill="url(#${p}vy)"/><path class="n-mt" filter="url(#${p}gr)"/><g clip-path="url(#${p}c${i})"><g class="n-gl"><g filter="url(#${p}b1)"><path fill="url(#${p}hg)"/><ellipse fill="#fff" fill-opacity=".35"/></g><path class="n-sp" filter="url(#${p}b0)" fill="none" stroke="#fff" stroke-opacity=".75" stroke-linecap="round"/></g><g class="n-ds">${gem(0,-w*.17,w*.095)+gem(-w*.27,-(n.k*.4+w*.15),w*.075)+gem(w*.27,-(n.k*.4+w*.15),w*.075)}</g></g><path class="n-o" fill="none" stroke="#3c1e23" stroke-opacity=".14" stroke-width=".6"/></g></g>`});
-svg.innerHTML=h;
-return{chs:$$(`#${p}ch stop`,svg),n:$$('.nail',svg).map((g,i)=>{const q=c=>$(c,g);return{g,p:[$(`#${p}c${i} path`,svg),q('.n-sh'),q('.n-b'),q('.n-ch'),q('.n-vx'),q('.n-vy'),q('.n-mt'),q('.n-o')],sh:q('.n-sh'),b:q('.n-b'),ch:q('.n-ch'),fr:q('.n-fr'),sn:q('.n-sn'),se:q('.n-sn ellipse'),mt:q('.n-mt'),gl:q('.n-gl'),g1:q('.n-gl path'),g2:q('.n-gl g ellipse'),sp:q('.n-sp'),ds:q('.n-ds')}})}}
+<filter id="${p}b1" x="-60%" y="-30%" width="220%" height="160%"><feGaussianBlur stdDeviation="1.2"/></filter>
+<mask id="${p}m" maskUnits="userSpaceOnUse" x="0" y="0" width="${IW}" height="${IH}"><g filter="url(#${p}fe)">${each((G,n)=>`<path d="${G.d}" transform="${trf(n)}" fill="#fff"/>`)}</g></mask>
+</defs><image href="img/hand.webp" width="${IW}" height="${IH}"/>
+<g mask="url(#${p}m)">
+<g class="p-c">${each((G,n)=>`<path d="${G.d}" transform="${trf(n)}" stroke-width="3"/>`)}</g>
+<g class="p-f">${each((G,n)=>`<path d="${G.fr}" transform="${trf(n)}"/>`)}</g>
+<image class="p-l" href="img/hand.webp" width="${IW}" height="${IH}" filter="url(#${p}lum)" style="mix-blend-mode:soft-light"/>
+<image class="p-h" href="img/hand.webp" width="${IW}" height="${IH}" filter="url(#${p}hi)" style="mix-blend-mode:screen"/>
+<g class="p-g" filter="url(#${p}b1)" style="mix-blend-mode:screen">${each((G,n)=>{const w=n.w;return `<path transform="${trf(n)}" d="${G.g1}" fill="url(#${p}gl)"/>`})}</g>
+<g class="p-s" style="mix-blend-mode:screen">${each((G,n)=>`<path d="${G.d}" transform="${trf(n)}" fill="url(#${p}sn)"/>`)}</g>
+</g>
+${each((G,n,i)=>{const w=n.w;return `<g class="nail" transform="${trf(n)}"${live?` data-i="${i}" role="button" tabindex="0" aria-pressed="false" aria-label="Дизайн на ${n.nm} пальці"`:''}><path class="n-hit" d="${G.d}" fill="#fff" fill-opacity="0"/><path class="n-o" d="${G.d}" fill="none" stroke="#9C2C4C" stroke-opacity="0" stroke-width="1.4"/><g class="n-ds" opacity="0">${gem(0,-w*.2,w*.1)+gem(-w*.26,-(n.k*.4+w*.16),w*.075)+gem(w*.26,-(n.k*.4+w*.16),w*.075)}</g></g>`})}`;
+const q=c=>$$(c,svg);
+return{c:q('.p-c path'),f:q('.p-f path'),l:$('.p-l',svg),h:$('.p-h',svg),g:$('.p-g',svg),s:$('.p-s',svg),n:q('.nail'),ds:q('.n-ds')}}
 const sa=(e,o)=>{for(const k in o)e.setAttribute(k,o[k])};
-function paint(E,v){E.chs.forEach((s,j)=>s.setAttribute('stop-color',rgb(v.ch[j])));
-E.n.forEach((e,i)=>{const n=NL[i],G=geo(n,v),w=n.w,L=G.L,R=G.R;
-for(const p of e.p)p.setAttribute('d',G.d);
-sa(e.b,{fill:rgb(v.base),'fill-opacity':v.bo});
-e.ch.setAttribute('opacity',f2(Math.max(v.chr,v.acc[i]*.85)));
-sa(e.fr,{d:G.fr,fill:rgb(v.tip),opacity:f2(v.fr)});
-sa(e.se,{cx:f2(-R*.15),cy:f2(-L*.5),rx:f2(w*.34),ry:f2(L*.36)});e.sn.setAttribute('opacity',f2(v.sn));
-e.g1.setAttribute('d',G.g1);sa(e.g2,{cx:f2(R*.42),cy:f2(-L+w*.3),rx:f2(w*.05),ry:f2(w*.12)});sa(e.sp,{d:`M${f2(-R*.62)} ${f2(-(n.k*.7+w*.3))}Q${f2(-R*.5)} ${f2(-w*.13)} ${f2(-R*.05)} ${f2(-w*.12)}`,'stroke-width':f2(w*.045)});e.gl.setAttribute('opacity',f2(v.gl));
-e.mt.setAttribute('opacity',f2(v.mt*.6));e.ds.setAttribute('opacity',f2(v.acc[i]));
-e.sh.setAttribute('opacity',f2(Math.min(1,v.ext*1.4)*.55));
-if(e.g.dataset.i)e.g.setAttribute('aria-pressed',v.acc[i]>.5)})}
+function paint(E,v){const base=rgb(v.base);
+E.c.forEach(e=>sa(e,{fill:base,stroke:base,'fill-opacity':f2(v.bo),'stroke-opacity':f2(v.bo)}));
+E.f.forEach(e=>sa(e,{fill:rgb(v.tip),opacity:f2(v.fr)}));
+E.l.setAttribute('opacity',f2(.5+.18*(1-v.mt)));
+E.h.setAttribute('opacity',f2(v.gl));
+E.g.setAttribute('opacity',f2(v.gl*.95));
+E.s.setAttribute('opacity',f2(v.chr*.8));
+E.ds.forEach((d,i)=>d.setAttribute('opacity',f2(v.acc[i])));
+E.n.forEach((g,i)=>{if(g.dataset.i)g.setAttribute('aria-pressed',v.acc[i]>.5)});
+if(E===HE)shape(v)}
+/* схема форми й довжини в кутку фото */
+const SN={w:26,n:30,k:3,t:0};
+function shape(v){const G=geo(SN,v),c=rgb(v.base);
+$('#shp-n').setAttribute('d',G.d);$('#shp-cp').setAttribute('d',G.d);$('#shp-n').setAttribute('fill',c);$('#shp-n').setAttribute('fill-opacity',f2(v.bo));
+$('#shp-f').setAttribute('d',G.fr);$('#shp-f').setAttribute('fill',rgb(v.tip));$('#shp-f').setAttribute('opacity',f2(v.fr));
+$('#shp-t').textContent=SH[S.s][1]+' · '+LN[S.l][0].toLowerCase()}
 function tgt(st){const c=hx(COL[st.c][2]),f=st.f,W=[255,255,255],K=[0,0,0];
 return{sh:SHP[SH[st.s][0]],ext:EXT[st.l],base:f==2?[246,223,224]:c,bo:f==2?.92:1,tip:f==2&&st.c<3?[255,252,250]:c,fr:+(f==2),chr:+(f==3),gl:f==1?0:f==3?1:.85,sn:f==1?.45:.3,mt:+(f==1),acc:[0,1,2,3,4].map(i=>st.acc&&st.acc[i]?1:0),ch:[mixA(c,W,.8),mixA(c,W,.34),c,mixA(c,K,.4)]}}
 const lerp=(a,b,t)=>typeof a=='number'?a+(b-a)*t:Array.isArray(a)?a.map((x,i)=>lerp(x,b[i],t)):Object.fromEntries(Object.keys(a).map(k=>[k,lerp(a[k],b[k],t)]));
