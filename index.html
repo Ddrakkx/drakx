@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="drakx">
 <meta property="og:title" content="Клієнти записуються самі — сайт і Telegram-бот для СТО">
-<meta property="og:description" content="Без передоплати: спочатку показую готовий результат. Gold Auto: +31% закритих нарядів за перший місяць із ботом.">
+<meta property="og:description" content="Без передоплати: спочатку показую готовий результат. Gold Auto: на клієнтів із ботом припадає 35,9% закритих нарядів.">
 <meta property="og:image" content="https://ddrakkx.github.io/drakx/media/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="uk_UA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Клієнти записуються самі — сайт і Telegram-бот для СТО">
-<meta name="twitter:description" content="Без передоплати: спочатку показую готовий результат. Gold Auto: +31% закритих нарядів за перший місяць із ботом.">
+<meta name="twitter:description" content="Без передоплати: спочатку показую готовий результат. Gold Auto: на клієнтів із ботом припадає 35,9% закритих нарядів.">
 <meta name="twitter:image" content="https://ddrakkx.github.io/drakx/media/og.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"drakx","url":"https://ddrakkx.github.io/drakx/","image":"https://ddrakkx.github.io/drakx/media/og.jpg","description":"Сайти й Telegram-боти для запису клієнтів: СТО, салони краси, клініки, кавʼярні, магазини. Без передоплати.","areaServed":{"@type":"Country","name":"Україна"},"availableLanguage":"uk","sameAs":["https://t.me/ddrakx","https://instagram.com/drakxwork"]}</script>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -521,7 +521,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
   .phone{width:210px;--ph:290px}
 }
 @media (max-width:360px){.num>span{font-size:13px}.fsteps li{font-size:9.5px;letter-spacing:.02em}.ctas .pill{padding:0 16px;font-size:16px}}
-/* короткі екрани: кнопка й «+31%» мають уміститися на першому екрані (iPhone SE/8, ноутбук 1366×768) */
+/* короткі екрани: кнопка й рядок із цифрою Gold Auto мають уміститися на першому екрані (iPhone SE/8, ноутбук 1366×768) */
 @media (min-width:700px) and (max-height:700px){.hero{--sw:min(300px,40vw);padding-top:80px}.island-area{margin-top:12px}.copy{margin-top:14px}.ctas{margin-top:20px}}
 @media (max-width:700px) and (max-height:720px){.hero{--sw:min(260px,62vw);padding-top:74px;padding-bottom:32px}.island-area{margin-top:10px}.copy{margin-top:14px}.copy .eyebrow{margin-bottom:8px}.copy h1{margin-bottom:10px}.ctas{margin-top:18px}.copy .lead{font-size:16px}}
 @media (max-width:700px) and (max-height:620px){.copy .eyebrow{display:none}}
@@ -596,7 +596,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
       <a class="pill dark" id="cta" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D0%B7%D0%BA%D0%BE%D1%88%D1%82%D0%BE%D0%B2%D0%BD%D0%B8%D0%B9%20%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D1%82%D0%B8%D0%BF.%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6" target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Хочу прототип безкоштовно</a>
       <a class="pill light" href="#work">Мої роботи</a>
     </div>
-    <p class="proof"><a href="#work" id="proof"><b>+31%</b> закритих нарядів у&nbsp;Gold&nbsp;Auto за перший місяць із&nbsp;ботом</a></p>
+    <p class="proof"><a href="#work" id="proof"><b data-live="share" data-f="1" data-u="%">35,9%</b> закритих нарядів у&nbsp;Gold&nbsp;Auto припадає на клієнтів із&nbsp;ботом</a></p>
   </div>
 </section>
 
@@ -820,7 +820,7 @@ if(NV){
   $('#kicker').innerHTML=NV.k;$('#h1').innerHTML=NV.h1;$('#isl-t').innerHTML=NV.t;$('#isl-s').innerHTML=NV.s;
   $('#day1').innerHTML=NV.d1;$('#day3t').textContent=NV.d3t;$('#day3').textContent=NV.d3;
   NV.ch.forEach((v,i)=>{$('#ch'+(i+1)).innerHTML=v});
-  $('#proof').innerHTML='<b>+31%</b> виконаних замовлень в&nbsp;автосервісі Gold&nbsp;Auto за перший місяць із&nbsp;ботом';
+  $('#proof').innerHTML='<b data-live="share" data-f="1" data-u="%">35,9%</b> виконаних замовлень в&nbsp;автосервісі Gold&nbsp;Auto припадає на клієнтів із&nbsp;ботом';
   /* готовий текст у Telegram одразу з нішею: людині лишається вписати назву */
   $$('a[href^="https://t.me/ddrakx"]').forEach(a=>{a.href='https://t.me/ddrakx?text='+encodeURIComponent(a.closest('.pcta')
     ?`Привіт! Хочу дізнатися точну ціну. Мій бізнес: ${NV.biz} «…», потрібно: …`
@@ -997,16 +997,24 @@ if(fine&&!reduce){
     ods.forEach(b=>{if(d[b.dataset.k]!=null)set(b,d[b.dataset.k])});
     $$('i[data-k]',box).forEach(i=>{const v=d[i.dataset.k];if(v==null)return;i.textContent=i.dataset.pl?pl(Math.round(v),i.dataset.pl):num(v)});
     if(d.since){const t=new Date(d.since);if(!isNaN(t))$('#bs-since').textContent=t.getDate()+' '+MON[t.getMonth()]}
+    $$('[data-live]').forEach(b=>{const v=d[b.dataset.live];if(v!=null)b.textContent=num(v,+b.dataset.f||0)+(b.dataset.u||'')});
     if(d.updated){const t=new Date(d.updated),now=new Date();if(!isNaN(t))$('#bs-upd').textContent='оновлено '+(t.toDateString()===now.toDateString()
       ?'о '+t.toTimeString().slice(0,5):t.getDate()+' '+MON[t.getMonth()])}};
   /* стартові значення — те, що вже вписано в розмітку */
   const start={};ods.forEach(b=>{start[b.dataset.k]=parseFloat(b.textContent.replace(/[^\d,]/g,'').replace(',','.'))});
   ods.forEach(b=>build(b,num(0,+b.dataset.f||0).replace(/\d/g,'0')));ods.forEach(b=>set(b,0));
+  let last=null,shown=false;
   const load=async()=>{try{const c=new AbortController(),t=setTimeout(()=>c.abort(),15000);
     const r=await fetch(API,{signal:c.signal,cache:'no-store'});clearTimeout(t);if(!r.ok)throw 0;
-    const d=await r.json();if(!(d.users>0))throw 0;apply(d);box.classList.add('on');$('#bs-state').textContent='Наживо з бота Gold Auto'}catch(e){}};
-  io([box],(e,o)=>{if(!e.isIntersecting)return;o.unobserve(box);requestAnimationFrame(()=>apply(start));load();
-    setInterval(()=>{if(!document.hidden)load()},300000)},{threshold:.3});
+    const d=await r.json();if(!(d.users>0))throw 0;last=d;
+    if(shown){apply(d);box.classList.add('on');$('#bs-state').textContent='Наживо з бота Gold Auto'}
+    else $$('[data-live]').forEach(b=>{const v=d[b.dataset.live];if(v!=null)b.textContent=num(v,+b.dataset.f||0)+(b.dataset.u||'')})}catch(e){}};
+  /* свіжі цифри для першого екрана — коли сторінка вже завантажилась; лічильник прокручується, коли кейс на екрані */
+  const later=()=>setTimeout(load,1500);document.readyState==='complete'?later():addEventListener('load',later,{once:true});
+  setInterval(()=>{if(!document.hidden)load()},300000);
+  io([box],(e,o)=>{if(!e.isIntersecting)return;o.unobserve(box);shown=true;
+    requestAnimationFrame(()=>{apply(last||start);if(last){box.classList.add('on');$('#bs-state').textContent='Наживо з бота Gold Auto'}});
+    if(!last)load()},{threshold:.3});
 }}
 /* мікровзаємодії для миші: магнітні кнопки з бліком, нахил скриншотів */
 if(fine&&!reduce){
