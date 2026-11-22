@@ -223,7 +223,8 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .hint{text-align:center;font-size:14px;color:var(--muted);margin:-24px 0 40px}
 /* лінза — лише на комп'ютері й лише під курсором; на телефоні скриншоти просто видно цілком */
 .lens,.xclip{opacity:0;transition:opacity .3s}
-.shot:hover .lens,.shot:hover .xclip{opacity:1}
+/* лінза зʼявляється лише тоді, коли каркас уже довантажився: інакше це порожнє скло, що просто гне край */
+.shot:hover .xr .lens,.shot:hover .xr .xclip{opacity:1}
 @media (hover:none),(pointer:coarse){.lens,.xclip,.hint{display:none}}
 .case{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;perspective:1400px}
 .case+.case{margin-top:clamp(64px,8vw,104px)}
@@ -1196,7 +1197,7 @@ if(fine)$$('.view').forEach(view=>{
     raf=requestAnimationFrame(step);
   }
   /* каркас підвантажуємо, коли скриншот наближається до екрана */
-  io([view],(e,o)=>{if(e.isIntersecting){xi.srcset=xi.dataset.srcset;xi.src=xi.dataset.src;o.unobserve(view)}},{rootMargin:'300px 0px'});
+  io([view],(e,o)=>{if(e.isIntersecting){xi.addEventListener('load',()=>view.classList.add('xr'),{once:true});xi.srcset=xi.dataset.srcset;xi.src=xi.dataset.src;o.unobserve(view)}},{rootMargin:'1500px 0px'});
   view.addEventListener('pointerenter',e=>{W=view.clientWidth;H=view.clientHeight;last=e;t=local(e);p={...t};v={x:0,y:0};set()});
   view.addEventListener('pointermove',e=>{last=e;if(reduce){p=local(e);set()}else if(!raf)raf=requestAnimationFrame(step)});
   view.addEventListener('pointerleave',()=>{last=null});
