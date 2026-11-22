@@ -26,7 +26,7 @@
 index.html            уся сторінка: HTML, CSS і JS в одному файлі
 beauty/ clinic/ …     сторінки ніш — ГЕНЕРУЮТЬСЯ, руками не правити
 demo/<slug>/          демо-сайти для ніш (по два на нішу), кожен — один index.html + img/ + images.json (промпти фото)
-media/                скриншоти робіт, каркаси для лінзи (*-x-*), превʼю og*.jpg
+media/                скриншоти робіт, превʼю og*.jpg
 fonts/                Inter, обрізаний до символів сайту
 tools/                скрипти нижче
 sitemap.xml robots.txt  генеруються разом зі сторінками ніш
@@ -48,7 +48,7 @@ python3 tools/make_niches.py
 |---|---|---|
 | `tools/make_niches.py` | сторінки ніш + sitemap/robots; вшиває в усі lazy-знімки (і на головній) крихітне превʼю `--lq` | Python + Pillow |
 | `tools/make_og.py` | превʼю посилань 1200×630: `media/og.jpg` і `media/og-<ніша>.jpg` з шаблону `tools/og.html` | `pip install playwright pillow` і `playwright install chromium` |
-| `tools/make_media.py` | новий кейс: скриншот → `media/<назва>-720/1440.webp` + сірий каркас для лінзи | `pip install pillow` |
+| `tools/make_media.py` | новий кейс: скриншот → `media/<назва>-720/1440.webp` | `pip install pillow` |
 | `tools/make_fonts.py` | обрізає Inter (повні файли — в історії git, команда в самому скрипті) | `pip install fonttools brotli` |
 | `tools/gen_photos.py` | фото для демо за `demo/*/images.json` через Gemini API (ключ у `~/.gemini-key`). На безкоштовному ключі картинок немає: фото робили в AI Studio вручну | `pip install pillow` |
 
@@ -69,7 +69,7 @@ python3 tools/make_niches.py
 ## Неочевидні речі (щоб не зламати)
 
 - **Шрифти.** При обрізанні Inter не викидати хінтинг (таблиці `prep`/`gasp`), інакше в Chromium на Linux «т» розсувається: «клієнт ський». Символу, якого немає у шрифті (₴, →, ≈), браузер підставить системний — додай його в `tools/make_fonts.py` і в `unicode-range` в `index.html`.
-- **Рідке скло** (заломлення країв меню, острова, кнопок, лінзи) працює лише в Chromium; Safari й Firefox показують звичайне матове скло. Сила ефекту — у JS-списку `list`: `s` — наскільки гне, `b` — ширина краю.
+- **Рідке скло** (заломлення країв меню, острова, кнопок) працює лише в Chromium; Safari й Firefox показують звичайне матове скло. Сила ефекту — у JS-списку `list`: `s` — наскільки гне, `b` — ширина краю.
 - **`overflow-x: clip`, а не `hidden`** на `html`/`body`: `hidden` ламає `position: sticky` (липкі картки й етапи в «Як я працюю»).
 - **Тире.** Нерозривний пробіл ставимо *перед* тире (`самі&nbsp;— навіть`), щоб рядок не починався з тире.
 - **Переписка в «Як я працюю»** йде за часом (~8 с), щойно чат з'явився; кроки, які вже прогорнули, показуються одразу. Переписка ілюстративна, не реальний клієнт.

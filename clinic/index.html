@@ -220,12 +220,6 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .c-day li:nth-child(2){transition-delay:.12s}.c-day li:nth-child(3){transition-delay:.24s}
 
 /* ---------- роботи ---------- */
-.hint{text-align:center;font-size:14px;color:var(--muted);margin:-24px 0 40px}
-/* лінза — лише на комп'ютері й лише під курсором; на телефоні скриншоти просто видно цілком */
-.lens,.xclip{opacity:0;transition:opacity .3s}
-/* лінза зʼявляється лише тоді, коли каркас уже довантажився: інакше це порожнє скло, що просто гне край */
-.shot:hover .xr .lens,.shot:hover .xr .xclip{opacity:1}
-@media (hover:none),(pointer:coarse){.lens,.xclip,.hint{display:none}}
 .case{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;perspective:1400px}
 .case+.case{margin-top:clamp(64px,8vw,104px)}
 .case.flip .shot{order:2}
@@ -233,26 +227,12 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .shot{position:relative}
 .shot.hov::before{content:"";position:absolute;inset:-12px;border-radius:inherit}
 .shot.hov{translate:0 -6px;scale:1.025;rotate:var(--ax,0) var(--ay,1) 0 var(--ang,0deg);box-shadow:0 34px 70px -34px rgba(var(--sh),.4)}
-@property --lr{syntax:'<length>';inherits:true;initial-value:88px}
-.view{transition:--lr .45s var(--soft)}
-.shot.hov .view{--lr:112px}
-@media (max-width:700px){.shot.hov .view{--lr:76px}}
 .shot .bar{display:flex;align-items:center;gap:6px;padding:2px 6px 10px}
 .bar i{width:9px;height:9px;border-radius:50%;background:rgba(0,0,0,.12)}
 .bar u{text-decoration:none;flex:1;margin-left:10px;height:22px;border-radius:11px;background:var(--bg);font-size:12px;color:var(--muted);display:grid;place-items:center}
-.view{position:relative;border-radius:var(--r-in);overflow:hidden;aspect-ratio:16/10;background:#e8e8e8;touch-action:pan-y;--lr:88px}
+.view{position:relative;border-radius:var(--r-in);overflow:hidden;aspect-ratio:16/10;background:#e8e8e8}
 .view>img{width:100%;height:100%;object-fit:cover;object-position:top}
-.xclip{position:absolute;inset:0;clip-path:circle(var(--lr) at var(--lx,-200px) var(--ly,-200px));pointer-events:none}
-.xclip img{width:100%;height:100%;object-fit:cover;object-position:top;transform-origin:var(--lx) var(--ly);transform:scale(1.3)}
-.lens{position:absolute;left:0;top:0;width:calc(var(--lr)*2);height:calc(var(--lr)*2);border-radius:50%;pointer-events:none;
-  transform:translate(calc(var(--lx,-200px) - 50%),calc(var(--ly,-200px) - 50%)) var(--def,);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.95),inset 0 10px 18px -6px rgba(255,255,255,.95),inset 0 -14px 24px -10px rgba(0,0,0,.22),inset 10px 0 20px -14px rgba(0,0,0,.14),0 22px 50px -12px rgba(var(--sh),.38),0 2px 6px rgba(var(--sh),.14)}
-.lens::before{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(120% 80% at 30% 18%,rgba(255,255,255,.7) 0 11%,transparent 32%),radial-gradient(60% 40% at 72% 88%,rgba(255,255,255,.3),transparent 70%)}
-/* у Chromium лінза теж із рідкого скла: край гне каркас під нею; інакше лишається розмитий обідок */
-.lg .lens{-webkit-backdrop-filter:var(--lg);backdrop-filter:var(--lg)}
-.lg .lens::after{display:none}
-.lens::after{content:"";position:absolute;inset:0;border-radius:50%;-webkit-backdrop-filter:blur(3px) brightness(1.06);backdrop-filter:blur(3px) brightness(1.06);
-  -webkit-mask:radial-gradient(circle,transparent calc(100% - 12px),#000 calc(100% - 10px));mask:radial-gradient(circle,transparent calc(100% - 12px),#000 calc(100% - 10px))}
+.pnote{max-width:640px;margin:28px auto 0;text-align:center;font-size:15px;line-height:1.5;color:var(--muted);text-wrap:pretty}
 .case h3{font-size:clamp(32px,3.6vw,44px);letter-spacing:-.03em;line-height:1.08;font-weight:600;margin:8px 0 12px}
 .case p{color:var(--ink2)}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
@@ -519,7 +499,6 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
   .nav nav{gap:18px}
   .nav nav a:first-child,.nav .pill{display:none}
   .day{grid-template-columns:1fr;gap:10px}
-  .view{--lr:62px}
   .contact{border-radius:30px}
 }
 @media (max-width:430px){
@@ -655,7 +634,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
           <div class="dview"><img src="../media/demo-dental-720.webp" srcset="../media/demo-dental-720.webp 720w, ../media/demo-dental-1440.webp 1440w" sizes="(max-width:700px) 92vw, 520px" width="1440" height="900" alt="" loading="lazy" decoding="async" style="--lq:url(data:image/webp;base64,UklGRhACAABXRUJQVlA4IAQCAAAwDQCdASpQADIAPtFaqE2oJSQiKBZsyQAaCWcA06G8pU64Gav6ZtpkuohOrgwaXb/IT2e76fcJT4hr8K70F+xg5Ds8uqyxZDNbzj0y+IXI0XJaS8bmiVv3BHw2sajGAKS6u/BAzGhc2cdtyCWYeO5hKYAA/VP/VbPUaQjt+8pJQDfQ0/670zMV7Mw2EFMMX08z+AsNzxXWpmiCq9Ui1SBexmWLGyw4Z9quFJqSilitJsjX1WJ5kdNNtu9b/AI0q2bGab+DnwheVnZT3qjS3487yQ1Yszd2BRczhOaglduc2Pb5MmGMtjZ8tAdOvI297HeilqqrRj348Log8c0C+F94q61fpqDcv5RTOOtQWi+eYXuvo1bF+SBFS9P2HDplhGiDGEpWQHL4kHkdYCf6hBbYFhgoEEY7Wm7mXGpVfXdbk7B2gpeFd7U0G1i2ZUlWTByTm3mb4VOlhQoDN9IiGdTxsrXxX3HPQzfqWKX87K+8wYUZdJ7wbcIBn5mbPsBLYFabQF0QPEpVOJoKFtcvXYURR2lLsgSe/n6cbtpVvBYGajseRayYgjOkLOndoZguvwtsRrL4VRhZRUnE3EFVFVoZqm8MKHUa5r8G0tHdCuv+7KqW06uUYZV/y8xMxdvERo8xool8Ez5xehNr6NHhDbzOnQ/uPBZkcMKib8xaaUNWwAAAAAA=)"></div></a>
         <p class="tag">Демо · Стоматологія · Вінниця</p>
         <h3>Ясна</h3>
-        <p>Пацієнт складає орієнтовний план лікування з цінами ще до візиту й записується на консультацію з цим планом.</p>
+        <p>Ціни, лікарі й запис на консультацію без дзвінка, заявка одразу в Telegram клініки. Як приклад фішки: орієнтовний план лікування з цінами ще до візиту.</p>
         <a class="link" href="../demo/dental/" target="_blank" rel="noopener">Відкрити демо <span aria-hidden="true">↗</span><span class="sr"> (відкриється в новій вкладці)</span></a>
       </article>
       <article class="demo-card rv" style="--d:.08s">
@@ -663,20 +642,17 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
           <div class="dview"><img src="../media/demo-vet-720.webp" srcset="../media/demo-vet-720.webp 720w, ../media/demo-vet-1440.webp 1440w" sizes="(max-width:700px) 92vw, 520px" width="1440" height="900" alt="" loading="lazy" decoding="async" style="--lq:url(data:image/webp;base64,UklGRlADAABXRUJQVlA4IEQDAABwEQCdASpQADIAPtFWo0yoJKMiKbgO2QAaCWQAw+YTWh6cEiX39nP0pbc/ngNOQbG8f2W5pv2jBYyzKDQaV+ag3BfR/IMgm0S7EO6hCRmdVxk4erlA45vqZzhjCwFSkHJTIxL0fp6yyXSoTciw6Vnwm6VlWIDbj06UcpuQJf5IqfR7CXf7Ncf7ILAvRBBzNXig4R0AAP7xIzOtMAuIlwvogtXHj/Rr7f2YxI6ins573/u4zxwm4pU6dNJ8RrgdUP1vpYf+fOJI55CPNRgVOkd6gxk0UjTn/FjhfTNF/BvF1wy4hGA/DMPKNzrF8ewm67z7bS1MroHCzzyQEwBPGvm3BigORugexVfAgWIC7VzajqI3RoFQA2CrVe9WfcinPTdKdFaO14oMagaeKUt8XlPRep+XAa1pPCEzQ49UyPwqjBqHQZYldIbhwlPmNUvC6wwp2dbr9AIOBw52ZseB2G/v1cEfWBXqlv8r98MdH/dpm9H4hXFKpb6F4Wq8GvPETwT9zwKlUYvBUNeYNkCQi8VZ6TnqLYZe+IiJ96zoDqQuMsCc8XBUON13GHrBw4y5CPXkJ9JOU1z4HLM896qEQt5XdxUMFwA3+lQ6vBMCdVbFn4F6eLLJyyU6fLM3ZBNz9VSD6YUvD4ny4QvfeWO+q3oFyr6B7/8oedNaYbHe9ncZPUYGWYaGD4HNbhzK0USN1v+bUb/04Vvu3dPXVRO3ImX3t5zt9BZFPV6Eu39zaudTKnOHy8CTP4s/gaNTkHRKTvAScFgVl+wta4sw7lBNvlT+2GDJzeNIeXqXeu6TS37DWuQ/ppFlur0e5Y+aISHpxn7bMdVFupnLcsglRrGuP8XcNZyLWHVEdJhlBIHgxEtOuC8JjojlNbrbEKahxk3HMGT8XC3HE0LzDBelvIN1u/rS+WYLBxpmr6Y6Cu0ztjYmGWRgONVgImGC77f8aURqs1P9Kb2Q1ExOtrNHRCn0KcWDZbbO25CTPePZn1367GTGWoAQJvlVcx40eGRxjI++gmHsZFVZITowzNeqPR1zFe36pmIAJZU7lmQhTGvVEwY7TvapAZnSHtsvt6GYeb/t84bN9P1wf24HBS+3v/Z+32Uh5YAAAA==)"></div></a>
         <p class="tag">Демо · Ветклініка · Полтава</p>
         <h3>Тепла лапа</h3>
-        <p>Помічник підкаже, чи треба їхати терміново, і запише до потрібного лікаря на вільний час.</p>
+        <p>Послуги з цінами, лікарі й запис на вільний час, заявка одразу в Telegram клініки. Як приклад фішки: помічник підкаже, чи треба їхати терміново.</p>
         <a class="link" href="../demo/vet/" target="_blank" rel="noopener">Відкрити демо <span aria-hidden="true">↗</span><span class="sr"> (відкриється в новій вкладці)</span></a>
       </article>
     </div></div>
     <p class="eyebrow cases-h rv">Реальні клієнти: автосервіси</p>
-    <p class="hint rv">Наведіть курсор на знімок: лінза покаже каркас сторінки</p>
 
     <article class="case">
       <figure class="shot rv">
         <div class="bar"><i></i><i></i><i></i><u>goldauto.online</u></div>
         <div class="view">
           <img src="../media/gold-720.webp" srcset="../media/gold-720.webp 720w, ../media/gold-1440.webp 1440w" sizes="(max-width:900px) 92vw, 580px" width="1440" height="900" alt="Головна сторінка сайту автосервісу Gold Auto" loading="lazy" decoding="async" style="--lq:url(data:image/webp;base64,UklGRuABAABXRUJQVlA4INQBAAAwDACdASpQADIAPtFcp0yoJSOiLncaMQAaCUAZ/b/88OO5pMItF+j/6gSeOJGE5kCi6JfGaOKn72Dk1g3ynAOBYORCZEIy5+jhUuqJj3cE795PuZfuL5qahwbAJ1nqhmo6tLZHU2ewr3pqAP7xulrObUzZYIDk0cype1arp4zrIcsbnQlMBWN14MNE6NPY8RSUvn0cQqhSyV9U9J7ne/D5XKaRy+HfRkHpiRgYk/4tczuta2eC1Juq7owLjCYvzoSTlRkcE9+23/u14nWGyEq0UjMek1ZPJr4Srlv7f63o+t18q/Y1xyuCc01V/2ihzx+7XOLip8p4yDALVtoP7BEeg9bkQnfdPen7Js+AixI3tRxBEl8jRmPvkTiQwv9plwF5i0YiObPWK1g53kXc7f8LR8RCLOxTwaUq3QUt/q9mysbvCat2+RrxOeBIJJI0+OxNmoHW7Tt792S1OOjUb4IlbZ3DFBEgSXT6h/+ranyWdaOczRVP/kb91l/Qr+/313AMmAHL51MBi3JDLCwxOxv7CqhhyqN529hTjUiwh3JyB8POd8omq1rurkcBjjEXwCGITnUkcZ3cSleck8wrVrVyfrSvQazWG/tF4SZbInbogAAAAAA=)">
-          <div class="xclip" aria-hidden="true"><img data-src="../media/gold-x-720.webp" data-srcset="../media/gold-x-720.webp 720w, ../media/gold-x-1440.webp 1440w" sizes="(max-width:900px) 120vw, 760px" width="1440" height="900" alt=""></div>
-          <div class="lens" aria-hidden="true"></div>
         </div>
       </figure>
       <div class="rv" style="--d:.1s">
@@ -704,8 +680,6 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
         <div class="bar"><i></i><i></i><i></i><u>Volt Master</u></div>
         <div class="view">
           <img src="../media/volt-720.webp" srcset="../media/volt-720.webp 720w, ../media/volt-1440.webp 1440w" sizes="(max-width:900px) 92vw, 580px" width="1440" height="900" alt="Головна сторінка сайту Volt Master з живими ліхтарями BMW" loading="lazy" decoding="async" style="--lq:url(data:image/webp;base64,UklGRpoCAABXRUJQVlA4II4CAACQDQCdASpQADIAPs1Wp0unpKQhsBM8APAZiUAZ7r/88HZd/CLTANHnv6gNe2HinOoyHOTh8FznskeoxgwF8oT8RsT6VDgG0g6gwUeuMVqLzjJXXNxBEO+RDpHB6YCvDqpXFNIGZLeHBcZnE4/YfexWDZI7UrAA/vpfoOsbxUzd+1q/sV+8yg87V5FgtbM7vJ4qtCkMw6KdzSkfEJbewEMDFb5aYWgl7cbwXZbee+hdgeEsdpq3yilLNW/9j4oQvtqg95GSlkT4xPUc2zNb9HabsjkeVL5Q/j6CuPj/Hk640JTzmz8phJj0Ps4ydw5VK10GeWaCz6OEEngoKAh/epfU0lWtFXK7DnoGv2IHlbAgZycZcvx8GvmnYW4qXT4fg+PLf69p9K2fSvaLCSdZSzblKP2waFufog2ZSU6UFRTH4YnUCPz2AjPk4XdT/RdcXS7vN3kV/oXpBfODJgepwSoY5PSOU/AJo5sWruy3qcKfUMZJA5n3y/ZyuZLCDyadJtEebtAhKthl2i7n1sjBqRc0GQx+uIXN56JuoiFo0QvwEuREHsAesXORFCFrNDMl4uMtzZlT7MMGlsuy0PbyyvXf6WRDhc33k2EvQIK+xxOaqyqNvCRB3SQwkijag+sSJ1wBtGsqi2cSgs8hvFKrjoMiPReDpKOg6PPGVEyJSdyNywkfrT68dsRfeSOysjmIsjXZyAgYDeQyaT1ZmtAmrEwNXmfhsDJa+PhzsA4+g0Jxhh1yaJ5fhh565iqRI30O4GZfXy67O/mRo1iKeiUEoSwMLfZo+09R6TwiLNeGkMgSO2qtHVrwGj0XI7/SFKNoUCRL97IYdIXat0d3eBbTP70RuXwYSXHBEps1bIAAAAA=)">
-          <div class="xclip" aria-hidden="true"><img data-src="../media/volt-x-720.webp" data-srcset="../media/volt-x-720.webp 720w, ../media/volt-x-1440.webp 1440w" sizes="(max-width:900px) 120vw, 760px" width="1440" height="900" alt=""></div>
-          <div class="lens" aria-hidden="true"></div>
         </div>
       </figure>
       <div class="rv" style="--d:.1s">
@@ -747,6 +721,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
         <p class="why">Ті самі сайт і бот, тільки з вибором філії: клієнт обирає адресу, а заявка йде майстрам саме цієї точки.</p></div>
         <ul><li><b><span class="nw">2–3</span> точки:</b> зазвичай на <span class="nw">20–30%</span> дорожче, ніж для&nbsp;однієї</li><li><b>Мережа від 4 точок:</b> окремий проєкт, від 20&nbsp;000&nbsp;грн</li><li>Наприклад, бот для запису на 2 точки&nbsp;— від 3&nbsp;000 до 5&nbsp;000&nbsp;грн</li></ul></article>
     </div>
+    <p class="pnote rv">Фішки, як у демо (примірка нігтів, конструктор торта чи букета), не обовʼязкові: для запису вистачає зручної форми або бота. Якщо захочете таку фішку, додам окремо й назву ціну наперед.</p>
     <div class="pcta rv"><a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B4%D1%96%D0%B7%D0%BD%D0%B0%D1%82%D0%B8%D1%81%D1%8F%20%D1%82%D0%BE%D1%87%D0%BD%D1%83%20%D1%86%D1%96%D0%BD%D1%83.%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%2C%20%D0%BF%D0%BE%D1%82%D1%80%D1%96%D0%B1%D0%BD%D0%BE%3A%20%E2%80%A6" target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Дізнатися точну ціну</a><p>Відповідаю протягом дня, у&nbsp;вихідні теж.</p></div>
   </div>
 </section>
@@ -1115,8 +1090,7 @@ if(LQ){
   /* s = сила заломлення (px), b = ширина опуклого краю, c = що робимо з фоном після заломлення */
   const DARK={s:24,b:20,c:'blur(4px)'},CLEAR={s:30,b:20,c:''};
   const list=[[$('.nav'),{s:34,b:22,c:'blur(5px) grayscale(1) brightness(1.06)'}],[$('#isl'),{s:44,b:26,c:''}],
-    ...$$('.pill.dark').filter(el=>!el.closest('.contact')).map(el=>[el,DARK]),...$$('.pill.light').map(el=>[el,CLEAR]),
-    ...$$('.lens').map(el=>[el,{s:56,b:30,c:'brightness(1.04)'}])];
+    ...$$('.pill.dark').filter(el=>!el.closest('.contact')).map(el=>[el,DARK]),...$$('.pill.light').map(el=>[el,CLEAR])];
   const start=()=>{
     const gm=new Map(),ro=new ResizeObserver(es=>es.forEach(e=>build(gm.get(e.target))));
     io(list.map(([el])=>el),e=>{const g=gm.get(e.target);g.vis=e.isIntersecting;if(g.vis)build(g)},{rootMargin:'200px 0px'});
@@ -1150,26 +1124,6 @@ if(/[?&]v=pro\b/.test(location.search))$('#prices-grid').classList.add('pro');
 const nav=$('.nav');let nraf=0;
 addEventListener('scroll',()=>{if(nraf)return;nraf=requestAnimationFrame(()=>{nraf=0;nav.classList.toggle('small',scrollY>200)})},{passive:true});
 
-/* лінза-рентген: лише на комп'ютері; з'являється під курсором і пружинисто його доганяє, у спокої цикл спить */
-if(fine)$$('.view').forEach(view=>{
-  const lens=$('.lens',view),xi=$('.xclip img',view);
-  let W=0,H=0,p={x:0,y:0},v={x:0,y:0},t={x:0,y:0},raf=0,last=null;
-  const set=()=>{view.style.setProperty('--lx',p.x.toFixed(1)+'px');view.style.setProperty('--ly',p.y.toFixed(1)+'px')};
-  const local=e=>{const r=view.getBoundingClientRect();return {x:Math.max(0,Math.min(W,(e.clientX-r.left)*W/r.width)),y:Math.max(0,Math.min(H,(e.clientY-r.top)*H/r.height))}};
-  function step(){
-    raf=0;if(last)t=local(last);
-    v.x=(v.x+(t.x-p.x)*.12)*.72;v.y=(v.y+(t.y-p.y)*.12)*.72;p.x+=v.x;p.y+=v.y;set();
-    const sp=Math.hypot(v.x,v.y),s=Math.min(.04,sp*.002),a=Math.atan2(v.y,v.x);
-    lens.style.setProperty('--def',`rotate(${a.toFixed(3)}rad) scale(${(1+s).toFixed(3)},${(1-s*.8).toFixed(3)}) rotate(${(-a).toFixed(3)}rad)`);
-    if(sp<.02&&Math.hypot(t.x-p.x,t.y-p.y)<.1){lens.style.setProperty('--def','');return}
-    raf=requestAnimationFrame(step);
-  }
-  /* каркас підвантажуємо, коли скриншот наближається до екрана */
-  io([view],(e,o)=>{if(e.isIntersecting){xi.addEventListener('load',()=>view.classList.add('xr'),{once:true});xi.srcset=xi.dataset.srcset;xi.src=xi.dataset.src;o.unobserve(view)}},{rootMargin:'1500px 0px'});
-  view.addEventListener('pointerenter',e=>{W=view.clientWidth;H=view.clientHeight;last=e;t=local(e);p={...t};v={x:0,y:0};set()});
-  view.addEventListener('pointermove',e=>{last=e;if(reduce){p=local(e);set()}else if(!raf)raf=requestAnimationFrame(step)});
-  view.addEventListener('pointerleave',()=>{last=null});
-});
 })();
 </script>
 </body>
