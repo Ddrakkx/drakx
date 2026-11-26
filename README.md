@@ -1,7 +1,7 @@
-# drakx — сайт
+# Zentra — сайт
 
-Лендинг: сайти й Telegram-боти для СТО та малого бізнесу.
-Живе тут: https://ddrakkx.github.io/drakx/ (GitHub Pages, гілка `main` — що запушив, те й на сайті за 1–2 хв).
+Лендинг: сайти й Telegram-боти для СТО, малого бізнесу та мереж.
+Живе тут: https://ddrakkx.github.io/drakx/ (GitHub Pages, гілка `main` — що запушив, те й на сайті за 1–2 хв; куплено домен `zentra.com.ua`, перемкнути `SITE` у `tools/make_niches.py` + додати `CNAME` після налаштування DNS).
 
 ## Посилання для холодних повідомлень
 
@@ -9,14 +9,16 @@
 
 | Кому | Посилання |
 |---|---|
-| СТО, автосервіси (за замовчуванням) | https://ddrakkx.github.io/drakx/ |
+| СТО, автосервіси (за замовчуванням, `Zentra`) | https://ddrakkx.github.io/drakx/ |
+| Мережі, великий бізнес (студія `Zentra Studio`, «ми») | https://ddrakkx.github.io/drakx/pro/ |
 | Салони краси, барбершопи | https://ddrakkx.github.io/drakx/beauty/ |
 | Клініки, кабінети | https://ddrakkx.github.io/drakx/clinic/ |
 | Кавʼярні, пекарні | https://ddrakkx.github.io/drakx/food/ |
 | Магазини | https://ddrakkx.github.io/drakx/shop/ |
 | Фітнес-студії | https://ddrakkx.github.io/drakx/fitness/ |
 
-- `?v=pro` до будь-якого посилання — картка «Кілька точок» у цінах стає першою й підсвічується (для мереж).
+- `?v=pro` до будь-якого посилання (наприклад `/beauty/?v=pro`) — вмикає режим студії **Zentra Studio** («ми») і ставить картку «Кілька точок» першою з підсвіткою. `/pro/` працює так само без JS і має окреме превʼю `media/og-pro.jpg`.
+- Одиночні проєкти без `?v=pro` лишаються з подачею від однієї людини (`Zentra`, «я»).
 - Старі посилання `?n=beauty` теж працюють, але превʼю в месенджері в них загальне: месенджери не виконують JS.
 - Telegram кешує превʼю. Якщо змінив картинку чи заголовок — надішли посилання боту [@WebpageBot](https://t.me/WebpageBot), він оновить.
 
@@ -24,7 +26,7 @@
 
 ```
 index.html            уся сторінка: HTML, CSS і JS в одному файлі
-beauty/ clinic/ …     сторінки ніш — ГЕНЕРУЮТЬСЯ, руками не правити
+beauty/ clinic/ … pro/  сторінки ніш і /pro/ — ГЕНЕРУЮТЬСЯ, руками не правити
 demo/<slug>/          демо-сайти для ніш (по два на нішу), кожен — один index.html + img/ + images.json (промпти фото)
 media/                скриншоти робіт, превʼю og*.jpg
 fonts/                Inter, обрізаний до символів сайту
@@ -46,8 +48,8 @@ python3 tools/make_niches.py
 
 | Скрипт | Що робить | Потрібно |
 |---|---|---|
-| `tools/make_niches.py` | сторінки ніш + sitemap/robots; вшиває в усі lazy-знімки (і на головній) крихітне превʼю `--lq` | Python + Pillow |
-| `tools/make_og.py` | превʼю посилань 1200×630: `media/og.jpg` і `media/og-<ніша>.jpg` з шаблону `tools/og.html` | `pip install playwright pillow` і `playwright install chromium` |
+| `tools/make_niches.py` | сторінки ніш + `/pro/` + sitemap/robots; вшиває в усі lazy-знімки (і на головній) крихітне превʼю `--lq` | Python + Pillow |
+| `tools/make_og.py` | превʼю посилань 1200×630: `media/og.jpg`, `media/og-pro.jpg` і `media/og-<ніша>.jpg` з шаблону `tools/og.html` | `playwright` або локальний Chrome + Pillow |
 | `tools/make_media.py` | новий кейс: скриншот → `media/<назва>-720/1440.webp` | `pip install pillow` |
 | `tools/make_fonts.py` | обрізає Inter (повні файли — в історії git, команда в самому скрипті) | `pip install fonttools brotli` |
 | `tools/gen_photos.py` | фото для демо за `demo/*/images.json` через Gemini API (ключ у `~/.gemini-key`). На безкоштовному ключі картинок немає: фото робили в AI Studio вручну | `pip install pillow` |

@@ -11,7 +11,10 @@ body{position:relative;background:#f3f3f3;color:#0b0b0b;font-family:Inter,sans-s
 .grid{position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.06) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,rgba(0,0,0,.06) 1px,transparent 1px) 0 0/24px 24px;
   -webkit-mask:radial-gradient(70% 90% at 30% 45%,#000 20%,transparent 75%)}
 .left{position:absolute;left:72px;top:64px;width:640px}
-.logo{width:92px;height:28px;display:block}
+.logo-row{display:flex;align-items:center;gap:12px}
+.logo{width:116px;height:27px;display:block}
+.studio{display:none;font:600 14px/1 "DejaVu Sans Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#383838;padding:5px 10px;border-radius:99px;border:1.5px solid rgba(0,0,0,.16)}
+body.pro .studio{display:inline-flex}
 .kicker{margin-top:44px;font:500 17px/1.3 "DejaVu Sans Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#555}
 h1{margin-top:14px;font-size:60px;line-height:1.04;letter-spacing:-.035em;font-weight:700;text-wrap:balance}
 .sub{margin-top:26px;display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 24px;border-radius:26px;background:#0b0b0b;color:#fff;font-size:22px;font-weight:600}
@@ -32,7 +35,7 @@ h1{margin-top:14px;font-size:60px;line-height:1.04;letter-spacing:-.035em;font-w
 <body>
 <div class="grid"></div>
 <div class="left">
-  <svg class="logo" viewBox="75 -2 850 252"><path id="logo" fill="#0b0b0b"/></svg>
+  <div class="logo-row"><svg class="logo" viewBox="11.6 -2 1074.7 248.8"><path id="logo" fill="#0b0b0b"/></svg><span class="studio">studio</span></div>
   <p class="kicker" id="k"></p>
   <h1 id="h"></h1>
   <div class="sub">Без передоплати · спочатку результат</div>
@@ -42,7 +45,9 @@ h1{margin-top:14px;font-size:60px;line-height:1.04;letter-spacing:-.035em;font-w
 <script>
 const OG={
   sto:{k:'Сайт і Telegram‑бот для СТО',h:'Клієнти записуються самі — навіть коли ви під машиною',
-    p:'<b>+31%</b> закритих нарядів у Gold Auto за перший місяць із ботом',shot:'../media/gold-m-720.webp'},
+    p:'<b>35,9%</b> закритих нарядів у Gold Auto припадає на клієнтів із ботом',shot:'../media/gold-m-720.webp'},
+  pro:{studio:1,k:'Вебстудія · сайти й Telegram‑боти',h:'Клієнти записуються самі — на одну точку чи цілу мережу',
+    p:'<b>35,9%</b> закритих нарядів у Gold Auto припадає на клієнтів із ботом',shot:'../media/gold-m-720.webp'},
   beauty:{k:'Сайт і Telegram‑бот для салону краси',h:'Клієнтки записуються самі — навіть коли ви з клієнткою',
     chat:['Манікюр','Брови','Манікюр','Олена — завтра об 11:00, Ірина — о 15:30','Олена, 11:00']},
   clinic:{k:'Сайт і Telegram‑бот для клініки',h:'Пацієнти записуються самі — навіть коли ви на прийомі',
@@ -55,6 +60,7 @@ const OG={
     chat:['Запис','Розклад','Запис','Групове завтра о 8:00 або 19:00','19:00']},
 };
 const d=OG[new URLSearchParams(location.search).get('n')]||OG.sto;
+if(d.studio)document.body.classList.add('pro');
 document.getElementById('k').textContent=d.k;
 document.getElementById('h').textContent=d.h;
 const p=document.getElementById('p');d.p?p.innerHTML=d.p:p.remove();

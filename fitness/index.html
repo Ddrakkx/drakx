@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Сайт і Telegram-бот для запису у фітнес-студію | drakx</title>
+<title>Сайт і Telegram-бот для запису у фітнес-студію | Zentra</title>
 <meta name="description" content="Клієнти записуються самі, навіть коли ви на тренуванні: сайт і Telegram-бот для фітнес-студій. Без передоплати — спочатку показую результат.">
 <meta name="theme-color" content="#f3f3f3">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="drakx">
+<meta property="og:site_name" content="Zentra">
 <meta property="og:title" content="Клієнти записуються самі — навіть коли ви на тренуванні">
 <meta property="og:description" content="Без передоплати: спочатку показую готовий сайт чи бота, оплата потім.">
 <meta property="og:image" content="https://ddrakkx.github.io/drakx/media/og-fitness.jpg">
@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="Клієнти записуються самі — навіть коли ви на тренуванні">
 <meta name="twitter:description" content="Без передоплати: спочатку показую готовий сайт чи бота, оплата потім.">
 <meta name="twitter:image" content="https://ddrakkx.github.io/drakx/media/og-fitness.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"drakx","url":"https://ddrakkx.github.io/drakx/","image":"https://ddrakkx.github.io/drakx/media/og.jpg","description":"Сайти й Telegram-боти для запису клієнтів: СТО, салони краси, клініки, кавʼярні, магазини. Без передоплати.","areaServed":{"@type":"Country","name":"Україна"},"availableLanguage":"uk","sameAs":["https://t.me/ddrakx","https://instagram.com/drakxwork"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Zentra","url":"https://ddrakkx.github.io/drakx/","image":"https://ddrakkx.github.io/drakx/media/og.jpg","description":"Сайти й Telegram-боти для запису клієнтів: СТО, салони краси, клініки, кавʼярні, магазини. Без передоплати.","areaServed":{"@type":"Country","name":"Україна"},"availableLanguage":"uk","sameAs":["https://t.me/ddrakx","https://instagram.com/drakxwork"]}</script>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../favicon-48.png" type="image/png" sizes="48x48">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -106,9 +106,11 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),inset 0 1px 1px #fff,inset 0 -1px 1px rgba(0,0,0,.04),0 0 0 1px rgba(0,0,0,.06),0 8px 30px -12px rgba(var(--sh),.22)}
 /* .74 білого: текст меню читається навіть над чорним блоком «Контакт» (контраст ≈7:1), а заломлення по краю лишається */
 .lg .nav{background:rgba(255,255,255,.74);backdrop-filter:var(--lg,blur(5px) grayscale(1) brightness(1.06))}
-/* логотип — той самий контур, що й великий нік (#gpath), тож окремий шрифт не вантажимо */
-.logo{display:flex;align-items:center;padding:12px 0}
-.logo svg{display:block;width:54px;height:16px;fill:currentColor}
+/* логотип — векторний контур (#gpath), тож окремий шрифт не вантажимо */
+.logo{display:flex;align-items:center;gap:7px;padding:12px 0}
+.logo svg{display:block;width:69px;height:16px;fill:currentColor}
+.logo-sub{display:none;font:600 10px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);padding:3px 6px;border-radius:99px;border:1px solid var(--line)}
+.pro .logo-sub{display:inline-flex;align-items:center}
 .nav nav{display:flex;gap:28px;font-size:14px;color:var(--ink2)}
 .nav nav a{padding:12px 0;transition:color .2s}.nav nav a:hover{color:var(--ink)}
 .nav .pill{height:44px;padding:0 20px;font-size:15px}
@@ -130,36 +132,20 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 /* полотно для значків, що виростають у клітинках сітки, коли курсор на головній кнопці */
 .bloom{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}
 /* нік менший, ніж був: головне на першому екрані — що клієнт отримає, а не логотип */
-.hero{position:relative;isolation:isolate;overflow:hidden;overflow:clip;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(92px,13vh,128px) 16px 48px;--sw:min(460px,64vw)}
+.hero{position:relative;isolation:isolate;overflow:hidden;overflow:clip;display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(92px,13vh,128px) 16px 48px;--pw:250px;--pv:250px;--pf:90px;--po:46px}
 @media (min-width:900px){.hero{min-height:min(100svh,940px);justify-content:center;padding-bottom:40px}}
-@media (min-width:700px) and (max-height:820px){.hero{--sw:min(400px,64vw);padding-top:92px}}
-/* нік із чорного скла: всередині повільно пливе сірий дим, зверху глянець і блік за курсором */
-.gs{position:relative;width:var(--sw);aspect-ratio:1000/300}
-.aura{position:absolute;inset:-58% -8% -30%;pointer-events:none}
-.aura i{position:absolute;top:8%;width:44%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--c) 0%,color-mix(in srgb,var(--c) 42%,transparent) 36%,transparent 70%)}
-.aura i:nth-child(1){--c:#4a4a4a;left:0;top:4%}
-.aura i:nth-child(2){--c:#2a2a2a;left:28%;top:12%}
-.aura i:nth-child(3){--c:#5a5a5a;left:56%;top:5%}
-@media (min-width:900px) and (prefers-reduced-motion:no-preference){
-  .gs.on .aura i{animation:float 10s ease-in-out infinite alternate}
-  .gs.on .aura i:nth-child(2){animation-duration:12s;animation-direction:alternate-reverse}
-  .gs.paused .aura i{animation-play-state:paused}
-}
-@keyframes float{to{transform:translate(7%,-7%) scale(1.07)}}
-.gs{transform:perspective(1000px) rotateX(var(--nrx,0deg)) rotateY(var(--nry,0deg));transition:transform .6s var(--soft)}
-/* на комп'ютері нік нахиляється за курсором: тримаємо його на окремому шарі, щоб нахил не перемальовував SVG-фільтри */
-@media (hover:hover) and (pointer:fine){.gs{will-change:transform}}
-.word{position:absolute;inset:0}
-.js .word{opacity:0}
-.js .gs.on .word{opacity:1;animation:nick 1s cubic-bezier(.2,1.3,.3,1) .12s both}
-@keyframes nick{from{opacity:0;transform:translateY(14px) scale(.965)}to{opacity:1;transform:none}}
-.gs svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.glass-in{position:absolute;inset:0;overflow:hidden;-webkit-clip-path:url(#gclip);clip-path:url(#gclip)}
-.glass-in .aura{transform-origin:50% 53%;transform:scale(1.3) translateY(-5%)}
-.glass-in::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,.07) 34%,rgba(255,255,255,0) 52%,rgba(255,255,255,0) 82%,rgba(255,255,255,.14) 100%)}
-.glass-in .base{position:absolute;inset:0;background:var(--ink)}
+@media (min-width:700px) and (max-height:820px){.hero{--pv:180px;padding-top:92px}}
+@media (max-width:700px){.hero{--pw:210px;--pv:160px;--pf:70px;--po:40px}}
+/* телефон із сайтом: низ тане у фон, на нього лягає сповіщення від бота */
+.hv{transform:perspective(1000px) rotateX(var(--nrx,0deg)) rotateY(var(--nry,0deg));transition:transform .6s var(--soft)}
+@media (hover:hover) and (pointer:fine){.hv{will-change:transform}}
+.hphone{width:var(--pw);height:var(--pv);border:9px solid var(--ink);border-bottom:0;border-radius:38px 38px 0 0;overflow:hidden;background:#111;
+  -webkit-mask-image:linear-gradient(#000 calc(100% - var(--pf)),transparent);mask-image:linear-gradient(#000 calc(100% - var(--pf)),transparent)}
+.hphone img{display:block;width:100%;height:auto}
+.js .hphone{opacity:0;transform:translateY(16px)}
+.js .hv.on .hphone{opacity:1;transform:none;transition:opacity .5s,transform .9s var(--soft)}
 /* острів: приклад сповіщення від бота. Один стан, без автоперемикання — не відволікає від заголовка */
-.island-area{display:flex;justify-content:center;width:100%;margin-top:18px}
+.island-area{position:relative;z-index:1;display:flex;justify-content:center;width:100%;margin-top:calc(-1 * var(--po))}
 .island{position:relative;width:min(360px,calc(100vw - 40px));min-height:76px;border-radius:38px;overflow:hidden;contain:paint;
   color:var(--ink);background:rgba(255,255,255,.72);
   -webkit-backdrop-filter:blur(16px);backdrop-filter:var(--lg,blur(16px));
@@ -326,15 +312,25 @@ img[style*="--lq"]{background:var(--lq) 50% 0/cover no-repeat}
 .multi ul{margin-top:2px}
 .multi li b{font-weight:600;color:var(--ink)}
 .nw{white-space:nowrap}
-/* пакет «сайт і бот разом» завжди першим; закреслені лише числа, економія окремо й жирним */
+/* пакет «сайт і бот разом» завжди першим: на кожен набір одна ціна й один рядок про різницю */
 .bundle .save{display:inline-flex;align-items:center;height:28px;padding:0 12px;border-radius:14px;background:var(--ink);color:#fff;font:600 13px Inter,sans-serif;letter-spacing:0;text-transform:none}
 .bundle .sets{display:flex;flex-direction:column;gap:18px}
 .bundle .set>b{display:block;font-size:15px;font-weight:600;text-wrap:balance}
 .bundle .set .cost{margin-top:2px}
-.bundle .was{margin-top:2px;font-size:14px;color:var(--muted)}
-.bundle .was s{text-decoration-thickness:1px}
-.bundle .was b{display:block;font-weight:600;color:var(--ink);white-space:nowrap}
+.bundle .was{margin-top:4px;font-size:14px;color:var(--muted)}
+.bundle .set+.set{padding-top:18px;border-top:1px solid var(--line)}
+@media (max-width:700px){.bundle .sets{margin-top:8px;padding-top:18px;border-top:1px solid var(--line)}}
 .bundle .ex{margin-top:12px}
+/* на телефоні ціни довго гортати: показуємо одну групу, решту перемикає повзунок; без JS видно все */
+.ptabs{display:none}
+@media (max-width:900px){
+  .js .ptabs{position:relative;display:grid;grid-template-columns:repeat(3,1fr);max-width:420px;margin:0 auto 16px;padding:4px;border-radius:26px;background:rgba(0,0,0,.06)}
+  .ptabs::before{content:"";position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/3);border-radius:22px;background:var(--ink);transform:translateX(calc(var(--i,0)*100%));transition:transform .35s var(--soft)}
+  .ptabs button{position:relative;min-height:44px;border:0;border-radius:22px;background:none;color:var(--ink2);font:600 15px Inter,sans-serif;cursor:pointer;transition:color .2s}
+  .ptabs button[aria-pressed=true]{color:#fff}
+  .js .prices[data-t=both]>[data-p]:not([data-p=both]),.js .prices[data-t=site]>[data-p]:not([data-p=site]),.js .prices[data-t=bot]>[data-p]:not([data-p=bot]){display:none}
+  .js .prices>.pcol>h3{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+}
 .prices.pro #multi{order:-1;box-shadow:0 0 0 2px var(--ink),0 24px 50px -30px rgba(var(--sh),.32)}
 @media (max-width:700px){.multi{grid-template-columns:1fr}}
 
@@ -345,7 +341,7 @@ img[style*="--lq"]{background:var(--lq) 50% 0/cover no-repeat}
 .flow-top{padding:2px 4px 4px}
 .flow-who{display:flex;align-items:center;gap:12px}
 .flow-ava{flex:none;width:42px;height:42px;border-radius:13px;background:linear-gradient(160deg,#3a3a3a,var(--ink) 60%);display:grid;place-items:center}
-.flow-ava svg{width:28px;height:9px;fill:#fff}
+.flow-ava svg{width:32px;height:32px;fill:#fff}
 .flow-who b{display:block;font-size:17px;font-weight:600;line-height:1.2}.flow-who small{display:block;font-size:13px;color:var(--muted)}
 .flow-who small.ty{color:var(--ink)}
 /* етапи липнуть під меню тонким рядком: видно, на якому кроці переписка, і не закривають її */
@@ -359,7 +355,7 @@ img[style*="--lq"]{background:var(--lq) 50% 0/cover no-repeat}
 .flow .m{max-width:84%}
 .flow .m time{display:block;margin-top:3px;font-size:11px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
 .flow .m.me time{color:#a3a3a3}
-/* галочки: одна — надіслано, дві — прочитано (коли drakx починає друкувати) */
+/* галочки: одна — надіслано, дві — прочитано (коли Zentra починає друкувати) */
 .tk{display:inline-block;position:relative;width:15px;height:9px;margin-left:4px;vertical-align:-1px}
 .tk::before,.tk::after{content:"";position:absolute;top:0;width:7px;height:4px;border-left:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg)}
 .tk::before{left:0}.tk::after{left:5px;opacity:0;transition:opacity .25s}
@@ -445,6 +441,8 @@ img[style*="--lq"]{background:var(--lq) 50% 0/cover no-repeat}
 .term b{display:block;font-size:22px;font-weight:600;letter-spacing:-.025em;line-height:1.2;margin-bottom:10px}
 .term p{color:var(--ink2);font-size:16px}
 .term svg{width:30px;height:30px;margin-bottom:22px;color:var(--ink)}
+/* на телефоні іконка стає в один рядок із заголовком: картка коротша на третину */
+@media (max-width:700px){.term{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 12px;align-items:center;padding:22px}.term svg{width:24px;height:24px;margin:0}.term b{font-size:19px;margin:0}.term p{grid-column:1/-1;font-size:15px}}
 
 /* ---------- питання ---------- */
 .narrow{width:min(820px,100%)}
@@ -509,13 +507,14 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
   .app{width:40px;height:40px;border-radius:11px}
 }
 @media (max-width:400px){
+  .nav{padding:0 16px}.nav nav{gap:13px;font-size:13px}.logo{gap:5px}.logo svg{width:58px;height:13.5px}.logo-sub{font-size:9px;padding:2px 5px}
   .ctas .pill{width:100%}
   .phone{width:210px;--ph:290px}
 }
 @media (max-width:360px){.num>span{font-size:13px}.fsteps li{font-size:9.5px;letter-spacing:.02em}.ctas .pill{padding:0 16px;font-size:16px}}
 /* короткі екрани: кнопка й рядок із цифрою Gold Auto мають уміститися на першому екрані (iPhone SE/8, ноутбук 1366×768) */
-@media (min-width:700px) and (max-height:700px){.hero{--sw:min(300px,40vw);padding-top:80px}.island-area{margin-top:12px}.copy{margin-top:14px}.ctas{margin-top:20px}}
-@media (max-width:700px) and (max-height:720px){.hero{--sw:min(260px,62vw);padding-top:74px;padding-bottom:32px}.island-area{margin-top:10px}.copy{margin-top:14px}.copy .eyebrow{margin-bottom:8px}.copy h1{margin-bottom:10px}.ctas{margin-top:18px}.copy .lead{font-size:16px}}
+@media (min-width:700px) and (max-height:700px){.hero{--pw:200px;--pv:140px;--pf:60px;--po:36px;padding-top:80px}.copy{margin-top:14px}.ctas{margin-top:20px}}
+@media (max-width:700px) and (max-height:720px){.hero{--pw:180px;--pv:126px;--pf:56px;--po:34px;padding-top:74px;padding-bottom:32px}.copy{margin-top:14px}.copy .eyebrow{margin-bottom:8px}.copy h1{margin-bottom:10px}.ctas{margin-top:18px}.copy .lead{font-size:16px}}
 @media (max-width:700px) and (max-height:620px){.copy .eyebrow{display:none}}
 @media (prefers-reduced-transparency:reduce){
   .nav,.island,.pill.light,.lg .nav,.lg .island,.lg .pill.light{background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none}
@@ -528,7 +527,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .island,.st,.m,.rv,.c-day li,.word,.aura i{transition:none!important;animation:none!important}
+  .island,.st,.m,.rv,.c-day li,.hphone,.ptabs::before{transition:none!important;animation:none!important}
   .live .dot,.bstats .bs-dot{animation:none!important}.dock{transition:none!important}.odw .dg>span{transition:none!important}
   .pill:active,.pill:hover,.island.in:hover{scale:none}
   .nav{transition:none}
@@ -538,7 +537,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 <body>
 <a class="skip" href="#h1">До змісту</a>
 <header class="nav">
-  <a class="logo" href="#top" aria-label="drakx, на початок"><svg viewBox="75 -2 850 252" aria-hidden="true"><use href="#gpath"/></svg></a>
+  <a class="logo" id="logo" href="#top" aria-label="Zentra, на початок"><svg viewBox="11.6 -2 1074.7 248.8" aria-hidden="true"><use href="#gpath"/></svg><span class="logo-sub" aria-hidden="true">studio</span></a>
   <nav aria-label="Розділи"><a href="#services">Послуги</a><a href="#work">Роботи</a><a href="#prices">Ціни</a><a href="#contact">Контакт</a></nav>
   <a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0." target="_blank" rel="noopener">Написати</a>
 </header>
@@ -546,35 +545,11 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 <main id="top">
 <section class="hero" aria-labelledby="h1">
   <div class="grid" aria-hidden="true"><i></i></div>
-  <div class="gs" id="gs">
-    <div class="word">
-      <svg viewBox="0 0 1000 300" aria-hidden="true"><defs><filter id="gsh" x="-15%" y="-30%" width="130%" height="180%"><feGaussianBlur stdDeviation="22"/><feOffset dy="20"/><feComponentTransfer><feFuncA type="linear" slope=".16"/></feComponentTransfer></filter></defs>
-        <use href="#gpath" fill="#000" filter="url(#gsh)"/></svg>
-      <div class="glass-in" aria-hidden="true"><span class="base"></span><div class="aura"><i></i><i></i><i></i></div></div>
-      <svg viewBox="0 0 1000 300" aria-hidden="true">
-        <defs>
-          <path id="gpath" d="M161.0 110.7L161.0 110.7Q128.0 110.7 128.0 160.2L128.0 160.2Q128.0 185.3 136.9 197.5Q145.9 209.7 161.0 209.7L161.0 209.7Q174.2 209.7 184.1 200.8Q194.0 191.9 194.0 180.7L194.0 180.7L194.0 139.7Q194.0 128.5 184.1 119.6Q174.2 110.7 161.0 110.7ZM142.9 249.3L142.9 249.3Q113.5 249.3 94.7 225.7Q75.9 202.1 75.9 160.2L75.9 160.2Q75.9 117.3 94.0 94.2Q112.2 71.1 142.9 71.1L142.9 71.1Q169.9 71.1 192.1 91.2L192.1 91.2Q192.4 91.6 192.7 91.6Q193.0 91.6 193.0 91.2L193.0 91.2L193.0 17.3Q193.0 9.7 198.5 4.1Q203.9-1.5 211.5-1.5L211.5-1.5L227.7-1.5Q235.3-1.5 240.7 4.1Q246.2 9.7 246.2 17.3L246.2 17.3L246.2 227.2Q246.2 234.8 240.7 240.4Q235.3 246 227.7 246L227.7 246L215.2 246Q207.2 246 201.8 240.6Q196.3 235.1 196.0 227.2L196.0 227.2L196.0 224.6Q196.0 224.2 195.7 224.2L195.7 224.2L195.0 224.9Q174.2 249.3 142.9 249.3ZM313.7 246L295.9 246Q288.3 246 282.8 240.4Q277.4 234.8 277.4 227.2L277.4 227.2L277.4 93.2Q277.4 85.6 282.8 80.0Q288.3 74.4 295.9 74.4L295.9 74.4L312.0 74.4Q319.6 74.4 325.1 80.0Q330.5 85.6 330.5 93.2L330.5 93.2L330.5 107.1Q330.5 107.4 330.9 107.4L330.9 107.4Q331.5 107.4 331.5 107.1L331.5 107.1Q352.0 79.7 388.6 75.1L388.6 75.1Q396.2 74.1 401.6 79.7Q407.1 85.3 407.1 93.2L407.1 93.2L407.1 95.8Q407.1 103.4 401.6 109.0Q396.2 114.7 388.3 115.3L388.3 115.3Q361.5 118.3 346.9 133.6Q332.2 149.0 332.2 173.4L332.2 173.4L332.2 227.2Q332.2 234.8 326.7 240.4Q321.3 246 313.7 246L313.7 246ZM512.9 167.5L501.0 167.5Q460.7 167.5 460.7 192.2L460.7 192.2Q460.7 201.1 466.0 206.2Q471.3 211.3 480.2 211.3L480.2 211.3Q496.0 211.3 505.9 201.3Q515.8 191.2 515.8 174.4L515.8 174.4L515.8 170.4Q515.8 167.5 512.9 167.5L512.9 167.5ZM464.0 249.3L464.0 249.3Q441.3 249.3 426.6 234.6Q411.9 219.9 411.9 196.5L411.9 196.5Q411.9 136.4 501.0 136.4L501.0 136.4L512.9 136.4Q515.8 136.4 515.8 133.8L515.8 133.8L515.8 132.1Q515.8 119.6 509.4 114Q503.0 108.4 487.8 108.4L487.8 108.4Q467.7 108.4 439.6 114.7L439.6 114.7Q432.7 116.0 427.2 111.7Q421.8 107.4 421.8 100.5L421.8 100.5L421.8 99.8Q421.8 91.6 426.9 84.8Q432.0 78.0 439.9 76.7L439.9 76.7Q469.0 71.1 490.1 71.1L490.1 71.1Q533.3 71.1 551.3 86.6Q569.3 102.1 569.3 138.1L569.3 138.1L569.3 227.2Q569.3 234.8 563.7 240.4Q558.1 246 550.5 246L550.5 246L538.3 246Q530.4 246 524.8 240.6Q519.1 235.1 518.8 227.2L518.8 227.2L518.8 223.6Q518.8 223.2 518.5 223.2L518.5 223.2Q517.8 223.2 517.8 223.6L517.8 223.6Q497.0 249.3 464.0 249.3ZM633.5 246L617.3 246Q609.8 246 604.3 240.4Q598.9 234.8 598.9 227.2L598.9 227.2L598.9 17.3Q598.9 9.7 604.3 4.1Q609.8-1.5 617.3-1.5L617.3-1.5L633.5-1.5Q641.1-1.5 646.5 4.1Q652.0 9.7 652.0 17.3L652.0 17.3L652.0 139.1Q652.0 139.4 652.3 139.4L652.3 139.4L653.0 139.1L694.2 88.9Q706.1 74.4 724.6 74.4L724.6 74.4L748.4 74.4Q753.6 74.4 756.1 79.3Q758.6 84.3 755.0 88.6L755.0 88.6L698.5 154.9Q696.9 156.9 698.5 159.2L698.5 159.2L755.6 231.5Q758.9 236.1 756.4 241.1Q754.0 246 748.4 246L748.4 246L724.6 246Q706.1 246 694.6 231.2L694.6 231.2L653.0 177.0Q652.7 176.7 652.3 176.7Q652.0 176.7 652.0 177.0L652.0 177.0L652.0 227.2Q652.0 234.8 646.5 240.4Q641.1 246 633.5 246L633.5 246ZM798.4 246L779.9 246Q773.6 246 770.5 240.7Q767.4 235.4 770.6 229.8L770.6 229.8L810.3 160.9Q811.6 158.6 810.3 156.2L810.3 156.2L772.3 90.6Q769 85.0 772.1 79.7Q775.3 74.4 781.5 74.4L781.5 74.4L801.3 74.4Q809.6 74.4 816.9 79.2Q824.1 84.0 827.7 91.6L827.7 91.6L846.2 131.5Q846.2 131.8 846.6 131.8Q846.9 131.8 846.9 131.5L846.9 131.5L865.4 91.6Q868.7 84.0 875.9 79.2Q883.2 74.4 891.8 74.4L891.8 74.4L910.2 74.4Q916.2 74.4 919.3 79.7Q922.5 85.0 919.5 90.6L919.5 90.6L881.5 156.2Q879.9 158.6 881.5 160.9L881.5 160.9L921.1 229.8Q924.1 235.4 921.0 240.7Q917.8 246 911.9 246L911.9 246L892.1 246Q883.5 246 876.1 241.4Q868.7 236.8 865.4 229.2L865.4 229.2L845.6 186.3Q845.6 185.9 845.2 185.9Q844.9 185.9 844.9 186.3L844.9 186.3L825.1 229.2Q821.5 236.8 814.0 241.4Q806.6 246 798.4 246L798.4 246Z"/>
-          <clipPath id="gclip" clipPathUnits="objectBoundingBox"><use href="#gpath" transform="scale(.001,.0033333)"/></clipPath>
-          <filter id="gedge" x="-5%" y="-10%" width="110%" height="120%" color-interpolation-filters="sRGB">
-            <feOffset in="SourceAlpha" dy="6" result="dn"/><feComposite in="SourceAlpha" in2="dn" operator="out" result="top"/>
-            <feGaussianBlur in="top" stdDeviation="2" result="topb"/>
-            <feGaussianBlur in="SourceAlpha" stdDeviation="9" result="bl"/>
-            <feComposite in="SourceAlpha" in2="bl" operator="arithmetic" k2="1" k3="-1" result="edge"/>
-            <feComponentTransfer in="edge" result="edgea"><feFuncA type="linear" slope=".3"/></feComponentTransfer>
-            <feMerge result="m"><feMergeNode in="edgea"/><feMergeNode in="topb"/></feMerge>
-            <feFlood flood-color="#fff"/><feComposite in2="m" operator="in"/>
-          </filter>
-          <filter id="gspec" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="b"/>
-            <feSpecularLighting in="b" surfaceScale="6" specularConstant=".9" specularExponent="30" lighting-color="#fff" result="s"><fePointLight id="glight" x="760" y="-60" z="280"/></feSpecularLighting>
-            <feComposite in="s" in2="SourceAlpha" operator="in"/>
-          </filter>
-        </defs>
-        <use href="#gpath" fill="#fff" filter="url(#gedge)"/>
-        <use href="#gpath" fill="#fff" filter="url(#gspec)" opacity=".6"/>
-      </svg>
-    </div>
-  </div>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <path id="gpath" d="M177.5 191.4Q180.2 194.1 180.2 197.9L180.2 232.2Q180.2 236.0 177.5 238.7Q174.8 241.4 171.0 241.4L22.8 241.4Q19.0 241.4 16.3 238.7Q13.6 236.0 13.6 232.2L13.6 199.2Q13.6 195.5 15.0 192.9Q16.3 190.4 19.0 187.3L86.4 117.3L26.2 117.3Q22.4 117.3 19.7 114.6Q17.0 111.9 17.0 108.1L17.0 73.8Q17.0 70.0 19.7 67.3Q22.4 64.6 26.2 64.6L164.2 64.6Q168.0 64.6 170.7 67.3Q173.4 70.0 173.4 73.8L173.4 106.8Q173.4 111.2 168.6 116.6L99.6 188.7L171.0 188.7Q174.8 188.7 177.5 191.4ZM266.9 192.8Q276.1 198.9 288.3 198.9Q297.8 198.9 304.0 196.9Q310.1 194.8 314.5 191.1Q318.2 188.0 319.9 187.2Q321.6 186.3 325.7 186.3L369.9 186.3Q373.3 186.3 375.4 188.4Q377.4 190.4 377.4 193.8Q377.4 200.6 367.2 213.0Q357.0 225.4 336.9 235.1Q316.9 244.8 288.3 244.8Q244.5 244.8 220.5 220.5Q196.5 196.2 196.5 153.0Q196.5 126.1 207.2 105.4Q217.9 84.7 238.7 72.9Q259.4 61.2 288.3 61.2Q319.9 61.2 340.5 74.6Q361.1 88.1 370.6 109.3Q380.1 130.6 380.1 153.7L380.1 163.2Q380.1 166.9 377.4 169.7Q374.7 172.4 370.9 172.4L257.7 172.4Q257.7 186.7 266.9 192.8ZM318.9 134.6Q317.6 123.1 309.6 115.1Q301.6 107.1 288.3 107.1Q275.1 107.1 267.1 115.1Q259.1 123.1 257.7 134.6ZM586.2 238.7Q583.4 241.4 579.7 241.4L536.9 241.4Q533.1 241.4 530.4 238.7Q527.7 236.0 527.7 232.2L527.7 146.2Q527.7 131.2 520.4 122.6Q513.1 113.9 498.1 113.9Q483.5 113.9 476.2 122.4Q468.9 130.9 468.9 146.2L468.9 232.2Q468.9 236.0 466.1 238.7Q463.4 241.4 459.7 241.4L416.8 241.4Q413.1 241.4 410.4 238.7Q407.7 236.0 407.7 232.2L407.7 73.8Q407.7 70.0 410.4 67.3Q413.1 64.6 416.8 64.6L458.0 64.6Q461.7 64.6 464.4 67.3Q467.2 70.0 467.2 73.8L467.2 81.6Q483.1 61.2 515.1 61.2Q549.4 61.2 569.2 80.6Q588.9 100.0 588.9 138.7L588.9 232.2Q588.9 236.0 586.2 238.7ZM719.1 188.7L746.3 188.7Q750.0 188.7 752.8 191.4Q755.5 194.1 755.5 197.9L755.5 232.2Q755.5 236.0 752.8 238.7Q750.0 241.4 746.3 241.4L714.0 241.4Q681.7 241.4 662.5 223.4Q643.3 205.4 643.3 174.4L643.3 117.3L618.1 117.3Q614.4 117.3 611.7 114.6Q608.9 111.9 608.9 108.1L608.9 73.8Q608.9 70.0 611.7 67.3Q614.4 64.6 618.1 64.6L643.3 64.6L643.3 9.2Q643.3 5.4 646.0 2.7Q648.7 0.0 652.5 0.0L695.3 0.0Q699.0 0.0 701.8 2.7Q704.5 5.4 704.5 9.2L704.5 64.6L742.9 64.6Q746.6 64.6 749.4 67.3Q752.1 70.0 752.1 73.8L752.1 108.1Q752.1 111.9 749.4 114.6Q746.6 117.3 742.9 117.3L704.5 117.3L704.5 172.4Q704.5 188.7 719.1 188.7ZM905.8 67.3Q908.5 70.0 908.5 73.8L908.5 108.1Q908.5 111.9 905.8 114.6Q903.0 117.3 899.3 117.3L868.4 117.3Q853.1 117.3 845.1 125.3Q837.1 133.3 837.1 148.6L837.1 232.2Q837.1 236.0 834.4 238.7Q831.6 241.4 827.9 241.4L785.1 241.4Q781.3 241.4 778.6 238.7Q775.9 236.0 775.9 232.2L775.9 73.8Q775.9 70.0 778.6 67.3Q781.3 64.6 785.1 64.6L824.5 64.6Q828.2 64.6 831.0 67.3Q833.7 70.0 833.7 73.8L833.7 81.6Q851.4 64.6 878.9 64.6L899.3 64.6Q903.0 64.6 905.8 67.3ZM1023.1 125.8Q1023.1 107.1 1003.3 107.1Q992.1 107.1 985.0 113.2Q982.3 115.9 979.5 116.6Q976.8 117.3 972.7 117.3L929.6 117.3Q926.2 117.3 923.9 115.3Q921.7 113.2 922.1 109.8Q923.1 99.3 933.8 87.9Q944.5 76.5 962.9 68.8Q981.2 61.2 1003.3 61.2Q1043.8 61.2 1064.0 79.6Q1084.3 97.9 1084.3 129.2L1084.3 232.2Q1084.3 236.0 1081.5 238.7Q1078.8 241.4 1075.1 241.4L1032.2 241.4Q1028.5 241.4 1025.8 238.7Q1023.1 236.0 1023.1 232.2L1023.1 222.7Q1014.2 233.6 1002.0 239.2Q989.7 244.8 971.0 244.8Q942.5 244.8 926.3 229.8Q910.2 214.9 910.2 191.1Q910.2 168.3 927.9 153.7Q945.5 139.1 983.3 132.6ZM991.8 171.0Q982.3 172.7 976.8 177.0Q971.4 181.2 971.4 187.3Q971.4 198.9 987.7 198.9Q1002.7 198.9 1012.9 189.4Q1023.1 179.9 1023.1 166.3Z"/>
+    <path id="zpath" d="M47.5 39.4Q48.0 39.9 48.0 40.6L48.0 47.2Q48.0 48.0 47.5 48.5Q47.0 49.0 46.3 49.0L17.7 49.0Q17.0 49.0 16.5 48.5Q16.0 48.0 16.0 47.2L16.0 40.9Q16.0 40.2 16.2 39.7Q16.5 39.2 17.0 38.6L30.0 25.1L18.4 25.1Q17.7 25.1 17.2 24.6Q16.6 24.1 16.6 23.4L16.6 16.8Q16.6 16.0 17.2 15.5Q17.7 15.0 18.4 15.0L44.9 15.0Q45.7 15.0 46.2 15.5Q46.7 16.0 46.7 16.8L46.7 23.1Q46.7 24.0 45.8 25.0L32.5 38.9L46.3 38.9Q47.0 38.9 47.5 39.4Z"/>
+  </defs></svg>
+  <div class="hv" id="hv"><div class="hphone" id="hphone"><img src="../media/demo-fitness-m-360.webp" srcset="../media/demo-fitness-m-360.webp 360w, ../media/demo-fitness-m-480.webp 480w, ../media/demo-fitness-m-720.webp 720w" sizes="(max-width:700px) 192px, 232px" width="360" height="2400" alt="Демо-сайт «ТЕМП» на телефоні" decoding="async" fetchpriority="high"></div></div>
   <div class="island-area">
     <div class="island" id="isl" role="img" aria-label="Приклад: сповіщення від бота про новий запис">
       <div class="st s0"><span class="app"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg></span><div><small>Ваш бот · щойно</small><b id="isl-t">Новий запис: діагностика</b><span id="isl-s">Олександр, завтра о&nbsp;10:00</span></div></div>
@@ -583,10 +558,10 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
   <div class="copy">
     <p class="eyebrow" id="kicker">Сайти й&nbsp;Telegram&#8209;боти для фітнес&#8209;студій</p>
     <h1 id="h1">Клієнти записуються самі&nbsp;— навіть коли ви на&nbsp;тренуванні</h1>
-    <p class="lead">Роблю сайт і&nbsp;Telegram&#8209;бот, через які клієнти записуються без дзвінків. Без передоплати: спочатку показую результат, оплата потім.</p>
+    <p class="lead" id="hero-lead">Роблю сайт і&nbsp;Telegram&#8209;бот, через які клієнти записуються без дзвінків. Без передоплати: спочатку показую результат, оплата потім.</p>
     <div class="ctas">
       <a class="pill dark" id="cta" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B1%D0%B5%D0%B7%D0%BA%D0%BE%D1%88%D1%82%D0%BE%D0%B2%D0%BD%D0%B8%D0%B9%20%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D1%82%D0%B8%D0%BF.%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6" target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Хочу прототип безкоштовно</a>
-      <a class="pill light" href="#work">Мої роботи</a>
+      <a class="pill light" id="work-btn" href="#work">Мої роботи</a>
     </div>
     <p class="proof"><a href="#work" id="proof"><b data-live="share" data-f="1" data-u="%">35,9%</b> закритих нарядів у&nbsp;Gold&nbsp;Auto припадає на клієнтів із&nbsp;ботом</a></p>
   </div>
@@ -660,7 +635,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
         <h3>Gold Auto</h3>
         <p>Сайт автосервісу: послуги, сертифікати, клубна програма Gold Club і кнопка запису на кожному екрані.</p>
         <div class="chips"><span>Запис онлайн</span><span>Світла й темна тема</span><span>Зручно на телефоні</span></div>
-        <p class="aside">Для цього ж СТО зробив клієнтський Telegram&#8209;бот:</p>
+        <p class="aside" id="gold-aside">Для цього ж СТО зробив клієнтський Telegram&#8209;бот:</p>
         <div class="bstats" id="bstats">
           <p class="bs-head"><span class="bs-dot" aria-hidden="true"></span><span id="bs-state">Цифри з бота Gold Auto</span><span class="bs-upd" id="bs-upd"></span></p>
           <div class="nums">
@@ -687,7 +662,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
         <h3>Volt Master</h3>
         <p>Сайт майстерні фар: ліхтарі BMW «оживають» просто на сторінці&nbsp;— можна ввімкнути стопи, поворот і аварійку.</p>
         <div class="chips"><span>Живі ліхтарі</span><span>Роботи з відео</span><span>Запис у Telegram</span></div>
-        <p class="aside">До сайту додав Telegram&#8209;бот, який розподіляє заявки між майстрами за темами.</p>
+        <p class="aside" id="volt-aside">До сайту додав Telegram&#8209;бот, який розподіляє заявки між майстрами за темами.</p>
         <a class="link" href="https://ddrakkx.github.io/voltmaster-site/" target="_blank" rel="noopener">Відкрити сайт <span aria-hidden="true">↗</span><span class="sr"> (відкриється в новій вкладці)</span></a>
       </div>
     </article>
@@ -696,21 +671,22 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 
 <section class="block" id="prices" aria-labelledby="prices-h">
   <div class="wrap">
-    <div class="head rv"><p class="eyebrow">Ціни</p><h2 id="prices-h">Скільки це коштує</h2><p class="lead">Більшість проєктів вкладається в ці межі. Точну суму назву, щойно опишете завдання, і зафіксую письмово. Без доплат, якщо не додасте нових завдань.</p></div>
-    <div class="prices" id="prices-grid">
-      <article class="card plan multi bundle" id="bundle"><div><p class="kind"><span class="save">Найчастіше беруть</span></p><h3>Сайт і бот разом</h3>
-        <p class="why">Кнопка запису на сайті веде одразу в бота, а заявки приходять вам у Telegram. Робимо все за один раз, тому разом дешевше, ніж окремо.</p>
+    <div class="head rv"><p class="eyebrow">Ціни</p><h2 id="prices-h">Скільки це коштує</h2><p class="lead" id="prices-lead">Більшість проєктів вкладається в ці межі. Точну суму назву, щойно опишете завдання, і зафіксую письмово. Без доплат, якщо не додасте нових завдань.</p></div>
+    <div class="ptabs" id="ptabs" role="group" aria-label="Що показати в цінах"><button type="button" data-t="both" aria-pressed="true">Разом</button><button type="button" data-t="site" aria-pressed="false">Сайт</button><button type="button" data-t="bot" aria-pressed="false">Бот</button></div>
+    <div class="prices" id="prices-grid" data-t="both">
+      <article class="card plan multi bundle" id="bundle" data-p="both"><div><p class="kind"><span class="save">Найчастіше беруть</span></p><h3>Сайт і бот разом</h3>
+        <p class="why" id="bundle-why">Кнопка запису на сайті веде одразу в бота, а заявки приходять вам у Telegram. Роблю все за один раз, тому виходить дешевше.</p>
         <p class="ex">Бот: перший місяць у ціні, далі 500&nbsp;грн/міс. За сайт щомісячної плати немає.</p></div>
-        <div class="sets"><div class="set"><b>Сайт на одну сторінку + бот для запису</b><p class="cost">від 6&nbsp;000 до 9&nbsp;000&nbsp;грн</p><p class="was">окремо <s>7&nbsp;000</s>–<s>10&nbsp;500</s>&nbsp;грн <b>економія 1&nbsp;000–1&nbsp;500&nbsp;грн</b></p></div>
-        <div class="set"><b>Сайт для вашого бізнесу + бот із кабінетом</b><p class="cost">від 11&nbsp;000 до 17&nbsp;000&nbsp;грн</p><p class="was">окремо <s>13&nbsp;000</s>–<s>21&nbsp;000</s>&nbsp;грн <b>економія 2&nbsp;000–4&nbsp;000&nbsp;грн</b></p></div></div></article>
-      <div class="pcol">
+        <div class="sets"><div class="set"><b>Сайт на одну сторінку + бот для запису</b><p class="cost">від 6&nbsp;000 до 9&nbsp;000&nbsp;грн</p><p class="was">на 1&nbsp;000–1&nbsp;500&nbsp;грн дешевше, ніж окремо</p></div>
+        <div class="set"><b>Сайт для вашого бізнесу + бот із кабінетом</b><p class="cost">від 11&nbsp;000 до 17&nbsp;000&nbsp;грн</p><p class="was">на 2&nbsp;000–4&nbsp;000&nbsp;грн дешевше, ніж окремо</p></div></div></article>
+      <div class="pcol" data-p="site">
         <h3 class="rv">Сайти</h3>
         <article class="card plan rv"><h4>Сайт на одну сторінку</h4><p class="cost">від 4&nbsp;500 до 6&nbsp;500&nbsp;грн</p>
           <ul><li>Послуги, ціни й контакти на одній сторінці</li><li>Кнопки дзвінка й Telegram</li><li>Зручно на телефоні</li></ul></article>
         <article class="card plan rv"><h4>Сайт для вашого бізнесу</h4><p class="cost">від 8&nbsp;000 до 12&nbsp;000&nbsp;грн</p>
           <ul><li>Кілька розділів або сторінок</li><li>Власний дизайн і анімації</li><li>Щоб сайт знаходили в Google</li></ul><p class="ex">Як у Gold Auto чи Volt Master</p></article>
       </div>
-      <div class="pcol">
+      <div class="pcol" data-p="bot">
         <h3 class="rv">Telegram&#8209;боти</h3>
         <article class="card plan rv" style="--d:.06s"><h4>Бот для запису</h4><p class="cost">від 2&nbsp;500 до 4&nbsp;000&nbsp;грн</p>
           <ul><li>Запис на послугу з вибором часу</li><li>Заявки одразу вам у Telegram</li><li>Відповіді на поширені запитання</li></ul><p class="ex">Обслуговування бота: перший місяць у ціні, далі 500&nbsp;грн/міс</p></article>
@@ -721,18 +697,18 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
         <p class="why">Ті самі сайт і бот, тільки з вибором філії: клієнт обирає адресу, а заявка йде майстрам саме цієї точки.</p></div>
         <ul><li><b><span class="nw">2–3</span> точки:</b> зазвичай на <span class="nw">20–30%</span> дорожче, ніж для&nbsp;однієї</li><li><b>Мережа від 4 точок:</b> окремий проєкт, від 20&nbsp;000&nbsp;грн</li><li>Наприклад, бот для запису на 2 точки&nbsp;— від 3&nbsp;000 до 5&nbsp;000&nbsp;грн</li></ul></article>
     </div>
-    <p class="pnote rv">Фішки, як у демо (примірка нігтів, конструктор торта чи букета), не обовʼязкові: для запису вистачає зручної форми або бота. Якщо захочете таку фішку, додам окремо й назву ціну наперед.</p>
-    <div class="pcta rv"><a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B4%D1%96%D0%B7%D0%BD%D0%B0%D1%82%D0%B8%D1%81%D1%8F%20%D1%82%D0%BE%D1%87%D0%BD%D1%83%20%D1%86%D1%96%D0%BD%D1%83.%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%2C%20%D0%BF%D0%BE%D1%82%D1%80%D1%96%D0%B1%D0%BD%D0%BE%3A%20%E2%80%A6" target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Дізнатися точну ціну</a><p>Відповідаю протягом дня, у&nbsp;вихідні теж.</p></div>
+    <p class="pnote rv" id="pnote">Фішки, як у демо (примірка нігтів, конструктор торта чи букета), не обовʼязкові: для запису вистачає зручної форми або бота. Якщо захочете таку фішку, додам окремо й назву ціну наперед.</p>
+    <div class="pcta rv"><a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B4%D1%96%D0%B7%D0%BD%D0%B0%D1%82%D0%B8%D1%81%D1%8F%20%D1%82%D0%BE%D1%87%D0%BD%D1%83%20%D1%86%D1%96%D0%BD%D1%83.%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%2C%20%D0%BF%D0%BE%D1%82%D1%80%D1%96%D0%B1%D0%BD%D0%BE%3A%20%E2%80%A6" target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Дізнатися точну ціну</a><p id="pcta-note">Відповідаю протягом дня, у&nbsp;вихідні теж.</p></div>
   </div>
 </section>
 
 <section class="block" id="how" aria-labelledby="how-h">
   <div class="wrap">
-    <div class="head rv"><p class="eyebrow">Як я працюю</p><h2 id="how-h">Спочатку результат, потім оплата</h2><p class="lead">Так виглядає робота зі мною: від першого повідомлення до запуску.</p></div>
+    <div class="head rv"><p class="eyebrow" id="how-eyebrow">Як я працюю</p><h2 id="how-h">Спочатку результат, потім оплата</h2><p class="lead" id="how-lead">Так виглядає робота зі мною: від першого повідомлення до запуску.</p></div>
     <div class="how">
       <div class="card flow" id="flow">
         <div class="flow-top">
-          <div class="flow-who"><span class="flow-ava" aria-hidden="true"><svg viewBox="75 -2 850 252"><use href="#gpath"/></svg></span><div><b>drakx</b><small id="flow-sub">відповідає протягом дня</small></div></div>
+          <div class="flow-who"><span class="flow-ava" aria-hidden="true"><svg viewBox="0 0 64 64"><use href="#zpath"/></svg></span><div><b id="flow-name">Zentra</b><small id="flow-sub">відповідає протягом дня</small></div></div>
         </div>
         <ol class="fsteps" aria-label="Етапи роботи"><li>Прототип</li><li>Правки</li><li>Погодження</li><li>Запуск</li></ol>
         <div class="flow-log">
@@ -741,20 +717,20 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
           <div class="row" data-b="bot" data-t="700"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Ось перший варіант:<div class="lp"><div class="wf" role="img" aria-label="Макет сайту, перша версія"><div class="wf-bar"><i></i><i></i><i></i><u></u></div><div class="wf-page"><div class="wf-nav"><i class="logo"></i><i></i><i></i><i></i></div><div class="wf-hero"><div class="wf-txt"><i class="h"></i><i class="h s"></i><i class="t"></i><div class="wf-row"><i class="btn"></i></div></div><i class="img"></i></div><div class="wf-cards"><i></i><i></i><i></i></div></div></div><div class="lp-meta"><b>Прототип вашого сайту</b><small>ваш-сайт.com.ua</small></div></div>Подивіться й напишіть, що змінити<time>18:40</time></div></div>
           <p class="fsep" data-b="sep" data-s="2">2 · Правки <span>наступного дня</span></p>
           <div class="row me" data-b="me"><div class="m me">Класно! А можна кнопку запису зробити помітнішою і&nbsp;додати ціни?<time>09:12<i class="tk" aria-hidden="true"></i></time></div></div>
-          <div class="row" data-b="bot" data-t="600"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Так, оновив:<div class="wf v2" role="img" aria-label="Макет сайту, оновлена версія: кнопка запису більша, додано блок цін"><div class="wf-bar"><i></i><i></i><i></i><u></u></div><div class="wf-page"><div class="wf-nav"><i class="logo"></i><i></i><i></i><i></i></div><div class="wf-hero"><div class="wf-txt"><i class="h"></i><i class="h s"></i><i class="t"></i><div class="wf-row"><i class="btn"></i><span class="wf-tag">кнопка</span></div></div><i class="img"></i></div><div class="wf-pr"><div><div class="in"><span class="wf-tag">ціни</span><i></i><i></i><i></i></div></div></div><div class="wf-cards"><i></i><i></i><i></i></div></div></div><ul class="fdone"><li>Кнопка запису помітніша</li><li>Додав блок із цінами</li></ul><time>10:30</time></div></div>
+          <div class="row" data-b="bot" data-t="600"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Так, оновив:<div class="wf v2" role="img" aria-label="Макет сайту, оновлена версія: кнопка запису більша, додано блок цін"><div class="wf-bar"><i></i><i></i><i></i><u></u></div><div class="wf-page"><div class="wf-nav"><i class="logo"></i><i></i><i></i><i></i></div><div class="wf-hero"><div class="wf-txt"><i class="h"></i><i class="h s"></i><i class="t"></i><div class="wf-row"><i class="btn"></i><span class="wf-tag">кнопка</span></div></div><i class="img"></i></div><div class="wf-pr"><div><div class="in"><span class="wf-tag">ціни</span><i></i><i></i><i></i></div></div></div><div class="wf-cards"><i></i><i></i><i></i></div></div></div><ul class="fdone"><li>Кнопка запису помітніша</li><li id="flow-m2">Додав блок із цінами</li></ul><time>10:30</time></div></div>
           <p class="fsep" data-b="sep" data-s="3">3 · Погодження</p>
           <div class="row me" data-b="me"><div class="m me">Тепер усе подобається, беремо!<time>10:41<i class="tk" aria-hidden="true"></i></time></div></div>
           <p class="fsep" data-b="sep" data-s="4">4 · Оплата й запуск</p>
-          <div class="row" data-b="bot" data-t="500"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Чудово! Тоді оплата&nbsp;— і запускаю<time>10:43</time></div></div>
-          <div class="row me" data-b="pay"><div class="m me pay"><small>Рахунок від drakx</small><b>Сайт із записом</b><span class="paybtn"><span class="pb1">Оплатити</span><span class="pb2">Оплачено</span></span><time>10:44<i class="tk" aria-hidden="true"></i></time></div></div>
-          <div class="row" data-b="bot" data-t="600"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m">Запустив! Сайт уже працює:<span class="live"><span class="dot"></span>ваш-сайт.com.ua<em>онлайн</em></span><time>11:20</time></div></div>
+          <div class="row" data-b="bot" data-t="500"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m" id="flow-m4">Чудово! Тоді оплата&nbsp;— і запускаю<time>10:43</time></div></div>
+          <div class="row me" data-b="pay"><div class="m me pay"><small id="flow-bill">Рахунок від Zentra</small><b>Сайт із записом</b><span class="paybtn"><span class="pb1">Оплатити</span><span class="pb2">Оплачено</span></span><time>10:44<i class="tk" aria-hidden="true"></i></time></div></div>
+          <div class="row" data-b="bot" data-t="600"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="m"><span id="flow-m5">Запустив! Сайт уже працює:</span><span class="live"><span class="dot"></span>ваш-сайт.com.ua<em>онлайн</em></span><time>11:20</time></div></div>
           <div class="ntf" data-b="note"><span class="app"><svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg></span><div><span class="sr">Після запуску приходить перша заявка: </span><small>Ваш бот · щойно</small><b id="ntf-t">Новий запис: діагностика</b><span id="ntf-s">Олександр, завтра о&nbsp;10:00</span></div></div>
           <button class="replay" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>Переглянути ще раз</button>
         </div>
       </div>
       <div class="how-side">
-        <div class="card term rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path class="i-hand" d="M12 7v5l3 2"/></svg><b>Швидко й письмово</b><p>Перший варіант часто готовий того&nbsp;ж&nbsp;дня. Ціну, строки й що входить фіксую письмово ще до початку&nbsp;— без сюрпризів у кінці.</p></div>
-        <div class="card term rv" style="--d:.08s"><svg class="i-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg><b>Хостинг і підтримка</b><p>Розміщую сайт і бота та стежу, щоб усе працювало. Перший місяць обслуговування й дрібні правки входять у ціну. Пишете мені напряму, без менеджерів: відповідаю протягом дня.</p></div>
+        <div class="card term rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path class="i-hand" d="M12 7v5l3 2"/></svg><b>Швидко й письмово</b><p id="term1-p">Перший варіант часто готовий того&nbsp;ж&nbsp;дня. Ціну, строки й що входить фіксую письмово ще до початку&nbsp;— без сюрпризів у кінці.</p></div>
+        <div class="card term rv" style="--d:.08s"><svg class="i-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg><b>Хостинг і підтримка</b><p id="term2-p">Розміщую сайт і бота та стежу, щоб усе працювало. Перший місяць обслуговування й дрібні правки входять у ціну. Пишете мені напряму, без менеджерів: відповідаю протягом дня.</p></div>
       </div>
     </div>
   </div>
@@ -766,12 +742,12 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
     <div class="faq rv">
       <details><summary>Що я побачу до оплати?</summary><p>Готовий сайт чи бота з вашими послугами, цінами й контактами. Вносите правки й платите, коли все влаштовує. Якщо не влаштує&nbsp;— нічого не платите.</p></details>
       <details><summary>Клієнти й так дзвонять. Навіщо мені бот?</summary><p>Дзвінки нікуди не зникають. Бот приймає тих, хто пише ввечері чи вночі, не може додзвонитися або просто не любить дзвонити. Без бота частина таких клієнтів іде туди, де можна записатися чи замовити одразу.</p></details>
-      <details><summary>Скільки часу це займає?</summary><p>Перший варіант часто показую того&nbsp;ж&nbsp;дня, коли ви написали. Далі все залежить від кількості правок.</p></details>
-      <details><summary>Що потрібно від мене?</summary><p>Розповісти про бізнес і надіслати те, що вже є: фото, послуги, ціни, контакти. Решту роблю я.</p></details>
+      <details><summary>Скільки часу це займає?</summary><p id="faq-q3">Перший варіант часто показую того&nbsp;ж&nbsp;дня, коли ви написали. Далі все залежить від кількості правок.</p></details>
+      <details><summary>Що потрібно від мене?</summary><p id="faq-q4">Розповісти про бізнес і надіслати те, що вже є: фото, послуги, ціни, контакти. Решту роблю я.</p></details>
       <details><summary>Можна сайт і бота разом?</summary><p>Так. Тоді кнопка запису на сайті веде одразу в бота, а заявки приходять вам у Telegram.</p></details>
-      <details><summary>Де будуть сайт і бот і чиї вони?</summary><p>На моєму хостингу: я стежу, щоб усе працювало. Захочете тримати все у себе&nbsp;— після оплати передам файли й доступи.</p></details>
-      <details><summary>А якщо ви зникнете?</summary><p>Файли й доступи можна забрати будь-коли після оплати: тоді сайт і бота зможе підтримувати інший розробник. Поки все на моєму хостингу, я на звʼязку й відповідаю протягом дня.</p></details>
-      <details><summary>Чи є щомісячна плата?</summary><p>Перший місяць входить у ціну. Далі бот коштує 500&nbsp;грн на місяць: сервер, щоб він працював цілодобово, і виправлення, якщо щось зламалось. За сайт щомісячної плати немає: лише продовження домену раз на рік, перший рік теж входить у ціну. Вартість домену залежить від зони, назву її заздалегідь.</p></details>
+      <details><summary>Де будуть сайт і бот і чиї вони?</summary><p id="faq-q6">На моєму хостингу: я стежу, щоб усе працювало. Захочете тримати все у себе&nbsp;— після оплати передам файли й доступи.</p></details>
+      <details><summary>А якщо ви зникнете?</summary><p id="faq-q7">Файли й доступи можна забрати будь-коли після оплати: тоді сайт і бота зможе підтримувати інший розробник. Поки все на моєму хостингу, я на звʼязку й відповідаю протягом дня.</p></details>
+      <details><summary>Чи є щомісячна плата?</summary><p id="faq-q8">Перший місяць входить у ціну. Далі бот коштує 500&nbsp;грн на місяць: сервер, щоб він працював цілодобово, і виправлення, якщо щось зламалось. За сайт щомісячної плати немає: лише продовження домену раз на рік, перший рік теж входить у ціну. Вартість домену залежить від зони, назву її заздалегідь.</p></details>
       <details><summary>У мене кілька точок. Це&nbsp;дорожче?</summary><p>Трохи дорожче, бо додається вибір філії, а заявки розходяться майстрам потрібної точки. Для <span class="nw">2–3</span> точок зазвичай на <span class="nw">20–30%</span> більше, ніж для однієї. Для мережі від 4 точок окремий проєкт від 20&nbsp;000&nbsp;грн.</p></details>
     </div>
   </div>
@@ -782,7 +758,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
     <div class="contact rv">
       <p class="eyebrow">Контакт</p>
       <h2 id="contact-h">Почнемо з прототипу</h2>
-      <p class="lead">Напишіть назву бізнесу й що потрібно: сайт, бот чи все разом. Покажу перший варіант безкоштовно й назву орієнтовну ціну.</p>
+      <p class="lead" id="contact-lead">Напишіть назву бізнесу й що потрібно: сайт, бот чи все разом. Покажу перший варіант безкоштовно й назву орієнтовну ціну.</p>
       <div class="ctas">
         <a class="pill dark" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0." target="_blank" rel="noopener"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
         <a class="pill ghost" href="https://instagram.com/drakxwork" target="_blank" rel="noopener">Instagram @drakxwork<span class="sr"> (відкриється в новій вкладці)</span></a>
@@ -792,7 +768,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
 </section>
 </main>
 <a class="pill dark dock" id="dock" href="https://t.me/ddrakx?text=%D0%9F%D1%80%D0%B8%D0%B2%D1%96%D1%82%21%20%D0%9C%D1%96%D0%B9%20%D0%B1%D1%96%D0%B7%D0%BD%D0%B5%D1%81%3A%20%E2%80%A6%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B8%D1%82%D0%B8%20%D1%81%D0%B0%D0%B9%D1%82%20%D0%B0%D0%B1%D0%BE%20%D0%B1%D0%BE%D1%82%D0%B0." target="_blank" rel="noopener" tabindex="-1"><svg class="tg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.5 3.6 2.9 10.8c-1.1.4-1.1 1.1-.2 1.4l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.5Z"/></svg>Написати в Telegram</a>
-<footer>© 2026 drakx. Усі права захищено.</footer>
+<footer id="footer-copy">© 2026 Zentra. Усі права захищено.</footer>
 <svg id="lgdefs" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs></defs></svg>
 
 <script>
@@ -837,29 +813,64 @@ if(NV){
     ?`Мої клієнти поки що автосервіси, тому для вашої ніші я зробив два демо. Відкрийте їх і спробуйте самі: усе працює. Для ${NV.w} покажу прототип безкоштовно, ще до оплати.`
     :`Поки що я робив проєкти для автосервісів. Для ${NV.w} покажу прототип безкоштовно, ще до оплати.`;
 }
+/* режим студії (Zentra Studio, «ми»): вмикається на /pro/ або через ?v=pro (на будь-якій ніші теж) */
+const isPro=document.documentElement.dataset.v==='pro'||/[?&]v=pro\b/.test(location.search);
+if(isPro){
+  document.documentElement.classList.add('pro');
+  $('#prices-grid').classList.add('pro');
+  document.title=document.title.replace(/\|\s*Zentra$/,'| Zentra Studio');
+  $('#logo').setAttribute('aria-label','Zentra Studio, на початок');
+  [['hero-lead','Робимо сайт і&nbsp;Telegram&#8209;бот для запису на одну або кілька точок без дзвінків. Без передоплати: спочатку показуємо прототип, оплата після погодження.'],
+   ['work-btn','Наші роботи'],
+   ['services-h','Що ми робимо'],
+   ['gold-aside','Для цього ж СТО зробили клієнтський Telegram&#8209;бот:'],
+   ['volt-aside','До сайту додали Telegram&#8209;бот, який розподіляє заявки між майстрами за темами.'],
+   ['prices-lead','Більшість проєктів вкладається в ці межі. Точну суму назвемо, щойно опишете завдання, і зафіксуємо письмово. Без доплат, якщо не додасте нових завдань.'],
+   ['bundle-why','Кнопка запису на сайті веде одразу в бота, а заявки приходять вам або керівникам точок у Telegram. Робимо все за один раз, тому виходить дешевше.'],
+   ['pnote','Фішки, як у демо (примірка нігтів, конструктор торта чи букета), не обовʼязкові: для запису вистачає зручної форми або бота. Якщо захочете таку фішку, додамо окремо й назвемо ціну наперед.'],
+   ['pcta-note','Відповідаємо протягом дня, у&nbsp;вихідні теж.'],
+   ['how-eyebrow','Як ми працюємо'],
+   ['how-lead','Так виглядає робота з нашою студією: від першого повідомлення до запуску.'],
+   ['flow-name','Zentra Studio'],
+   ['flow-sub','відповідаємо протягом дня'],
+   ['flow-m2','Додали блок із цінами'],
+   ['flow-m4','Чудово! Тоді оплата&nbsp;— і запускаємо'],
+   ['flow-bill','Рахунок від Zentra Studio'],
+   ['flow-m5','Запустили! Сайт уже працює:'],
+   ['term1-p','Перший варіант часто готовий того&nbsp;ж&nbsp;дня. Ціну, строки й склад робіт фіксуємо письмово ще до початку&nbsp;— без сюрпризів у кінці.'],
+   ['term2-p','Розміщуємо сайт і бота та стежимо, щоб усе працювало. Перший місяць обслуговування й дрібні правки входять у ціну. Спілкуєтесь напряму з розробниками, без менеджерів: відповідаємо протягом дня.'],
+   ['faq-q3','Перший варіант часто показуємо того&nbsp;ж&nbsp;дня, коли ви написали. Далі все залежить від кількості правок.'],
+   ['faq-q4','Розповісти про бізнес і надіслати те, що вже є: фото, послуги, ціни, контакти. Решту робимо ми.'],
+   ['faq-q6','На нашому хостингу: ми стежимо, щоб усе працювало. Захочете тримати все у себе&nbsp;— після оплати передамо файли й доступи.'],
+   ['faq-q7','Файли й доступи можна забрати будь-коли після оплати: тоді сайт і бота зможе підтримувати будь-яка команда. Поки все на нашому хостингу, ми на звʼязку й відповідаємо протягом дня.'],
+   ['faq-q8','Перший місяць входить у ціну. Далі бот коштує 500&nbsp;грн на місяць: сервер, щоб він працював цілодобово, і виправлення, якщо щось зламалось. За сайт щомісячної плати немає: лише продовження домену раз на рік, перший рік теж входить у ціну. Вартість домену залежить від зони, назвемо її заздалегідь.'],
+   ['contact-lead','Напишіть назву бізнесу, кількість точок і що потрібно: сайт, бот чи все разом. Покажемо перший варіант безкоштовно й назвемо орієнтовну ціну.'],
+   ['footer-copy','© 2026 Zentra Studio. Усі права захищено.']
+  ].forEach(([id,v])=>{const e=$('#'+id);if(e)e.innerHTML=v});
+  if(NV){
+    $('#kicker').innerHTML='Студія · '+NV.k[0].toLowerCase()+NV.k.slice(1);
+    $('#work-lead').innerHTML=$('.demos')
+      ?`Наші клієнти поки що автосервіси, тому для вашої ніші ми зробили два демо. Відкрийте їх і спробуйте самі: усе працює. Для ${NV.w} покажемо прототип безкоштовно, ще до оплати.`
+      :`Поки що ми робили проєкти для автосервісів. Для ${NV.w} покажемо прототип безкоштовно, ще до оплати.`;
+  }else{
+    $('#kicker').innerHTML='Вебстудія · сайти й&nbsp;Telegram&#8209;боти для&nbsp;мереж та бізнесу';
+    $('#h1').innerHTML='Клієнти записуються самі&nbsp;— на&nbsp;одну точку чи цілу мережу';
+    $('#work-lead').textContent='Сайти й боти, які ми зробили для клієнтів.';
+  }
+}
 
-/* скляний нік: поява, блік пробігає один раз; на комп'ютері блік і нахил за курсором */
-const gs=$('#gs'),glight=$('#glight');
-let lx=760,ly=-60,lraf=0;
-const lset=()=>{lraf=0;glight.setAttribute('x',lx.toFixed(0));glight.setAttribute('y',ly.toFixed(0))};
-const reveal=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{
-  gs.classList.add('on');if(reduce)return;
-  setTimeout(()=>{const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1300),e=1-Math.pow(1-k,3);lx=-150+e*910;lset();k<1&&requestAnimationFrame(f)})(t0)},500);
-}));
-let revealed=false;const rev=()=>{if(!revealed){revealed=true;reveal()}};rev();setTimeout(()=>gs.classList.add('on'),400);
-/* курсор: не частіше одного разу за кадр (миша може слати сотні подій за секунду), і лише поки нік на екрані */
+/* телефон у першому екрані: поява; на комп'ютері легкий нахил за курсором (не частіше одного разу за кадр і лише поки він на екрані) */
+const hv=$('#hv');
+requestAnimationFrame(()=>requestAnimationFrame(()=>hv.classList.add('on')));setTimeout(()=>hv.classList.add('on'),400);
 if(fine&&!reduce){let ne=null,nraf=0;
-  const nick=()=>{nraf=0;if(!heroOn)return;const e=ne,r=gs.getBoundingClientRect();if(r.bottom<0)return;
-    lx=(e.clientX-r.left)/r.width*1000;ly=(e.clientY-r.top)/r.height*300-160;lset();
-    const dx=Math.max(-1,Math.min(1,(e.clientX-(r.left+r.width/2))/(r.width*.8))),dy=Math.max(-1,Math.min(1,(e.clientY-(r.top+r.height/2))/(innerHeight*.5)));gs.style.setProperty('--nry',(dx*7).toFixed(2)+'deg');gs.style.setProperty('--nrx',(-dy*5).toFixed(2)+'deg')};
-  addEventListener('pointermove',e=>{ne=e;if(!nraf)nraf=requestAnimationFrame(nick)},{passive:true})}
-
-
-if(fine)document.documentElement.addEventListener('mouseleave',()=>{gs.style.setProperty('--nrx','0deg');gs.style.setProperty('--nry','0deg')});
+  const tilt=()=>{nraf=0;if(!heroOn)return;const e=ne,r=hv.getBoundingClientRect();if(r.bottom<0)return;
+    const dx=Math.max(-1,Math.min(1,(e.clientX-(r.left+r.width/2))/(innerWidth*.5))),dy=Math.max(-1,Math.min(1,(e.clientY-(r.top+r.height/2))/(innerHeight*.5)));hv.style.setProperty('--nry',(dx*6).toFixed(2)+'deg');hv.style.setProperty('--nrx',(-dy*4).toFixed(2)+'deg')};
+  addEventListener('pointermove',e=>{ne=e;if(!nraf)nraf=requestAnimationFrame(tilt)},{passive:true});
+  document.documentElement.addEventListener('mouseleave',()=>{hv.style.setProperty('--nrx','0deg');hv.style.setProperty('--nry','0deg')})}
 
 /* острів: приклад сповіщення від бота — з'являється один раз і далі стоїть, не відволікає від заголовка */
 const isl=$('#isl');let heroOn=true;
-io([$('.hero')],e=>{heroOn=e.isIntersecting;gs.classList.toggle('paused',!heroOn);e.target.classList.toggle('paused',!heroOn)});
+io([$('.hero')],e=>{heroOn=e.isIntersecting;e.target.classList.toggle('paused',!heroOn)});
 if(reduce)isl.classList.add('in');else setTimeout(()=>isl.classList.add('in'),1100);
 
 /* поява блоків */
@@ -948,7 +959,7 @@ if(fine&&!reduce){
     W=gi.clientWidth;H=gi.clientHeight;dpr=Math.min(2,devicePixelRatio||1);cv.width=W*dpr;cv.height=H*dpr;
     const o=gi.getBoundingClientRect(),c=cta.getBoundingClientRect(),ox=c.left+c.width/2-o.left,oy=c.top+c.height/2-o.top;
     /* клітинки, де текст і кнопки, лишаємо порожніми */
-    const busy=['.gs','.island','.copy>*'].flatMap(q=>$$(q)).map(e=>e.getBoundingClientRect()).filter(r=>r.width).map(r=>[r.left-o.left-8,r.top-o.top-8,r.right-o.left+8,r.bottom-o.top+8]);
+    const busy=['.hphone','.island','.copy>*'].flatMap(q=>$$(q)).map(e=>e.getBoundingClientRect()).filter(r=>r.width).map(r=>[r.left-o.left-8,r.top-o.top-8,r.right-o.left+8,r.bottom-o.top+8]);
     const x0=((W-22)/2)%C-C,types=['ic','ic','ic','ic','ic','ic','dots','ball','stripe','ring','app','note'];G=[];
     for(let y=0;y<H;y+=C)for(let x=x0;x<W;x+=C){
       if(busy.some(b=>x+C>b[0]&&x<b[2]&&y+C>b[1]&&y<b[3]))continue;
@@ -1117,8 +1128,8 @@ const dockSet=()=>{const on=!heroCta&&!contactOn;dock.classList.toggle('show',on
 io([$('.hero .ctas')],e=>{heroCta=e.isIntersecting;dockSet()});
 io([$('#contact')],e=>{contactOn=e.isIntersecting;dockSet()});
 
-/* ?v=pro з холодного повідомлення: картка «Кілька точок» стає першою й підсвічується */
-if(/[?&]v=pro\b/.test(location.search))$('#prices-grid').classList.add('pro');
+/* ціни на телефоні: одна група за раз */
+{const pg=$('#prices-grid'),pt=$('#ptabs');pt.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;[...pt.children].forEach((x,i)=>{const on=x===b;x.setAttribute('aria-pressed',on);if(on)pt.style.setProperty('--i',i)});pg.dataset.t=b.dataset.t})}
 
 /* компактне меню після прокрутки */
 const nav=$('.nav');let nraf=0;
