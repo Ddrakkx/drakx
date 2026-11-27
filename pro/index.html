@@ -246,6 +246,7 @@ section.block{padding:clamp(80px,10vw,128px) 0 0}
 .odw .u{align-self:flex-end;height:auto;line-height:1.6;font-size:.6em;font-weight:500;margin-left:.22em;letter-spacing:0}
 .link{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-weight:500;color:var(--ink);text-decoration:underline;text-decoration-color:rgba(0,0,0,.25);text-underline-offset:4px}
 .link:hover{text-decoration-color:var(--ink)}
+.links{display:flex;flex-wrap:wrap;gap:4px 22px}
 /* демо для ніші (сторінки /beauty/ тощо): два живі сайти-приклади перед реальними кейсами */
 .demos{margin-bottom:clamp(72px,9vw,112px)}
 .demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,3.4vw,40px) clamp(20px,3vw,32px)}
@@ -632,7 +633,10 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
             <div class="num wide"><b class="od" data-k="orders_sum" data-u=" грн">457 215 грн</b><span>сума <i data-k="orders">167</i>&nbsp;<i data-k="orders" data-pl="наряду|нарядів|нарядів">нарядів</i>, які закрили клієнти з&nbsp;ботом, з&nbsp;<i id="bs-since">14&nbsp;серпня</i></span></div>
           </div>
         </div>
-        <a class="link" href="https://goldauto.online/" target="_blank" rel="noopener">goldauto.online <span aria-hidden="true">↗</span><span class="sr"> (відкриється в новій вкладці)</span></a>
+        <div class="links">
+          <a class="link" href="https://goldauto.online/" target="_blank" rel="noopener">goldauto.online <span aria-hidden="true">↗</span><span class="sr"> (відкриється в новій вкладці)</span></a>
+          <a class="link" href="https://t.me/goldauto_sto_bot" target="_blank" rel="noopener">Відкрити бота <span aria-hidden="true">↗</span><span class="sr"> (відкриється в новій вкладці)</span></a>
+        </div>
       </div>
     </article>
 
@@ -677,7 +681,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
         <article class="card plan rv solo-only" style="--d:.06s"><h4>Бот для запису</h4><p class="cost">від 3&nbsp;500 до 5&nbsp;000&nbsp;грн</p>
           <ul><li>Запис на послугу з вибором часу</li><li>Заявки одразу вам у Telegram</li><li>Відповіді на поширені запитання</li></ul><p class="ex">Обслуговування бота: перший місяць у ціні, далі 350&nbsp;грн/міс</p></article>
         <article class="card plan rv" style="--d:.06s"><h4>Бот із кабінетом клієнта</h4><p class="cost" id="bot-cab-cost">від 8&nbsp;000 до 13&nbsp;000&nbsp;грн</p>
-          <ul><li>Особистий кабінет клієнта в боті</li><li>Заявки майстрам за темами</li><li>Підключення до таблиць та інших сервісів</li></ul><p class="ex">Наприклад, <a href="#bstats">бот Gold&nbsp;Auto</a> (кабінети клієнта, менеджера й&nbsp;власника&nbsp;— такий масштаб рахуємо окремо). Обслуговування: перший місяць у ціні, далі 350&nbsp;грн/міс</p></article>
+          <ul><li>Особистий кабінет клієнта в боті</li><li>Заявки майстрам за темами</li><li>Підключення до таблиць та інших сервісів</li></ul><p class="ex">Наприклад, <a href="https://t.me/goldauto_sto_bot" target="_blank" rel="noopener">бот Gold&nbsp;Auto&nbsp;↗</a> (<a href="#bstats">цифри вище</a>; кабінети клієнта, менеджера й&nbsp;власника&nbsp;— такий масштаб рахуємо окремо). Обслуговування: перший місяць у ціні, далі 350&nbsp;грн/міс</p></article>
       </div>
       <article class="card plan multi" id="multi"><div><p class="kind">Кілька точок</p><h4 id="multi-h">Сайт і бот для мережі з кількох філій</span> точок або&nbsp;мережі</h4>
         <p class="why" id="multi-why">Одне рішення на всі адреси: клієнт обирає найближчу точку, а заявка одразу летить потрібним майстрам чи адміністратору.</p></div>
