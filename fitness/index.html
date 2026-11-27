@@ -294,6 +294,8 @@ img[style*="--lq"]{background:var(--lq) 50% 0/cover no-repeat}
 .plan li{position:relative;padding-left:24px;line-height:1.4}
 .plan li::before{content:"";position:absolute;left:2px;top:.34em;width:12px;height:7px;border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(-45deg)}
 .plan .ex{margin-top:14px;font-size:14px;color:var(--muted)}
+.plan .ex a{color:var(--ink);text-decoration:underline;text-decoration-color:rgba(0,0,0,.35);text-underline-offset:3px}
+.plan .ex a:hover{text-decoration-color:var(--ink)}
 .plan h4,.bundle h3,.faq summary{line-height:1.25}
 /* картки «Сайти» й «Боти» в рядах однакової висоти, примітки внизу картки */
 @media (min-width:901px){
@@ -693,7 +695,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;padding:32px 16px 44p
         <article class="card plan rv solo-only" style="--d:.06s"><h4>Бот для запису</h4><p class="cost">від 3&nbsp;500 до 5&nbsp;000&nbsp;грн</p>
           <ul><li>Запис на послугу з вибором часу</li><li>Заявки одразу вам у Telegram</li><li>Відповіді на поширені запитання</li></ul><p class="ex">Обслуговування бота: перший місяць у ціні, далі 350&nbsp;грн/міс</p></article>
         <article class="card plan rv" style="--d:.06s"><h4>Бот із кабінетом клієнта</h4><p class="cost" id="bot-cab-cost">від 5&nbsp;500 до 9&nbsp;500&nbsp;грн</p>
-          <ul><li>Особистий кабінет клієнта в боті</li><li>Заявки майстрам за темами</li><li>Підключення до таблиць та інших сервісів</li></ul><p class="ex">Як у Volt Master. Обслуговування бота: перший місяць у ціні, далі 350&nbsp;грн/міс</p></article>
+          <ul><li>Особистий кабінет клієнта в боті</li><li>Заявки майстрам за темами</li><li>Підключення до таблиць та інших сервісів</li></ul><p class="ex">Наприклад, <a href="#bstats">бот Gold&nbsp;Auto</a> (кабінети клієнта, менеджера й&nbsp;власника&nbsp;— такий масштаб рахуємо окремо). Обслуговування: перший місяць у ціні, далі 350&nbsp;грн/міс</p></article>
       </div>
       <article class="card plan multi" id="multi"><div><p class="kind">Кілька точок</p><h4 id="multi-h">Сайт і бот для <span class="nw">2–3</span> точок або&nbsp;мережі</h4>
         <p class="why" id="multi-why">Ті самі сайт і бот, тільки з вибором філії: клієнт обирає адресу, а заявка йде майстрам саме цієї точки.</p></div>
