@@ -1,7 +1,7 @@
 # Zentra — сайт
 
 Лендинг: сайти й Telegram-боти для СТО, малого бізнесу та мереж.
-Живе тут: https://ddrakkx.github.io/drakx/ (GitHub Pages, гілка `main` — що запушив, те й на сайті за 1–2 хв; куплено домен `zentra.com.ua`, перемкнути `SITE` у `tools/make_niches.py` + додати `CNAME` після налаштування DNS).
+Живе тут: https://zentra.com.ua/ (GitHub Pages, гілка `main` + `CNAME` `zentra.com.ua` — що запушив, те й на сайті за 1–2 хв).
 
 ## Посилання для холодних повідомлень
 
@@ -9,13 +9,13 @@
 
 | Кому | Посилання |
 |---|---|
-| СТО, автосервіси (за замовчуванням, `Zentra`) | https://ddrakkx.github.io/drakx/ |
-| Мережі, великий бізнес (студія `Zentra Studio`, «ми») | https://ddrakkx.github.io/drakx/pro/ |
-| Салони краси, барбершопи | https://ddrakkx.github.io/drakx/beauty/ |
-| Клініки, кабінети | https://ddrakkx.github.io/drakx/clinic/ |
-| Кавʼярні, пекарні | https://ddrakkx.github.io/drakx/food/ |
-| Магазини | https://ddrakkx.github.io/drakx/shop/ |
-| Фітнес-студії | https://ddrakkx.github.io/drakx/fitness/ |
+| СТО, автосервіси (за замовчуванням, `Zentra`) | https://zentra.com.ua/ |
+| Мережі, великий бізнес (студія `Zentra Studio`, «ми») | https://zentra.com.ua/pro/ |
+| Салони краси, барбершопи | https://zentra.com.ua/beauty/ |
+| Клініки, кабінети | https://zentra.com.ua/clinic/ |
+| Кавʼярні, пекарні | https://zentra.com.ua/food/ |
+| Магазини | https://zentra.com.ua/shop/ |
+| Фітнес-студії | https://zentra.com.ua/fitness/ |
 
 - `?v=pro` до будь-якого посилання (наприклад `/beauty/?v=pro`) — вмикає режим студії **Zentra Studio** («ми») і ставить картку «Кілька точок» першою з підсвіткою. `/pro/` працює так само без JS і має окреме превʼю `media/og-pro.jpg`.
 - Одиночні проєкти без `?v=pro` лишаються з подачею від однієї людини (`Zentra`, «я»).

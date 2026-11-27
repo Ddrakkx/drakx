@@ -7,8 +7,7 @@ import html, re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-# Домен zentra.com.ua зареєстровано 2026-11-26; перемкнути SITE і додати CNAME після налаштування DNS
-SITE = 'https://ddrakkx.github.io/drakx/'
+SITE = 'https://zentra.com.ua/'
 DESC_TAIL = 'Без передоплати — спочатку показую результат.'
 META = {
     'beauty': ('Сайт і Telegram-бот для запису в салон краси | Zentra', 'салонів краси та барбершопів'),
